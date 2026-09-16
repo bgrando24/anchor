@@ -49,4 +49,4 @@ print("Total LGAs:", len(master))
 
 # save
 master.to_csv("master_table.csv", index=False)
-master.to_json("master_data.json", orient="records", indent=2)
+master.to_json("../master_data.json", orient="records", indent=2)
