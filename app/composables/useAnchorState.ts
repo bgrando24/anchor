@@ -39,7 +39,7 @@ const TIER_CODE: Record<PriorityTier, string> = { not_much: 'n', somewhat: 's', 
 const TIER_FROM_CODE: Record<string, PriorityTier> = { n: 'not_much', s: 'somewhat', a: 'a_lot' }
 
 // State lives in the URL fragment because browsers never send it to the server.
-// Format: #<payment>.<income>.<currentLga>.<workLga or ->.<weights>, e.g. #pps.10-20.24970.-.ash
+// Format: #<payment>.<income>.<currentLga>.<workLga or ->.<weights>, e.g. #pps.10-20.24970.-.asa
 export function encodeAnswersToFragment(a: AnchorAnswers): string {
   const payment = PAYMENT_TYPES.find((p) => p.value === a.paymentType)?.code ?? '-'
   const income = INCOME_BANDS.find((b) => b.value === a.incomeBand)?.code ?? '-'
@@ -62,8 +62,8 @@ export function decodeAnswersFromFragment(hash: string | null | undefined): Anch
   const payment = PAYMENT_TYPES.find((p) => p.code === paymentCode)
   if (!payment) return null
 
-  const income = INCOME_BANDS.find((b) => b.code === incomeCode)
-  if (!income) return null
+  const income = incomeCode === '-' ? null : INCOME_BANDS.find((b) => b.code === incomeCode)
+  if (income === undefined) return null
 
   const { byCode } = useLgaData()
 
@@ -82,7 +82,7 @@ export function decodeAnswersFromFragment(hash: string | null | undefined): Anch
 
   return {
     paymentType: payment.value,
-    incomeBand: income.value,
+    incomeBand: income?.value ?? null,
     currentLga,
     workLga,
     weights: {
