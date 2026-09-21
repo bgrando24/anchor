@@ -43,57 +43,16 @@ const ariaLabel = computed(
 </script>
 
 <template>
-  <figure class="chart">
-    <svg :viewBox="`0 0 ${W} ${H}`" class="chart-svg" role="img" :aria-label="ariaLabel">
-      <line :x1="PAD_X" :y1="TOP_Y" :x2="W - PAD_X" :y2="TOP_Y" class="grid" />
-      <line :x1="PAD_X" y1="72.2" :x2="W - PAD_X" y2="72.2" class="grid" />
-      <line :x1="PAD_X" :y1="BOTTOM_Y" :x2="W - PAD_X" :y2="BOTTOM_Y" class="grid-strong" />
-      <text :x="PAD_X" y="126" class="axis-text">5 years ago</text>
-      <text :x="W - PAD_X" y="126" text-anchor="end" class="axis-text">Last quarter</text>
-      <polyline :points="points" fill="none" class="line" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
-      <circle :cx="xFor(series.length - 1)" :cy="yFor(last)" r="4.5" class="dot" />
-      <text :x="xFor(series.length - 1) - 6" y="99" text-anchor="end" class="end-label">{{ last.toFixed(1) }}%</text>
+  <figure class="m-0">
+    <svg :viewBox="`0 0 ${W} ${H}`" class="w-full h-auto block overflow-visible" role="img" :aria-label="ariaLabel">
+      <line :x1="PAD_X" :y1="TOP_Y" :x2="W - PAD_X" :y2="TOP_Y" stroke-width="1" class="stroke-line-soft" />
+      <line :x1="PAD_X" y1="72.2" :x2="W - PAD_X" y2="72.2" stroke-width="1" class="stroke-line-soft" />
+      <line :x1="PAD_X" :y1="BOTTOM_Y" :x2="W - PAD_X" :y2="BOTTOM_Y" stroke-width="1" class="stroke-line-strong" />
+      <text :x="PAD_X" y="126" class="fill-muted font-mono text-[11px]">5 years ago</text>
+      <text :x="W - PAD_X" y="126" text-anchor="end" class="fill-muted font-mono text-[11px]">Last quarter</text>
+      <polyline :points="points" fill="none" class="stroke-data-main" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+      <circle :cx="xFor(series.length - 1)" :cy="yFor(last)" r="4.5" class="fill-data-main" />
+      <text :x="xFor(series.length - 1) - 6" y="99" text-anchor="end" class="fill-ink font-sans font-semibold text-[13px]">{{ last.toFixed(1) }}%</text>
     </svg>
   </figure>
 </template>
-
-<style scoped>
-.chart {
-  margin: 0;
-}
-
-.chart-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-  overflow: visible;
-}
-
-.grid {
-  stroke: var(--border-hairline);
-  stroke-width: 1;
-}
-
-.grid-strong {
-  stroke: var(--border-strong);
-  stroke-width: 1;
-}
-
-.axis-text {
-  fill: var(--muted);
-  font: 400 11px var(--font-mono);
-}
-
-.line {
-  stroke: var(--data-main);
-}
-
-.dot {
-  fill: var(--data-main);
-}
-
-.end-label {
-  fill: var(--ink);
-  font: 600 13px var(--font-sans);
-}
-</style>

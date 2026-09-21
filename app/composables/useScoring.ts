@@ -10,12 +10,7 @@ export interface ScoredLga extends Lga {
 
 const TIER_WEIGHT: Record<PriorityTier, number> = { not_much: 1, somewhat: 2, a_lot: 3 }
 
-/**
- * Rent affordability is always half the score (§3 of the flow, non-negotiable).
- * The other half splits across schools/transport/GP access proportional to how much
- * the user said each mattered (not much=1, somewhat=2, a lot=3 relative weight),
- * rounded to whole percent points that still sum to exactly 50.
- */
+// Affordability is fixed at 50%. The other 50% splits by tier (1/2/3), rounded so it still sums to exactly 50.
 export function computeFactorWeights(weights: AnchorWeights) {
   const keys = ['schools', 'transport', 'gp_access'] as const
   const tierVals = keys.map((k) => TIER_WEIGHT[weights[k]])
@@ -24,7 +19,7 @@ export function computeFactorWeights(weights: AnchorWeights) {
   const floors = raw.map(Math.floor)
   let remainder = 50 - floors.reduce((a, b) => a + b, 0)
   const order = raw
-    .map((v, i) => ({ i, frac: v - floors[i] }))
+    .map((v, i) => ({ i, frac: v - floors[i]! }))
     .sort((a, b) => b.frac - a.frac)
   const result = [...floors]
   for (let k = 0; k < remainder; k++) result[order[k]!.i]!++
@@ -46,7 +41,6 @@ function normalize(range: { min: number; max: number }, v: number) {
   return ((v - range.min) / (range.max - range.min)) * 10
 }
 
-/** Ranks all 79 LGAs against the given priority weights. Pure function of the fixture + weights. */
 export function useScoring() {
   const { all } = useLgaData()
 
@@ -89,9 +83,14 @@ export function useScoring() {
 }
 
 export function oneIn(pct: number): string {
-  if (pct <= 0.5) return 'Almost none'
-  const n = Math.max(1, Math.round(100 / pct))
-  return n === 1 ? 'Almost all' : `1 in ${n}`
+  if (pct < 1) return 'Under 1 in 100'
+  if (pct >= 50) return 'Over half'
+  return `1 in ${Math.round(100 / pct)}`
+}
+
+export function affordabilityHeadline(pct: number): string {
+  const share = oneIn(pct)
+  return share.startsWith('1 in') ? `About ${share}` : share
 }
 
 export function pctLabel(pct: number): string {
@@ -112,29 +111,55 @@ export function stabilityWord(stddev: number): string {
   return 'Moves a lot'
 }
 
-/** A short, plain-English explanation of why an area ranked where it did. */
+function steadinessClause(stddev: number): string {
+  if (stddev < 2.5) return 'and that has held steady for five years'
+  if (stddev < 4.3) return 'and that has been fairly steady'
+  if (stddev < 6.5) return 'though that has moved around a fair bit'
+  return 'though that has swung a lot from year to year'
+}
+
+function plural(n: number, word: string) {
+  return `${n} ${word}${n === 1 ? '' : 's'}`
+}
+
 export function explainRanking(l: ScoredLga, isCurrent: boolean): string {
+  const share = affordabilityHeadline(l.affordability_pct_latest)
+  const subject = share === 'Over half' ? 'Over half of the' : share
+  let text = `${subject} rentals here were affordable on your income last quarter, ${steadinessClause(l.affordability_pct_5yr_stddev)}.`
+
+  const gpPct = Math.round(l.gp_bulk_billing_rate * 100)
   const factors = [
-    { key: 'schools', label: `${l.school_count} schools`, score: l.scores.schools },
-    { key: 'transport', label: `${l.train_station_count} train stations`, score: l.scores.transport },
     {
-      key: 'gp_access',
-      label: `${Math.round(l.gp_bulk_billing_rate * 100)}% of GP visits bulk-billed`,
-      score: l.scores.gp_access
+      score: l.scores.schools,
+      strong: `It has plenty of schools (${l.school_count}).`,
+      weak: `Schools are thin on the ground, with ${plural(l.school_count, 'school')}.`
+    },
+    {
+      score: l.scores.transport,
+      strong: `Good train access, with ${plural(l.train_station_count, 'station')}.`,
+      weak:
+        l.train_station_count === 0
+          ? 'There are no train stations.'
+          : `Train access is limited: ${plural(l.train_station_count, 'station')}.`
+    },
+    {
+      score: l.scores.gp_access,
+      strong: `Most GP visits here are bulk-billed (${gpPct}%).`,
+      weak: `A GP visit is less likely to be free here: ${gpPct}% are bulk-billed.`
     }
   ]
   const best = factors.reduce((a, b) => (b.score > a.score ? b : a))
   const worst = factors.reduce((a, b) => (b.score < a.score ? b : a))
 
-  const affordSentence = `About ${oneIn(l.affordability_pct_latest)} rentals here were affordable on your income last quarter, and that has ${stabilityLabel(l.affordability_pct_5yr_stddev)}.`
+  if (best.score >= 7) text += ` ${best.strong}`
+  else if (worst.score <= 2.5) text += ` ${worst.weak}`
 
-  if (isCurrent) {
-    return `This is where you live now. ${affordSentence}`
-  }
-  if (best.score - worst.score > 3) {
-    return `${affordSentence} It has ${best.label}, among the strongest on your list.`
-  }
-  return affordSentence
+  return isCurrent ? `This is where you live now. ${text}` : text
+}
+
+export function affordabilityRank(lga: Lga): number {
+  const { all } = useLgaData()
+  return all.filter((l) => l.affordability_pct_latest > lga.affordability_pct_latest).length + 1
 }
 
 export interface ComparisonRow {

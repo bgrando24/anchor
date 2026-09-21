@@ -23,7 +23,6 @@ export interface Lga {
 
 const LGAS = (raw as { lgas: Lga[] }).lgas
 
-/** Region groupings and display order, matching the two-step picker in the design. */
 export const REGION_GROUPS: { region: string; subregions: string[] }[] = [
   { region: 'Melbourne', subregions: ['Inner', 'North & West', 'East', 'South'] },
   {

@@ -11,68 +11,18 @@ withDefaults(
 </script>
 
 <template>
-  <div class="score-bar">
-    <div class="row">
-      <span class="label">{{ label }}</span>
-      <span class="value">{{ value.toFixed(1) }} / 10</span>
+  <div class="flex flex-col">
+    <div class="flex justify-between items-baseline mb-1">
+      <span class="font-sans font-semibold text-[18px] leading-[1.3] text-ink">{{ label }}</span>
+      <span class="font-mono font-medium text-[16px] leading-none text-ink">{{ value.toFixed(1) }} / 10</span>
     </div>
-    <div class="sublabel">{{ sublabel }}</div>
-    <div class="track">
+    <div class="font-sans text-[16px] leading-[1.4] text-body mb-[10px]">{{ sublabel }}</div>
+    <div class="h-3 rounded-[6px] bg-line overflow-hidden">
       <div
-        class="fill"
-        :class="tone"
+        class="h-full rounded-[6px]"
+        :class="tone === 'affordability' ? 'bg-data-affordability' : 'bg-data-main'"
         :style="{ width: Math.min(100, Math.max(0, (value / 10) * 100)) + '%' }"
       />
     </div>
   </div>
 </template>
-
-<style scoped>
-.score-bar {
-  display: flex;
-  flex-direction: column;
-}
-
-.row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 4px;
-}
-
-.label {
-  font: 600 18px/1.3 var(--font-sans);
-  color: var(--ink);
-}
-
-.value {
-  font: 500 16px/1 var(--font-mono);
-  color: var(--ink);
-}
-
-.sublabel {
-  font: 400 16px/1.4 var(--font-sans);
-  color: var(--body);
-  margin-bottom: 10px;
-}
-
-.track {
-  height: 12px;
-  border-radius: 6px;
-  background: var(--border);
-  overflow: hidden;
-}
-
-.fill {
-  height: 100%;
-  border-radius: 6px;
-}
-
-.fill.factor {
-  background: var(--data-main);
-}
-
-.fill.affordability {
-  background: var(--data-affordability);
-}
-</style>

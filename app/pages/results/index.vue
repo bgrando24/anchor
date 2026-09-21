@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import { PAYMENT_TYPES, PRIORITY_FACTORS } from '~/data/options'
 
-useHead({ title: 'ANCHOR — 79 areas, ranked for you' })
+useHead({ title: 'Your ranked areas' })
 
-const route = useRoute()
 const { answers } = useAnchorState()
 const { byCode } = useLgaData()
 
 onMounted(() => {
-  const decoded = decodeAnswersFromQuery(route.query as Record<string, unknown>)
+  const hash = window.location.hash
+  if (!hash) return
+  const decoded = decodeAnswersFromFragment(hash)
   if (decoded) {
-    answers.value = { ...answers.value, ...decoded, weights: decoded.weights ?? answers.value.weights }
+    answers.value = decoded
+  } else {
+    navigateTo('/invalid-link')
   }
 })
 
@@ -27,9 +30,12 @@ const paymentLabel = computed(
   () => PAYMENT_TYPES.find((p) => p.value === answers.value.paymentType)?.label ?? null
 )
 const currentLgaName = computed(() => byCode(answers.value.currentLga)?.lga_name ?? null)
+const SHORT_NAMES = { schools: 'schools', transport: 'transport', gp_access: 'doctors' } as const
 const prioritySummary = computed(() => {
-  const named = PRIORITY_FACTORS.filter((f) => answers.value.weights[f.key] !== 'not_much').map((f) => f.label)
-  return named.length ? named.join(', ') : 'Even priorities'
+  const top = PRIORITY_FACTORS.filter((f) => answers.value.weights[f.key] === 'a_lot').map((f) => SHORT_NAMES[f.key])
+  if (!top.length) return 'No strong priorities'
+  const list = top.join(', ')
+  return list.charAt(0).toUpperCase() + list.slice(1)
 })
 
 function isCurrent(code: number) {
@@ -38,103 +44,112 @@ function isCurrent(code: number) {
 </script>
 
 <template>
-  <div class="page">
-    <div class="band-wrap">
+  <div class="min-h-screen bg-bg">
+    <div class="bg-header-band text-header-band-text">
       <AppHeader variant="band" share-to="/share" />
-      <div class="band-body">
-        <h1>79 areas, ranked for you</h1>
-        <p class="lede">Best first. Rent affordability is half of every score.</p>
-        <div class="chips">
-          <div v-if="paymentLabel" class="chip">{{ paymentLabel }}</div>
-          <div v-if="currentLgaName" class="chip">{{ currentLgaName }}</div>
-          <div class="chip">{{ prioritySummary }}</div>
-          <NuxtLink to="/income" class="change-link">Change answers</NuxtLink>
+      <div class="max-w-[1280px] mx-auto px-6 pb-[18px] flex flex-col gap-2 dt:pt-[22px] dt:px-10 dt:pb-[22px]">
+        <h1 class="m-0 font-sans font-semibold text-[26px] leading-[1.25] tracking-[-0.01em]">79 areas, ranked for you</h1>
+        <p class="m-0 mb-[6px] font-sans text-[16px] leading-[1.5] text-header-band-body">Best first. Rent affordability is half of every score.</p>
+        <div class="flex gap-2 flex-wrap items-center">
+          <div v-if="paymentLabel" class="py-[7px] px-[13px] bg-header-chip-bg rounded-full font-sans text-[14px] leading-[1.3] text-header-chip-text">{{ paymentLabel }}</div>
+          <div v-if="currentLgaName" class="py-[7px] px-[13px] bg-header-chip-bg rounded-full font-sans text-[14px] leading-[1.3] text-header-chip-text">{{ currentLgaName }}</div>
+          <div class="py-[7px] px-[13px] bg-header-chip-bg rounded-full font-sans text-[14px] leading-[1.3] text-header-chip-text">{{ prioritySummary }}</div>
+          <NuxtLink
+            to="/income"
+            class="min-h-9 inline-flex items-center px-[13px] border border-header-chip-outline rounded-full text-header-cta font-sans font-medium text-[14px] leading-none no-underline"
+          >
+            Change answers
+          </NuxtLink>
         </div>
       </div>
     </div>
 
-    <div class="body-grid">
-      <aside class="sidebar">
-        <div class="sidebar-title">Your answers</div>
-        <div class="answer-rows">
-          <div><div class="answer-k">Payment</div><div class="answer-v">{{ paymentLabel ?? '—' }}</div></div>
-          <div><div class="answer-k">Living in</div><div class="answer-v">{{ currentLgaName ?? '—' }}</div></div>
+    <div class="max-w-[1280px] mx-auto grid grid-cols-1 dt:grid-cols-[312px_1fr]">
+      <aside class="hidden dt:block dt:py-[34px] dt:px-8 dt:border-r dt:border-line dt:bg-surface-2">
+        <div class="font-mono font-medium text-[12px] leading-none tracking-[0.12em] uppercase text-muted mb-4">Your answers</div>
+        <div class="flex flex-col gap-[18px] font-sans text-[16px] leading-[1.4] mb-6">
+          <div><div class="text-muted mb-1">Payment</div><div class="text-ink font-medium">{{ paymentLabel ?? '—' }}</div></div>
+          <div><div class="text-muted mb-1">Living in</div><div class="text-ink font-medium">{{ currentLgaName ?? '—' }}</div></div>
         </div>
-        <div class="sidebar-rule" />
-        <div class="sidebar-title">Weighting</div>
+        <div class="h-px bg-line-soft mt-2 mb-[22px]" />
+        <div class="font-mono font-medium text-[12px] leading-none tracking-[0.12em] uppercase text-muted mb-4">Weighting</div>
         <WeightSplitBar :weights="scored[0]?.scoreWeights ?? { affordability: 50, schools: 0, transport: 0, gp_access: 0 }" />
-        <NuxtLink to="/income" class="btn-secondary change-btn">Change answers</NuxtLink>
-        <p class="sidebar-note">Rent affordability is always half the score and can't be changed.</p>
+        <NuxtLink to="/income" class="btn-secondary w-full mt-[22px]">Change answers</NuxtLink>
+        <p class="mt-4 mb-0 font-sans text-[15px] leading-[1.5] text-muted">Rent affordability is always half the score and can't be changed.</p>
       </aside>
 
-      <main class="content">
+      <main>
         <SuggestionBanner />
 
-        <div class="col-headers">
-          <div>#</div><div>Area</div><div>Affordable</div><div>Steadiness</div><div class="right">Score</div>
+        <div class="hidden dt:grid dt:grid-cols-[44px_1fr_150px_190px_120px] dt:gap-5 dt:px-10 dt:pb-[10px] font-mono font-medium text-[12px] leading-none tracking-[0.1em] uppercase text-muted">
+          <div>#</div><div>Area</div><div>Affordable</div><div>Steadiness</div><div class="text-right">Score</div>
         </div>
 
-        <div v-if="!tableView" class="rows">
-          <article v-for="r in visible" :key="r.lga_code" class="row">
-            <div class="rank">{{ r.rank }}</div>
-            <div class="row-name">
-              <div class="row-head">
-                <NuxtLink :to="`/results/${r.lga_code}`" class="name-link">{{ r.lga_name }}</NuxtLink>
-                <span class="region-tag">{{ r.subregion }}</span>
-                <span v-if="isCurrent(r.lga_code)" class="current-tag">Where you live now</span>
+        <div v-if="!tableView" class="flex flex-col">
+          <article
+            v-for="r in visible"
+            :key="r.lga_code"
+            class="py-[18px] px-6 border-b border-line-soft flex gap-4 items-start dt:py-5 dt:px-10 dt:grid dt:grid-cols-[44px_1fr_150px_190px_120px] dt:gap-5 dt:items-start dt:border-t dt:border-line-soft dt:border-b-0"
+          >
+            <div class="w-[34px] shrink-0 text-right font-mono font-medium text-[20px] leading-none text-data-main dt:text-left">{{ r.rank }}</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-baseline gap-[10px] flex-wrap dt:flex-nowrap">
+                <NuxtLink :to="`/results/${r.lga_code}`" class="font-sans font-semibold text-[21px] leading-[1.25] text-ink no-underline">{{ r.lga_name }}</NuxtLink>
+                <span class="font-mono text-[14px] leading-none text-muted">{{ r.subregion }}</span>
+                <span v-if="isCurrent(r.lga_code)" class="inline-block mt-2 py-1 px-[10px] bg-surface-info rounded-[6px] font-sans font-medium text-[14px] leading-[1.3] text-surface-info-text">Where you live now</span>
               </div>
-              <div class="stat mobile-only">
-                <span class="stat-num">{{ oneIn(r.affordability_pct_latest) }}</span>
-                <span class="stat-word">rentals affordable</span>
+              <div class="mt-3 flex items-baseline gap-[10px] dt:hidden">
+                <span class="font-sans font-semibold text-[28px] leading-none text-ink tracking-[-0.01em]">{{ oneIn(r.affordability_pct_latest) }}</span>
+                <span class="font-sans text-[16px] leading-[1.3] text-body">rentals affordable</span>
               </div>
-              <div class="stat-meta mobile-only">{{ pctLabel(r.affordability_pct_latest) }} last quarter &middot; {{ stabilityLabel(r.affordability_pct_5yr_stddev) }}</div>
-              <div class="why">{{ explainRanking(r, isCurrent(r.lga_code)) }}</div>
-              <div class="score-row mobile-only">
-                <div class="score-track"><div class="score-fill" :style="{ width: (r.scores.total * 10) + '%' }" /></div>
-                <div class="score-num">{{ r.scores.total.toFixed(1) }} / 10</div>
+              <div class="mt-[6px] font-mono text-[14px] leading-[1.3] text-muted dt:hidden">{{ pctLabel(r.affordability_pct_latest) }} last quarter &middot; {{ stabilityLabel(r.affordability_pct_5yr_stddev) }}</div>
+              <div class="mt-[10px] font-sans text-[16px] leading-[1.5] text-body dt:mt-2 dt:max-w-[58ch]">{{ explainRanking(r, isCurrent(r.lga_code)) }}</div>
+              <div class="mt-3 flex items-center gap-3 dt:hidden">
+                <div class="flex-1 h-2 rounded-[4px] bg-line overflow-hidden"><div class="h-full rounded-[4px] bg-data-main" :style="{ width: (r.scores.total * 10) + '%' }" /></div>
+                <div class="font-mono font-medium text-[15px] leading-none text-ink min-w-[72px] shrink-0 whitespace-nowrap text-right">{{ r.scores.total.toFixed(1) }} / 10</div>
               </div>
-              <NuxtLink :to="`/results/${r.lga_code}`" class="detail-link mobile-only">See the detail for {{ r.lga_name }}</NuxtLink>
+              <NuxtLink :to="`/results/${r.lga_code}`" class="inline-block mt-[14px] min-h-11 leading-[44px] font-sans font-medium text-[17px] dt:hidden">See the detail for {{ r.lga_name }}</NuxtLink>
             </div>
-            <div class="col-affordable desktop-only">
-              <div class="afford-num">{{ oneIn(r.affordability_pct_latest) }}</div>
-              <div class="afford-pct">{{ pctLabel(r.affordability_pct_latest) }}</div>
+            <div class="hidden dt:block">
+              <div class="font-sans font-semibold text-[22px] leading-[1.1] text-ink">{{ oneIn(r.affordability_pct_latest) }}</div>
+              <div class="mt-[5px] font-mono text-[14px] leading-[1.3] text-muted">{{ pctLabel(r.affordability_pct_latest) }}</div>
             </div>
-            <div class="col-steady desktop-only">{{ stabilityLabel(r.affordability_pct_5yr_stddev) }}</div>
-            <div class="col-score desktop-only">
-              <div class="score-num">{{ r.scores.total.toFixed(1) }} / 10</div>
-              <div class="score-track"><div class="score-fill" :style="{ width: (r.scores.total * 10) + '%' }" /></div>
+            <div class="hidden dt:block font-sans text-[16px] leading-[1.4] text-body">{{ stabilityLabel(r.affordability_pct_5yr_stddev) }}</div>
+            <div class="hidden dt:block">
+              <div class="font-mono font-medium text-[16px] leading-none text-ink text-right mb-2">{{ r.scores.total.toFixed(1) }} / 10</div>
+              <div class="h-2 rounded-[4px] bg-line overflow-hidden"><div class="h-full rounded-[4px] bg-data-main" :style="{ width: (r.scores.total * 10) + '%' }" /></div>
             </div>
           </article>
         </div>
 
-        <div v-else class="table-wrap">
-          <table>
+        <div v-else class="py-4 px-6 overflow-x-auto dt:px-10">
+          <table class="w-full border-collapse font-sans text-[16px] leading-[1.4]">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Area</th>
-                <th scope="col">Affordable</th>
-                <th scope="col">Steadiness</th>
-                <th scope="col" class="right">Score</th>
+                <th scope="col" class="text-left py-[10px] px-3 font-mono font-medium text-[12px] leading-none tracking-[0.1em] uppercase text-muted">#</th>
+                <th scope="col" class="text-left py-[10px] px-3 font-mono font-medium text-[12px] leading-none tracking-[0.1em] uppercase text-muted">Area</th>
+                <th scope="col" class="text-left py-[10px] px-3 font-mono font-medium text-[12px] leading-none tracking-[0.1em] uppercase text-muted">Affordable</th>
+                <th scope="col" class="text-left py-[10px] px-3 font-mono font-medium text-[12px] leading-none tracking-[0.1em] uppercase text-muted">Steadiness</th>
+                <th scope="col" class="text-right py-[10px] px-3 font-mono font-medium text-[12px] leading-none tracking-[0.1em] uppercase text-muted">Score</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="r in scored" :key="r.lga_code">
-                <td>{{ r.rank }}</td>
-                <td><NuxtLink :to="`/results/${r.lga_code}`">{{ r.lga_name }}</NuxtLink></td>
-                <td>{{ pctLabel(r.affordability_pct_latest) }}</td>
-                <td>{{ stabilityWord(r.affordability_pct_5yr_stddev) }}</td>
-                <td class="right">{{ r.scores.total.toFixed(1) }} / 10</td>
+                <td class="text-left py-[10px] px-3 border-t border-line-soft font-mono text-ink">{{ r.rank }}</td>
+                <td class="text-left py-[10px] px-3 border-t border-line-soft font-mono text-ink"><NuxtLink :to="`/results/${r.lga_code}`">{{ r.lga_name }}</NuxtLink></td>
+                <td class="text-left py-[10px] px-3 border-t border-line-soft font-mono text-ink">{{ pctLabel(r.affordability_pct_latest) }}</td>
+                <td class="text-left py-[10px] px-3 border-t border-line-soft font-mono text-ink">{{ stabilityWord(r.affordability_pct_5yr_stddev) }}</td>
+                <td class="text-right py-[10px] px-3 border-t border-line-soft font-mono text-ink">{{ r.scores.total.toFixed(1) }} / 10</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div class="footer-actions">
+        <div class="py-[22px] px-6 pb-8 flex flex-col gap-[14px] dt:flex-row dt:items-center dt:py-[26px] dt:px-10 dt:pb-[34px]">
           <button v-if="!tableView && !showAll" type="button" class="btn-secondary" @click="showAll = true">
             Show the remaining {{ remaining }} areas
           </button>
-          <button type="button" class="table-toggle" @click="tableView = !tableView">
+          <button type="button" class="border-none bg-transparent p-0 font-sans font-medium text-[16px] leading-[1.4] text-accent underline text-center cursor-pointer" @click="tableView = !tableView">
             {{ tableView ? 'View as a list' : 'View all 79 as a table' }}
           </button>
         </div>
@@ -142,408 +157,3 @@ function isCurrent(code: number) {
     </div>
   </div>
 </template>
-
-<style scoped>
-.page {
-  min-height: 100vh;
-  background: var(--bg);
-}
-
-.band-wrap {
-  background: var(--header-band);
-  color: var(--header-band-text);
-}
-
-.band-body {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 24px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.band-body h1 {
-  margin: 0;
-  font: 600 26px/1.25 var(--font-sans);
-  letter-spacing: -0.01em;
-}
-
-.lede {
-  margin: 0 0 6px;
-  font: 400 16px/1.5 var(--font-sans);
-  color: var(--header-band-body);
-}
-
-.chips {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.chip {
-  padding: 7px 13px;
-  background: var(--header-chip-bg);
-  border-radius: 999px;
-  font: 400 14px/1.3 var(--font-sans);
-  color: var(--header-chip-text);
-}
-
-.change-link {
-  min-height: 36px;
-  display: inline-flex;
-  align-items: center;
-  padding: 0 13px;
-  border: 1px solid var(--header-chip-outline);
-  border-radius: 999px;
-  color: var(--header-cta);
-  font: 500 14px/1 var(--font-sans);
-  text-decoration: none;
-}
-
-.body-grid {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-.sidebar {
-  display: none;
-}
-
-.content {
-  padding: 0;
-}
-
-.col-headers {
-  display: none;
-}
-
-.rows {
-  display: flex;
-  flex-direction: column;
-}
-
-.row {
-  padding: 18px 24px;
-  border-bottom: 1px solid var(--border-hairline);
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-.rank {
-  width: 34px;
-  flex-shrink: 0;
-  text-align: right;
-  font: 500 20px/1 var(--font-mono);
-  color: var(--data-main);
-}
-
-.row-name {
-  flex: 1;
-  min-width: 0;
-}
-
-.desktop-only {
-  display: none;
-}
-
-.row-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.name-link {
-  font: 600 21px/1.25 var(--font-sans);
-  color: var(--ink);
-  text-decoration: none;
-}
-
-.region-tag {
-  font: 400 14px/1 var(--font-mono);
-  color: var(--muted);
-}
-
-.current-tag {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 4px 10px;
-  background: var(--surface-info);
-  border-radius: 6px;
-  font: 500 14px/1.3 var(--font-sans);
-  color: var(--surface-info-text);
-}
-
-.stat {
-  margin-top: 12px;
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-
-.stat-num {
-  font: 600 28px/1 var(--font-sans);
-  color: var(--ink);
-  letter-spacing: -0.01em;
-}
-
-.stat-word {
-  font: 400 16px/1.3 var(--font-sans);
-  color: var(--body);
-}
-
-.stat-meta {
-  margin-top: 6px;
-  font: 400 14px/1.3 var(--font-mono);
-  color: var(--muted);
-}
-
-.why {
-  margin-top: 10px;
-  font: 400 16px/1.5 var(--font-sans);
-  color: var(--body);
-}
-
-.score-row {
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.score-track {
-  flex: 1;
-  height: 8px;
-  border-radius: 4px;
-  background: var(--border);
-  overflow: hidden;
-}
-
-.score-fill {
-  height: 100%;
-  border-radius: 4px;
-  background: var(--data-main);
-}
-
-.score-num {
-  font: 500 15px/1 var(--font-mono);
-  color: var(--ink);
-  min-width: 72px;
-  flex-shrink: 0;
-  white-space: nowrap;
-  text-align: right;
-}
-
-.detail-link {
-  display: inline-block;
-  margin-top: 14px;
-  min-height: 44px;
-  line-height: 44px;
-  font: 500 17px/44px var(--font-sans);
-}
-
-.table-wrap {
-  padding: 16px 24px;
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font: 400 16px/1.4 var(--font-sans);
-}
-
-th,
-td {
-  text-align: left;
-  padding: 10px 12px;
-  border-top: 1px solid var(--border-hairline);
-  font-family: var(--font-mono);
-  color: var(--ink);
-}
-
-thead th {
-  border-top: none;
-  font: 500 12px/1 var(--font-mono);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.right {
-  text-align: right;
-}
-
-.footer-actions {
-  padding: 22px 24px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.table-toggle {
-  border: none;
-  background: none;
-  padding: 0;
-  font: 500 16px/1.4 var(--font-sans);
-  color: var(--accent);
-  text-decoration: underline;
-  text-align: center;
-  cursor: pointer;
-}
-
-@media (min-width: 860px) {
-  .band-body {
-    padding: 22px 40px 22px;
-  }
-
-  .body-grid {
-    grid-template-columns: 312px 1fr;
-  }
-
-  .sidebar {
-    display: block;
-    padding: 34px 32px;
-    border-right: 1px solid var(--border);
-    background: var(--surface-2);
-  }
-
-  .sidebar-title {
-    font: 500 12px/1 var(--font-mono);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 16px;
-  }
-
-  .answer-rows {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    font: 400 16px/1.4 var(--font-sans);
-    margin-bottom: 24px;
-  }
-
-  .answer-k {
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-
-  .answer-v {
-    color: var(--ink);
-    font-weight: 500;
-  }
-
-  .sidebar-rule {
-    height: 1px;
-    background: var(--border-hairline);
-    margin: 8px 0 22px;
-  }
-
-  .change-btn {
-    width: 100%;
-    margin-top: 22px;
-  }
-
-  .sidebar-note {
-    margin: 16px 0 0;
-    font: 400 15px/1.5 var(--font-sans);
-    color: var(--muted);
-  }
-
-  .col-headers {
-    display: grid;
-    grid-template-columns: 44px 1fr 150px 190px 120px;
-    gap: 20px;
-    padding: 0 40px 10px;
-    font: 500 12px/1 var(--font-mono);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .row {
-    padding: 20px 40px;
-    display: grid;
-    grid-template-columns: 44px 1fr 150px 190px 120px;
-    gap: 20px;
-    align-items: start;
-    border-top: 1px solid var(--border-hairline);
-    border-bottom: none;
-  }
-
-  .rank {
-    text-align: left;
-    font-size: 20px;
-  }
-
-  .row-head {
-    flex-wrap: nowrap;
-  }
-
-  .mobile-only {
-    display: none;
-  }
-
-  .desktop-only {
-    display: block;
-  }
-
-  .why {
-    margin-top: 8px;
-    max-width: 58ch;
-  }
-
-  .col-affordable .afford-num {
-    font: 600 22px/1.1 var(--font-sans);
-    color: var(--ink);
-  }
-
-  .col-affordable .afford-pct {
-    margin-top: 5px;
-    font: 400 14px/1.3 var(--font-mono);
-    color: var(--muted);
-  }
-
-  .col-steady {
-    font: 400 16px/1.4 var(--font-sans);
-    color: var(--body);
-  }
-
-  .col-score .score-num {
-    font: 500 16px/1 var(--font-mono);
-    color: var(--ink);
-    text-align: right;
-    margin-bottom: 8px;
-  }
-
-  .col-score .score-track {
-    height: 8px;
-    border-radius: 4px;
-    background: var(--border);
-    overflow: hidden;
-  }
-
-  .col-score .score-fill {
-    height: 100%;
-    border-radius: 4px;
-    background: var(--data-main);
-  }
-
-  .table-wrap {
-    padding: 16px 40px;
-  }
-
-  .footer-actions {
-    flex-direction: row;
-    align-items: center;
-    padding: 26px 40px 34px;
-  }
-}
-</style>

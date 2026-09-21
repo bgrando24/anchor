@@ -6,42 +6,22 @@ const emit = defineEmits<{ 'update:modelValue': [PriorityTier] }>()
 </script>
 
 <template>
-  <div class="tier-selector" role="radiogroup" :aria-label="label">
+  <div class="flex gap-2" role="radiogroup" :aria-label="label">
     <button
       v-for="t in PRIORITY_TIERS"
       :key="t.value"
       type="button"
       role="radio"
       :aria-checked="modelValue === t.value"
-      class="tier-btn"
-      :class="{ active: modelValue === t.value }"
+      class="flex-1 min-h-[52px] rounded-[10px] font-sans text-[16px] leading-[1.2] cursor-pointer"
+      :class="
+        modelValue === t.value
+          ? 'border-2 border-accent bg-surface-accent-tint font-semibold text-ink'
+          : 'border border-line-strong bg-surface-2 text-ink'
+      "
       @click="emit('update:modelValue', t.value)"
     >
       {{ t.label }}
     </button>
   </div>
 </template>
-
-<style scoped>
-.tier-selector {
-  display: flex;
-  gap: 8px;
-}
-
-.tier-btn {
-  flex: 1;
-  min-height: 52px;
-  border: 1px solid var(--border-strong);
-  background: var(--surface-2);
-  border-radius: 10px;
-  font: 400 16px/1.2 var(--font-sans);
-  color: var(--ink);
-  cursor: pointer;
-}
-
-.tier-btn.active {
-  border: 2px solid var(--accent);
-  background: var(--surface-accent-tint);
-  font-weight: 600;
-}
-</style>

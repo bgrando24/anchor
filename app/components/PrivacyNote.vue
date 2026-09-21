@@ -9,27 +9,8 @@ withDefaults(
 </script>
 
 <template>
-  <div class="privacy-note">
-    <div class="title">{{ title }}</div>
-    <div class="body">{{ body }}</div>
+  <div class="py-[18px] px-5 bg-surface-info rounded-md">
+    <div class="font-sans font-semibold text-[17px] leading-[1.4] text-ink mb-[6px]">{{ title }}</div>
+    <div class="font-sans text-[16px] leading-[1.5] text-body">{{ body }}</div>
   </div>
 </template>
-
-<style scoped>
-.privacy-note {
-  padding: 18px 20px;
-  background: var(--surface-info);
-  border-radius: var(--radius-md);
-}
-
-.title {
-  font: 600 17px/1.4 var(--font-sans);
-  color: var(--ink);
-  margin-bottom: 6px;
-}
-
-.body {
-  font: 400 16px/1.5 var(--font-sans);
-  color: var(--body);
-}
-</style>

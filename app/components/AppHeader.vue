@@ -15,91 +15,44 @@ withDefaults(
     shareTo: '/share'
   }
 )
+
+const { installAvailable, promptInstall } = useInstallPrompt()
 </script>
 
 <template>
-  <header class="app-header" :class="variant">
-    <div class="left">
-      <NuxtLink v-if="backTo" :to="backTo" class="back-link">
+  <header
+    class="flex items-center justify-between gap-4 py-[18px] px-6 rounded-[inherit]"
+    :class="variant === 'band' ? 'bg-header-band text-header-band-text' : 'bg-bg text-ink'"
+  >
+    <div class="flex items-center gap-5">
+      <NuxtLink
+        v-if="backTo"
+        :to="backTo"
+        class="inline-flex items-center gap-[6px] min-h-11 no-underline font-sans font-medium text-[15px] leading-none"
+        :class="variant === 'band' ? 'text-header-band-body' : 'text-body'"
+      >
         <span aria-hidden="true">&#8592;</span> {{ backLabel }}
       </NuxtLink>
-      <div class="wordmark">ANCHOR</div>
+      <div class="font-sans font-bold text-[15px] leading-none tracking-[0.18em]">ANCHOR</div>
     </div>
-    <div class="right">
-      <NuxtLink v-if="howThisWorks" to="/faq" class="how-link">How this works</NuxtLink>
-      <NuxtLink v-if="variant === 'band'" :to="shareTo" class="btn-secondary share-btn">Save or share</NuxtLink>
+    <div class="flex items-center gap-3">
+      <button
+        v-if="variant === 'light' && installAvailable"
+        type="button"
+        class="min-h-11 border-none bg-transparent p-0 cursor-pointer font-sans font-medium text-[15px] leading-none text-body"
+        @click="promptInstall"
+      >
+        Install
+      </button>
+      <NuxtLink v-if="howThisWorks" to="/faq" class="inline-flex items-center min-h-11 font-sans font-medium text-[15px] leading-none">How this works</NuxtLink>
+      <NuxtLink
+        v-if="variant === 'band'"
+        :to="shareTo"
+        class="btn-secondary min-h-11 bg-transparent border-header-chip-outline text-header-chip-text text-[15px] hover:bg-[rgba(255,255,255,0.08)]"
+      >
+        Save or share
+      </NuxtLink>
       <ThemeToggle />
     </div>
   </header>
 </template>
-
-<style scoped>
-.app-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 18px 24px;
-}
-
-.left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.wordmark {
-  font: 700 15px/1 var(--font-sans);
-  letter-spacing: 0.18em;
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 44px;
-  text-decoration: none;
-  font: 500 15px/1 var(--font-sans);
-}
-
-.app-header.light {
-  background: var(--bg);
-  color: var(--ink);
-}
-
-.app-header.light .how-link {
-  font: 500 15px/1 var(--font-sans);
-}
-
-.app-header.light .back-link {
-  color: var(--body);
-}
-
-.app-header.band {
-  background: var(--header-band);
-  color: var(--header-band-text);
-  border-radius: inherit;
-}
-
-.app-header.band .back-link {
-  color: var(--header-band-body);
-}
-
-.share-btn {
-  min-height: 44px;
-  background: transparent;
-  border-color: var(--header-chip-outline);
-  color: var(--header-chip-text);
-  font-size: 15px;
-}
-
-.share-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-</style>

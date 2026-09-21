@@ -1,6 +1,5 @@
 export type Theme = 'light' | 'dark'
 
-/** Light is the primary target (§9 of the brief); dark is an explicit opt-in, not auto-inverted. */
 export function useTheme() {
   const theme = useState<Theme>('anchor-theme', () => 'light')
 
