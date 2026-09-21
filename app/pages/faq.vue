@@ -1,140 +1,120 @@
 <script setup lang="ts">
-import { PRIORITY_FACTORS } from '~/data/options'
+useHead({ title: 'How this works' })
 
-useHead({ title: 'ANCHOR — how this works' })
+interface FaqItem {
+  id: string
+  question: string
+  answer: string
+}
+
+const items: FaqItem[] = [
+  {
+    id: 'affordable',
+    question: 'What counts as "affordable"?',
+    answer:
+      "A rental is affordable if the rent is no more than 30% of your gross income. That's the standard benchmark used across Australia, not a number we chose. We look at the rentals advertised in each area last quarter and work out what share of them clear that bar on your income."
+  },
+  {
+    id: 'half',
+    question: 'Why is affordability always half the score?',
+    answer:
+      "Because being able to pay the rent is what this tool is for. You can't turn it down. The other half is up to you: schools, public transport and bulk-billing doctors, weighted by how much each one matters to your family."
+  },
+  {
+    id: 'stability',
+    question: 'What does "stability" mean?',
+    answer:
+      "It's how much affordability has moved around over the last five years. An area can look affordable this quarter and be out of reach the next. We show the latest figure and how steady it has been, so one good quarter doesn't hide a shaky trend."
+  },
+  {
+    id: 'sources',
+    question: 'Where does the data come from?',
+    answer:
+      "Rents come from the Victorian Government's quarterly rental reports (DFFH). Population and disadvantage figures come from the ABS, GP bulk-billing rates from the AIHW, and offence rates from the Crime Statistics Agency. Schools and train stations come from Victorian Government open data."
+  },
+  {
+    id: 'missing',
+    question: "Why don't some areas have parks or sports data?",
+    answer:
+      "The parks and sports facilities data we use only covers metro Melbourne. For regional areas we say there's no data and leave those factors out of the score. We don't guess, and we don't count it as zero."
+  },
+  {
+    id: 'payments',
+    question: 'Why can I only pick five payment types?',
+    answer:
+      "They're the payments the tool can model. We left out Disability Support Pension and Carer Payment on purpose: choosing one of those would tell us something about your health, and we'd rather not ask for that."
+  },
+  {
+    id: 'listings',
+    question: 'Is this like Domain or realestate.com.au?',
+    answer:
+      "No. Those sites list individual homes. Anchor doesn't list any properties. It compares whole areas using public data, to help you decide where to start looking. You'd still use a listing site to find a place."
+  },
+  {
+    id: 'privacy',
+    question: 'What happens to what I enter?',
+    answer:
+      "Nothing leaves your device. There's no account, and the working out happens in your browser. Close the tab and it's gone. The only copy that ever exists anywhere else is a results link you choose to save or send."
+  }
+]
+
+const route = useRoute()
+const openIndex = ref(0)
+
+onMounted(() => {
+  const i = items.findIndex((item) => `#${item.id}` === route.hash)
+  if (i >= 0) {
+    openIndex.value = i
+    nextTick(() => document.getElementById(items[i]!.id)?.scrollIntoView())
+  }
+})
+
+function toggle(i: number) {
+  openIndex.value = openIndex.value === i ? -1 : i
+}
 </script>
 
 <template>
-  <div class="page">
-    <main class="content">
-      <NuxtLink to="/" class="back-link"><span aria-hidden="true">&#8592;</span> Home</NuxtLink>
-      <h1>How this works</h1>
+  <div class="min-h-screen bg-bg">
+    <main class="max-w-[640px] mx-auto px-6 pt-6 pb-12 flex flex-col gap-6">
+      <NuxtLink
+        to="/"
+        class="self-start inline-flex items-center gap-[6px] min-h-11 font-sans font-medium text-[15px] leading-none no-underline text-body"
+      >
+        <span aria-hidden="true">&#8592;</span> Home
+      </NuxtLink>
 
-      <section class="block">
-        <h2>What ANCHOR does</h2>
-        <p>
-          ANCHOR ranks Victoria's 79 local government areas by how affordable and how steady their rents have been,
-          weighted by what you told us matters to you. It's a suggestion, not an answer &mdash; one input into a big
-          decision, not a verdict.
+      <div class="flex flex-col gap-2">
+        <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">How this works</h1>
+        <p class="m-0 font-sans text-[17px] leading-[1.5] text-body">
+          What each factor means, where the numbers come from, and what this tool can't tell you.
         </p>
-      </section>
+      </div>
 
-      <section class="block">
-        <h2>Rent affordability is always half the score</h2>
-        <p>
-          It's fixed at 50% and can't be changed, because being able to pay the rent is the point of this tool. We
-          measure it as the share of new rental lettings that would cost you 30% or less of your income &mdash; the
-          standard affordability benchmark &mdash; and how steady that share has been over five years.
-        </p>
-      </section>
-
-      <section class="block">
-        <h2>The other half is yours to weigh</h2>
-        <div class="factor-list">
-          <div v-for="f in PRIORITY_FACTORS" :key="f.key" class="factor-item">
-            <div class="factor-name">{{ f.label }}</div>
-            <div class="factor-desc">{{ f.description }}</div>
+      <div class="flex flex-col gap-[10px]">
+        <div v-for="(item, i) in items" :id="item.id" :key="item.id" class="border border-line-strong rounded-lg overflow-hidden">
+          <button
+            type="button"
+            class="w-full flex justify-between items-center gap-4 py-4 px-[18px] text-left border-none bg-transparent cursor-pointer font-sans font-semibold text-[17px] leading-[1.35] text-ink"
+            :aria-expanded="openIndex === i"
+            @click="toggle(i)"
+          >
+            <span>{{ item.question }}</span>
+            <span class="shrink-0 font-normal text-line-focus" aria-hidden="true">{{ openIndex === i ? '−' : '+' }}</span>
+          </button>
+          <div v-if="openIndex === i" class="pb-[18px] px-[18px] font-sans text-[16px] leading-[1.55] text-body">
+            {{ item.answer }}
           </div>
         </div>
-        <p>
-          Telling us something matters "a lot" gives it more of the remaining half of the score; "not much" gives it
-          less. There's no wrong answer &mdash; it just changes how areas get ranked for you.
-        </p>
-      </section>
+      </div>
 
-      <section class="block">
-        <h2>When we don't have data</h2>
-        <p>
-          Parks, open space and sports facility data only covers metro Melbourne. When that's true for an area, we
-          say so plainly and leave that factor out of the score entirely &mdash; never as a zero, never hidden.
-        </p>
-      </section>
-
-      <section class="block">
-        <h2>Your privacy</h2>
-        <p>
-          There's no account, no sign-up, and nothing you enter is sent anywhere. All the working out happens on
-          your device. If you save or share your results, your answers travel as short codes in the link itself
-          &mdash; nothing that identifies you.
-        </p>
-      </section>
+      <div class="py-[18px] px-5 bg-surface-info rounded-md">
+        <div class="font-sans font-semibold text-[17px] leading-[1.4] text-ink mb-[6px]">This is a suggestion, not an answer.</div>
+        <div class="font-sans text-[16px] leading-[1.5] text-body">
+          It ranks areas on the numbers it has. It can't know your job, your family, or your support network. Use it
+          as one input, not a verdict.
+        </div>
+      </div>
     </main>
   </div>
 </template>
-
-<style scoped>
-.page {
-  min-height: 100vh;
-  background: var(--bg);
-}
-
-.content {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 24px 24px 48px;
-  display: flex;
-  flex-direction: column;
-  gap: 26px;
-}
-
-.back-link {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 44px;
-  font: 500 15px/1 var(--font-sans);
-  text-decoration: none;
-  color: var(--body);
-}
-
-h1 {
-  margin: 0;
-  font: 600 32px/1.18 var(--font-sans);
-  color: var(--ink);
-  letter-spacing: -0.02em;
-}
-
-.block {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-h2 {
-  margin: 0;
-  font: 600 21px/1.3 var(--font-sans);
-  color: var(--ink);
-}
-
-p {
-  margin: 0;
-  font: 400 17px/1.55 var(--font-sans);
-  color: var(--body);
-}
-
-.factor-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin: 4px 0 6px;
-}
-
-.factor-item {
-  padding: 14px 16px;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-}
-
-.factor-name {
-  font: 600 17px/1.3 var(--font-sans);
-  color: var(--ink);
-  margin-bottom: 3px;
-}
-
-.factor-desc {
-  font: 400 16px/1.4 var(--font-sans);
-  color: var(--body);
-}
-</style>
