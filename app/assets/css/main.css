@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+/* Colours point at tokens.css variables, which switch under [data-theme='dark'], so no dark: variants are needed. */
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-info: var(--surface-info);
+  --color-surface-info-text: var(--surface-info-text);
+  --color-surface-accent-tint: var(--surface-accent-tint);
+  --color-surface-missing: var(--surface-missing);
+
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-line-soft: var(--border-hairline);
+  --color-line-missing: var(--border-missing);
+  --color-line-focus: var(--border-focus);
+
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-muted-missing-heading: var(--muted-missing-heading);
+  --color-muted-missing-body: var(--muted-missing-body);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-on: var(--accent-on);
+
+  --color-data-affordability: var(--data-affordability);
+  --color-data-main: var(--data-main);
+  --color-data-mid: var(--data-mid);
+  --color-data-light: var(--data-light);
+
+  --color-banner-bg: var(--banner-bg);
+  --color-banner-text: var(--banner-text);
+  --color-banner-border: var(--banner-border);
+
+  --color-header-band: var(--header-band);
+  --color-header-band-text: var(--header-band-text);
+  --color-header-band-body: var(--header-band-body);
+  --color-header-chip-bg: var(--header-chip-bg);
+  --color-header-chip-text: var(--header-chip-text);
+  --color-header-chip-outline: var(--header-chip-outline);
+  --color-header-cta: var(--header-cta);
+
+  --color-mark-bg: var(--mark-bg);
+  --color-mark-text: var(--mark-text);
+
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  --breakpoint-dt: 860px; /* desktop layout */
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center min-h-[58px] px-6 rounded-md bg-accent text-accent-on font-sans font-semibold text-[19px] leading-none cursor-pointer no-underline;
+  }
+  .btn-primary:hover:not(:disabled) {
+    @apply bg-accent-hover;
+  }
+  .btn-primary:disabled,
+  .btn-primary[aria-disabled='true'] {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center min-h-[52px] px-5 rounded-md border border-line-focus bg-surface-2 text-ink font-sans font-medium text-[17px] leading-none cursor-pointer no-underline;
+  }
+  .btn-secondary:hover:not(:disabled) {
+    @apply bg-surface-info;
+  }
+  .btn-secondary:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .field-select {
+    @apply w-full min-h-[56px] px-[18px] bg-surface-2 border border-line-focus rounded-md font-sans text-[17px] text-ink;
+  }
+
+  .visually-hidden {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
+  }
+}
