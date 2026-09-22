@@ -25,3 +25,6 @@ logs
 
 # Local HTTPS certs (mkcert)
 *.pem
+
+#artifacts
+.claude
