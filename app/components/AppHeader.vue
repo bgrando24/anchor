@@ -1,56 +1,35 @@
 <script setup lang="ts">
-withDefaults(
-  defineProps<{
-    variant?: 'light' | 'band'
-    howThisWorks?: boolean
-    backTo?: string
-    backLabel?: string
-    shareTo?: string
-  }>(),
-  {
-    variant: 'light',
-    howThisWorks: false,
-    backTo: undefined,
-    backLabel: 'All areas',
-    shareTo: '/share'
-  }
-)
+import { CircleHelp } from 'lucide-vue-next'
 
-const { installAvailable, promptInstall } = useInstallPrompt()
+// One header on every page (QA#33). Two items only, so it fits 320px on one line (QA#15).
+withDefaults(defineProps<{ variant?: 'light' | 'band' }>(), { variant: 'light' })
 </script>
 
 <template>
   <header
-    class="flex items-center justify-between gap-4 py-[18px] px-6 rounded-[inherit]"
-    :class="variant === 'band' ? 'bg-header-band text-header-band-text' : 'bg-bg text-ink'"
+    class="flex items-center justify-between gap-3 py-[14px] px-4 dt:px-6 print:hidden"
+    :class="variant === 'band' ? 'on-band bg-header-band text-header-band-text' : 'bg-bg text-ink'"
   >
-    <div class="flex items-center gap-5">
+    <NuxtLink
+      to="/"
+      class="inline-flex items-center gap-[10px] min-h-11 no-underline text-[inherit]"
+      :class="variant === 'band' ? 'text-header-band-text' : 'text-ink'"
+    >
+      <LogoMark :size="26" />
+      <span class="font-sans font-bold text-[15px] leading-none tracking-[0.18em]">ANCHOR</span>
+      <span class="visually-hidden">Home</span>
+    </NuxtLink>
+
+    <div class="flex items-center gap-1">
       <NuxtLink
-        v-if="backTo"
-        :to="backTo"
-        class="inline-flex items-center gap-[6px] min-h-11 no-underline font-sans font-medium text-[15px] leading-none"
-        :class="variant === 'band' ? 'text-header-band-body' : 'text-body'"
+        to="/faq"
+        class="inline-flex items-center gap-[7px] min-h-11 px-2 no-underline font-sans font-medium text-[15px] leading-none"
+        :class="variant === 'band' ? 'text-header-band-text' : 'text-ink'"
       >
-        <span aria-hidden="true">&#8592;</span> {{ backLabel }}
-      </NuxtLink>
-      <div class="font-sans font-bold text-[15px] leading-none tracking-[0.18em]">ANCHOR</div>
-    </div>
-    <div class="flex items-center gap-3">
-      <button
-        v-if="variant === 'light' && installAvailable"
-        type="button"
-        class="min-h-11 border-none bg-transparent p-0 cursor-pointer font-sans font-medium text-[15px] leading-none text-body"
-        @click="promptInstall"
-      >
-        Install
-      </button>
-      <NuxtLink v-if="howThisWorks" to="/faq" class="inline-flex items-center min-h-11 font-sans font-medium text-[15px] leading-none">How this works</NuxtLink>
-      <NuxtLink
-        v-if="variant === 'band'"
-        :to="shareTo"
-        class="btn-secondary min-h-11 bg-transparent border-header-chip-outline text-header-chip-text text-[15px] hover:bg-[rgba(255,255,255,0.08)]"
-      >
-        Save or share
+        <CircleHelp :size="20" aria-hidden="true" />
+        <!-- Below 360px the label is dropped and the icon carries the accessible name. -->
+        <span class="hidden min-[360px]:inline">How it works</span>
+        <span class="min-[360px]:hidden visually-hidden">How it works</span>
       </NuxtLink>
       <ThemeToggle />
     </div>
