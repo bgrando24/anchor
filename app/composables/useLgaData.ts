@@ -27,6 +27,8 @@ export interface LgaFileMeta {
   source: string
   generated: string
   rentQuarter: string
+  /** Quarter labels for lettings_series_5yr, oldest first. */
+  lettingsQuarters: string[]
 }
 
 const DATA = file as unknown as { meta: LgaFileMeta; lgas: Lga[] }

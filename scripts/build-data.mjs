@@ -31,9 +31,14 @@ function readJson(name) {
 
 const source = readJson('master_data_v2.json')
 const regionFile = readJson('regions.json')
+// Extracted from the Homes Victoria workbook by scripts/extract-lettings-series.py.
+const lettingsFile = readJson('lettings_series.json')
 
 if (!Array.isArray(source)) fail('master_data_v2.json is not an array')
 if (source.length !== EXPECTED_ROWS) fail(`expected ${EXPECTED_ROWS} rows, got ${source.length}`)
+
+const quarters = lettingsFile.quarters
+if (!Array.isArray(quarters) || !quarters.length) fail('lettings_series.json has no quarters')
 
 const regions = new Map()
 for (const row of regionFile.regions) regions.set(row.lga_code, row)
@@ -59,6 +64,18 @@ const lgas = source.map((row) => {
 
   const rent = (value) => (typeof value === 'number' && Number.isFinite(value) ? value : null)
 
+  const series = lettingsFile.series[String(row.lga_code)] ?? null
+  if (!series) fail(`${name}: no affordable-lettings series for code ${row.lga_code}`)
+  if (series.length !== quarters.length) {
+    fail(`${name}: series has ${series.length} points but there are ${quarters.length} quarters`)
+  }
+  // The last point is the same quarter the affordability figure comes from, so they must agree.
+  const lastPoint = series[series.length - 1]
+  const latest = Math.round(row.affordability_pct * 1000) / 10
+  if (Math.abs(lastPoint - latest) > 0.05) {
+    fail(`${name}: series ends at ${lastPoint}% but affordability_pct is ${latest}%`)
+  }
+
   return {
     lga_code: row.lga_code,
     lga_name: name,
@@ -74,9 +91,9 @@ const lgas = source.map((row) => {
       house_2br: rent(row.house_2br_median),
       house_3br: rent(row.house_3br_median)
     },
-    // Not in v2 yet. population unlocks per-10,000 ranking; the series unlocks the chart.
+    // Not in v2 yet; population unlocks per-10,000 ranking in useScoring.
     population: rent(row.population),
-    lettings_series_5yr: Array.isArray(row.lettings_series_5yr) ? row.lettings_series_5yr : null
+    lettings_series_5yr: series
   }
 })
 
@@ -84,13 +101,18 @@ lgas.sort((a, b) => a.lga_name.localeCompare(b.lga_name))
 
 const file = {
   meta: {
-    source: 'master_data_v2.json (data team) plus app-owned regions.json',
+    source:
+      'master_data_v2.json (data team), app-owned regions.json, and the Homes Victoria affordable-lettings workbook',
     generated: new Date().toISOString().slice(0, 10),
-    rentQuarter: RENT_QUARTER
+    rentQuarter: RENT_QUARTER,
+    lettingsQuarters: quarters
   },
   lgas
 }
 
 writeFileSync(OUT, JSON.stringify(file, null, 2) + '\n')
 const withRent = lgas.filter((l) => Object.values(l.rent).some((v) => v !== null)).length
-console.log(`build-data: wrote ${lgas.length} areas to app/data/lgas.json (${withRent} with rent data)`)
+console.log(
+  `build-data: wrote ${lgas.length} areas to app/data/lgas.json ` +
+    `(${withRent} with rent data, ${quarters.length} quarters ${quarters[0]} to ${quarters[quarters.length - 1]})`
+)

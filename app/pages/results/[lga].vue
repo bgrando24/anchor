@@ -8,6 +8,7 @@ useFragmentSync()
 
 const route = useRoute()
 const { answers, scored, bedrooms } = useResults()
+const { meta } = useLgaData()
 
 const code = computed(() => Number(route.params.lga))
 const area = computed(() => scored.value.find((s) => s.lga_code === code.value))
@@ -105,7 +106,6 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       </div>
     </section>
 
-    <!-- Hidden until the data team supplies lettings_series_5yr; the component is ready for it. -->
     <section v-if="area.lettings_series_5yr" class="py-[26px] px-4 dt:px-10 border-b border-line">
       <h2 class="m-0 mb-1 font-sans font-semibold text-[21px] leading-[1.3] text-ink">
         Share of new leases that were affordable, last 5 years
@@ -113,6 +113,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       <p class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">Each point is one quarter.</p>
       <AffordabilityChart
         :series="area.lettings_series_5yr"
+        :labels="meta.lettingsQuarters"
         title="Share of new leases that were affordable, last 5 years"
       />
     </section>
