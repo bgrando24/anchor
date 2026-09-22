@@ -26,12 +26,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@vite-pwa/nuxt"],
   css: ["~/assets/css/main.css"],
-  ssr: true,
   vite: {
     plugins: [tailwindcss()],
   },
   nitro: {
-    preset: "static",
+    // No preset here: Cloudflare's build auto-detects its own, and pinning one stops Nitro
+    // emitting the Worker entry that `wrangler versions upload` needs. Prerendering works
+    // under any preset, and it is the prerendered HTML that Workbox precaches (QA#2).
     prerender: {
       crawlLinks: true,
       failOnError: false,
