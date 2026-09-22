@@ -1,32 +1,3 @@
-export interface PaymentType {
-  value: string
-  label: string
-  code: string
-}
-
-// DSP and Carer Payment are left out on purpose: they imply health information.
-export const PAYMENT_TYPES: PaymentType[] = [
-  { value: 'jobseeker', label: 'JobSeeker Payment', code: 'js' },
-  { value: 'parenting_single', label: 'Parenting Payment (single)', code: 'pps' },
-  { value: 'parenting_partnered', label: 'Parenting Payment (partnered)', code: 'ppp' },
-  { value: 'youth_allowance', label: 'Youth Allowance', code: 'ya' },
-  { value: 'age_pension', label: 'Age Pension', code: 'ap' }
-]
-
-export interface IncomeBand {
-  value: string
-  label: string
-  code: string
-}
-
-export const INCOME_BANDS: IncomeBand[] = [
-  { value: 'none', label: 'None', code: '0' },
-  { value: '0_10000', label: 'Under $10,000 a year', code: '0-10' },
-  { value: '10000_20000', label: '$10,000 – $20,000 a year', code: '10-20' },
-  { value: '20000_35000', label: '$20,000 – $35,000 a year', code: '20-35' },
-  { value: '35000_plus', label: '$35,000 or more a year', code: '35+' }
-]
-
 export type PriorityTier = 'not_much' | 'somewhat' | 'a_lot'
 
 export const PRIORITY_TIERS: { value: PriorityTier; label: string }[] = [
@@ -37,12 +8,33 @@ export const PRIORITY_TIERS: { value: PriorityTier; label: string }[] = [
 
 export interface PriorityFactor {
   key: 'schools' | 'transport' | 'gp_access'
+  /** Used in the scoring split box and the detail breakdown. */
   label: string
-  description: string
+  /** The priorities question, written so it reads aloud with its answer. */
+  question: string
+  hint: string
 }
 
 export const PRIORITY_FACTORS: PriorityFactor[] = [
-  { key: 'schools', label: 'Schools', description: 'How many schools are in the area.' },
-  { key: 'transport', label: 'Public transport', description: 'Train stations in the area.' },
-  { key: 'gp_access', label: 'Bulk-billing doctors', description: 'How likely a GP visit is free.' }
+  {
+    key: 'schools',
+    label: 'Schools',
+    question: 'How much do schools matter to you?',
+    hint: 'Based on the number of schools in each area.'
+  },
+  {
+    key: 'transport',
+    label: 'Train stations',
+    question: 'How much does being near a train station matter to you?',
+    hint: 'Based on the number of train stations in each area.'
+  },
+  {
+    key: 'gp_access',
+    label: 'Bulk-billing doctors',
+    question: 'How much do bulk-billing doctors matter to you?',
+    hint: 'Based on how often GP visits in each area are bulk-billed (free).'
+  }
 ]
+
+export { PAYMENT_TYPES, INCOME_BANDS, BEDROOM_OPTIONS } from './payments'
+export type { PaymentType, IncomeBand } from './payments'

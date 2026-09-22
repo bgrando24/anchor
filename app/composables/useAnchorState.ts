@@ -1,26 +1,24 @@
-import { PAYMENT_TYPES, INCOME_BANDS, type PriorityTier } from '~/data/options'
+import { PAYMENT_TYPES, INCOME_BANDS } from '~/data/options'
+import type { Bedrooms, PriorityWeights } from './useScoring'
+import { TIER_FROM_CODE, weightsCode } from './useScoring'
 import { useLgaData } from './useLgaData'
 
-export interface AnchorWeights {
-  schools: PriorityTier
-  transport: PriorityTier
-  gp_access: PriorityTier
-}
+export type AnchorWeights = PriorityWeights
 
 export interface AnchorAnswers {
   paymentType: string | null
   incomeBand: string | null
+  bedrooms: Bedrooms | null
   currentLga: number | null
-  workLga: number | null
   weights: AnchorWeights
 }
 
-function defaultAnswers(): AnchorAnswers {
+export function defaultAnswers(): AnchorAnswers {
   return {
     paymentType: null,
     incomeBand: null,
+    bedrooms: null,
     currentLga: null,
-    workLga: null,
     weights: { schools: 'somewhat', transport: 'somewhat', gp_access: 'somewhat' }
   }
 }
@@ -32,59 +30,74 @@ export function useAnchorState() {
     answers.value = defaultAnswers()
   }
 
-  return { answers, reset }
+  const isComplete = computed(() => answersComplete(answers.value))
+
+  return { answers, reset, isComplete }
 }
 
-const TIER_CODE: Record<PriorityTier, string> = { not_much: 'n', somewhat: 's', a_lot: 'a' }
-const TIER_FROM_CODE: Record<string, PriorityTier> = { n: 'not_much', s: 'somewhat', a: 'a_lot' }
+export function answersComplete(a: AnchorAnswers): boolean {
+  return a.paymentType != null && a.bedrooms != null && a.currentLga != null
+}
+
+/** The first step the user still has to answer, used to bounce deep links back into the flow. */
+export function firstUnansweredStep(a: AnchorAnswers): string | null {
+  if (a.paymentType == null) return '/income'
+  if (a.bedrooms == null) return '/bedrooms'
+  if (a.currentLga == null) return '/location'
+  return null
+}
 
 // State lives in the URL fragment because browsers never send it to the server.
-// Format: #<payment>.<income>.<currentLga>.<workLga or ->.<weights>, e.g. #pps.10-20.24970.-.asa
+// v2 format: #2.<payment>.<income>.<bedrooms>.<currentLga>.<weights>, e.g. #2.pps.200-500.2.27260.asa
+// The version prefix makes v1 links (whose area codes belonged to a fixture) fail loudly.
+export const FRAGMENT_VERSION = '2'
+
 export function encodeAnswersToFragment(a: AnchorAnswers): string {
   const payment = PAYMENT_TYPES.find((p) => p.value === a.paymentType)?.code ?? '-'
   const income = INCOME_BANDS.find((b) => b.value === a.incomeBand)?.code ?? '-'
+  const bedrooms = a.bedrooms != null ? String(a.bedrooms) : '-'
   const current = a.currentLga != null ? String(a.currentLga) : '-'
-  const work = a.workLga != null ? String(a.workLga) : '-'
-  const weights = `${TIER_CODE[a.weights.schools]}${TIER_CODE[a.weights.transport]}${TIER_CODE[a.weights.gp_access]}`
-  return `#${[payment, income, current, work, weights].join('.')}`
+  return `#${[FRAGMENT_VERSION, payment, income, bedrooms, current, weightsCode(a.weights)].join('.')}`
 }
 
-// Returns null for anything malformed or naming an LGA code that isn't in the dataset.
+/** Returns null for anything malformed, non-canonical, or naming an area that isn't in the data. */
 export function decodeAnswersFromFragment(hash: string | null | undefined): AnchorAnswers | null {
   if (!hash) return null
   const raw = hash.startsWith('#') ? hash.slice(1) : hash
   if (!raw) return null
 
   const parts = raw.split('.')
-  if (parts.length !== 5) return null
-  const [paymentCode, incomeCode, currentRaw, workRaw, weightsCode] = parts
+  if (parts.length !== 6) return null
+  const [version, paymentCode, incomeCode, bedroomsCode, currentRaw, weights] = parts
+
+  if (version !== FRAGMENT_VERSION) return null
 
   const payment = PAYMENT_TYPES.find((p) => p.code === paymentCode)
   if (!payment) return null
 
-  const income = incomeCode === '-' ? null : INCOME_BANDS.find((b) => b.code === incomeCode)
-  if (income === undefined) return null
-
-  const { byCode } = useLgaData()
-
-  if (currentRaw === '-' || !currentRaw) return null
-  const currentLga = Number(currentRaw)
-  if (!Number.isFinite(currentLga) || !byCode(currentLga)) return null
-
-  let workLga: number | null = null
-  if (workRaw && workRaw !== '-') {
-    workLga = Number(workRaw)
-    if (!Number.isFinite(workLga) || !byCode(workLga)) return null
+  let incomeBand: string | null = null
+  if (incomeCode !== '-') {
+    const band = INCOME_BANDS.find((b) => b.code === incomeCode)
+    if (!band) return null
+    incomeBand = band.value
   }
 
-  if (!weightsCode || !/^[nsa]{3}$/.test(weightsCode)) return null
-  const [sc, tr, gp] = weightsCode.split('')
+  if (bedroomsCode !== '1' && bedroomsCode !== '2' && bedroomsCode !== '3') return null
+  const bedrooms = Number(bedroomsCode) as Bedrooms
+
+  // Exactly five digits, so leading zeros, exponents, hex and whitespace are all rejected.
+  if (!currentRaw || !/^\d{5}$/.test(currentRaw)) return null
+  const currentLga = Number(currentRaw)
+  if (!useLgaData().byCode(currentLga)) return null
+
+  if (!weights || !/^[nsa]{3}$/.test(weights)) return null
+  const [sc, tr, gp] = weights.split('')
 
   return {
     paymentType: payment.value,
-    incomeBand: income?.value ?? null,
+    incomeBand,
+    bedrooms,
     currentLga,
-    workLga,
     weights: {
       schools: TIER_FROM_CODE[sc!]!,
       transport: TIER_FROM_CODE[tr!]!,

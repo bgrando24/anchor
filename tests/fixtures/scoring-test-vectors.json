@@ -1,0 +1,270 @@
+{
+ "_note": "Top 10 in order from scoring-reference.py on master_data_v2.json (raw school/station counts, no population). Compare lga_code arrays: names here are raw v2 names (e.g. Moreland), which the app renames. A TypeScript port is correct when it reproduces top10_codes exactly. Regenerate if the model or data changes.",
+ "cases": [
+  {
+   "weekly_income": 650,
+   "bedrooms": 2,
+   "weights": "sss",
+   "top10_codes": [
+    22410,
+    22980,
+    23810,
+    20570,
+    26810,
+    22620,
+    27260,
+    20260,
+    21180,
+    26610
+   ],
+   "top10_names": [
+    "Glenelg",
+    "Hindmarsh",
+    "Latrobe",
+    "Ballarat",
+    "Wellington",
+    "Greater Bendigo",
+    "Wyndham",
+    "Ararat",
+    "Brimbank",
+    "Swan Hill"
+   ],
+   "bands": [
+    "hard",
+    "hard",
+    "out",
+    "out",
+    "out",
+    "out",
+    "out",
+    "out",
+    "out",
+    "out"
+   ],
+   "rent_share_pct": [
+    47,
+    49,
+    51,
+    55,
+    55,
+    62,
+    63,
+    52,
+    62,
+    52
+   ]
+  },
+  {
+   "weekly_income": 650,
+   "bedrooms": 2,
+   "weights": "ann",
+   "top10_codes": [
+    22410,
+    22980,
+    20570,
+    23810,
+    22620,
+    27260,
+    21180,
+    26810,
+    24780,
+    22110
+   ],
+   "top10_names": [
+    "Glenelg",
+    "Hindmarsh",
+    "Ballarat",
+    "Latrobe",
+    "Greater Bendigo",
+    "Wyndham",
+    "Brimbank",
+    "Wellington",
+    "Mildura",
+    "East Gippsland"
+   ],
+   "bands": [
+    "hard",
+    "hard",
+    "out",
+    "out",
+    "out",
+    "out",
+    "out",
+    "out",
+    "out",
+    "out"
+   ],
+   "rent_share_pct": [
+    47,
+    49,
+    55,
+    51,
+    62,
+    63,
+    62,
+    55,
+    54,
+    56
+   ]
+  },
+  {
+   "weekly_income": 1000,
+   "bedrooms": 2,
+   "weights": "nan",
+   "top10_codes": [
+    23810,
+    22620,
+    24850,
+    21180,
+    26810,
+    20570,
+    25150,
+    20260,
+    21830,
+    26610
+   ],
+   "top10_names": [
+    "Latrobe",
+    "Greater Bendigo",
+    "Mitchell",
+    "Brimbank",
+    "Wellington",
+    "Ballarat",
+    "Moorabool",
+    "Ararat",
+    "Corangamite",
+    "Swan Hill"
+   ],
+   "bands": [
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch"
+   ],
+   "rent_share_pct": [
+    33,
+    40,
+    39,
+    40,
+    36,
+    36,
+    36,
+    34,
+    35,
+    34
+   ]
+  },
+  {
+   "weekly_income": 1200,
+   "bedrooms": 3,
+   "weights": "asa",
+   "top10_codes": [
+    22980,
+    20570,
+    27260,
+    23810,
+    24650,
+    24850,
+    22250,
+    21670,
+    26810,
+    26260
+   ],
+   "top10_names": [
+    "Hindmarsh",
+    "Ballarat",
+    "Wyndham",
+    "Latrobe",
+    "Melton",
+    "Mitchell",
+    "Gannawarra",
+    "Central Goldfields",
+    "Wellington",
+    "Southern Grampians"
+   ],
+   "bands": [
+    "within",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch"
+   ],
+   "rent_share_pct": [
+    27,
+    34,
+    38,
+    36,
+    38,
+    36,
+    31,
+    32,
+    38,
+    33
+   ]
+  },
+  {
+   "weekly_income": 850,
+   "bedrooms": 1,
+   "weights": "nsn",
+   "top10_codes": [
+    20830,
+    26610,
+    21180,
+    21610,
+    23810,
+    22750,
+    20570,
+    22830,
+    26700,
+    22110
+   ],
+   "top10_names": [
+    "Baw Baw",
+    "Swan Hill",
+    "Brimbank",
+    "Casey",
+    "Latrobe",
+    "Greater Geelong",
+    "Ballarat",
+    "Greater Shepparton",
+    "Wangaratta",
+    "East Gippsland"
+   ],
+   "bands": [
+    "within",
+    "within",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch",
+    "stretch"
+   ],
+   "rent_share_pct": [
+    30,
+    28,
+    39,
+    40,
+    33,
+    40,
+    34,
+    36,
+    31,
+    38
+   ]
+  }
+ ]
+}

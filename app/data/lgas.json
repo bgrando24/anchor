@@ -1,0 +1,1431 @@
+{
+  "meta": {
+    "source": "master_data_v2.json (data team) plus app-owned regions.json",
+    "generated": "2026-09-22",
+    "rentQuarter": "September quarter 2025"
+  },
+  "lgas": [
+    {
+      "lga_code": 20110,
+      "lga_name": "Alpine",
+      "area": "Regional Victoria",
+      "region": "Hume region",
+      "school_count": 11,
+      "station_count": 0,
+      "bulk_billing_rate": 0.947583333,
+      "affordable_lettings_pct": 38.5,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": 485
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 20260,
+      "lga_name": "Ararat",
+      "area": "Regional Victoria",
+      "region": "Grampians",
+      "school_count": 12,
+      "station_count": 1,
+      "bulk_billing_rate": 0.989916667,
+      "affordable_lettings_pct": 69,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 340,
+        "house_2br": 365,
+        "house_3br": 430
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 20570,
+      "lga_name": "Ballarat",
+      "area": "Regional Victoria",
+      "region": "Grampians",
+      "school_count": 47,
+      "station_count": 2,
+      "bulk_billing_rate": 0.967416667,
+      "affordable_lettings_pct": 74.4,
+      "rent": {
+        "flat_1br": 288,
+        "flat_2br": 360,
+        "house_2br": 370,
+        "house_3br": 410
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 20660,
+      "lga_name": "Banyule",
+      "area": "Melbourne",
+      "region": "Northern",
+      "school_count": 40,
+      "station_count": 9,
+      "bulk_billing_rate": 0.788666667,
+      "affordable_lettings_pct": 2.2,
+      "rent": {
+        "flat_1br": 470,
+        "flat_2br": 540,
+        "house_2br": 528,
+        "house_3br": 600
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 20740,
+      "lga_name": "Bass Coast",
+      "area": "Regional Victoria",
+      "region": "Gippsland",
+      "school_count": 14,
+      "station_count": 0,
+      "bulk_billing_rate": 0.951083333,
+      "affordable_lettings_pct": 34.9,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 393,
+        "house_2br": 410,
+        "house_3br": 460
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 20830,
+      "lga_name": "Baw Baw",
+      "area": "Regional Victoria",
+      "region": "Gippsland",
+      "school_count": 35,
+      "station_count": 5,
+      "bulk_billing_rate": 0.942666667,
+      "affordable_lettings_pct": 14.2,
+      "rent": {
+        "flat_1br": 252,
+        "flat_2br": 425,
+        "house_2br": 450,
+        "house_3br": 500
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 20910,
+      "lga_name": "Bayside",
+      "area": "Melbourne",
+      "region": "Inner South East",
+      "school_count": 26,
+      "station_count": 7,
+      "bulk_billing_rate": 0.687916667,
+      "affordable_lettings_pct": 0,
+      "rent": {
+        "flat_1br": 495,
+        "flat_2br": 650,
+        "house_2br": 695,
+        "house_3br": 900
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 21010,
+      "lga_name": "Benalla",
+      "area": "Regional Victoria",
+      "region": "Hume region",
+      "school_count": 6,
+      "station_count": 1,
+      "bulk_billing_rate": 0.91,
+      "affordable_lettings_pct": 28.8,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 375,
+        "house_2br": null,
+        "house_3br": 450
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 21110,
+      "lga_name": "Boroondara",
+      "area": "Melbourne",
+      "region": "Inner South East",
+      "school_count": 52,
+      "station_count": 14,
+      "bulk_billing_rate": 0.74025,
+      "affordable_lettings_pct": 0.9,
+      "rent": {
+        "flat_1br": 470,
+        "flat_2br": 600,
+        "house_2br": 688,
+        "house_3br": 850
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 21180,
+      "lga_name": "Brimbank",
+      "area": "Melbourne",
+      "region": "Western",
+      "school_count": 56,
+      "station_count": 8,
+      "bulk_billing_rate": 0.957333333,
+      "affordable_lettings_pct": 20.4,
+      "rent": {
+        "flat_1br": 330,
+        "flat_2br": 400,
+        "house_2br": 450,
+        "house_3br": 500
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 21270,
+      "lga_name": "Buloke",
+      "area": "Regional Victoria",
+      "region": "Loddon Mallee",
+      "school_count": 9,
+      "station_count": 0,
+      "bulk_billing_rate": 0.965583333,
+      "affordable_lettings_pct": 90,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": null
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 21370,
+      "lga_name": "Campaspe",
+      "area": "Regional Victoria",
+      "region": "Loddon Mallee",
+      "school_count": 22,
+      "station_count": 2,
+      "bulk_billing_rate": 0.972166667,
+      "affordable_lettings_pct": 29.9,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 400,
+        "house_2br": 410,
+        "house_3br": 480
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 21450,
+      "lga_name": "Cardinia",
+      "area": "Melbourne",
+      "region": "Southern",
+      "school_count": 41,
+      "station_count": 9,
+      "bulk_billing_rate": 0.978666667,
+      "affordable_lettings_pct": 5,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 450,
+        "house_2br": 490,
+        "house_3br": 540
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 21610,
+      "lga_name": "Casey",
+      "area": "Melbourne",
+      "region": "Southern",
+      "school_count": 91,
+      "station_count": 6,
+      "bulk_billing_rate": 0.978833333,
+      "affordable_lettings_pct": 2.7,
+      "rent": {
+        "flat_1br": 340,
+        "flat_2br": 480,
+        "house_2br": 500,
+        "house_3br": 550
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 21670,
+      "lga_name": "Central Goldfields",
+      "area": "Regional Victoria",
+      "region": "Loddon Mallee",
+      "school_count": 8,
+      "station_count": 2,
+      "bulk_billing_rate": 0.991916667,
+      "affordable_lettings_pct": 82.5,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": 380
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 21750,
+      "lga_name": "Colac Otway",
+      "area": "Regional Victoria",
+      "region": "Barwon South West",
+      "school_count": 16,
+      "station_count": 0,
+      "bulk_billing_rate": 0.917583333,
+      "affordable_lettings_pct": 35.4,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 370,
+        "house_2br": null,
+        "house_3br": 475
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 21830,
+      "lga_name": "Corangamite",
+      "area": "Regional Victoria",
+      "region": "Barwon South West",
+      "school_count": 13,
+      "station_count": 2,
+      "bulk_billing_rate": 0.873,
+      "affordable_lettings_pct": 59.5,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": 350,
+        "house_3br": 420
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 21890,
+      "lga_name": "Darebin",
+      "area": "Melbourne",
+      "region": "Northern",
+      "school_count": 40,
+      "station_count": 13,
+      "bulk_billing_rate": 0.767666667,
+      "affordable_lettings_pct": 1.7,
+      "rent": {
+        "flat_1br": 420,
+        "flat_2br": 530,
+        "house_2br": 580,
+        "house_3br": 680
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 22110,
+      "lga_name": "East Gippsland",
+      "area": "Regional Victoria",
+      "region": "Gippsland",
+      "school_count": 32,
+      "station_count": 1,
+      "bulk_billing_rate": 0.975,
+      "affordable_lettings_pct": 39.3,
+      "rent": {
+        "flat_1br": 320,
+        "flat_2br": 365,
+        "house_2br": 400,
+        "house_3br": 460
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 22170,
+      "lga_name": "Frankston",
+      "area": "Melbourne",
+      "region": "Southern",
+      "school_count": 38,
+      "station_count": 4,
+      "bulk_billing_rate": 0.92,
+      "affordable_lettings_pct": 1.6,
+      "rent": {
+        "flat_1br": 385,
+        "flat_2br": 490,
+        "house_2br": 500,
+        "house_3br": 575
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 22250,
+      "lga_name": "Gannawarra",
+      "area": "Regional Victoria",
+      "region": "Loddon Mallee",
+      "school_count": 11,
+      "station_count": 1,
+      "bulk_billing_rate": 0.98825,
+      "affordable_lettings_pct": 80,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": 375
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 22310,
+      "lga_name": "Glen Eira",
+      "area": "Melbourne",
+      "region": "Inner South East",
+      "school_count": 33,
+      "station_count": 9,
+      "bulk_billing_rate": 0.771666667,
+      "affordable_lettings_pct": 1.2,
+      "rent": {
+        "flat_1br": 430,
+        "flat_2br": 600,
+        "house_2br": 650,
+        "house_3br": 800
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 22410,
+      "lga_name": "Glenelg",
+      "area": "Regional Victoria",
+      "region": "Barwon South West",
+      "school_count": 17,
+      "station_count": 0,
+      "bulk_billing_rate": 0.9865,
+      "affordable_lettings_pct": 55.4,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 305,
+        "house_2br": null,
+        "house_3br": 440
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 22490,
+      "lga_name": "Golden Plains",
+      "area": "Regional Victoria",
+      "region": "Grampians",
+      "school_count": 13,
+      "station_count": 0,
+      "bulk_billing_rate": 0.94475,
+      "affordable_lettings_pct": 45.3,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": 480
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 22620,
+      "lga_name": "Greater Bendigo",
+      "area": "Regional Victoria",
+      "region": "Loddon Mallee",
+      "school_count": 48,
+      "station_count": 8,
+      "bulk_billing_rate": 0.9825,
+      "affordable_lettings_pct": 23.4,
+      "rent": {
+        "flat_1br": 350,
+        "flat_2br": 400,
+        "house_2br": 450,
+        "house_3br": 490
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 22670,
+      "lga_name": "Greater Dandenong",
+      "area": "Melbourne",
+      "region": "Southern",
+      "school_count": 39,
+      "station_count": 5,
+      "bulk_billing_rate": 0.983,
+      "affordable_lettings_pct": 2.1,
+      "rent": {
+        "flat_1br": 360,
+        "flat_2br": 470,
+        "house_2br": 505,
+        "house_3br": 570
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 22750,
+      "lga_name": "Greater Geelong",
+      "area": "Regional Victoria",
+      "region": "Barwon South West",
+      "school_count": 80,
+      "station_count": 8,
+      "bulk_billing_rate": 0.8195,
+      "affordable_lettings_pct": 21.5,
+      "rent": {
+        "flat_1br": 340,
+        "flat_2br": 435,
+        "house_2br": 440,
+        "house_3br": 500
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 22830,
+      "lga_name": "Greater Shepparton",
+      "area": "Regional Victoria",
+      "region": "Hume region",
+      "school_count": 38,
+      "station_count": 3,
+      "bulk_billing_rate": 0.9425,
+      "affordable_lettings_pct": 29.2,
+      "rent": {
+        "flat_1br": 310,
+        "flat_2br": 400,
+        "house_2br": 400,
+        "house_3br": 480
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 22910,
+      "lga_name": "Hepburn",
+      "area": "Regional Victoria",
+      "region": "Grampians",
+      "school_count": 13,
+      "station_count": 2,
+      "bulk_billing_rate": 0.97975,
+      "affordable_lettings_pct": 26.2,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": 450,
+        "house_3br": 550
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 22980,
+      "lga_name": "Hindmarsh",
+      "area": "Regional Victoria",
+      "region": "Grampians",
+      "school_count": 7,
+      "station_count": 0,
+      "bulk_billing_rate": 0.992666667,
+      "affordable_lettings_pct": 94.7,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": 320
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 23110,
+      "lga_name": "Hobsons Bay",
+      "area": "Melbourne",
+      "region": "Western",
+      "school_count": 27,
+      "station_count": 10,
+      "bulk_billing_rate": 0.880083333,
+      "affordable_lettings_pct": 2.9,
+      "rent": {
+        "flat_1br": 410,
+        "flat_2br": 500,
+        "house_2br": 540,
+        "house_3br": 630
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 23190,
+      "lga_name": "Horsham",
+      "area": "Regional Victoria",
+      "region": "Grampians",
+      "school_count": 6,
+      "station_count": 0,
+      "bulk_billing_rate": 0.987833333,
+      "affordable_lettings_pct": 46.7,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 350,
+        "house_2br": null,
+        "house_3br": 450
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 23270,
+      "lga_name": "Hume",
+      "area": "Melbourne",
+      "region": "Northern",
+      "school_count": 67,
+      "station_count": 6,
+      "bulk_billing_rate": 0.961166667,
+      "affordable_lettings_pct": 18.9,
+      "rent": {
+        "flat_1br": 350,
+        "flat_2br": 450,
+        "house_2br": 460,
+        "house_3br": 500
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 23350,
+      "lga_name": "Indigo",
+      "area": "Regional Victoria",
+      "region": "Hume region",
+      "school_count": 17,
+      "station_count": 1,
+      "bulk_billing_rate": 0.847083333,
+      "affordable_lettings_pct": 14,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": 510
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 23430,
+      "lga_name": "Kingston",
+      "area": "Melbourne",
+      "region": "Southern",
+      "school_count": 43,
+      "station_count": 12,
+      "bulk_billing_rate": 0.855916667,
+      "affordable_lettings_pct": 1.2,
+      "rent": {
+        "flat_1br": 410,
+        "flat_2br": 550,
+        "house_2br": 585,
+        "house_3br": 690
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 23670,
+      "lga_name": "Knox",
+      "area": "Melbourne",
+      "region": "Eastern",
+      "school_count": 46,
+      "station_count": 4,
+      "bulk_billing_rate": 0.926333333,
+      "affordable_lettings_pct": 1.7,
+      "rent": {
+        "flat_1br": 405,
+        "flat_2br": 540,
+        "house_2br": 545,
+        "house_3br": 600
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 23810,
+      "lga_name": "Latrobe",
+      "area": "Regional Victoria",
+      "region": "Gippsland",
+      "school_count": 33,
+      "station_count": 3,
+      "bulk_billing_rate": 0.984916667,
+      "affordable_lettings_pct": 49.6,
+      "rent": {
+        "flat_1br": 280,
+        "flat_2br": 330,
+        "house_2br": 350,
+        "house_3br": 435
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 23940,
+      "lga_name": "Loddon",
+      "area": "Regional Victoria",
+      "region": "Loddon Mallee",
+      "school_count": 8,
+      "station_count": 2,
+      "bulk_billing_rate": 0.981916667,
+      "affordable_lettings_pct": 42.9,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": null
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 24130,
+      "lga_name": "Macedon Ranges",
+      "area": "Regional Victoria",
+      "region": "Loddon Mallee",
+      "school_count": 27,
+      "station_count": 7,
+      "bulk_billing_rate": 0.968833333,
+      "affordable_lettings_pct": 4.6,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 470,
+        "house_2br": 493,
+        "house_3br": 580
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 24210,
+      "lga_name": "Manningham",
+      "area": "Melbourne",
+      "region": "Eastern",
+      "school_count": 28,
+      "station_count": 0,
+      "bulk_billing_rate": 0.9095,
+      "affordable_lettings_pct": 1.1,
+      "rent": {
+        "flat_1br": 493,
+        "flat_2br": 600,
+        "house_2br": 550,
+        "house_3br": 680
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 24250,
+      "lga_name": "Mansfield",
+      "area": "Regional Victoria",
+      "region": "Hume region",
+      "school_count": 6,
+      "station_count": 0,
+      "bulk_billing_rate": 0.6275,
+      "affordable_lettings_pct": 12.9,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": 550
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 24330,
+      "lga_name": "Maribyrnong",
+      "area": "Melbourne",
+      "region": "Western",
+      "school_count": 19,
+      "station_count": 6,
+      "bulk_billing_rate": 0.867583333,
+      "affordable_lettings_pct": 1.7,
+      "rent": {
+        "flat_1br": 440,
+        "flat_2br": 533,
+        "house_2br": 580,
+        "house_3br": 650
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 24410,
+      "lga_name": "Maroondah",
+      "area": "Melbourne",
+      "region": "Eastern",
+      "school_count": 32,
+      "station_count": 4,
+      "bulk_billing_rate": 0.869,
+      "affordable_lettings_pct": 1.9,
+      "rent": {
+        "flat_1br": 410,
+        "flat_2br": 520,
+        "house_2br": 550,
+        "house_3br": 630
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 24600,
+      "lga_name": "Melbourne",
+      "area": "Melbourne",
+      "region": "Inner Metro",
+      "school_count": 20,
+      "station_count": 15,
+      "bulk_billing_rate": 0.774416667,
+      "affordable_lettings_pct": 1.1,
+      "rent": {
+        "flat_1br": 570,
+        "flat_2br": 730,
+        "house_2br": 678,
+        "house_3br": 900
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 24650,
+      "lga_name": "Melton",
+      "area": "Melbourne",
+      "region": "Western",
+      "school_count": 46,
+      "station_count": 5,
+      "bulk_billing_rate": 0.966666667,
+      "affordable_lettings_pct": 58.7,
+      "rent": {
+        "flat_1br": 360,
+        "flat_2br": 425,
+        "house_2br": 400,
+        "house_3br": 450
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 25250,
+      "lga_name": "Merri-bek",
+      "area": "Melbourne",
+      "region": "Northern",
+      "school_count": 43,
+      "station_count": 13,
+      "bulk_billing_rate": 0.815583333,
+      "affordable_lettings_pct": 2.6,
+      "rent": {
+        "flat_1br": 450,
+        "flat_2br": 540,
+        "house_2br": 600,
+        "house_3br": 695
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 24780,
+      "lga_name": "Mildura",
+      "area": "Regional Victoria",
+      "region": "Loddon Mallee",
+      "school_count": 30,
+      "station_count": 0,
+      "bulk_billing_rate": 0.91925,
+      "affordable_lettings_pct": 37,
+      "rent": {
+        "flat_1br": 278,
+        "flat_2br": 350,
+        "house_2br": 375,
+        "house_3br": 490
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 24850,
+      "lga_name": "Mitchell",
+      "area": "Regional Victoria",
+      "region": "Hume region",
+      "school_count": 17,
+      "station_count": 7,
+      "bulk_billing_rate": 0.980666667,
+      "affordable_lettings_pct": 78.3,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 398,
+        "house_2br": 393,
+        "house_3br": 433
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 24900,
+      "lga_name": "Moira",
+      "area": "Regional Victoria",
+      "region": "Hume region",
+      "school_count": 19,
+      "station_count": 0,
+      "bulk_billing_rate": 0.955083333,
+      "affordable_lettings_pct": 37.2,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 380,
+        "house_2br": null,
+        "house_3br": 460
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 24970,
+      "lga_name": "Monash",
+      "area": "Melbourne",
+      "region": "Eastern",
+      "school_count": 49,
+      "station_count": 8,
+      "bulk_billing_rate": 0.924333333,
+      "affordable_lettings_pct": 2.9,
+      "rent": {
+        "flat_1br": 495,
+        "flat_2br": 600,
+        "house_2br": 589,
+        "house_3br": 650
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 25060,
+      "lga_name": "Moonee Valley",
+      "area": "Melbourne",
+      "region": "Western",
+      "school_count": 34,
+      "station_count": 6,
+      "bulk_billing_rate": 0.811333333,
+      "affordable_lettings_pct": 1.6,
+      "rent": {
+        "flat_1br": 450,
+        "flat_2br": 525,
+        "house_2br": 610,
+        "house_3br": 700
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 25150,
+      "lga_name": "Moorabool",
+      "area": "Regional Victoria",
+      "region": "Grampians",
+      "school_count": 18,
+      "station_count": 2,
+      "bulk_billing_rate": 0.938083333,
+      "affordable_lettings_pct": 47,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 355,
+        "house_2br": 375,
+        "house_3br": 480
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 25340,
+      "lga_name": "Mornington Peninsula",
+      "area": "Melbourne",
+      "region": "Southern",
+      "school_count": 46,
+      "station_count": 8,
+      "bulk_billing_rate": 0.819,
+      "affordable_lettings_pct": 1.5,
+      "rent": {
+        "flat_1br": 395,
+        "flat_2br": 515,
+        "house_2br": 495,
+        "house_3br": 595
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 25430,
+      "lga_name": "Mount Alexander",
+      "area": "Regional Victoria",
+      "region": "Loddon Mallee",
+      "school_count": 14,
+      "station_count": 1,
+      "bulk_billing_rate": 0.991166667,
+      "affordable_lettings_pct": 11.7,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": 445,
+        "house_3br": 510
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 25490,
+      "lga_name": "Moyne",
+      "area": "Regional Victoria",
+      "region": "Barwon South West",
+      "school_count": 12,
+      "station_count": 0,
+      "bulk_billing_rate": 0.853666667,
+      "affordable_lettings_pct": 21.7,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": 498
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 25620,
+      "lga_name": "Murrindindi",
+      "area": "Regional Victoria",
+      "region": "Hume region",
+      "school_count": 14,
+      "station_count": 0,
+      "bulk_billing_rate": 0.946416667,
+      "affordable_lettings_pct": 65.9,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": 400
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 25710,
+      "lga_name": "Nillumbik",
+      "area": "Melbourne",
+      "region": "Northern",
+      "school_count": 26,
+      "station_count": 4,
+      "bulk_billing_rate": 0.767916667,
+      "affordable_lettings_pct": 8.4,
+      "rent": {
+        "flat_1br": 345,
+        "flat_2br": 515,
+        "house_2br": null,
+        "house_3br": 580
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 25810,
+      "lga_name": "Northern Grampians",
+      "area": "Regional Victoria",
+      "region": "Grampians",
+      "school_count": 12,
+      "station_count": 0,
+      "bulk_billing_rate": 0.98725,
+      "affordable_lettings_pct": 51.1,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": 420
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 25900,
+      "lga_name": "Port Phillip",
+      "area": "Melbourne",
+      "region": "Inner Metro",
+      "school_count": 19,
+      "station_count": 2,
+      "bulk_billing_rate": 0.63475,
+      "affordable_lettings_pct": 0.6,
+      "rent": {
+        "flat_1br": 485,
+        "flat_2br": 650,
+        "house_2br": 750,
+        "house_3br": 1040
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 25990,
+      "lga_name": "Pyrenees",
+      "area": "Regional Victoria",
+      "region": "Grampians",
+      "school_count": 9,
+      "station_count": 1,
+      "bulk_billing_rate": 0.971583333,
+      "affordable_lettings_pct": 46.7,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": null
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26080,
+      "lga_name": "Queenscliffe",
+      "area": "Regional Victoria",
+      "region": "Barwon South West",
+      "school_count": 3,
+      "station_count": 0,
+      "bulk_billing_rate": 0.923363636,
+      "affordable_lettings_pct": 0,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": null
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26170,
+      "lga_name": "South Gippsland",
+      "area": "Regional Victoria",
+      "region": "Gippsland",
+      "school_count": 22,
+      "station_count": 0,
+      "bulk_billing_rate": 0.96725,
+      "affordable_lettings_pct": 49.4,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": 395,
+        "house_3br": 435
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26260,
+      "lga_name": "Southern Grampians",
+      "area": "Regional Victoria",
+      "region": "Barwon South West",
+      "school_count": 17,
+      "station_count": 0,
+      "bulk_billing_rate": 0.971916667,
+      "affordable_lettings_pct": 70.4,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": 398
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26350,
+      "lga_name": "Stonnington",
+      "area": "Melbourne",
+      "region": "Inner South East",
+      "school_count": 22,
+      "station_count": 15,
+      "bulk_billing_rate": 0.625166667,
+      "affordable_lettings_pct": 1.3,
+      "rent": {
+        "flat_1br": 500,
+        "flat_2br": 675,
+        "house_2br": 763,
+        "house_3br": 1010
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26430,
+      "lga_name": "Strathbogie",
+      "area": "Regional Victoria",
+      "region": "Hume region",
+      "school_count": 8,
+      "station_count": 4,
+      "bulk_billing_rate": 0.971083333,
+      "affordable_lettings_pct": 27.5,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": 475
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26490,
+      "lga_name": "Surf Coast",
+      "area": "Regional Victoria",
+      "region": "Barwon South West",
+      "school_count": 13,
+      "station_count": 1,
+      "bulk_billing_rate": 0.851166667,
+      "affordable_lettings_pct": 10.4,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": 498,
+        "house_3br": 600
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26610,
+      "lga_name": "Swan Hill",
+      "area": "Regional Victoria",
+      "region": "Loddon Mallee",
+      "school_count": 13,
+      "station_count": 1,
+      "bulk_billing_rate": 0.981,
+      "affordable_lettings_pct": 37.7,
+      "rent": {
+        "flat_1br": 240,
+        "flat_2br": 340,
+        "house_2br": null,
+        "house_3br": 490
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26670,
+      "lga_name": "Towong",
+      "area": "Regional Victoria",
+      "region": "Hume region",
+      "school_count": 10,
+      "station_count": 0,
+      "bulk_billing_rate": 0.840166667,
+      "affordable_lettings_pct": 66.7,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": null
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26700,
+      "lga_name": "Wangaratta",
+      "area": "Regional Victoria",
+      "region": "Hume region",
+      "school_count": 21,
+      "station_count": 2,
+      "bulk_billing_rate": 0.784583333,
+      "affordable_lettings_pct": 32,
+      "rent": {
+        "flat_1br": 265,
+        "flat_2br": 360,
+        "house_2br": 420,
+        "house_3br": 500
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26730,
+      "lga_name": "Warrnambool",
+      "area": "Regional Victoria",
+      "region": "Barwon South West",
+      "school_count": 14,
+      "station_count": 2,
+      "bulk_billing_rate": 0.8745,
+      "affordable_lettings_pct": 10.1,
+      "rent": {
+        "flat_1br": 318,
+        "flat_2br": 420,
+        "house_2br": 430,
+        "house_3br": 550
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26810,
+      "lga_name": "Wellington",
+      "area": "Regional Victoria",
+      "region": "Gippsland",
+      "school_count": 32,
+      "station_count": 3,
+      "bulk_billing_rate": 0.974916667,
+      "affordable_lettings_pct": 44,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": 360,
+        "house_2br": 360,
+        "house_3br": 450
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26890,
+      "lga_name": "West Wimmera",
+      "area": "Regional Victoria",
+      "region": "Grampians",
+      "school_count": 5,
+      "station_count": 0,
+      "bulk_billing_rate": 0.975416667,
+      "affordable_lettings_pct": 100,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": null
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 26980,
+      "lga_name": "Whitehorse",
+      "area": "Melbourne",
+      "region": "Eastern",
+      "school_count": 44,
+      "station_count": 6,
+      "bulk_billing_rate": 0.880666667,
+      "affordable_lettings_pct": 1.6,
+      "rent": {
+        "flat_1br": 450,
+        "flat_2br": 600,
+        "house_2br": 580,
+        "house_3br": 650
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 27070,
+      "lga_name": "Whittlesea",
+      "area": "Melbourne",
+      "region": "Northern",
+      "school_count": 60,
+      "station_count": 9,
+      "bulk_billing_rate": 0.964916667,
+      "affordable_lettings_pct": 17.5,
+      "rent": {
+        "flat_1br": 375,
+        "flat_2br": 460,
+        "house_2br": 480,
+        "house_3br": 520
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 27170,
+      "lga_name": "Wodonga",
+      "area": "Regional Victoria",
+      "region": "Hume region",
+      "school_count": 14,
+      "station_count": 1,
+      "bulk_billing_rate": 0.828666667,
+      "affordable_lettings_pct": 13.2,
+      "rent": {
+        "flat_1br": 290,
+        "flat_2br": 415,
+        "house_2br": 385,
+        "house_3br": 525
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 27260,
+      "lga_name": "Wyndham",
+      "area": "Melbourne",
+      "region": "Western",
+      "school_count": 68,
+      "station_count": 6,
+      "bulk_billing_rate": 0.984583333,
+      "affordable_lettings_pct": 48.9,
+      "rent": {
+        "flat_1br": 420,
+        "flat_2br": 410,
+        "house_2br": 420,
+        "house_3br": 460
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 27350,
+      "lga_name": "Yarra",
+      "area": "Melbourne",
+      "region": "Inner Metro",
+      "school_count": 27,
+      "station_count": 9,
+      "bulk_billing_rate": 0.703916667,
+      "affordable_lettings_pct": 1.7,
+      "rent": {
+        "flat_1br": 525,
+        "flat_2br": 700,
+        "house_2br": 750,
+        "house_3br": 995
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 27450,
+      "lga_name": "Yarra Ranges",
+      "area": "Melbourne",
+      "region": "Eastern",
+      "school_count": 74,
+      "station_count": 5,
+      "bulk_billing_rate": 0.909333333,
+      "affordable_lettings_pct": 3.1,
+      "rent": {
+        "flat_1br": 370,
+        "flat_2br": 530,
+        "house_2br": 550,
+        "house_3br": 605
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    },
+    {
+      "lga_code": 27630,
+      "lga_name": "Yarriambiack",
+      "area": "Regional Victoria",
+      "region": "Grampians",
+      "school_count": 11,
+      "station_count": 0,
+      "bulk_billing_rate": 0.992666667,
+      "affordable_lettings_pct": 100,
+      "rent": {
+        "flat_1br": null,
+        "flat_2br": null,
+        "house_2br": null,
+        "house_3br": null
+      },
+      "population": null,
+      "lettings_series_5yr": null
+    }
+  ]
+}

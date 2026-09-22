@@ -6,27 +6,50 @@ interface BeforeInstallPromptEvent extends Event {
 const DISMISSED_KEY = 'anchor-install-dismissed'
 let deferredEvent: BeforeInstallPromptEvent | null = null
 
-// installAvailable survives a dismissal (it drives the header link); canInstall doesn't (it drives the one-off card).
 export function useInstallPrompt() {
-  const installAvailable = useState<boolean>('anchor-install-available', () => false)
   const canInstall = useState<boolean>('anchor-can-install', () => false)
+  // iOS Safari never fires beforeinstallprompt, so the card is shown there with manual steps (QA#30).
+  const isIos = useState<boolean>('anchor-is-ios', () => false)
 
   function wasDismissed() {
     if (!import.meta.client) return false
-    return localStorage.getItem(DISMISSED_KEY) === '1'
+    try {
+      return localStorage.getItem(DISMISSED_KEY) === '1'
+    } catch {
+      return false
+    }
+  }
+
+  function detectIos() {
+    if (!import.meta.client) return false
+    const ua = navigator.userAgent
+    const iPhoneOrIPad = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)
+    const isSafari = /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua)
+    return iPhoneOrIPad && isSafari
+  }
+
+  function isStandalone() {
+    if (!import.meta.client) return false
+    return (
+      window.matchMedia('(display-mode: standalone)').matches ||
+      (navigator as unknown as { standalone?: boolean }).standalone === true
+    )
   }
 
   function init() {
     if (!import.meta.client) return
+    if (detectIos() && !isStandalone()) {
+      isIos.value = true
+      canInstall.value = !wasDismissed()
+    }
     window.addEventListener('beforeinstallprompt', (event) => {
       event.preventDefault()
       deferredEvent = event as BeforeInstallPromptEvent
-      installAvailable.value = true
+      isIos.value = false
       canInstall.value = !wasDismissed()
     })
     window.addEventListener('appinstalled', () => {
       deferredEvent = null
-      installAvailable.value = false
       canInstall.value = false
     })
   }
@@ -36,14 +59,19 @@ export function useInstallPrompt() {
     await deferredEvent.prompt()
     await deferredEvent.userChoice
     deferredEvent = null
-    installAvailable.value = false
     canInstall.value = false
   }
 
   function dismiss() {
-    if (import.meta.client) localStorage.setItem(DISMISSED_KEY, '1')
+    if (import.meta.client) {
+      try {
+        localStorage.setItem(DISMISSED_KEY, '1')
+      } catch {
+        // private browsing; the card simply comes back next visit
+      }
+    }
     canInstall.value = false
   }
 
-  return { installAvailable, canInstall, init, promptInstall, dismiss }
+  return { canInstall, isIos, init, promptInstall, dismiss }
 }

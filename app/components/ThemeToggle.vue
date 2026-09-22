@@ -1,15 +1,17 @@
 <script setup lang="ts">
+import { Moon, Sun } from 'lucide-vue-next'
+
 const { theme, toggle } = useTheme()
 </script>
 
 <template>
   <button
     type="button"
-    class="inline-flex items-center justify-center w-11 h-11 rounded-full border border-current bg-transparent text-[inherit] opacity-85 text-[18px] cursor-pointer shrink-0 hover:bg-[rgba(127,127,127,0.12)]"
+    class="icon-button border border-current opacity-90"
     :aria-pressed="theme === 'dark'"
-    :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+    :aria-label="theme === 'dark' ? 'Light mode' : 'Dark mode'"
     @click="toggle"
   >
-    <span aria-hidden="true">{{ theme === 'dark' ? '☀' : '◑' }}</span>
+    <component :is="theme === 'dark' ? Sun : Moon" :size="18" aria-hidden="true" />
   </button>
 </template>
