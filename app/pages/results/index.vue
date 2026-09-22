@@ -1,42 +1,54 @@
 <script setup lang="ts">
-import { PAYMENT_TYPES, PRIORITY_FACTORS } from '~/data/options'
+import { Pencil } from 'lucide-vue-next'
+import { PAYMENT_TYPES, INCOME_BANDS, BEDROOM_OPTIONS } from '~/data/options'
+import { BAND_ORDER, rowSentence, type Band } from '~/composables/useScoring'
 
-useHead({ title: 'Your ranked areas' })
+definePageMeta({ layout: 'results' })
+useHead({ title: '79 areas, ranked for you' })
 
-const { answers } = useAnchorState()
+useFragmentSync()
+
+const { answers, scored, bedrooms } = useResults()
 const { byCode } = useLgaData()
 
-onMounted(() => {
-  const hash = window.location.hash
-  if (!hash) return
-  const decoded = decodeAnswersFromFragment(hash)
-  if (decoded) {
-    answers.value = decoded
-  } else {
-    navigateTo('/invalid-link')
-  }
-})
+const hasAnswers = computed(() => answersComplete(answers.value))
 
-const scored = computed(() => useScoring().rankAll(answers.value.weights))
+const BAND_HEADINGS: Record<Band, { heading: string; note?: string }> = {
+  within: { heading: 'Rent under 30% of your income', note: '30% or less is the usual measure of affordable rent.' },
+  stretch: { heading: 'Rent 31% to 40% of your income' },
+  hard: { heading: 'Rent 41% to 50% of your income' },
+  out: { heading: 'Rent more than half your income' },
+  nodata: {
+    heading: 'No rent data for this home size',
+    note: "Homes Victoria didn't publish a typical rent for these areas."
+  }
+}
 
 const showAll = ref(false)
 const tableView = ref(false)
-
 const TOP_N = 10
-const visible = computed(() => (showAll.value ? scored.value : scored.value.slice(0, TOP_N)))
-const remaining = computed(() => Math.max(0, scored.value.length - TOP_N))
 
-const paymentLabel = computed(
-  () => PAYMENT_TYPES.find((p) => p.value === answers.value.paymentType)?.label ?? null
+const visible = computed(() => (showAll.value ? scored.value : scored.value.slice(0, TOP_N)))
+
+/** The visible rows regrouped under their band heading, empty bands dropped. */
+const bands = computed(() =>
+  BAND_ORDER.map((band) => ({ band, ...BAND_HEADINGS[band], rows: visible.value.filter((r) => r.band === band) })).filter(
+    (g) => g.rows.length
+  )
 )
+
+const noneWithin = computed(() => hasAnswers.value && !scored.value.some((r) => r.band === 'within'))
+
+const paymentLabel = computed(() => PAYMENT_TYPES.find((p) => p.value === answers.value.paymentType)?.label ?? null)
+const incomeLabel = computed(() => INCOME_BANDS.find((b) => b.value === answers.value.incomeBand)?.label ?? null)
+const bedroomLabel = computed(() => BEDROOM_OPTIONS.find((b) => b.value === answers.value.bedrooms)?.label ?? null)
 const currentLgaName = computed(() => byCode(answers.value.currentLga)?.lga_name ?? null)
-const SHORT_NAMES = { schools: 'schools', transport: 'transport', gp_access: 'doctors' } as const
-const prioritySummary = computed(() => {
-  const top = PRIORITY_FACTORS.filter((f) => answers.value.weights[f.key] === 'a_lot').map((f) => SHORT_NAMES[f.key])
-  if (!top.length) return 'No strong priorities'
-  const list = top.join(', ')
-  return list.charAt(0).toUpperCase() + list.slice(1)
-})
+
+const answersSummary = computed(() =>
+  [paymentLabel.value, bedroomLabel.value, currentLgaName.value ? `Lives in ${currentLgaName.value}` : null]
+    .filter(Boolean)
+    .join(' · ')
+)
 
 function isCurrent(code: number) {
   return answers.value.currentLga === code
@@ -44,116 +56,187 @@ function isCurrent(code: number) {
 </script>
 
 <template>
-  <div class="min-h-screen bg-bg">
-    <div class="bg-header-band text-header-band-text">
-      <AppHeader variant="band" share-to="/share" />
-      <div class="max-w-[1280px] mx-auto px-6 pb-[18px] flex flex-col gap-2 dt:pt-[22px] dt:px-10 dt:pb-[22px]">
-        <h1 class="m-0 font-sans font-semibold text-[26px] leading-[1.25] tracking-[-0.01em]">79 areas, ranked for you</h1>
-        <p class="m-0 mb-[6px] font-sans text-[16px] leading-[1.5] text-header-band-body">Best first. Rent affordability is half of every score.</p>
-        <div class="flex gap-2 flex-wrap items-center">
-          <div v-if="paymentLabel" class="py-[7px] px-[13px] bg-header-chip-bg rounded-full font-sans text-[14px] leading-[1.3] text-header-chip-text">{{ paymentLabel }}</div>
-          <div v-if="currentLgaName" class="py-[7px] px-[13px] bg-header-chip-bg rounded-full font-sans text-[14px] leading-[1.3] text-header-chip-text">{{ currentLgaName }}</div>
-          <div class="py-[7px] px-[13px] bg-header-chip-bg rounded-full font-sans text-[14px] leading-[1.3] text-header-chip-text">{{ prioritySummary }}</div>
+  <div v-if="!hasAnswers" class="max-w-[560px] mx-auto px-4 dt:px-6 pt-10 pb-12 flex flex-col gap-4">
+    <h1 class="m-0 font-sans font-semibold text-[30px] leading-[1.2] text-ink tracking-[-0.02em]">
+      Answer a few questions first
+    </h1>
+    <p class="m-0 font-sans text-[17px] leading-[1.55] text-body">
+      We need your payment, bedrooms and area to rank the areas for you.
+    </p>
+    <NuxtLink to="/income" class="btn-primary mt-2">Start</NuxtLink>
+  </div>
+
+  <template v-else>
+    <div class="on-band bg-header-band text-header-band-text">
+      <div
+        class="max-w-[1280px] mx-auto px-4 dt:px-10 pb-[18px] dt:pb-[22px] flex flex-col gap-4 dt:flex-row dt:items-start dt:justify-between dt:gap-8"
+      >
+        <div class="flex flex-col gap-2 min-w-0">
+          <h1 class="m-0 font-sans font-semibold text-[26px] leading-[1.25] tracking-[-0.01em]">
+            79 areas, ranked for you
+          </h1>
+          <p class="m-0 font-sans text-[16px] leading-[1.5] text-header-band-body dt:max-w-[60ch]">
+            Sorted by how much of your income the rent would take, then by what you said matters.
+          </p>
+          <p class="m-0 mt-1 font-sans text-[15px] leading-[1.4] text-header-band-body dt:hidden">
+            {{ answersSummary }}
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3 shrink-0">
           <NuxtLink
             to="/income"
-            class="min-h-9 inline-flex items-center px-[13px] border border-header-chip-outline rounded-full text-header-cta font-sans font-medium text-[14px] leading-none no-underline"
+            class="btn-secondary min-h-11 gap-2 bg-transparent border-header-chip-outline text-header-chip-text text-[15px] dt:hidden"
           >
+            <Pencil :size="16" aria-hidden="true" />
             Change answers
+          </NuxtLink>
+          <NuxtLink
+            to="/share"
+            class="btn-secondary min-h-11 bg-transparent border-header-chip-outline text-header-chip-text text-[15px]"
+          >
+            Save or share
           </NuxtLink>
         </div>
       </div>
     </div>
 
-    <div class="max-w-[1280px] mx-auto grid grid-cols-1 dt:grid-cols-[312px_1fr]">
-      <aside class="hidden dt:block dt:py-[34px] dt:px-8 dt:border-r dt:border-line dt:bg-surface-2">
-        <div class="font-mono font-medium text-[12px] leading-none tracking-[0.12em] uppercase text-muted mb-4">Your answers</div>
+    <div class="max-w-[1280px] mx-auto grid grid-cols-1 dt:grid-cols-[280px_minmax(0,1fr)]">
+      <aside class="hidden dt:block dt:py-[34px] dt:px-7 dt:border-r dt:border-line dt:bg-surface-2">
+        <h2 class="font-mono font-medium text-[12px] leading-none tracking-[0.12em] uppercase text-muted mb-4">
+          Your answers
+        </h2>
         <div class="flex flex-col gap-[18px] font-sans text-[16px] leading-[1.4] mb-6">
-          <div><div class="text-muted mb-1">Payment</div><div class="text-ink font-medium">{{ paymentLabel ?? '—' }}</div></div>
-          <div><div class="text-muted mb-1">Living in</div><div class="text-ink font-medium">{{ currentLgaName ?? '—' }}</div></div>
+          <div>
+            <div class="text-muted mb-1">Payment</div>
+            <div class="text-ink font-medium">{{ paymentLabel ?? 'Not answered' }}</div>
+          </div>
+          <div>
+            <div class="text-muted mb-1">Other income</div>
+            <div class="text-ink font-medium">{{ incomeLabel ?? 'Not answered' }}</div>
+          </div>
+          <div>
+            <div class="text-muted mb-1">Bedrooms</div>
+            <div class="text-ink font-medium">{{ bedroomLabel ?? 'Not answered' }}</div>
+          </div>
+          <div>
+            <div class="text-muted mb-1">Lives in</div>
+            <div class="text-ink font-medium">{{ currentLgaName ?? 'Not answered' }}</div>
+          </div>
         </div>
-        <div class="h-px bg-line-soft mt-2 mb-[22px]" />
-        <div class="font-mono font-medium text-[12px] leading-none tracking-[0.12em] uppercase text-muted mb-4">Weighting</div>
-        <WeightSplitBar :weights="scored[0]?.scoreWeights ?? { affordability: 50, schools: 0, transport: 0, gp_access: 0 }" />
-        <NuxtLink to="/income" class="btn-secondary w-full mt-[22px]">Change answers</NuxtLink>
-        <p class="mt-4 mb-0 font-sans text-[15px] leading-[1.5] text-muted">Rent affordability is always half the score and can't be changed.</p>
+        <NuxtLink to="/income" class="btn-secondary w-full gap-2 mb-6">
+          <Pencil :size="16" aria-hidden="true" />
+          Change answers
+        </NuxtLink>
+        <WeightSplitBar :split="scored[0]!.split" />
       </aside>
 
-      <main>
-        <SuggestionBanner />
+      <main class="min-w-0">
+        <p
+          class="m-0 py-4 px-4 dt:px-10 bg-banner-bg border-b border-banner-border font-sans text-[16px] leading-[1.5] text-banner-text"
+        >
+          Rankings are based on public data. Only you know which areas suit your family.
+        </p>
 
-        <div class="hidden dt:grid dt:grid-cols-[44px_1fr_150px_190px_120px] dt:gap-5 dt:px-10 dt:pb-[10px] font-mono font-medium text-[12px] leading-none tracking-[0.1em] uppercase text-muted">
-          <div>#</div><div>Area</div><div>Affordable</div><div>Steadiness</div><div class="text-right">Score</div>
+        <p
+          v-if="noneWithin"
+          class="m-0 py-4 px-4 dt:px-10 border-b border-line-soft font-sans text-[16px] leading-[1.5] text-body"
+        >
+          No area has a typical {{ bedrooms }}-bedroom rent under 30% of your income. The areas closest to it are
+          listed first.
+        </p>
+
+        <div v-if="!tableView">
+          <section v-for="group in bands" :key="group.band">
+            <div class="pt-6 pb-2 px-4 dt:px-10">
+              <h2 class="m-0 font-sans font-semibold text-[19px] leading-[1.3] text-ink">{{ group.heading }}</h2>
+              <p v-if="group.note" class="mt-1 mb-0 font-sans text-[15px] leading-[1.5] text-muted">{{ group.note }}</p>
+            </div>
+            <ol class="list-none m-0 p-0">
+              <li
+                v-for="r in group.rows"
+                :key="r.lga_code"
+                class="py-4 px-4 dt:px-10 border-t border-line-soft grid grid-cols-[34px_minmax(0,1fr)] gap-x-3 gap-y-2 items-start dt:grid-cols-[44px_minmax(240px,1fr)_minmax(170px,auto)] dt:gap-5"
+              >
+                <div class="font-mono font-medium text-[20px] leading-[1.3] text-data-main">{{ r.rank }}</div>
+                <div class="min-w-0">
+                  <h3 class="m-0 font-sans font-semibold text-[21px] leading-[1.25]">
+                    <NuxtLink
+                      :to="`/results/${r.lga_code}`"
+                      class="inline-flex items-center min-h-11 text-ink no-underline"
+                    >
+                      {{ r.lga_name }}
+                    </NuxtLink>
+                  </h3>
+                  <div class="font-mono text-[14px] leading-[1.3] text-muted">{{ r.region }}</div>
+                  <p
+                    v-if="rowSentence(r, answers.weights)"
+                    class="mt-2 mb-0 font-sans text-[16px] leading-[1.5] text-body dt:max-w-[52ch]"
+                  >
+                    {{ rowSentence(r, answers.weights) }}
+                  </p>
+                  <p
+                    v-if="isCurrent(r.lga_code)"
+                    class="inline-block mt-2 mb-0 py-1 px-[10px] bg-surface-info rounded-[6px] font-sans font-medium text-[14px] leading-[1.3] text-surface-info-text"
+                  >
+                    Where you live now
+                  </p>
+                </div>
+                <div class="col-start-2 dt:col-start-3 dt:text-right">
+                  <div v-if="r.rentSharePct != null" class="font-sans font-semibold text-[24px] leading-[1.2] text-ink">
+                    {{ r.rentSharePct }}% of your income
+                  </div>
+                  <div v-else class="font-sans font-semibold text-[24px] leading-[1.2] text-ink">No rent data</div>
+                  <div v-if="r.rentPerWeek" class="mt-1 font-mono text-[14px] leading-[1.35] text-muted">
+                    Typical {{ bedrooms }}-bedroom rent: ${{ r.rentPerWeek }} a week
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </section>
         </div>
 
-        <div v-if="!tableView" class="flex flex-col">
-          <article
-            v-for="r in visible"
-            :key="r.lga_code"
-            class="py-[18px] px-6 border-b border-line-soft flex gap-4 items-start dt:py-5 dt:px-10 dt:grid dt:grid-cols-[44px_1fr_150px_190px_120px] dt:gap-5 dt:items-start dt:border-t dt:border-line-soft dt:border-b-0"
-          >
-            <div class="w-[34px] shrink-0 text-right font-mono font-medium text-[20px] leading-none text-data-main dt:text-left">{{ r.rank }}</div>
-            <div class="flex-1 min-w-0">
-              <div class="flex justify-between items-baseline gap-[10px] flex-wrap dt:flex-nowrap">
-                <NuxtLink :to="`/results/${r.lga_code}`" class="font-sans font-semibold text-[21px] leading-[1.25] text-ink no-underline">{{ r.lga_name }}</NuxtLink>
-                <span class="font-mono text-[14px] leading-none text-muted">{{ r.subregion }}</span>
-                <span v-if="isCurrent(r.lga_code)" class="inline-block mt-2 py-1 px-[10px] bg-surface-info rounded-[6px] font-sans font-medium text-[14px] leading-[1.3] text-surface-info-text">Where you live now</span>
-              </div>
-              <div class="mt-3 flex items-baseline gap-[10px] dt:hidden">
-                <span class="font-sans font-semibold text-[28px] leading-none text-ink tracking-[-0.01em]">{{ oneIn(r.affordability_pct_latest) }}</span>
-                <span class="font-sans text-[16px] leading-[1.3] text-body">rentals affordable</span>
-              </div>
-              <div class="mt-[6px] font-mono text-[14px] leading-[1.3] text-muted dt:hidden">{{ pctLabel(r.affordability_pct_latest) }} last quarter &middot; {{ stabilityLabel(r.affordability_pct_5yr_stddev) }}</div>
-              <div class="mt-[10px] font-sans text-[16px] leading-[1.5] text-body dt:mt-2 dt:max-w-[58ch]">{{ explainRanking(r, isCurrent(r.lga_code)) }}</div>
-              <div class="mt-3 flex items-center gap-3 dt:hidden">
-                <div class="flex-1 h-2 rounded-[4px] bg-line overflow-hidden"><div class="h-full rounded-[4px] bg-data-main" :style="{ width: (r.scores.total * 10) + '%' }" /></div>
-                <div class="font-mono font-medium text-[15px] leading-none text-ink min-w-[72px] shrink-0 whitespace-nowrap text-right">{{ r.scores.total.toFixed(1) }} / 10</div>
-              </div>
-              <NuxtLink :to="`/results/${r.lga_code}`" class="inline-block mt-[14px] min-h-11 leading-[44px] font-sans font-medium text-[17px] dt:hidden">See the detail for {{ r.lga_name }}</NuxtLink>
-            </div>
-            <div class="hidden dt:block">
-              <div class="font-sans font-semibold text-[22px] leading-[1.1] text-ink">{{ oneIn(r.affordability_pct_latest) }}</div>
-              <div class="mt-[5px] font-mono text-[14px] leading-[1.3] text-muted">{{ pctLabel(r.affordability_pct_latest) }}</div>
-            </div>
-            <div class="hidden dt:block font-sans text-[16px] leading-[1.4] text-body">{{ stabilityLabel(r.affordability_pct_5yr_stddev) }}</div>
-            <div class="hidden dt:block">
-              <div class="font-mono font-medium text-[16px] leading-none text-ink text-right mb-2">{{ r.scores.total.toFixed(1) }} / 10</div>
-              <div class="h-2 rounded-[4px] bg-line overflow-hidden"><div class="h-full rounded-[4px] bg-data-main" :style="{ width: (r.scores.total * 10) + '%' }" /></div>
-            </div>
-          </article>
-        </div>
-
-        <div v-else class="py-4 px-6 overflow-x-auto dt:px-10">
+        <div v-else class="py-4 px-4 dt:px-10 overflow-x-auto">
           <table class="w-full border-collapse font-sans text-[16px] leading-[1.4]">
             <thead>
               <tr>
-                <th scope="col" class="text-left py-[10px] px-3 font-mono font-medium text-[12px] leading-none tracking-[0.1em] uppercase text-muted">#</th>
-                <th scope="col" class="text-left py-[10px] px-3 font-mono font-medium text-[12px] leading-none tracking-[0.1em] uppercase text-muted">Area</th>
-                <th scope="col" class="text-left py-[10px] px-3 font-mono font-medium text-[12px] leading-none tracking-[0.1em] uppercase text-muted">Affordable</th>
-                <th scope="col" class="text-left py-[10px] px-3 font-mono font-medium text-[12px] leading-none tracking-[0.1em] uppercase text-muted">Steadiness</th>
-                <th scope="col" class="text-right py-[10px] px-3 font-mono font-medium text-[12px] leading-none tracking-[0.1em] uppercase text-muted">Score</th>
+                <th scope="col" class="text-left py-[10px] px-3 font-mono font-medium text-[12px] tracking-[0.1em] uppercase text-muted">#</th>
+                <th scope="col" class="text-left py-[10px] px-3 font-mono font-medium text-[12px] tracking-[0.1em] uppercase text-muted">Area</th>
+                <th scope="col" class="text-left py-[10px] px-3 font-mono font-medium text-[12px] tracking-[0.1em] uppercase text-muted">Region</th>
+                <th scope="col" class="text-right py-[10px] px-3 font-mono font-medium text-[12px] tracking-[0.1em] uppercase text-muted">Share of income</th>
+                <th scope="col" class="text-right py-[10px] px-3 font-mono font-medium text-[12px] tracking-[0.1em] uppercase text-muted">Typical rent</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="r in scored" :key="r.lga_code">
-                <td class="text-left py-[10px] px-3 border-t border-line-soft font-mono text-ink">{{ r.rank }}</td>
-                <td class="text-left py-[10px] px-3 border-t border-line-soft font-mono text-ink"><NuxtLink :to="`/results/${r.lga_code}`">{{ r.lga_name }}</NuxtLink></td>
-                <td class="text-left py-[10px] px-3 border-t border-line-soft font-mono text-ink">{{ pctLabel(r.affordability_pct_latest) }}</td>
-                <td class="text-left py-[10px] px-3 border-t border-line-soft font-mono text-ink">{{ stabilityWord(r.affordability_pct_5yr_stddev) }}</td>
-                <td class="text-right py-[10px] px-3 border-t border-line-soft font-mono text-ink">{{ r.scores.total.toFixed(1) }} / 10</td>
+                <td class="py-[10px] px-3 border-t border-line-soft font-mono text-ink">{{ r.rank }}</td>
+                <th scope="row" class="text-left py-[10px] px-3 border-t border-line-soft font-sans font-normal text-ink">
+                  <NuxtLink :to="`/results/${r.lga_code}`">{{ r.lga_name }}</NuxtLink>
+                </th>
+                <td class="py-[10px] px-3 border-t border-line-soft text-body">{{ r.region }}</td>
+                <td class="py-[10px] px-3 border-t border-line-soft font-mono text-ink text-right">
+                  {{ r.rentSharePct != null ? `${r.rentSharePct}%` : 'No data' }}
+                </td>
+                <td class="py-[10px] px-3 border-t border-line-soft font-mono text-ink text-right">
+                  {{ r.rentPerWeek ? `$${r.rentPerWeek}` : 'No data' }}
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div class="py-[22px] px-6 pb-8 flex flex-col gap-[14px] dt:flex-row dt:items-center dt:py-[26px] dt:px-10 dt:pb-[34px]">
+        <div class="py-[22px] px-4 dt:px-10 pb-8 flex flex-col gap-3 dt:flex-row dt:items-center dt:gap-5">
           <button v-if="!tableView && !showAll" type="button" class="btn-secondary" @click="showAll = true">
-            Show the remaining {{ remaining }} areas
+            Show all 79 areas
           </button>
-          <button type="button" class="border-none bg-transparent p-0 font-sans font-medium text-[16px] leading-[1.4] text-accent underline text-center cursor-pointer" @click="tableView = !tableView">
-            {{ tableView ? 'View as a list' : 'View all 79 as a table' }}
+          <button
+            type="button"
+            class="btn-secondary border-none bg-transparent text-accent underline"
+            @click="tableView = !tableView"
+          >
+            {{ tableView ? 'Show as a list' : 'Show as a table' }}
           </button>
         </div>
       </main>
     </div>
-  </div>
+  </template>
 </template>
