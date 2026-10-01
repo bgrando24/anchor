@@ -1,0 +1,17 @@
+# Response headers for Cloudflare Pages. This file is served from the site root and is not part
+# of the app bundle.
+#
+# A note on the two 'unsafe-inline' allowances, because they are deliberate rather than lazy:
+# the framework puts an import map and a hydration payload in every page as inline scripts, and
+# the theme is set by an inline script before first paint so a dark-mode reader never sees a
+# flash of the light palette. A static site has no server to mint a nonce per request, and the
+# payload differs per page so a fixed hash cannot cover it. Inline styles are the width of the
+# score bars, which are computed per area. Everything else is locked down.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), xr-spatial-tracking=()
+  Cross-Origin-Opener-Policy: same-origin
