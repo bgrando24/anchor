@@ -48,6 +48,9 @@ export interface PriorityWeights {
 export type SchoolLevelKey = 'primary' | 'secondary'
 export type SchoolSectorKey = 'government' | 'catholic' | 'independent'
 
+const ALL_SCHOOL_LEVELS: SchoolLevelKey[] = ['primary', 'secondary']
+const ALL_SCHOOL_SECTORS: SchoolSectorKey[] = ['government', 'catholic', 'independent']
+
 /** The kinds of school a household is looking for. */
 export interface SchoolFilter {
   levels: SchoolLevelKey[]
@@ -64,6 +67,12 @@ export interface SchoolFilter {
  */
 export function schoolsMatching(area: Lga, filter?: SchoolFilter): number {
   if (!filter || !filter.levels.length || !filter.sectors.length) return area.school_count
+  // Asking for every level and every kind is asking for the published total, which the source
+  // already gives without counting a combined school twice. Summing the cells instead reported
+  // 102 schools in Casey, which has 91.
+  if (filter.levels.length === ALL_SCHOOL_LEVELS.length && filter.sectors.length === ALL_SCHOOL_SECTORS.length) {
+    return area.school_count
+  }
   let total = 0
   for (const level of filter.levels) {
     for (const sector of filter.sectors) total += area.schools[level][sector]
@@ -256,7 +265,11 @@ function plural(n: number, word: string) {
  * At most one sentence, about a factor the user rated "A lot" (else "Somewhat"), picking the
  * factor where this area sits furthest from the middle. Nothing for the middle third.
  */
-export function rowSentence(area: ScoredLga, weights: PriorityWeights): string | null {
+export function rowSentence(
+  area: ScoredLga,
+  weights: PriorityWeights,
+  schoolFilter?: SchoolFilter
+): string | null {
   const tier: PriorityTier = (['schools', 'transport', 'gp_access'] as const).some((k) => weights[k] === 'a_lot')
     ? 'a_lot'
     : (['schools', 'transport', 'gp_access'] as const).some((k) => weights[k] === 'somewhat')
@@ -273,8 +286,11 @@ export function rowSentence(area: ScoredLga, weights: PriorityWeights): string |
       const low = rank <= LOW
       let text: string | null = null
       if (key === 'schools') {
-        if (high) text = `More schools than most areas (${area.school_count}).`
-        else if (low) text = `Fewer schools than most areas (${area.school_count}).`
+        // The count quoted has to be the one the rank was worked out from, not every school in
+        // the area, or the number contradicts the position it is explaining.
+        const schools = schoolsMatching(area, schoolFilter)
+        if (high) text = `More schools than most areas (${schools}).`
+        else if (low) text = `Fewer schools than most areas (${schools}).`
       } else if (key === 'transport') {
         if (high) text = `More train stations than most areas (${area.station_count}).`
         else if (low) text = area.station_count === 0 ? 'No train stations.' : `Fewer train stations than most areas (${area.station_count}).`

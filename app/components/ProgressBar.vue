@@ -13,7 +13,7 @@ withDefaults(
     continueReady?: boolean
   }>(),
   {
-    total: 4,
+    total: 5,
     backTo: undefined,
     continueTo: undefined,
     continueLabel: 'Continue',

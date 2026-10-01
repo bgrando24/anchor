@@ -202,14 +202,28 @@ describe('ranking on the kinds of school a household wants', () => {
     )
   })
 
-  it('counts a school that teaches both levels in each of them', () => {
-    // The source counts combined schools on both sides, so both levels can exceed the total.
-    const area = areas.find((a) => a.lga_name === 'Alpine')!
-    const both = schoolsMatching(area, {
-      levels: ['primary', 'secondary'],
-      sectors: ['government', 'catholic', 'independent']
-    })
-    expect(both).toBeGreaterThan(area.school_count)
+  it('treats every level and every kind as the published total, not the sum of the cells', () => {
+    // Combined schools appear in both levels, so summing the cells overstates it: Casey came to
+    // 102 against a published 91.
+    for (const area of areas) {
+      expect(
+        schoolsMatching(area, {
+          levels: ['primary', 'secondary'],
+          sectors: ['government', 'catholic', 'independent']
+        }),
+        area.lga_name
+      ).toBe(area.school_count)
+    }
+  })
+
+  it('never reports more of one kind than the area has schools', () => {
+    for (const area of areas) {
+      for (const sectors of [['government'], ['catholic'], ['independent']] as const) {
+        const both = schoolsMatching(area, { levels: ['primary', 'secondary'], sectors: [...sectors] })
+        const cells = area.schools.primary[sectors[0]] + area.schools.secondary[sectors[0]]
+        expect(both, `${area.lga_name} ${sectors[0]}`).toBe(cells)
+      }
+    }
   })
 
   it('changes the ranking when the household wants a different kind of school', () => {

@@ -8,7 +8,7 @@ useHead({ title: '79 areas, ranked for you' })
 
 useFragmentSync()
 
-const { answers, scored, bedrooms } = useResults()
+const { answers, scored, bedrooms, scoringWeights, schoolFilter } = useResults()
 const { byCode } = useLgaData()
 
 const hasAnswers = computed(() => answersComplete(answers.value))
@@ -169,10 +169,10 @@ function isCurrent(code: number) {
                   </h3>
                   <div class="font-mono text-[14px] leading-[1.3] text-muted">{{ r.region }}</div>
                   <p
-                    v-if="rowSentence(r, answers.weights)"
+                    v-if="rowSentence(r, scoringWeights, schoolFilter)"
                     class="mt-2 mb-0 font-sans text-[16px] leading-[1.5] text-body dt:max-w-[52ch]"
                   >
-                    {{ rowSentence(r, answers.weights) }}
+                    {{ rowSentence(r, scoringWeights, schoolFilter) }}
                   </p>
                   <p
                     v-if="isCurrent(r.lga_code)"

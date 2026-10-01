@@ -12,6 +12,7 @@ const STATIC_ROUTES = [
   "/bedrooms",
   "/location",
   "/location/area",
+  "/schools",
   "/priorities",
   "/results",
   "/results/print",

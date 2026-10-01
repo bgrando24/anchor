@@ -1,29 +1,50 @@
 <script setup lang="ts">
 import { PRIORITY_FACTORS } from '~/data/options'
+import { schoolsCount } from '~/composables/useAnchorState'
 
 useHead({ title: 'What matters most to you?' })
 
 const { answers } = useAnchorState()
-const { regionOf } = useLgaData()
 
 onMounted(() => {
   const step = firstUnansweredStep(answers.value)
   if (step) navigateTo(step)
 })
 
-// The region comes from the area the user picked, so back never lands on the
-// "We couldn't find that region" screen.
-const backTo = computed(() => {
-  const region = regionOf(answers.value.currentLga)
-  return region ? `/location/area?region=${encodeURIComponent(region)}` : '/location'
-})
+/**
+ * Schools only appear here for a household they could matter to. Asking someone who just said
+ * they have no children at school how much schools matter invites the obvious objection.
+ */
+const schoolsApply = computed(() => schoolsCount(answers.value.schools))
 
-const split = computed(() => scoreSplit(answers.value.weights))
+const factors = computed(() => PRIORITY_FACTORS.filter((f) => f.key !== 'schools' || schoolsApply.value))
+
+// Set once, when schools first become relevant, and left alone after that so a deliberate
+// change is not overwritten on the way back to this page.
+const presetDone = ref(false)
+watch(
+  schoolsApply,
+  (applies) => {
+    if (applies && !presetDone.value) {
+      answers.value.weights.schools = 'a_lot'
+      presetDone.value = true
+    }
+  },
+  { immediate: true }
+)
+
+/** The scoring drops schools to nought when they do not apply, so the bar has to agree. */
+const split = computed(() =>
+  scoreSplit({
+    ...answers.value.weights,
+    schools: schoolsApply.value ? answers.value.weights.schools : 'none'
+  })
+)
 </script>
 
 <template>
   <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-[22px]">
-    <ProgressBar :current-step="4" :back-to="backTo" continue-to="/results" continue-label="Results" />
+    <ProgressBar :current-step="5" back-to="/schools" continue-to="/results" continue-label="Results" />
     <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
       What matters most to you?
     </h1>
@@ -43,9 +64,15 @@ const split = computed(() => scoreSplit(answers.value.weights))
     </div>
 
     <div class="flex flex-col gap-[22px]">
-      <div v-for="f in PRIORITY_FACTORS" :key="f.key">
+      <div v-for="f in factors" :key="f.key">
         <div class="font-sans font-semibold text-[19px] leading-[1.3] text-ink mb-[3px]">{{ f.question }}</div>
         <div class="font-sans text-[16px] leading-[1.45] text-body mb-3">{{ f.hint }}</div>
+        <!-- Plain copy rather than a tooltip: a hover has nowhere to happen on a phone, and the
+             reason for a pre-filled answer should not be something you have to go looking for. -->
+        <p v-if="f.key === 'schools'" class="m-0 mb-3 font-sans text-[16px] leading-[1.45] text-body">
+          Set to "A lot" because you're thinking about moving your children's schools. Change it if
+          you like.
+        </p>
         <TierSelector v-model="answers.weights[f.key]" :name="`tier-${f.key}`" :label="f.question" />
       </div>
     </div>

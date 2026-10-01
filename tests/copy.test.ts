@@ -2,6 +2,7 @@ import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { lettingsLabel, ordinal, rowSentence, stationLabel, rankAreas } from '../app/composables/useScoring'
+import type { PriorityWeights, SchoolFilter } from '../app/composables/useScoring'
 import type { Lga } from '../app/composables/useLgaData'
 import lgaFile from '../app/data/lgas.json'
 
@@ -130,5 +131,42 @@ describe('row sentence', () => {
       const sentence = rowSentence(r, weights)
       if (sentence) expect(sentence, r.lga_name).not.toMatch(/\b1 train stations\b/)
     }
+  })
+})
+
+describe('the results sentence when schools do not apply', () => {
+  const ranked = (weights: PriorityWeights, schoolFilter?: SchoolFilter) =>
+    rankAreas(areas, { weeklyIncome: 1000, bedrooms: 2, weights, schoolFilter })
+
+  it('never mentions schools once they are weighted out', () => {
+    const weights: PriorityWeights = { schools: 'none', transport: 'somewhat', gp_access: 'somewhat' }
+    const scored = ranked(weights)
+    for (const area of scored) {
+      const sentence = rowSentence(area, weights)
+      if (sentence) expect(sentence, area.lga_name).not.toMatch(/school/i)
+    }
+  })
+
+  it('still finds something to say about the other factors', () => {
+    const weights: PriorityWeights = { schools: 'none', transport: 'a_lot', gp_access: 'a_lot' }
+    const said = ranked(weights)
+      .map((area) => rowSentence(area, weights))
+      .filter(Boolean)
+    expect(said.length).toBeGreaterThan(0)
+  })
+
+  it('quotes the number of schools it actually ranked on, not every school', () => {
+    const weights: PriorityWeights = { schools: 'a_lot', transport: 'not_much', gp_access: 'not_much' }
+    const filter: SchoolFilter = { levels: ['primary'], sectors: ['catholic'] }
+    const scored = ranked(weights, filter)
+    // Find an area the sentence talks about schools for, and check the figure matches the filter.
+    for (const area of scored) {
+      const sentence = rowSentence(area, weights, filter)
+      if (!sentence || !/school/i.test(sentence)) continue
+      const quoted = Number(sentence.match(/\((\d+)\)/)?.[1])
+      expect(quoted, area.lga_name).toBe(area.schools.primary.catholic)
+      return
+    }
+    throw new Error('no area produced a schools sentence to check')
   })
 })

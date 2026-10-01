@@ -15,13 +15,15 @@ import {
 } from '~/composables/useAffordabilitySeries'
 import { regionLabel } from '~/composables/useLgaData'
 import { orderedLgaTabs, type LgaTabKey } from '~/composables/useLgaTabs'
+import { SCHOOL_LEVELS, SCHOOL_SECTORS, type SchoolLevel, type SchoolSector } from '~/data/options'
+import { schoolsMatching } from '~/composables/useScoring'
 
 definePageMeta({ layout: 'results' })
 
 useFragmentSync()
 
 const route = useRoute()
-const { answers, scored, bedrooms } = useResults()
+const { answers, scored, bedrooms, schoolsApply, schoolFilter } = useResults()
 const { meta } = useLgaData()
 
 const code = computed(() => Number(route.params.lga))
@@ -200,13 +202,52 @@ const SPORTS_SHOWN = 8
 const showAllSports = ref(false)
 const sportsList = computed(() => (showAllSports.value ? topSports.value : topSports.value.slice(0, SPORTS_SHOWN)))
 
+/**
+ * The schools tab starts on whatever the questionnaire was told, so the first thing shown is the
+ * kind of school this household actually asked about. Changing it here is a look at the area, not
+ * a change of answer: the ranking keeps using what they said on the schools step.
+ */
+const tabLevels = ref<SchoolLevel[]>([])
+const tabSectors = ref<SchoolSector[]>([])
+
+watch(
+  () => answers.value.schools,
+  (schools) => {
+    tabLevels.value = schools.levels.length ? [...schools.levels] : SCHOOL_LEVELS.map((l) => l.value)
+    tabSectors.value = schools.sectors.length ? [...schools.sectors] : SCHOOL_SECTORS.map((s) => s.value)
+  },
+  { immediate: true, deep: true }
+)
+
+const levelOptions = SCHOOL_LEVELS.map((l) => ({ value: l.value, label: l.label }))
+const sectorOptions = SCHOOL_SECTORS.map((s) => ({ value: s.value, label: s.label }))
+
+/** Georgia's ask: lead with the number for the kinds they care about, not a bigger total. */
+const schoolsShown = computed(() => {
+  const a = area.value
+  if (!a) return 0
+  return schoolsMatching(a, { levels: tabLevels.value, sectors: tabSectors.value })
+})
+
+const tabFilterIsEverything = computed(
+  () => tabLevels.value.length === SCHOOL_LEVELS.length && tabSectors.value.length === SCHOOL_SECTORS.length
+)
+
+/** True when the tab is showing something other than what the ranking used. */
+const tabFilterChanged = computed(() => {
+  const chosen = schoolFilter.value
+  if (!chosen) return !tabFilterIsEverything.value
+  const same = (a: string[], b: string[]) => a.length === b.length && a.every((v) => b.includes(v))
+  return !(same(chosen.levels, tabLevels.value) && same(chosen.sectors, tabSectors.value))
+})
+
 /** Schools split by level. The two lists overlap, so they are never added together. */
 const schoolLevels = computed(() => {
   const a = area.value
   if (!a) return []
   return [
-    { level: 'Primary', sectors: a.schools.primary },
-    { level: 'Secondary', sectors: a.schools.secondary }
+    { key: 'primary' as SchoolLevel, level: 'Primary', sectors: a.schools.primary },
+    { key: 'secondary' as SchoolLevel, level: 'High school', sectors: a.schools.secondary }
   ].map((row) => ({
     ...row,
     total: row.sectors.government + row.sectors.catholic + row.sectors.independent
@@ -366,14 +407,52 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
     >
       <section class="py-[26px] px-4 dt:px-10 border-b border-line">
         <h2 class="m-0 mb-1 font-sans font-semibold text-[21px] leading-[1.3] text-ink">Schools</h2>
-        <p class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">
-          {{ area.school_count }} schools in {{ area.lga_name }}.
+        <!-- The big number is for the kinds chosen, not every school, so it answers the question
+             the reader actually asked. -->
+        <div class="font-sans font-semibold text-[40px] leading-none text-ink tracking-[-0.02em] mb-[6px]">
+          {{ schoolsShown }}
+        </div>
+        <p class="m-0 mb-4 font-sans text-[16px] leading-[1.45] text-body">
+          <template v-if="tabFilterIsEverything">schools in {{ area.lga_name }}.</template>
+          <template v-else>
+            of the {{ area.school_count }} schools in {{ area.lga_name }} are the kind you picked.
+          </template>
         </p>
+        <p
+          v-if="schoolsApply && !tabFilterChanged"
+          class="m-0 mb-4 font-sans text-[15px] leading-[1.45] text-muted"
+        >
+          Showing what you told us on the schools step. Change it below to look around.
+        </p>
+        <p v-else-if="tabFilterChanged" class="m-0 mb-4 font-sans text-[15px] leading-[1.45] text-muted">
+          This is just a different view of the area. Your ranking still uses what you told us.
+        </p>
+
+        <div class="mb-6 flex flex-col gap-4 dt:flex-row dt:gap-8">
+          <CheckboxGroup
+            v-model="tabLevels"
+            name="tab-school-levels"
+            legend="Level"
+            show-legend
+            :options="levelOptions"
+          />
+          <CheckboxGroup
+            v-model="tabSectors"
+            name="tab-school-sectors"
+            legend="Kind of school"
+            show-legend
+            :options="sectorOptions"
+          />
+        </div>
+
+        <h3 class="m-0 mb-3 font-sans font-semibold text-[19px] leading-[1.3] text-ink">
+          Every school in {{ area.lga_name }}
+        </h3>
         <div class="flex flex-col gap-5">
           <div v-for="level in schoolLevels" :key="level.level">
-            <h3 class="m-0 mb-2 font-sans font-semibold text-[17px] leading-[1.3] text-ink">
+            <h4 class="m-0 mb-2 font-sans font-semibold text-[17px] leading-[1.3] text-ink">
               {{ level.level }} · {{ level.total }}
-            </h3>
+            </h4>
             <dl class="m-0 flex flex-col gap-2">
               <div class="flex items-baseline justify-between gap-4">
                 <dt class="font-sans text-[16px] text-body">Government</dt>

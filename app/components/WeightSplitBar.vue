@@ -1,5 +1,14 @@
 <script setup lang="ts">
-withDefaults(
+const ALL_ROWS = [
+  { key: 'rent', label: 'Rent', colour: 'bg-data-main' },
+  { key: 'schools', label: 'Schools', colour: 'bg-data-mid' },
+  { key: 'transport', label: 'Train stations', colour: 'bg-data-light' },
+  { key: 'gp_access', label: 'Bulk-billing doctors', colour: 'bg-data-mid' }
+] as const
+
+// A factor worth nothing is left out altogether: listing "Schools 0%" to someone who told us
+// their children are not changing school only raises the question again.
+const props = withDefaults(
   defineProps<{
     split: { rent: number; schools: number; transport: number; gp_access: number }
     /** Set false where the surrounding page already carries the heading. */
@@ -7,13 +16,7 @@ withDefaults(
   }>(),
   { showTitle: true }
 )
-
-const ROWS = [
-  { key: 'rent', label: 'Rent', colour: 'bg-data-main' },
-  { key: 'schools', label: 'Schools', colour: 'bg-data-mid' },
-  { key: 'transport', label: 'Train stations', colour: 'bg-data-light' },
-  { key: 'gp_access', label: 'Bulk-billing doctors', colour: 'bg-data-mid' }
-] as const
+const ROWS = computed(() => ALL_ROWS.filter((r) => props.split[r.key] > 0))
 </script>
 
 <template>
