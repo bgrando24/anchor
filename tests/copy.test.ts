@@ -59,11 +59,37 @@ describe('sentences are plural-safe', () => {
     ])
   })
 
-  it('lettingsLabel reads 0 and 100 as words', () => {
+  it('lettingsLabel reads the extremes as words', () => {
     expect(lettingsLabel(0)).toBe('None')
     expect(lettingsLabel(100)).toBe('All')
-    expect(lettingsLabel(48.9)).toBe('About 1 in 2')
+    expect(lettingsLabel(96)).toBe('Almost all')
+  })
+
+  it('lettingsLabel counts low shares as "1 in n"', () => {
     expect(lettingsLabel(2.6)).toBe('About 1 in 38')
+    expect(lettingsLabel(25)).toBe('About 1 in 4')
+    expect(lettingsLabel(33.3)).toBe('About 1 in 3')
+  })
+
+  it('lettingsLabel counts high shares in tens, never as "1 in 1"', () => {
+    // Every area above about two thirds used to read "About 1 in 1", which says all of them.
+    expect(lettingsLabel(94.7)).toBe('About 9 in 10')
+    expect(lettingsLabel(80)).toBe('About 8 in 10')
+    expect(lettingsLabel(69)).toBe('About 7 in 10')
+    expect(lettingsLabel(48.9)).toBe('About half')
+  })
+
+  it('lettingsLabel never claims all or none of a share that is neither', () => {
+    // Stepped in whole tenths, because adding 0.1 repeatedly drifts past 100 and would
+    // legitimately read "All".
+    for (let tenths = 1; tenths < 1000; tenths++) {
+      const label = lettingsLabel(tenths / 10)
+      expect(label).not.toBe('About 1 in 1')
+      expect(label).not.toBe('About 10 in 10')
+      expect(label).not.toBe('About 0 in 10')
+      expect(label).not.toBe('All')
+      expect(label).not.toBe('None')
+    }
   })
 })
 

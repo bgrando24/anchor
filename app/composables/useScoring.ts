@@ -186,11 +186,20 @@ export function bedroomWord(bedrooms: Bedrooms): string {
   return `${bedrooms}-bedroom`
 }
 
-/** 0 and 100 read as words; everything else as "About 1 in n". */
+/**
+ * Plain English for a share of new leases. "1 in n" only reads correctly while n is 3 or more:
+ * above a third it rounds to "1 in 1", which told people 94.7% was all of them. Past that point
+ * the share is counted in tens instead.
+ */
 export function lettingsLabel(pct: number): string {
   if (pct <= 0) return 'None'
   if (pct >= 100) return 'All'
-  return `About 1 in ${Math.max(1, Math.round(100 / pct))}`
+  if (pct >= 95) return 'Almost all'
+  if (pct > 100 / 3) {
+    if (pct >= 45 && pct <= 55) return 'About half'
+    return `About ${Math.round(pct / 10)} in 10`
+  }
+  return `About 1 in ${Math.round(100 / pct)}`
 }
 
 const HIGH = 20 / 3 // top third of the ranked areas

@@ -27,6 +27,14 @@ function clearSearch() {
   query.value = ''
 }
 
+// A pasted address or a long run of letters has nothing to wrap on, so the "no match" line
+// used to push the page sideways. Break it anywhere, and don't echo more than a name's worth.
+const MAX_ECHO = 48
+const queryEcho = computed(() => {
+  const q = query.value.trim()
+  return q.length > MAX_ECHO ? `${q.slice(0, MAX_ECHO)}\u2026` : q
+})
+
 const canContinue = computed(() => answers.value.currentLga != null)
 </script>
 
@@ -75,8 +83,8 @@ const canContinue = computed(() => answers.value.currentLga != null)
         :model-value="answers.currentLga"
         @update:model-value="selectMatch"
       />
-      <p v-else class="m-0 font-sans text-[16px] leading-[1.5] text-body">
-        No area matches "{{ query.trim() }}". Check the spelling, or choose a region below.
+      <p v-else class="m-0 font-sans text-[16px] leading-[1.5] text-body break-all dt:break-words">
+        No area matches "{{ queryEcho }}". Check the spelling, or choose a region below.
       </p>
     </template>
 
