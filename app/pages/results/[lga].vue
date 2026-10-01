@@ -17,6 +17,7 @@ import { regionLabel } from '~/composables/useLgaData'
 import { orderedLgaTabs, type LgaTabKey } from '~/composables/useLgaTabs'
 import { SCHOOL_LEVELS, SCHOOL_SECTORS, type SchoolLevel, type SchoolSector } from '~/data/options'
 import { schoolsMatching } from '~/composables/useScoring'
+import { summariseAedc } from '~/composables/useAedc'
 
 definePageMeta({ layout: 'results' })
 
@@ -176,6 +177,10 @@ const comparison = computed(() => {
 const tabs = computed(() => orderedLgaTabs(answers.value.weights))
 const activeTab = ref<LgaTabKey>('overview')
 
+// Information, not ranking: the team agreed early that this describes how children in an area
+// are doing and must not feed the score.
+const aedc = computed(() => summariseAedc(area.value?.aedc))
+
 /** Typical weekly rents, with the size the ranking actually used marked. */
 const rentRows = computed(() => {
   const a = area.value
@@ -330,6 +335,27 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         <div class="flex flex-col gap-5">
           <ScoreBar v-for="row in breakdown" :key="row.label" :label="row.label" :value="row.value" :sublabel="row.sub" />
         </div>
+      </section>
+
+      <section v-if="aedc" class="py-[26px] px-4 dt:px-10 border-b border-line">
+        <div class="font-mono font-medium text-[13px] leading-none tracking-[0.08em] uppercase text-muted mb-2">
+          Not part of the ranking
+        </div>
+        <h2 class="m-0 mb-1 font-sans font-semibold text-[21px] leading-[1.3] text-ink">
+          How young children are doing here
+        </h2>
+        <p class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">{{ aedc.sentence }}</p>
+        <AffordabilityChart
+          :series="aedc.shares"
+          :labels="aedc.years"
+          :description="aedc.sentence"
+          title="Children starting school who were assessed as needing extra support, by year"
+        />
+        <p class="m-0 mt-4 font-sans text-[15px] leading-[1.45] text-muted">
+          From the Australian Early Development Census, which their teachers fill in every three
+          years. It describes how children are doing, not how good the schools are.
+          {{ aedc.cohortNote }}
+        </p>
       </section>
     </div>
 
