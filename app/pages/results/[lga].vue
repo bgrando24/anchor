@@ -1,7 +1,18 @@
 <script setup lang="ts">
 import { ArrowLeft } from 'lucide-vue-next'
 import { lettingsLabel, ordinal, stationLabel } from '~/composables/useScoring'
-import { areaSeries, loadAffordabilitySeries, trendWord, type AreaSeries } from '~/composables/useAffordabilitySeries'
+import {
+  areaSeries,
+  BEDROOM_FILTERS,
+  lastYears,
+  loadAffordabilitySeries,
+  recentSentence,
+  THIN_QUARTER,
+  trendOver,
+  typicalLettings,
+  windowSentence,
+  type BedroomKey
+} from '~/composables/useAffordabilitySeries'
 import { regionLabel } from '~/composables/useLgaData'
 import { orderedLgaTabs, type LgaTabKey } from '~/composables/useLgaTabs'
 
@@ -17,20 +28,39 @@ const code = computed(() => Number(route.params.lga))
 const area = computed(() => scored.value.find((s) => s.lga_code === code.value))
 
 // The series is a separate chunk, so the questionnaire pages never pay for it. If it fails to
-// load the section just stays away; the rest of the page does not depend on it.
-const series = ref<AreaSeries | null>(null)
+// load the chart stays away; the wording around it does not depend on the file.
+const seriesFile = ref<Awaited<ReturnType<typeof loadAffordabilitySeries>> | null>(null)
 watch(
   code,
   async (value) => {
     if (!Number.isFinite(value)) return
     try {
-      series.value = areaSeries(await loadAffordabilitySeries(), value)
+      seriesFile.value = await loadAffordabilitySeries()
     } catch {
-      series.value = null
+      seriesFile.value = null
     }
   },
   { immediate: true }
 )
+
+const bedroomFilter = ref<BedroomKey>('all')
+const rangeFilter = ref('all')
+
+const bedroomOptions = BEDROOM_FILTERS.map((f) => ({ value: f.key, label: f.label }))
+const rangeOptions = [
+  { value: 'all', label: 'All years' },
+  { value: '10', label: '10 years' },
+  { value: '5', label: '5 years' }
+]
+
+const rangeYears = computed(() => (rangeFilter.value === 'all' ? null : Number(rangeFilter.value)))
+/** True while the chart shows what the precomputed headline figures describe. */
+const chartAtDefaults = computed(() => bedroomFilter.value === 'all' && rangeYears.value === null)
+
+const series = computed(() =>
+  seriesFile.value ? areaSeries(seriesFile.value, code.value, bedroomFilter.value) : null
+)
+const shownSeries = computed(() => (series.value ? lastYears(series.value, rangeYears.value) : null))
 
 // Built at build time, so the wording is on the page from the first paint. The series below is
 // only what the chart draws.
@@ -61,34 +91,61 @@ const breakdown = computed(() => {
 
 // Both ends of each window are an average across a year, so one noisy quarter in a small area
 // cannot flip the direction the sentence claims.
-/** Always one decimal, so 4 does not read as "4%" alongside "50.2%". */
-const share = (value: number) => `${value.toFixed(1)}%`
-
-const trendSentence = computed(() => {
+const headlineFigures = computed(() => {
   const h = history.value
-  if (!h) return ''
-  // "Stayed about the same" would claim a flat line; this window only compares its two ends, and
-  // an area like Ballarat dipped by thirty points in between before coming back.
-  if (trendWord(h.from, h.to) === 'stayed about the same') {
-    return `It is about where it was in ${h.from_year}, near ${share(h.to)}.`
-  }
-  return `It ${trendWord(h.from, h.to)} from about ${share(h.from)} in ${h.from_year} to ${share(h.to)} in ${h.to_year}.`
+  return h ? { from: h.from, to: h.to, fromYear: h.from_year, toYear: h.to_year } : null
 })
 
-// The long run says what has happened; this says whether it is still happening. Both windows are
-// named, because "the trend" on its own invites the reader to assume the other one.
-const recentSentence = computed(() => {
+/** The area's headline trend: all bedrooms, the whole run. Never changes with the chart filters. */
+const trendSentence = computed(() => (headlineFigures.value ? windowSentence(headlineFigures.value) : ''))
+
+const recentTrendSentence = computed(() => {
   const h = history.value
-  if (!h) return ''
-  const long = trendWord(h.from, h.to)
-  const recent = trendWord(h.recent_from, h.to)
-  if (recent === 'stayed about the same') {
-    // Nothing to add when the long run was flat too; it would just say "near" twice.
-    if (long === 'stayed about the same') return ''
-    return `Over the last ${h.recent_years} years it has held near ${share(h.to)}.`
-  }
-  const turn = recent !== long && long !== 'stayed about the same' ? ', against the longer trend' : ''
-  return `Over the last ${h.recent_years} years it ${recent}${turn}, from about ${share(h.recent_from)} in ${h.recent_year}.`
+  if (!h || !headlineFigures.value) return ''
+  return recentSentence(headlineFigures.value, h.recent_from, h.recent_year, h.recent_years)
+})
+
+/**
+ * The caption under the chart describes what is actually plotted. At the default view that is the
+ * headline figures, which are already on the page before the series file arrives; once a filter is
+ * on it is worked out from the window being shown, so the words and the line always agree.
+ */
+const chartSentence = computed(() => {
+  if (chartAtDefaults.value) return trendSentence.value
+  return shownSeries.value ? windowSentence(trendOver(shownSeries.value)) : ''
+})
+
+const chartRecentSentence = computed(() => (chartAtDefaults.value ? recentTrendSentence.value : ''))
+
+/**
+ * How many rentals a quarter the shown window rests on, and whether that is too few to draw.
+ * A share of two rentals swings fifty points when one of them changes, so those windows get the
+ * number stated instead of a line implying a trend.
+ */
+const shownLettings = computed(() => (shownSeries.value ? typicalLettings(shownSeries.value) : null))
+const tooThinToChart = computed(() => {
+  const lettings = shownLettings.value
+  return lettings !== null && lettings < THIN_QUARTER
+})
+
+const thinNote = computed(() => {
+  if (!tooThinToChart.value) return ''
+  const lettings = Math.max(1, Math.round(shownLettings.value ?? 0))
+  const size = bedroomFilter.value === 'all' ? 'rentals' : `${bedroomLabel.value.toLowerCase()} rentals`
+  const each = lettings === 1 ? 'about one a quarter' : `about ${lettings} a quarter`
+  return `Too few ${size} here to show a trend: ${each}. One of them letting for a different price moves the share by tens of points.`
+})
+
+const bedroomLabel = computed(
+  () => bedroomOptions.find((o) => o.value === bedroomFilter.value)?.label ?? 'All'
+)
+
+/** Names the slice on screen, so a filtered chart is never mistaken for the headline. */
+const chartScope = computed(() => {
+  if (chartAtDefaults.value) return ''
+  const size = bedroomLabel.value === 'All' ? 'All sizes' : `${bedroomLabel.value} homes`
+  const span = rangeYears.value === null ? 'since 2000' : `last ${rangeYears.value} years`
+  return `${size} · ${span}`
 })
 
 const comparison = computed(() => {
@@ -246,18 +303,39 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         <h2 class="m-0 mb-1 font-sans font-semibold text-[21px] leading-[1.3] text-ink">
           Share of new leases that were affordable
         </h2>
-        <p class="m-0 mb-1 font-sans text-[16px] leading-[1.45] text-body">
-          {{ trendSentence }} {{ recentSentence }}
+        <p v-if="chartScope" class="m-0 mb-1 font-mono text-[13px] leading-none tracking-[0.08em] uppercase text-accent">
+          {{ chartScope }}
         </p>
-        <p class="m-0 mb-[18px] font-sans text-[15px] leading-[1.45] text-muted">Each point is one quarter.</p>
-        <!-- Only the drawing waits for the quarterly series; the wording above is already here. -->
-        <AffordabilityChart
-          v-if="series"
-          :series="series.shares"
-          :labels="series.quarters"
-          :description="`${trendSentence} ${recentSentence}`"
-          title="Share of new leases that were affordable, every quarter since 2000"
-        />
+        <p v-if="tooThinToChart" class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">
+          {{ thinNote }}
+        </p>
+        <template v-else>
+          <p class="m-0 mb-1 font-sans text-[16px] leading-[1.45] text-body">
+            {{ chartSentence }} {{ chartRecentSentence }}
+          </p>
+          <p class="m-0 mb-[18px] font-sans text-[15px] leading-[1.45] text-muted">Each point is one quarter.</p>
+        </template>
+
+        <!-- Only the drawing waits for the quarterly series; everything around it is already
+             here, and the box keeps its height so the page does not jump when the line lands. -->
+        <div v-if="!tooThinToChart" class="min-h-[190px]">
+          <AffordabilityChart
+            v-if="shownSeries"
+            :series="shownSeries.shares"
+            :labels="shownSeries.quarters"
+            :description="`${chartSentence} ${chartRecentSentence}`"
+            :title="`Share of new leases that were affordable. ${chartScope || 'All sizes, since 2000'}.`"
+          />
+        </div>
+
+        <div class="mt-5 flex flex-col gap-4 dt:flex-row dt:gap-8">
+          <ChipGroup v-model="bedroomFilter" name="chart-bedrooms" label="Bedrooms" :options="bedroomOptions" />
+          <ChipGroup v-model="rangeFilter" name="chart-range" label="Time" :options="rangeOptions" />
+        </div>
+        <p class="m-0 mt-4 font-sans text-[15px] leading-[1.45] text-muted">
+          The bedroom filter is about the rentals counted here, not the size you told us about.
+          One-bedroom rentals are too few each quarter to chart.
+        </p>
       </section>
 
       <section class="py-[26px] px-4 dt:px-10 border-b border-line">

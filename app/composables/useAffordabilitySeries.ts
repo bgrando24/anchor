@@ -111,16 +111,20 @@ export function trendWord(from: number, to: number, deadband = Math.max(1, from 
   return diff < 0 ? ('fell' as const) : ('rose' as const)
 }
 
-export interface Trend {
+export interface TrendFigures {
   /** The share at the start of the window, averaged over a year. */
   from: number
-  /** The share now, averaged over a year. */
+  /** The share at the end of the window, averaged over a year. */
   to: number
+  /** The year the window opens in, for copy: "since 2020". */
+  fromYear: string
+  toYear: string
+}
+
+export interface Trend extends TrendFigures {
   fromLabel: string
   toLabel: string
   word: 'rose' | 'fell' | 'stayed about the same'
-  /** The year the window opens in, for copy: "since 2020". */
-  fromYear: string
 }
 
 const QUARTERS_PER_YEAR = 4
@@ -141,12 +145,83 @@ export function trendOver(series: AreaSeries, years?: number): Trend {
   const from = Math.round(mean(series.shares.slice(start, start + span)) * 10) / 10
   const to = Math.round(mean(series.shares.slice(-span)) * 10) / 10
   const fromLabel = series.quarters[start]!
+  const toLabel = series.quarters[length - 1]!
   return {
     from,
     to,
     fromLabel,
-    toLabel: series.quarters[length - 1]!,
+    toLabel,
     word: trendWord(from, to),
-    fromYear: fromLabel.split(' ')[1] ?? fromLabel
+    fromYear: fromLabel.split(' ')[1] ?? fromLabel,
+    toYear: toLabel.split(' ')[1] ?? toLabel
   }
+}
+
+/** Trims a series to its most recent years. Null keeps the whole run. */
+export function lastYears(series: AreaSeries, years: number | null): AreaSeries {
+  if (years === null) return series
+  const keep = Math.min(series.quarters.length, Math.max(QUARTERS_PER_YEAR, years * QUARTERS_PER_YEAR))
+  return {
+    quarters: series.quarters.slice(-keep),
+    shares: series.shares.slice(-keep),
+    counts: series.counts.slice(-keep)
+  }
+}
+
+/**
+ * Below this many new lettings a quarter, a share stops meaning anything: one letting moves it
+ * tens of points. Loddon's four-bedroom line swings between 0% and 100% on one to four rentals
+ * a quarter, and smoothing it only turns that into a confident-looking flat 100%.
+ */
+export const THIN_QUARTER = 10
+
+/**
+ * The typical number of new lettings a quarter behind a window.
+ *
+ * The workbook gives the affordable count and the share, so the total is the one divided by the
+ * other. A quarter where nothing was affordable has a zero count and a zero share, which recovers
+ * no total at all, so those quarters are left out rather than counted as empty.
+ */
+export function typicalLettings(series: AreaSeries): number | null {
+  const totals = series.shares
+    .map((share, i) => (share > 0 ? series.counts[i]! / (share / 100) : null))
+    .filter((total): total is number => total !== null)
+  if (!totals.length) return null
+  const sorted = [...totals].sort((a, b) => a - b)
+  const middle = Math.floor(sorted.length / 2)
+  return sorted.length % 2 ? sorted[middle]! : (sorted[middle - 1]! + sorted[middle]!) / 2
+}
+
+/** Always one decimal, so 4 does not read as "4%" alongside "50.2%". */
+export const sharePct = (value: number) => `${value.toFixed(1)}%`
+
+/**
+ * What the window did, in a sentence.
+ *
+ * "Stayed about the same" would claim a flat line, and a window only compares its two ends: an
+ * area like Ballarat dipped thirty points in between before coming back. So the flat case says
+ * where it ended up instead of describing the path.
+ */
+export function windowSentence(figures: TrendFigures): string {
+  const word = trendWord(figures.from, figures.to)
+  if (word === 'stayed about the same') {
+    return `It is about where it was in ${figures.fromYear}, near ${sharePct(figures.to)}.`
+  }
+  return `It ${word} from about ${sharePct(figures.from)} in ${figures.fromYear} to ${sharePct(figures.to)} in ${figures.toYear}.`
+}
+
+/**
+ * Whether the long run is still happening. Both windows are named, because "the trend" on its
+ * own invites the reader to assume the other one.
+ */
+export function recentSentence(longRun: TrendFigures, recentFrom: number, recentYear: string, years: number): string {
+  const longWord = trendWord(longRun.from, longRun.to)
+  const word = trendWord(recentFrom, longRun.to)
+  if (word === 'stayed about the same') {
+    // Nothing to add when the long run was flat too; it would just say "near" twice.
+    if (longWord === 'stayed about the same') return ''
+    return `Over the last ${years} years it has held near ${sharePct(longRun.to)}.`
+  }
+  const turn = word !== longWord && longWord !== 'stayed about the same' ? ', against the longer trend' : ''
+  return `Over the last ${years} years it ${word}${turn}, from about ${sharePct(recentFrom)} in ${recentYear}.`
 }

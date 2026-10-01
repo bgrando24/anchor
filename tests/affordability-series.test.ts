@@ -7,6 +7,11 @@ import {
   pooledShares,
   trendWord,
   trendOver,
+  lastYears,
+  windowSentence,
+  recentSentence,
+  typicalLettings,
+  THIN_QUARTER,
   type BedroomKey
 } from '../app/composables/useAffordabilitySeries'
 import { niceScale } from '../app/composables/useChartScale'
@@ -270,6 +275,149 @@ describe('the trend figures baked into lgas.json', () => {
       const series = areaSeries(file, lga.lga_code)!
       const baked = lga.affordability_history
       expect(trendWord(baked.from as number, baked.to as number), lga.lga_name).toBe(trendOver(series).word)
+    }
+  })
+})
+
+describe('lastYears', () => {
+  const series = () => areaSeries(file, lgas[0]!.lga_code)!
+
+  it('keeps the whole run when no range is asked for', () => {
+    expect(lastYears(series(), null).quarters).toHaveLength(103)
+  })
+
+  it('keeps four quarters per year, from the recent end', () => {
+    const five = lastYears(series(), 5)
+    expect(five.quarters).toHaveLength(20)
+    expect(five.quarters.at(-1)).toBe('Sep 2025')
+    expect(five.shares).toHaveLength(20)
+    expect(five.counts).toHaveLength(20)
+  })
+
+  it('keeps shares, counts and labels lined up after trimming', () => {
+    const full = series()
+    const ten = lastYears(full, 10)
+    expect(ten.shares).toEqual(full.shares.slice(-40))
+    expect(ten.counts).toEqual(full.counts.slice(-40))
+    expect(ten.quarters).toEqual(full.quarters.slice(-40))
+  })
+
+  it('never asks for more data than exists', () => {
+    expect(lastYears(series(), 500).quarters).toHaveLength(103)
+  })
+
+  it('leaves something to draw even for an absurdly short range', () => {
+    expect(lastYears(series(), 0).quarters.length).toBeGreaterThanOrEqual(4)
+  })
+
+  it('trims every real area and size without breaking the chart maths', () => {
+    for (const lga of lgas.slice(0, 10)) {
+      for (const key of ['all', 'br2', 'br3', 'br4'] as BedroomKey[]) {
+        for (const years of [null, 10, 5]) {
+          const trimmed = lastYears(areaSeries(file, lga.lga_code, key)!, years)
+          const { lo, hi } = niceScale(trimmed.shares)
+          expect(hi, `${lga.lga_name}/${key}/${years}`).toBeGreaterThan(lo)
+        }
+      }
+    }
+  })
+})
+
+describe('the sentences under the chart', () => {
+  it('states a fall with both ends and both years', () => {
+    expect(windowSentence({ from: 50.2, to: 4, fromYear: '2000', toYear: '2025' })).toBe(
+      'It fell from about 50.2% in 2000 to 4.0% in 2025.'
+    )
+  })
+
+  it('always gives one decimal, so 4 does not read as "4%"', () => {
+    expect(windowSentence({ from: 50.2, to: 4, fromYear: '2000', toYear: '2025' })).toContain('4.0%')
+  })
+
+  it('says where a flat window ended up instead of claiming a flat line', () => {
+    // Ballarat ran 73.8% to 73.3% but dipped to 45% in between.
+    expect(windowSentence({ from: 73.8, to: 73.3, fromYear: '2000', toYear: '2025' })).toBe(
+      'It is about where it was in 2000, near 73.3%.'
+    )
+  })
+
+  it('flags a recent turn against the longer trend', () => {
+    const long = { from: 86.5, to: 33.8, fromYear: '2000', toYear: '2025' }
+    expect(recentSentence(long, 27.6, '2020', 5)).toBe(
+      'Over the last 5 years it rose, against the longer trend, from about 27.6% in 2020.'
+    )
+  })
+
+  it('does not call a continuation a turn', () => {
+    const long = { from: 50.2, to: 4, fromYear: '2000', toYear: '2025' }
+    expect(recentSentence(long, 15.8, '2020', 5)).toBe('Over the last 5 years it fell, from about 15.8% in 2020.')
+  })
+
+  it('stays quiet when both windows are flat, rather than saying "near" twice', () => {
+    const long = { from: 1.3, to: 1.5, fromYear: '2000', toYear: '2025' }
+    expect(recentSentence(long, 1.8, '2020', 5)).toBe('')
+  })
+
+  it('reads sensibly for every real area at every filter', () => {
+    for (const lga of lgas) {
+      for (const key of ['all', 'br2', 'br3', 'br4'] as BedroomKey[]) {
+        for (const years of [null, 10, 5]) {
+          const trimmed = lastYears(areaSeries(file, lga.lga_code, key)!, years)
+          const sentence = windowSentence(trendOver(trimmed))
+          expect(sentence, `${lga.lga_name}/${key}/${years}`).toMatch(/^It (fell|rose|is about)/)
+          expect(sentence).not.toContain('undefined')
+          expect(sentence).not.toContain('NaN')
+        }
+      }
+    }
+  })
+})
+
+describe('typicalLettings, the guard against charting almost nothing', () => {
+  it('recovers the number of lettings from the count and the share', () => {
+    // 5 affordable at 25% means 20 lettings that quarter.
+    expect(typicalLettings({ quarters: ['a'], shares: [25], counts: [5] })).toBe(20)
+  })
+
+  it('ignores quarters where nothing was affordable, which recover no total', () => {
+    // A zero count at a zero share says nothing about how many lettings there were.
+    expect(typicalLettings({ quarters: ['a', 'b', 'c'], shares: [50, 0, 50], counts: [5, 0, 5] })).toBe(10)
+  })
+
+  it('returns null when no quarter recovers a total at all', () => {
+    expect(typicalLettings({ quarters: ['a', 'b'], shares: [0, 0], counts: [0, 0] })).toBeNull()
+  })
+
+  it('finds the default view solid for nearly every area', () => {
+    const thin = lgas.filter((lga) => {
+      const lettings = typicalLettings(areaSeries(file, lga.lga_code)!)
+      return lettings !== null && lettings < THIN_QUARTER
+    })
+    // Only a tiny borough should fall under the bar at all sizes over the whole run.
+    expect(thin.length).toBeLessThanOrEqual(2)
+  })
+
+  it('catches the four-bedroom views that are too thin to draw', () => {
+    const thin = lgas.filter((lga) => {
+      const lettings = typicalLettings(lastYears(areaSeries(file, lga.lga_code, 'br4')!, 5))
+      return lettings !== null && lettings < THIN_QUARTER
+    })
+    // Loddon, Pyrenees and friends run on one or two four-bedroom rentals a quarter.
+    expect(thin.length).toBeGreaterThanOrEqual(10)
+    expect(thin.map((l) => l.lga_name)).toContain('Loddon')
+  })
+
+  it('flags exactly the windows whose line would be meaningless', () => {
+    // A share built on fewer than ten lettings moves more than ten points per letting.
+    for (const lga of lgas) {
+      for (const key of ['all', 'br2', 'br3', 'br4'] as BedroomKey[]) {
+        const window = lastYears(areaSeries(file, lga.lga_code, key)!, 5)
+        const lettings = typicalLettings(window)
+        if (lettings === null || lettings >= THIN_QUARTER) continue
+        const swings = window.shares.slice(1).map((s, i) => Math.abs(s - window.shares[i]!))
+        const worst = Math.max(...swings)
+        expect(worst, `${lga.lga_name}/${key} was flagged thin but is steady`).toBeGreaterThan(5)
+      }
     }
   })
 })
