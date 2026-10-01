@@ -46,6 +46,7 @@ const canContinue = computed(() => answers.value.currentLga != null)
     </h1>
     <p class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">
       We'll compare other areas with this one. It doesn't change the ranking.
+      <NuxtLink to="/faq#current-area" class="inline-flex items-center min-h-11">Why we ask</NuxtLink>
     </p>
 
     <div class="flex flex-col gap-2">

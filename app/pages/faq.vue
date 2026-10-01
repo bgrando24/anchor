@@ -15,7 +15,7 @@ const items = computed<FaqItem[]>(() => [
     {
         id: "ranking",
         question: "How are areas ranked?",
-        answer: "Each area gets a score. Half of it comes from how much of your income a typical rent there would take. The other half comes from schools, train stations and bulk-billing doctors, weighted by your answers. Areas are grouped by rent first, then ordered by score within each group.",
+        answer: "Each area gets a score. Half of it comes from how much of your income a typical rent there would take. The other half comes from train stations, bulk-billing doctors and, if you told us you might move your children's schools, schools too, weighted by your answers. Areas are grouped by rent first, then ordered by score within each group.",
     },
     {
         id: "affordable",
@@ -40,7 +40,12 @@ const items = computed<FaqItem[]>(() => [
     {
         id: "sources",
         question: "Where does the data come from?",
-        answer: `Rents: Homes Victoria quarterly rental report (${meta.rentQuarter}). Schools: Victorian Department of Education, school locations 2025. Train stations: Department of Transport and Planning. Bulk-billing: Australian Institute of Health and Welfare analysis of Medicare data. Council areas: Australian Bureau of Statistics.`,
+        answer: `Rents and the affordable-lettings trend: Homes Victoria quarterly rental report (${meta.rentQuarter}). Schools: Victorian Department of Education, school locations 2025. Train stations: Department of Transport and Planning. Bulk-billing: Australian Institute of Health and Welfare analysis of Medicare data. Sport facilities and parks: Victorian Government open data. How young children are doing: Australian Early Development Census. Council areas: Australian Bureau of Statistics.`,
+    },
+    {
+        id: "current-area",
+        question: "Why do you ask where I live now?",
+        answer: "Only to compare. Every area's page shows it next to the one you live in now, so a rent or a number of schools has something to sit against. It does not change the ranking, and you can pick any area if you would rather not say.",
     },
     {
         id: "listings",
@@ -55,7 +60,7 @@ const items = computed<FaqItem[]>(() => [
     {
         id: "limits",
         question: "What can't Anchor tell you?",
-        answer: "It doesn't know about your job, your children's schools, family nearby or your health needs. Use the rankings as a starting point.",
+        answer: "It doesn't know about your job, which particular schools you have in mind, family nearby or your health needs. Use the rankings as a starting point.",
     },
 ]);
 
@@ -103,7 +108,7 @@ function toggle(i: number) {
             <h1
                 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]"
             >
-                How it works
+                FAQs
             </h1>
             <p class="m-0 font-sans text-[17px] leading-[1.5] text-body">
                 How the rankings work, where the data comes from, and what

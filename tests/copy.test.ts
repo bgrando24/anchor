@@ -170,3 +170,83 @@ describe('the results sentence when schools do not apply', () => {
     throw new Error('no area produced a schools sentence to check')
   })
 })
+
+describe('the site says one thing about how ranking works', () => {
+  const text = (path: string) => TEMPLATES.find((t) => t.path === path)!.text
+
+  it('tells the same story on the home page as on the results page', () => {
+    // Paul read the home page as promising a ranking on rent alone, while the line under the
+    // button promised four kinds of data. Both pages now describe rent first, then priorities.
+    for (const path of ['app/pages/index.vue', 'app/pages/results/index.vue', 'app/pages/results/print.vue']) {
+      expect(text(path), path).toMatch(/how much of your income the rent would take,?\s*\n?\s*then by what/)
+    }
+  })
+
+  it('does not claim the results are based on four kinds of data equally', () => {
+    expect(text('app/pages/index.vue')).not.toContain('Results are based on')
+  })
+
+  it('credits the data the pages now show', () => {
+    const faq = text('app/pages/faq.vue')
+    for (const source of ['Homes Victoria', 'Department of Education', 'Australian Early Development Census', 'Australian Bureau of Statistics']) {
+      expect(faq, source).toContain(source)
+    }
+  })
+
+  it('answers why the current area is asked for', () => {
+    expect(text('app/pages/faq.vue')).toContain('Why do you ask where I live now?')
+    expect(text('app/pages/location/index.vue')).toContain('/faq#current-area')
+  })
+
+  it('names the FAQ page the same way in the nav and on the page', () => {
+    expect(text('app/components/AppHeader.vue')).toContain('FAQs')
+    expect(text('app/pages/faq.vue')).toContain('>\n                FAQs')
+  })
+})
+
+describe('copy mechanics', () => {
+  it('never lowercases a sentence that starts with a month or a proper noun', () => {
+    // meta.rentQuarter is "September quarter 2025"; lowercasing it printed "september".
+    for (const { path, text } of TEMPLATES) {
+      expect(text, path).not.toMatch(/rentQuarter\.toLowerCase\(\)/)
+    }
+  })
+
+  it('asks about children, not the household, where it means children', () => {
+    const schools = TEMPLATES.find((t) => t.path === 'app/pages/schools.vue')!.text
+    expect(schools).toContain('Do you have children at school?')
+  })
+
+  it('avoids the words that read as filler', () => {
+    const filler = [
+      /\bseamless(ly)?\b/i,
+      /\bdive in\b/i,
+      /\bempower(s|ing)?\b/i,
+      /\bunlock\b/i,
+      /\belevate\b/i,
+      /\bleverage\b/i,
+      /\bgame.?chang(er|ing)\b/i,
+      /\bcutting.edge\b/i,
+      /\bwe've got you covered\b/i,
+      /\bat your fingertips\b/i,
+      /\bembark\b/i,
+      /\bdelve\b/i
+    ]
+    for (const { path, text } of TEMPLATES) {
+      for (const pattern of filler) {
+        expect(text, `${path} matches ${pattern}`).not.toMatch(pattern)
+      }
+    }
+  })
+
+  it('writes in Australian English', () => {
+    const american = [/\borganiz(e|ed|ing|ation)\b/i, /\bcenter\b/i, /\bcolor\b/i, /\bprioritiz/i, /\bneighborhood\b/i]
+    for (const { path, text } of TEMPLATES) {
+      // CSS property names are American by spec; only check prose, so skip style blocks.
+      const prose = text.replace(/<style[\s\S]*?<\/style>/g, '').replace(/class="[^"]*"/g, '')
+      for (const pattern of american) {
+        expect(prose, `${path} matches ${pattern}`).not.toMatch(pattern)
+      }
+    }
+  })
+})

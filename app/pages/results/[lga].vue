@@ -401,7 +401,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         </div>
         <p class="m-0 mt-4 font-sans text-[15px] leading-[1.45] text-muted">
           The bedroom filter is about the rentals counted here, not the size you told us about.
-          One-bedroom rentals are too few each quarter to chart.
+          There are too few one-bedroom rentals each quarter to chart.
         </p>
       </section>
 
@@ -419,7 +419,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
           </div>
         </dl>
         <p class="m-0 mt-4 font-sans text-[15px] leading-[1.45] text-muted">
-          Medians for the {{ meta.rentQuarter.toLowerCase() }}. Sizes with too few rentals to publish show no data.
+          Medians for the {{ meta.rentQuarter }}. Sizes with too few rentals to publish show no data.
         </p>
       </section>
     </div>

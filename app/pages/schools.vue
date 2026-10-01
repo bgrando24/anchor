@@ -82,7 +82,7 @@ const outcome = computed(() => {
       :continue-ready="canContinue"
     />
     <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
-      Does anyone in your household go to school?
+      Do you have children at school?
     </h1>
     <p class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">
       We only ask so we know whether to weigh up schools when we rank areas.

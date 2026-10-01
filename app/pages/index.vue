@@ -19,7 +19,8 @@ const { canInstall } = useInstallPrompt();
             <p class="m-0">
                 Tell us your Centrelink payment, any other income and how many
                 bedrooms you need. We'll rank all 79 council areas in Victoria
-                by how much of your income the rent would take.
+                by how much of your income the rent would take, then by what
+                matters most to you.
             </p>
             <p class="m-0">It takes about two minutes.</p>
         </div>
@@ -41,8 +42,8 @@ const { canInstall } = useInstallPrompt();
             <p
                 class="m-0 font-sans text-[15px] leading-[1.5] text-muted text-center"
             >
-                Results are based on public rent, school, transport and health
-                data.
+                Built from public data on rents, schools, train stations and
+                bulk-billing doctors.
             </p>
         </div>
 
