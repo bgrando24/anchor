@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { niceScale } from '~/composables/useChartScale'
+import { trendWord } from '~/composables/useAffordabilitySeries'
 
 // One series, no legend: the section title names it. The SVG is rendered at its real pixel
 // width (a ResizeObserver sets the viewBox), so labels stay 13-14px at every size.
@@ -9,8 +10,14 @@ const props = withDefaults(
     /** Quarter labels, oldest first. Falls back to "5 years ago" / "Last quarter". */
     labels?: string[] | null
     title: string
+    /**
+     * What the page says about the trend in words. Given one, the chart reads it out instead of
+     * describing itself, so a screen reader hears the same claim the page makes rather than a
+     * second one worked out from the two end quarters.
+     */
+    description?: string | null
   }>(),
-  { labels: null }
+  { labels: null, description: null }
 )
 
 const wrapper = ref<HTMLElement | null>(null)
@@ -53,17 +60,13 @@ const last = computed(() => props.series[props.series.length - 1]!)
 const firstLabel = computed(() => props.labels?.[0] ?? '5 years ago')
 const lastLabel = computed(() => props.labels?.[props.labels.length - 1] ?? 'Last quarter')
 
-const trendWord = computed(() => {
-  const diff = last.value - first.value
-  if (Math.abs(diff) < 0.5) return 'stayed about the same'
-  return diff < 0 ? 'fell' : 'rose'
-})
+const word = computed(() => trendWord(first.value, last.value))
 
-// The same two numbers the caption compares.
-const ariaLabel = computed(
-  () =>
-    `Line chart. The share of new leases that were affordable ${trendWord.value} from ${first.value.toFixed(1)}% in ${firstLabel.value} to ${last.value.toFixed(1)}% in ${lastLabel.value}.`
-)
+// The same two numbers the caption compares, unless the page supplied its own sentence.
+const ariaLabel = computed(() => {
+  if (props.description) return `Line chart. ${props.description}`
+  return `Line chart. The share of new leases that were affordable ${word.value} from ${first.value.toFixed(1)}% in ${firstLabel.value} to ${last.value.toFixed(1)}% in ${lastLabel.value}.`
+})
 
 const active = ref<number | null>(null)
 

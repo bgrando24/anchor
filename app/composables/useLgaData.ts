@@ -9,6 +9,29 @@ export interface LgaRent {
   house_3br: number | null
 }
 
+export interface SchoolSectors {
+  government: number
+  catholic: number
+  independent: number
+}
+
+/**
+ * Schools that teach both levels are counted on both sides, so primary and secondary
+ * never add up to school_count. Show one side, or the total, never the sum.
+ */
+export interface LgaSchools {
+  primary: SchoolSectors
+  secondary: SchoolSectors
+}
+
+/** One Australian Early Development Census round. Suppressed areas have no points at all. */
+export interface AedcPoint {
+  year: number
+  vulnerable_pct: number
+  valid_n: number | null
+  vulnerable_n: number | null
+}
+
 export interface Lga {
   lga_code: number
   lga_name: string
@@ -18,15 +41,26 @@ export interface Lga {
   station_count: number
   bulk_billing_rate: number
   affordable_lettings_pct: number
+  /** Change in the affordable share over the three years to the latest quarter. */
+  affordability_trend_pp: number
+  seifa_irsd: number
+  /** Parks as a share of the area's land. */
+  green_space_pct: number
+  schools: LgaSchools
+  sport_variety: number
+  /** Sport name to the number of facilities for it. */
+  sports: Record<string, number>
+  aedc: AedcPoint[] | null
   rent: LgaRent
   population: number | null
-  lettings_series_5yr: number[] | null
 }
 
 export interface LgaFileMeta {
   source: string
   generated: string
   rentQuarter: string
+  /** The latest quarter in the affordability series, e.g. "Sep 2025". */
+  affordabilityQuarter: string
 }
 
 const DATA = file as unknown as { meta: LgaFileMeta; lgas: Lga[] }
@@ -46,6 +80,14 @@ export const REGION_GROUPS: { area: AreaGroup; regions: string[] }[] = (
   area,
   regions: REGION_ORDER[area].filter((r) => LGAS.some((l) => l.area === area && l.region === r))
 }))
+
+/**
+ * "Hume region" already ends in the word, because the region and the City of Hume would
+ * otherwise read alike. Appending to it gave "Hume region region".
+ */
+export function regionLabel(region: string): string {
+  return /\bregions?$/i.test(region) ? region : `${region} region`
+}
 
 export function useLgaData() {
   const all = LGAS
