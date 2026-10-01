@@ -235,3 +235,41 @@ describe('the chart can draw every real series', () => {
     }
   })
 })
+
+describe('the trend figures baked into lgas.json', () => {
+  // The page states the trend in words from these, so they must say the same thing the chart
+  // draws. If build-data.mjs and the composable ever disagree, this is where it shows up.
+  const areas = (
+    lgaFile as { lgas: { lga_code: number; lga_name: string; affordability_history: Record<string, number | string> }[] }
+  ).lgas
+
+  it('matches the whole-series trend computed from the series itself', () => {
+    for (const lga of areas) {
+      const series = areaSeries(file, lga.lga_code)!
+      const live = trendOver(series)
+      const baked = lga.affordability_history
+      expect(baked.from, `${lga.lga_name} from`).toBeCloseTo(live.from, 1)
+      expect(baked.to, `${lga.lga_name} to`).toBeCloseTo(live.to, 1)
+      expect(baked.from_year, `${lga.lga_name} from_year`).toBe(live.fromYear)
+    }
+  })
+
+  it('matches the five-year window computed from the series itself', () => {
+    for (const lga of areas) {
+      const series = areaSeries(file, lga.lga_code)!
+      const live = trendOver(series, 5)
+      const baked = lga.affordability_history
+      expect(baked.recent_from, `${lga.lga_name} recent_from`).toBeCloseTo(live.from, 1)
+      expect(baked.recent_year, `${lga.lga_name} recent_year`).toBe(live.fromYear)
+      expect(baked.recent_years).toBe(5)
+    }
+  })
+
+  it('agrees with the live series on which way every area went', () => {
+    for (const lga of areas) {
+      const series = areaSeries(file, lga.lga_code)!
+      const baked = lga.affordability_history
+      expect(trendWord(baked.from as number, baked.to as number), lga.lga_name).toBe(trendOver(series).word)
+    }
+  })
+})

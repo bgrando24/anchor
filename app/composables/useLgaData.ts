@@ -24,6 +24,21 @@ export interface LgaSchools {
   secondary: SchoolSectors
 }
 
+/**
+ * The two ends of the affordable-share series and of its last five years, each averaged over a
+ * year. Precomputed at build time so the page can state the trend without waiting for the
+ * quarterly series file.
+ */
+export interface AffordabilityHistory {
+  from: number
+  from_year: string
+  to: number
+  to_year: string
+  recent_from: number
+  recent_year: string
+  recent_years: number
+}
+
 /** One Australian Early Development Census round. Suppressed areas have no points at all. */
 export interface AedcPoint {
   year: number
@@ -43,6 +58,7 @@ export interface Lga {
   affordable_lettings_pct: number
   /** Change in the affordable share over the three years to the latest quarter. */
   affordability_trend_pp: number
+  affordability_history: AffordabilityHistory
   seifa_irsd: number
   /** Parks as a share of the area's land. */
   green_space_pct: number

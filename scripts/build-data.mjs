@@ -18,6 +18,8 @@ const SERIES = resolve(here, '../app/data/affordability-series.json')
 const EXPECTED_ROWS = 79
 const RENT_QUARTER = 'September quarter 2025'
 const AEDC_YEARS = [2009, 2012, 2015, 2018, 2021, 2024]
+const QUARTERS_PER_YEAR = 4
+const RECENT_YEARS = 5
 const SCHOOL_SECTORS = ['Government', 'Catholic', 'Independent']
 
 // The council renamed itself in 2022; the source still carries the old name.
@@ -69,6 +71,31 @@ function wholeOrNull(row, key) {
   if (value === null) return null
   if (!Number.isInteger(value) || value < 0) fail(`${row.lga_name}: ${key} is ${row[key]}, expected a count`)
   return value
+}
+
+/**
+ * The two ends of the whole series and of the last five years, each averaged across a year so a
+ * single quarter cannot set the direction.
+ *
+ * Precomputed here rather than read off the series in the browser, because the page states the
+ * trend in words above the fold and the series file is loaded on demand: deriving it at runtime
+ * would reflow the heading once the file arrived. Only the chart itself needs the full series.
+ * The wording, including what counts as no change, stays in the app so there is one rule for it.
+ */
+function affordabilityHistory(shares, quarters) {
+  const mean = (values) => values.reduce((sum, v) => sum + v, 0) / values.length
+  const span = QUARTERS_PER_YEAR
+  const recentStart = Math.max(0, Math.min(shares.length - span, shares.length - RECENT_YEARS * span))
+  const year = (label) => label.split(' ')[1]
+  return {
+    from: round1(mean(shares.slice(0, span))),
+    from_year: year(quarters[0]),
+    to: round1(mean(shares.slice(-span))),
+    to_year: year(quarters.at(-1)),
+    recent_from: round1(mean(shares.slice(recentStart, recentStart + span))),
+    recent_year: year(quarters[recentStart]),
+    recent_years: RECENT_YEARS
+  }
 }
 
 function schoolBreakdown(row) {
@@ -164,6 +191,10 @@ const lgas = source.map((row) => {
     sport_variety: sportVariety,
     sports: sportsByName,
     aedc: aedc(row),
+    affordability_history: affordabilityHistory(
+      block.all.pct.map((tenths) => tenths / 10),
+      seriesFile.quarters
+    ),
     rent: {
       flat_1br: num(row.flat_1br_median),
       flat_2br: num(row.flat_2br_median),
