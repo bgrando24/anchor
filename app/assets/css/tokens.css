@@ -1,0 +1,166 @@
+/* Dark values are picked separately, not inverted: the navy data hue vanishes on a dark surface. */
+
+:root {
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --bg: #f2eee8;
+  --surface: #faf8f5;
+  --surface-2: #ffffff;
+  --surface-info: #eef2f6;
+  --surface-info-text: #2f5675;
+  --surface-accent-tint: #fff6ef;
+
+  --border: #e4ded4;
+  --border-strong: #d9d2c7;
+  --border-hairline: #ede8e0;
+  /* Raised from #98A4B2 (2.19:1) to clear 3:1 on every light surface. */
+  --border-focus: #6e7a88;
+
+  --ink: #1b2a3a;
+  --body: #55657a;
+  --muted: #6b655c;
+
+  --accent: #a64b1c;
+  --accent-hover: #8e3f15;
+  --accent-on: #ffffff;
+
+  --data-affordability: #1b2a3a;
+  --data-main: #2f5675;
+  --data-mid: #4c7b9e;
+  /* Raised from #7FA8C9 (2.37:1). */
+  --data-light: #5285ac;
+
+  --banner-bg: #fff6ef;
+  --banner-text: #6b4526;
+  --banner-border: #e9dccf;
+
+  --header-band: #1b2a3a;
+  --header-band-text: #ffffff;
+  --header-band-body: #b7c4d2;
+  --header-chip-bg: #28384a;
+  --header-chip-text: #d6e0ea;
+  /* Raised from #4A5D73 (2.16:1). */
+  --header-chip-outline: #8496a9;
+  --header-cta: #e3a97c;
+
+  --mark-bg: #1b2a3a;
+  --mark-text: #ffffff;
+
+  /* Focus rings: the default is for light surfaces, the -on-band value for the navy header,
+     where the default measured 1.88:1. */
+  --focus-ring: #2f5675;
+  --focus-ring-on-band: #d6e0ea;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #141a21;
+  --surface: #1a2129;
+  --surface-2: #222a32;
+  --surface-info: #232f39;
+  --surface-info-text: #9dc1dc;
+  --surface-accent-tint: #31261d;
+
+  --border: #33404c;
+  --border-strong: #3d4853;
+  --border-hairline: #2a333c;
+  --border-focus: #707d89;
+
+  --ink: #e8e4de;
+  --body: #a3aeba;
+  --muted: #8d97a1;
+
+  --accent: #e08a4f;
+  --accent-hover: #ee9b62;
+  --accent-on: #17202b;
+
+  --data-affordability: #b6d0e4;
+  --data-main: #7fa8c9;
+  --data-mid: #5c89ab;
+  --data-light: #6e9cc0;
+
+  --banner-bg: #2a2318;
+  --banner-text: #e4c6a8;
+  --banner-border: #3e3527;
+
+  --header-band: #242e39;
+  --header-band-text: #e8e4de;
+  --header-band-body: #a3aeba;
+  --header-chip-bg: #2e3a46;
+  --header-chip-text: #c7d1da;
+  --header-chip-outline: #8496a9;
+  --header-cta: #e08a4f;
+
+  --mark-bg: #e08a4f;
+  --mark-text: #17202b;
+
+  --focus-ring: #9dc1dc;
+  --focus-ring-on-band: #d6e0ea;
+
+  color-scheme: dark;
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  a:hover {
+    color: var(--accent-hover);
+  }
+
+  :where(a, button, input, select, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* Anything sitting on the navy band needs the light ring instead. */
+  .on-band :where(a, button, input, select, [tabindex]):focus-visible {
+    outline-color: var(--focus-ring-on-band);
+  }
+}
+
+/* The printed sheet is always light, whatever the screen theme is. */
+@media print {
+  :root,
+  :root[data-theme='dark'] {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #ffffff;
+    --surface-info: #eef2f6;
+    --surface-info-text: #2f5675;
+    --border: #e4ded4;
+    --border-strong: #d9d2c7;
+    --border-hairline: #ede8e0;
+    --border-focus: #6e7a88;
+    --ink: #1b2a3a;
+    --body: #55657a;
+    --muted: #6b655c;
+    --data-affordability: #1b2a3a;
+    --data-main: #2f5675;
+    --data-mid: #4c7b9e;
+    --data-light: #5285ac;
+    color-scheme: light;
+  }
+}
