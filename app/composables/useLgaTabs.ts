@@ -1,5 +1,4 @@
-import type { PriorityTier } from '~/data/options'
-import type { PriorityWeights } from './useScoring'
+import type { PriorityWeights, ScoringTier } from './useScoring'
 
 /**
  * The tabs on an area's page, and the order they appear in.
@@ -28,7 +27,8 @@ const LABELS: Record<LgaTabKey, string> = {
 
 const LEAD: LgaTabKey[] = ['overview', 'rent']
 
-const TIER_ORDER: Record<PriorityTier, number> = { a_lot: 0, somewhat: 1, not_much: 2 }
+// "none" means the factor does not apply at all, so its tab goes behind even "not much".
+const TIER_ORDER: Record<ScoringTier, number> = { a_lot: 0, somewhat: 1, not_much: 2, none: 3 }
 
 /**
  * Sport has no weight of its own and sits in the middle on purpose: it is worth a look even

@@ -9,9 +9,21 @@ export type Band = 'within' | 'stretch' | 'hard' | 'out' | 'nodata'
 
 export const BAND_ORDER: Band[] = ['within', 'stretch', 'hard', 'out', 'nodata']
 
-const TIER_WEIGHT: Record<PriorityTier, number> = { not_much: 1, somewhat: 3, a_lot: 6 }
-export const TIER_CODE: Record<PriorityTier, string> = { not_much: 'n', somewhat: 's', a_lot: 'a' }
-export const TIER_FROM_CODE: Record<string, PriorityTier> = { n: 'not_much', s: 'somewhat', a: 'a_lot' }
+/**
+ * "none" is not something the user picks. It is how the scoring says a factor does not apply at
+ * all: schools for a household with no children at school, or none who might change school. At
+ * nought points the existing proportional split hands the whole 50 to the other two factors.
+ */
+export type ScoringTier = PriorityTier | 'none'
+
+const TIER_WEIGHT: Record<ScoringTier, number> = { none: 0, not_much: 1, somewhat: 3, a_lot: 6 }
+export const TIER_CODE: Record<ScoringTier, string> = { none: 'x', not_much: 'n', somewhat: 's', a_lot: 'a' }
+export const TIER_FROM_CODE: Record<string, ScoringTier> = {
+  x: 'none',
+  n: 'not_much',
+  s: 'somewhat',
+  a: 'a_lot'
+}
 
 // Dwelling types with at least N bedrooms, so someone needing 1 can take a cheaper 2-bed flat.
 const DWELLINGS_FOR: Record<Bedrooms, (keyof LgaRent)[]> = {
@@ -28,9 +40,35 @@ const BAND_LIMITS: { limit: number; band: Band }[] = [
 ]
 
 export interface PriorityWeights {
-  schools: PriorityTier
+  schools: ScoringTier
   transport: PriorityTier
   gp_access: PriorityTier
+}
+
+export type SchoolLevelKey = 'primary' | 'secondary'
+export type SchoolSectorKey = 'government' | 'catholic' | 'independent'
+
+/** The kinds of school a household is looking for. */
+export interface SchoolFilter {
+  levels: SchoolLevelKey[]
+  sectors: SchoolSectorKey[]
+}
+
+/**
+ * How many schools in an area are of the kind this household wants.
+ *
+ * With no filter this is every school, which is what the ranking used before the questionnaire
+ * asked. A school teaching both levels is counted in each level it teaches, so choosing both
+ * levels can come to more than school_count; that is how the source counts them, and the page
+ * says so where the numbers are shown.
+ */
+export function schoolsMatching(area: Lga, filter?: SchoolFilter): number {
+  if (!filter || !filter.levels.length || !filter.sectors.length) return area.school_count
+  let total = 0
+  for (const level of filter.levels) {
+    for (const sector of filter.sectors) total += area.schools[level][sector]
+  }
+  return total
 }
 
 /** The lowest published median among dwelling types big enough for this household. */
@@ -66,6 +104,9 @@ export function weightsCode(w: PriorityWeights): string {
 export function prioritySplit(code: string): [number, number, number] {
   const tiers = code.split('').map((c) => TIER_WEIGHT[TIER_FROM_CODE[c]!]!)
   const total = tiers.reduce((a, b) => a + b, 0)
+  // Only schools can be nought, so this cannot happen from the questionnaire; guard anyway so a
+  // hand-edited link divides by zero nowhere.
+  if (total === 0) return [0, 0, 0]
   const raw = tiers.map((t) => (t / total) * 50)
   const points = raw.map(Math.floor)
   const remainder = 50 - points.reduce((a, b) => a + b, 0)
@@ -106,10 +147,12 @@ export interface RankOptions {
   weeklyIncome: number
   bedrooms: Bedrooms
   weights: PriorityWeights
+  /** Omitted, every school counts: that is the ranking before the questionnaire asks about them. */
+  schoolFilter?: SchoolFilter
 }
 
 export function rankAreas(areas: Lga[], options: RankOptions): ScoredLga[] {
-  const { weeklyIncome, bedrooms, weights } = options
+  const { weeklyIncome, bedrooms, weights, schoolFilter } = options
   const code = weightsCode(weights)
   const [wSchools, wTransport, wGp] = prioritySplit(code)
 
@@ -124,7 +167,7 @@ export function rankAreas(areas: Lga[], options: RankOptions): ScoredLga[] {
   const hasPopulation = areas.every((a) => typeof a.population === 'number' && a.population > 0)
   const per10k = (value: number, a: Lga) => (hasPopulation ? (value / a.population!) * 10000 : value)
 
-  const schoolRanks = percentileRank(areas.map((a) => per10k(a.school_count, a)))
+  const schoolRanks = percentileRank(areas.map((a) => per10k(schoolsMatching(a, schoolFilter), a)))
   const stationRanks = percentileRank(areas.map((a) => per10k(a.station_count, a)))
   const gpRanks = percentileRank(areas.map((a) => a.bulk_billing_rate))
 

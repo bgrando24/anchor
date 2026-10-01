@@ -6,6 +6,21 @@ export const PRIORITY_TIERS: { value: PriorityTier; label: string }[] = [
   { value: 'a_lot', label: 'A lot' }
 ]
 
+export type SchoolLevel = 'primary' | 'secondary'
+export type SchoolSector = 'government' | 'catholic' | 'independent'
+
+/** "High school" rather than "secondary", which is what the forms call it, not parents. */
+export const SCHOOL_LEVELS: { value: SchoolLevel; label: string; code: string }[] = [
+  { value: 'primary', label: 'Primary school', code: 'p' },
+  { value: 'secondary', label: 'High school', code: 's' }
+]
+
+export const SCHOOL_SECTORS: { value: SchoolSector; label: string; code: string }[] = [
+  { value: 'government', label: 'Government', code: 'g' },
+  { value: 'catholic', label: 'Catholic', code: 'c' },
+  { value: 'independent', label: 'Independent', code: 'i' }
+]
+
 export interface PriorityFactor {
   key: 'schools' | 'transport' | 'gp_access'
   /** Used in the scoring split box and the detail breakdown. */
