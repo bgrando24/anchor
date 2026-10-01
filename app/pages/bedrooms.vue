@@ -19,7 +19,7 @@ function selectBedrooms(value: string | number) {
 
 <template>
   <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-5">
-    <ProgressBar :current-step="2" back-to="/income" />
+    <ProgressBar :current-step="2" back-to="/income" continue-to="/location" :continue-ready="canContinue" />
     <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
       How many bedrooms do you need?
     </h1>

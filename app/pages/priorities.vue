@@ -23,7 +23,7 @@ const split = computed(() => scoreSplit(answers.value.weights))
 
 <template>
   <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-[22px]">
-    <ProgressBar :current-step="4" :back-to="backTo" />
+    <ProgressBar :current-step="4" :back-to="backTo" continue-to="/results" continue-label="Results" />
     <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
       What matters most to you?
     </h1>

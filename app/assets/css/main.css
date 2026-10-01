@@ -69,6 +69,18 @@
     @apply opacity-50 cursor-not-allowed;
   }
 
+  /* The compact twin of btn-primary, for the step row. Still a 44px touch target. */
+  .btn-primary-sm {
+    @apply inline-flex items-center justify-center min-h-11 px-4 rounded-md bg-accent text-accent-on font-sans font-semibold text-[16px] leading-none cursor-pointer no-underline;
+  }
+  .btn-primary-sm:hover:not(:disabled) {
+    @apply bg-accent-hover;
+  }
+  .btn-primary-sm:disabled,
+  .btn-primary-sm[aria-disabled='true'] {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
   .btn-secondary {
     @apply inline-flex items-center justify-center min-h-[52px] px-5 rounded-md border border-line-focus bg-surface-2 text-ink font-sans font-medium text-[17px] leading-none cursor-pointer no-underline;
   }

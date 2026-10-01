@@ -6,8 +6,19 @@ withDefaults(
     currentStep: number
     total?: number
     backTo?: string
+    /** Where this step continues to. Omit on a step that has no forward action. */
+    continueTo?: string
+    continueLabel?: string
+    /** False greys it out and blocks it, matching the button at the foot of the page. */
+    continueReady?: boolean
   }>(),
-  { total: 4, backTo: undefined }
+  {
+    total: 4,
+    backTo: undefined,
+    continueTo: undefined,
+    continueLabel: 'Continue',
+    continueReady: true
+  }
 )
 </script>
 
@@ -17,7 +28,21 @@ withDefaults(
       <NuxtLink v-if="backTo" :to="backTo" class="icon-button -ml-3 text-body no-underline" aria-label="Back">
         <ArrowLeft :size="22" aria-hidden="true" />
       </NuxtLink>
-      <div class="font-mono font-medium text-[15px] leading-none text-muted">Step {{ currentStep }} of {{ total }}</div>
+      <div class="min-w-0 truncate font-mono font-medium text-[15px] leading-none text-muted">
+        Step {{ currentStep }} of {{ total }}
+      </div>
+      <!-- The same action as the button at the foot of the page. The page can be taller than a
+           phone screen, which left the only way forward below the fold. -->
+      <NuxtLink
+        v-if="continueTo"
+        :to="continueTo"
+        class="btn-primary-sm ml-auto shrink-0"
+        :aria-disabled="!continueReady"
+        :class="{ 'opacity-50 pointer-events-none': !continueReady }"
+        @click="!continueReady && $event.preventDefault()"
+      >
+        {{ continueLabel }}
+      </NuxtLink>
     </div>
     <div class="flex gap-[5px]" role="img" :aria-label="`Step ${currentStep} of ${total}`">
       <div

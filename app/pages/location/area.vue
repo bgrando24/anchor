@@ -19,7 +19,7 @@ const canContinue = computed(() => answers.value.currentLga != null)
 
 <template>
   <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-[18px]">
-    <ProgressBar :current-step="3" back-to="/location" />
+    <ProgressBar :current-step="3" back-to="/location" continue-to="/priorities" :continue-ready="canContinue" />
 
     <NuxtLink
       to="/location"
