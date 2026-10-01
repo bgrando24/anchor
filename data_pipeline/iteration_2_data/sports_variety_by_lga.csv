@@ -1,0 +1,80 @@
+lga_code,lga_name,value
+20110,Alpine,28
+20260,Ararat,20
+20570,Ballarat,37
+20660,Banyule,22
+20740,Bass Coast,24
+20830,Baw Baw,28
+20910,Bayside,18
+21010,Benalla,19
+21110,Boroondara,30
+21180,Brimbank,30
+21270,Buloke,19
+21370,Campaspe,27
+21450,Cardinia,21
+21610,Casey,35
+21670,Central Goldfields,26
+21750,Colac Otway,24
+21830,Corangamite,25
+21890,Darebin,33
+22110,East Gippsland,28
+22170,Frankston,31
+22250,Gannawarra,25
+22310,Glen Eira,29
+22410,Glenelg,30
+22490,Golden Plains,20
+22620,Greater Bendigo,41
+22670,Greater Dandenong,34
+22750,Greater Geelong,38
+22830,Greater Shepparton,32
+22910,Hepburn,19
+22980,Hindmarsh,16
+23110,Hobsons Bay,36
+23190,Horsham,26
+23270,Hume,32
+23350,Indigo,17
+23430,Kingston,30
+23670,Knox,32
+23810,Latrobe,33
+23940,Loddon,13
+24130,Macedon Ranges,26
+24210,Manningham,27
+24250,Mansfield,20
+24330,Maribyrnong,28
+24410,Maroondah,30
+24600,Melbourne,31
+24650,Melton,29
+24780,Mildura,32
+24850,Mitchell,23
+24900,Moira,23
+24970,Monash,34
+25060,Moonee Valley,22
+25150,Moorabool,19
+25250,Moreland,25
+25340,Mornington Peninsula,32
+25430,Mount Alexander,27
+25490,Moyne,16
+25620,Murrindindi,17
+25710,Nillumbik,27
+25810,Northern Grampians,21
+25900,Port Phillip,29
+25990,Pyrenees,10
+26080,Queenscliffe,9
+26170,South Gippsland,27
+26260,Southern Grampians,19
+26350,Stonnington,21
+26430,Strathbogie,18
+26490,Surf Coast,24
+26610,Swan Hill,25
+26670,Towong,9
+26700,Wangaratta,28
+26730,Warrnambool,39
+26810,Wellington,30
+26890,West Wimmera,16
+26980,Whitehorse,27
+27070,Whittlesea,31
+27170,Wodonga,33
+27260,Wyndham,32
+27350,Yarra,25
+27450,Yarra Ranges,25
+27630,Yarriambiack,17

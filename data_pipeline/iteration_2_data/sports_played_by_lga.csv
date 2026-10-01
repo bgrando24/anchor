@@ -1,0 +1,2032 @@
+lga_code,lga_name,sport,facility_count
+20110,Alpine,Aerobics,1
+20110,Alpine,Athletics,1
+20110,Alpine,Australian Rules Football,4
+20110,Alpine,BMX,1
+20110,Alpine,Badminton,1
+20110,Alpine,Baseball,1
+20110,Alpine,Basketball,3
+20110,Alpine,Bocce,1
+20110,Alpine,Cricket,11
+20110,Alpine,Cricket (Indoor),1
+20110,Alpine,Cycling,1
+20110,Alpine,Equestrian,2
+20110,Alpine,Fitness / Gymnasium Workouts,1
+20110,Alpine,Golf,4
+20110,Alpine,Gymnastics,2
+20110,Alpine,Lawn Bowls,4
+20110,Alpine,Motor Cycling,2
+20110,Alpine,Motor Sports,1
+20110,Alpine,Netball,2
+20110,Alpine,Netball (Indoor),1
+20110,Alpine,Skating,3
+20110,Alpine,Soccer,3
+20110,Alpine,Soccer (Indoor Soccer / Futsal),1
+20110,Alpine,Squash / Racquetball,2
+20110,Alpine,Swimming,2
+20110,Alpine,Table Tennis,1
+20110,Alpine,Tennis (Outdoor),7
+20110,Alpine,Volleyball,2
+20260,Ararat,Athletics,1
+20260,Ararat,Australian Rules Football,8
+20260,Ararat,Badminton,1
+20260,Ararat,Basketball,1
+20260,Ararat,Cricket,13
+20260,Ararat,Croquet,1
+20260,Ararat,Cycling,6
+20260,Ararat,Equestrian,1
+20260,Ararat,Fitness / Gymnasium Workouts,1
+20260,Ararat,Golf,6
+20260,Ararat,Hockey,1
+20260,Ararat,Lawn Bowls,6
+20260,Ararat,Motor Cycling,1
+20260,Ararat,Netball,5
+20260,Ararat,Netball (Indoor),1
+20260,Ararat,Shooting Sports,1
+20260,Ararat,Squash / Racquetball,1
+20260,Ararat,Swimming,4
+20260,Ararat,Table Tennis,1
+20260,Ararat,Tennis (Outdoor),14
+20570,Ballarat,Aerobics,14
+20570,Ballarat,Archery,1
+20570,Ballarat,Athletics,4
+20570,Ballarat,Australian Rules Football,17
+20570,Ballarat,BMX,6
+20570,Ballarat,Badminton,1
+20570,Ballarat,Baseball,1
+20570,Ballarat,Basketball,4
+20570,Ballarat,Beach Volleyball,1
+20570,Ballarat,Boxing,1
+20570,Ballarat,Cricket,23
+20570,Ballarat,Cricket (Indoor),1
+20570,Ballarat,Croquet,2
+20570,Ballarat,Cycling,8
+20570,Ballarat,Equestrian,2
+20570,Ballarat,Fitness / Gymnasium Workouts,16
+20570,Ballarat,Golf,4
+20570,Ballarat,Gymnastics,1
+20570,Ballarat,Hockey,1
+20570,Ballarat,Karate,2
+20570,Ballarat,Lawn Bowls,15
+20570,Ballarat,Motor Cycling,1
+20570,Ballarat,Netball,10
+20570,Ballarat,Netball (Indoor),3
+20570,Ballarat,Sailing,1
+20570,Ballarat,Shooting Sports,1
+20570,Ballarat,Skating,1
+20570,Ballarat,Soccer,12
+20570,Ballarat,Soccer (Indoor Soccer / Futsal),2
+20570,Ballarat,Squash / Racquetball,3
+20570,Ballarat,Swimming,10
+20570,Ballarat,Table Tennis,1
+20570,Ballarat,Tae Kwon Do,1
+20570,Ballarat,Ten Pin Bowling,1
+20570,Ballarat,Tennis (Indoor),1
+20570,Ballarat,Tennis (Outdoor),8
+20570,Ballarat,Volleyball,1
+20660,Banyule,Aerobics,1
+20660,Banyule,Athletics,2
+20660,Banyule,Australian Rules Football,26
+20660,Banyule,Badminton,1
+20660,Banyule,Baseball,6
+20660,Banyule,Basketball,2
+20660,Banyule,Boxing,1
+20660,Banyule,Cricket,33
+20660,Banyule,Croquet,1
+20660,Banyule,Equestrian,1
+20660,Banyule,Fitness / Gymnasium Workouts,23
+20660,Banyule,Golf,3
+20660,Banyule,Gymnastics,3
+20660,Banyule,Hockey,1
+20660,Banyule,Lawn Bowls,8
+20660,Banyule,Netball (Indoor),2
+20660,Banyule,Skating,1
+20660,Banyule,Soccer,8
+20660,Banyule,Soccer (Indoor Soccer / Futsal),2
+20660,Banyule,Swimming,4
+20660,Banyule,Tennis (Outdoor),22
+20660,Banyule,Volleyball,1
+20740,Bass Coast,Australian Rules Football,5
+20740,Bass Coast,BMX,2
+20740,Bass Coast,Badminton,1
+20740,Bass Coast,Basketball,7
+20740,Bass Coast,Cricket,10
+20740,Bass Coast,Croquet,2
+20740,Bass Coast,Cycling,3
+20740,Bass Coast,Disk Golf,1
+20740,Bass Coast,Equestrian,3
+20740,Bass Coast,Fitness / Gymnasium Workouts,2
+20740,Bass Coast,Golf,3
+20740,Bass Coast,Lawn Bowls,5
+20740,Bass Coast,Motor Cycling,1
+20740,Bass Coast,Motor Sports,2
+20740,Bass Coast,Netball,5
+20740,Bass Coast,Netball (Indoor),2
+20740,Bass Coast,Sailing,4
+20740,Bass Coast,Shooting Sports,2
+20740,Bass Coast,Skating,4
+20740,Bass Coast,Soccer,4
+20740,Bass Coast,Squash / Racquetball,2
+20740,Bass Coast,Surf Life Saving,4
+20740,Bass Coast,Swimming,2
+20740,Bass Coast,Tennis (Outdoor),11
+20830,Baw Baw,Athletics,1
+20830,Baw Baw,Australian Rules Football,16
+20830,Baw Baw,BMX,3
+20830,Baw Baw,Badminton,4
+20830,Baw Baw,Basketball,6
+20830,Baw Baw,Boxing,2
+20830,Baw Baw,Cricket,25
+20830,Baw Baw,Croquet,2
+20830,Baw Baw,Cycling,9
+20830,Baw Baw,Equestrian,6
+20830,Baw Baw,Fitness / Gymnasium Workouts,9
+20830,Baw Baw,Golf,3
+20830,Baw Baw,Gymnastics,1
+20830,Baw Baw,Hockey,1
+20830,Baw Baw,Karate,1
+20830,Baw Baw,Lawn Bowls,8
+20830,Baw Baw,Martial Arts,2
+20830,Baw Baw,Motor Sports,1
+20830,Baw Baw,Netball,11
+20830,Baw Baw,Netball (Indoor),2
+20830,Baw Baw,Polo,1
+20830,Baw Baw,Shooting Sports,1
+20830,Baw Baw,Skating,4
+20830,Baw Baw,Soccer,6
+20830,Baw Baw,Squash / Racquetball,2
+20830,Baw Baw,Swimming,6
+20830,Baw Baw,Tennis (Outdoor),21
+20830,Baw Baw,Volleyball,2
+20910,Bayside,Athletics,4
+20910,Bayside,Australian Rules Football,18
+20910,Bayside,Baseball,2
+20910,Bayside,Cricket,35
+20910,Bayside,Croquet,3
+20910,Bayside,Fitness / Gymnasium Workouts,24
+20910,Bayside,Golf,8
+20910,Bayside,Gymnastics,1
+20910,Bayside,Hockey,2
+20910,Bayside,Lawn Bowls,14
+20910,Bayside,Netball,2
+20910,Bayside,Sailing,6
+20910,Bayside,Skating,2
+20910,Bayside,Soccer,10
+20910,Bayside,Softball,2
+20910,Bayside,Surf Life Saving,6
+20910,Bayside,Tennis (Indoor),1
+20910,Bayside,Tennis (Outdoor),11
+21010,Benalla,Aerobics,1
+21010,Benalla,Athletics,1
+21010,Benalla,Australian Rules Football,5
+21010,Benalla,Badminton,1
+21010,Benalla,Baseball,1
+21010,Benalla,Basketball,1
+21010,Benalla,Cricket,8
+21010,Benalla,Dancing,1
+21010,Benalla,Equestrian,1
+21010,Benalla,Fitness / Gymnasium Workouts,1
+21010,Benalla,Golf,2
+21010,Benalla,Gymnastics,1
+21010,Benalla,Hockey,1
+21010,Benalla,Lawn Bowls,3
+21010,Benalla,Motor Cycling,1
+21010,Benalla,Netball,6
+21010,Benalla,Soccer,1
+21010,Benalla,Swimming,1
+21010,Benalla,Tennis (Outdoor),5
+21110,Boroondara,Aerobics,12
+21110,Boroondara,Archery,1
+21110,Boroondara,Athletics,1
+21110,Boroondara,Australian Rules Football,20
+21110,Boroondara,BMX,2
+21110,Boroondara,Badminton,2
+21110,Boroondara,Baseball,1
+21110,Boroondara,Basketball,3
+21110,Boroondara,Cricket,38
+21110,Boroondara,Croquet,1
+21110,Boroondara,Cycling,1
+21110,Boroondara,Fitness / Gymnasium Workouts,19
+21110,Boroondara,Golf,3
+21110,Boroondara,Gymnastics,5
+21110,Boroondara,Hockey,2
+21110,Boroondara,Karate,1
+21110,Boroondara,Lacrosse,3
+21110,Boroondara,Lawn Bowls,9
+21110,Boroondara,Netball,1
+21110,Boroondara,Netball (Indoor),2
+21110,Boroondara,Rowing,1
+21110,Boroondara,Rugby Union,2
+21110,Boroondara,Skating,2
+21110,Boroondara,Snooker / Billiards / Pool,1
+21110,Boroondara,Soccer,15
+21110,Boroondara,Soccer (Indoor Soccer / Futsal),2
+21110,Boroondara,Squash / Racquetball,1
+21110,Boroondara,Swimming,4
+21110,Boroondara,Tennis (Outdoor),19
+21110,Boroondara,Volleyball,1
+21180,Brimbank,Athletics,5
+21180,Brimbank,Australian Rules Football,20
+21180,Brimbank,BMX,2
+21180,Brimbank,Baseball,1
+21180,Brimbank,Basketball,34
+21180,Brimbank,Bocce,4
+21180,Brimbank,Boxing,1
+21180,Brimbank,Callisthenics,2
+21180,Brimbank,Cricket,21
+21180,Brimbank,Dancing,6
+21180,Brimbank,Fitness / Gymnasium Workouts,29
+21180,Brimbank,Golf,2
+21180,Brimbank,Gymnastics,2
+21180,Brimbank,Judo,1
+21180,Brimbank,Karate,1
+21180,Brimbank,Lawn Bowls,5
+21180,Brimbank,Martial Arts,4
+21180,Brimbank,Netball,1
+21180,Brimbank,Netball (Indoor),1
+21180,Brimbank,Roller Sports - Other,1
+21180,Brimbank,Skating,1
+21180,Brimbank,Soccer,18
+21180,Brimbank,Softball,2
+21180,Brimbank,Swimming,8
+21180,Brimbank,Table Tennis,1
+21180,Brimbank,Tae Kwon Do,2
+21180,Brimbank,Ten Pin Bowling,1
+21180,Brimbank,Tennis (Indoor),1
+21180,Brimbank,Tennis (Outdoor),13
+21180,Brimbank,Volleyball,1
+21270,Buloke,Archery,1
+21270,Buloke,Australian Rules Football,6
+21270,Buloke,Badminton,1
+21270,Buloke,Basketball,4
+21270,Buloke,Cricket,7
+21270,Buloke,Croquet,3
+21270,Buloke,Equestrian,2
+21270,Buloke,Fitness / Gymnasium Workouts,2
+21270,Buloke,Golf,9
+21270,Buloke,Hockey,4
+21270,Buloke,Lawn Bowls,8
+21270,Buloke,Netball,5
+21270,Buloke,Netball (Indoor),1
+21270,Buloke,Shooting Sports,1
+21270,Buloke,Skating,1
+21270,Buloke,Squash / Racquetball,5
+21270,Buloke,Swimming,7
+21270,Buloke,Tennis (Indoor),1
+21270,Buloke,Tennis (Outdoor),9
+21370,Campaspe,Athletics,1
+21370,Campaspe,Australian Rules Football,16
+21370,Campaspe,BMX,1
+21370,Campaspe,Badminton,5
+21370,Campaspe,Basketball,7
+21370,Campaspe,Carpet Bowls,1
+21370,Campaspe,Cricket,20
+21370,Campaspe,Cricket (Indoor),2
+21370,Campaspe,Croquet,1
+21370,Campaspe,Cycling,4
+21370,Campaspe,Equestrian,5
+21370,Campaspe,Fitness / Gymnasium Workouts,2
+21370,Campaspe,Golf,9
+21370,Campaspe,Gymnastics,1
+21370,Campaspe,Hockey,2
+21370,Campaspe,Lawn Bowls,10
+21370,Campaspe,Netball,15
+21370,Campaspe,Netball (Indoor),4
+21370,Campaspe,Sailing,1
+21370,Campaspe,Shooting Sports,1
+21370,Campaspe,Soccer (Indoor Soccer / Futsal),1
+21370,Campaspe,Squash / Racquetball,2
+21370,Campaspe,Swimming,8
+21370,Campaspe,Table Tennis,2
+21370,Campaspe,Tennis (Indoor),2
+21370,Campaspe,Tennis (Outdoor),19
+21370,Campaspe,Volleyball,3
+21450,Cardinia,Athletics,2
+21450,Cardinia,Australian Rules Football,19
+21450,Cardinia,BMX,8
+21450,Cardinia,Badminton,1
+21450,Cardinia,Baseball,1
+21450,Cardinia,Basketball,3
+21450,Cardinia,Cricket,25
+21450,Cardinia,Cycling,6
+21450,Cardinia,Equestrian,10
+21450,Cardinia,Fitness / Gymnasium Workouts,6
+21450,Cardinia,Golf,5
+21450,Cardinia,Lawn Bowls,5
+21450,Cardinia,Netball,15
+21450,Cardinia,Netball (Indoor),1
+21450,Cardinia,Sailing,1
+21450,Cardinia,Shooting Sports,3
+21450,Cardinia,Skating,6
+21450,Cardinia,Soccer,3
+21450,Cardinia,Soccer (Indoor Soccer / Futsal),1
+21450,Cardinia,Swimming,5
+21450,Cardinia,Tennis (Outdoor),21
+21610,Casey,AFL (Indoor),1
+21610,Casey,Athletics,3
+21610,Casey,Australian Rules Football,35
+21610,Casey,BMX,9
+21610,Casey,Badminton,2
+21610,Casey,Baseball,1
+21610,Casey,Basketball,11
+21610,Casey,Beach Volleyball,2
+21610,Casey,Bocce,2
+21610,Casey,Cricket,44
+21610,Casey,Cricket (Indoor),1
+21610,Casey,Cycling,2
+21610,Casey,Equestrian,4
+21610,Casey,Fitness / Gymnasium Workouts,18
+21610,Casey,Golf,5
+21610,Casey,Gridiron,2
+21610,Casey,Gymnastics,4
+21610,Casey,Hockey,2
+21610,Casey,Karate,1
+21610,Casey,Lawn Bowls,7
+21610,Casey,Netball,14
+21610,Casey,Netball (Indoor),3
+21610,Casey,Rugby League,3
+21610,Casey,Rugby Union,3
+21610,Casey,Sailing,1
+21610,Casey,Skating,1
+21610,Casey,Soccer,14
+21610,Casey,Soccer (Indoor Soccer / Futsal),3
+21610,Casey,Softball,1
+21610,Casey,Squash / Racquetball,1
+21610,Casey,Swimming,5
+21610,Casey,Tae Kwon Do,1
+21610,Casey,Tennis (Indoor),2
+21610,Casey,Tennis (Outdoor),19
+21610,Casey,Volleyball,2
+21670,Central Goldfields,Archery,1
+21670,Central Goldfields,Athletics,2
+21670,Central Goldfields,Australian Rules Football,6
+21670,Central Goldfields,BMX,1
+21670,Central Goldfields,Badminton,2
+21670,Central Goldfields,Basketball,2
+21670,Central Goldfields,Cricket,9
+21670,Central Goldfields,Croquet,1
+21670,Central Goldfields,Cycling,2
+21670,Central Goldfields,Equestrian,2
+21670,Central Goldfields,Fitness / Gymnasium Workouts,1
+21670,Central Goldfields,Golf,3
+21670,Central Goldfields,Gymnastics,1
+21670,Central Goldfields,Hockey,1
+21670,Central Goldfields,Lawn Bowls,5
+21670,Central Goldfields,Netball,5
+21670,Central Goldfields,Netball (Indoor),4
+21670,Central Goldfields,Shooting Sports,1
+21670,Central Goldfields,Soccer,1
+21670,Central Goldfields,Soccer (Indoor Soccer / Futsal),1
+21670,Central Goldfields,Squash / Racquetball,1
+21670,Central Goldfields,Swimming,4
+21670,Central Goldfields,Table Tennis,1
+21670,Central Goldfields,Tae Kwon Do,1
+21670,Central Goldfields,Tennis (Outdoor),8
+21670,Central Goldfields,Volleyball,2
+21750,Colac Otway,Australian Rules Football,12
+21750,Colac Otway,Baseball,1
+21750,Colac Otway,Basketball,2
+21750,Colac Otway,Beach Volleyball,1
+21750,Colac Otway,Cricket,16
+21750,Colac Otway,Cricket (Indoor),1
+21750,Colac Otway,Croquet,1
+21750,Colac Otway,Cycling,3
+21750,Colac Otway,Equestrian,2
+21750,Colac Otway,Fitness / Gymnasium Workouts,3
+21750,Colac Otway,Golf,4
+21750,Colac Otway,Lawn Bowls,5
+21750,Colac Otway,Motor Cycling,1
+21750,Colac Otway,Netball,9
+21750,Colac Otway,Netball (Indoor),1
+21750,Colac Otway,Sailing,2
+21750,Colac Otway,Skating,3
+21750,Colac Otway,Soccer,2
+21750,Colac Otway,Soccer (Indoor Soccer / Futsal),1
+21750,Colac Otway,Squash / Racquetball,2
+21750,Colac Otway,Surf Life Saving,3
+21750,Colac Otway,Swimming,1
+21750,Colac Otway,Tennis (Indoor),1
+21750,Colac Otway,Tennis (Outdoor),26
+21830,Corangamite,Australian Rules Football,9
+21830,Corangamite,Badminton,3
+21830,Corangamite,Basketball,4
+21830,Corangamite,Cricket,16
+21830,Corangamite,Croquet,1
+21830,Corangamite,Cycling,3
+21830,Corangamite,Equestrian,5
+21830,Corangamite,Fitness / Gymnasium Workouts,2
+21830,Corangamite,Golf,6
+21830,Corangamite,Hockey,1
+21830,Corangamite,Lawn Bowls,8
+21830,Corangamite,Martial Arts,1
+21830,Corangamite,Motor Sports,1
+21830,Corangamite,Netball,9
+21830,Corangamite,Netball (Indoor),4
+21830,Corangamite,Sailing,1
+21830,Corangamite,Skating,6
+21830,Corangamite,Soccer,1
+21830,Corangamite,Soccer (Indoor Soccer / Futsal),3
+21830,Corangamite,Squash / Racquetball,2
+21830,Corangamite,Surf Life Saving,1
+21830,Corangamite,Swimming,6
+21830,Corangamite,Table Tennis,1
+21830,Corangamite,Tennis (Outdoor),11
+21830,Corangamite,Volleyball,1
+21890,Darebin,Aerobics,6
+21890,Darebin,Athletics,1
+21890,Darebin,Australian Rules Football,13
+21890,Darebin,BMX,3
+21890,Darebin,Badminton,1
+21890,Darebin,Baseball,1
+21890,Darebin,Basketball,3
+21890,Darebin,Beach Volleyball,1
+21890,Darebin,Boxing,2
+21890,Darebin,Carpet Bowls,2
+21890,Darebin,Cricket,20
+21890,Darebin,Cricket (Indoor),1
+21890,Darebin,Cycling,2
+21890,Darebin,Fitness / Gymnasium Workouts,7
+21890,Darebin,Golf,3
+21890,Darebin,Gridiron,1
+21890,Darebin,Gymnastics,3
+21890,Darebin,Hockey,1
+21890,Darebin,Inline Hockey,1
+21890,Darebin,Lawn Bowls,6
+21890,Darebin,Netball,5
+21890,Darebin,Netball (Indoor),2
+21890,Darebin,Rugby Union,1
+21890,Darebin,Skating,3
+21890,Darebin,Soccer,13
+21890,Darebin,Soccer (Indoor Soccer / Futsal),1
+21890,Darebin,Softball,1
+21890,Darebin,Squash / Racquetball,1
+21890,Darebin,Swimming,2
+21890,Darebin,Ten Pin Bowling,1
+21890,Darebin,Tennis (Outdoor),12
+21890,Darebin,Volleyball,2
+21890,Darebin,Wheelchair Sports,1
+22110,East Gippsland,Athletics,1
+22110,East Gippsland,Australian Rules Football,16
+22110,East Gippsland,BMX,2
+22110,East Gippsland,Basketball,2
+22110,East Gippsland,Boxing,1
+22110,East Gippsland,Carpet Bowls,1
+22110,East Gippsland,Cricket,24
+22110,East Gippsland,Croquet,2
+22110,East Gippsland,Cycling,10
+22110,East Gippsland,Equestrian,10
+22110,East Gippsland,Fitness / Gymnasium Workouts,5
+22110,East Gippsland,Golf,11
+22110,East Gippsland,Gymnastics,1
+22110,East Gippsland,Hockey,1
+22110,East Gippsland,Lawn Bowls,12
+22110,East Gippsland,Motor Cycling,1
+22110,East Gippsland,Motor Sports,2
+22110,East Gippsland,Netball,15
+22110,East Gippsland,Rowing,1
+22110,East Gippsland,Sailing,2
+22110,East Gippsland,Shooting Sports,3
+22110,East Gippsland,Skating,4
+22110,East Gippsland,Soccer,3
+22110,East Gippsland,Squash / Racquetball,3
+22110,East Gippsland,Surf Life Saving,4
+22110,East Gippsland,Swimming,5
+22110,East Gippsland,Table Tennis,3
+22110,East Gippsland,Tennis (Outdoor),23
+22170,Frankston,AFL (Indoor),1
+22170,Frankston,Archery,1
+22170,Frankston,Athletics,4
+22170,Frankston,Australian Rules Football,17
+22170,Frankston,BMX,1
+22170,Frankston,Badminton,1
+22170,Frankston,Baseball,2
+22170,Frankston,Basketball,2
+22170,Frankston,Beach Volleyball,1
+22170,Frankston,Cricket,23
+22170,Frankston,Cricket (Indoor),2
+22170,Frankston,Croquet,1
+22170,Frankston,Equestrian,2
+22170,Frankston,Fitness / Gymnasium Workouts,22
+22170,Frankston,Golf,6
+22170,Frankston,Gymnastics,2
+22170,Frankston,Hockey,1
+22170,Frankston,Lawn Bowls,9
+22170,Frankston,Motor Sports,1
+22170,Frankston,Netball,2
+22170,Frankston,Netball (Indoor),2
+22170,Frankston,Rugby Union,1
+22170,Frankston,Sailing,1
+22170,Frankston,Shooting Sports,1
+22170,Frankston,Skating,3
+22170,Frankston,Soccer,8
+22170,Frankston,Soccer (Indoor Soccer / Futsal),2
+22170,Frankston,Softball,1
+22170,Frankston,Surf Life Saving,2
+22170,Frankston,Swimming,4
+22170,Frankston,Tennis (Outdoor),15
+22250,Gannawarra,Athletics,1
+22250,Gannawarra,Australian Rules Football,8
+22250,Gannawarra,Badminton,2
+22250,Gannawarra,Basketball,2
+22250,Gannawarra,Cricket,9
+22250,Gannawarra,Cricket (Indoor),1
+22250,Gannawarra,Croquet,1
+22250,Gannawarra,Dancing,1
+22250,Gannawarra,Equestrian,3
+22250,Gannawarra,Golf,5
+22250,Gannawarra,Gymnastics,1
+22250,Gannawarra,Hockey,1
+22250,Gannawarra,Jet Skiing,1
+22250,Gannawarra,Lawn Bowls,6
+22250,Gannawarra,Modern Pentathlon,1
+22250,Gannawarra,Netball,8
+22250,Gannawarra,Netball (Indoor),1
+22250,Gannawarra,Sailing,1
+22250,Gannawarra,Shooting Sports,3
+22250,Gannawarra,Skating,1
+22250,Gannawarra,Soccer (Indoor Soccer / Futsal),1
+22250,Gannawarra,Squash / Racquetball,1
+22250,Gannawarra,Swimming,6
+22250,Gannawarra,Tennis (Outdoor),14
+22250,Gannawarra,Water Skiing,3
+22310,Glen Eira,Athletics,1
+22310,Glen Eira,Australian Rules Football,13
+22310,Glen Eira,Badminton,2
+22310,Glen Eira,Baseball,1
+22310,Glen Eira,Basketball,1
+22310,Glen Eira,Beach Volleyball,1
+22310,Glen Eira,Bocce,1
+22310,Glen Eira,Cricket,18
+22310,Glen Eira,Croquet,2
+22310,Glen Eira,Cycling,1
+22310,Glen Eira,Dancing,1
+22310,Glen Eira,Diving,1
+22310,Glen Eira,Fitness / Gymnasium Workouts,17
+22310,Glen Eira,Golf,1
+22310,Glen Eira,Gymnastics,4
+22310,Glen Eira,Lacrosse,1
+22310,Glen Eira,Lawn Bowls,13
+22310,Glen Eira,Martial Arts,2
+22310,Glen Eira,Netball,1
+22310,Glen Eira,Netball (Indoor),1
+22310,Glen Eira,Skating,1
+22310,Glen Eira,Snooker / Billiards / Pool,1
+22310,Glen Eira,Soccer,8
+22310,Glen Eira,Soccer (Indoor Soccer / Futsal),1
+22310,Glen Eira,Softball,1
+22310,Glen Eira,Squash / Racquetball,1
+22310,Glen Eira,Swimming,2
+22310,Glen Eira,Tae Kwon Do,1
+22310,Glen Eira,Tennis (Outdoor),20
+22410,Glenelg,Archery,1
+22410,Glenelg,Athletics,2
+22410,Glenelg,Australian Rules Football,11
+22410,Glenelg,BMX,1
+22410,Glenelg,Badminton,1
+22410,Glenelg,Baseball,1
+22410,Glenelg,Basketball,3
+22410,Glenelg,Boxing,1
+22410,Glenelg,Cricket,13
+22410,Glenelg,Croquet,2
+22410,Glenelg,Equestrian,4
+22410,Glenelg,Fitness / Gymnasium Workouts,1
+22410,Glenelg,Go Karting,1
+22410,Glenelg,Golf,5
+22410,Glenelg,Gymnastics,1
+22410,Glenelg,Hockey,3
+22410,Glenelg,Lawn Bowls,5
+22410,Glenelg,Motor Sports,1
+22410,Glenelg,Netball,9
+22410,Glenelg,Polocrosse,2
+22410,Glenelg,Sailing,1
+22410,Glenelg,Shooting Sports,9
+22410,Glenelg,Soccer,1
+22410,Glenelg,Squash / Racquetball,3
+22410,Glenelg,Surf Life Saving,2
+22410,Glenelg,Swimming,4
+22410,Glenelg,Table Tennis,1
+22410,Glenelg,Tennis (Outdoor),12
+22410,Glenelg,Touch Football,1
+22410,Glenelg,Water Skiing,1
+22490,Golden Plains,Athletics,1
+22490,Golden Plains,Australian Rules Football,9
+22490,Golden Plains,BMX,9
+22490,Golden Plains,Badminton,3
+22490,Golden Plains,Basketball,5
+22490,Golden Plains,Carpet Bowls,3
+22490,Golden Plains,Cricket,13
+22490,Golden Plains,Cycling,6
+22490,Golden Plains,Dancing,1
+22490,Golden Plains,Equestrian,2
+22490,Golden Plains,Fitness / Gymnasium Workouts,1
+22490,Golden Plains,Golf,4
+22490,Golden Plains,Gymnastics,2
+22490,Golden Plains,Lawn Bowls,3
+22490,Golden Plains,Netball,5
+22490,Golden Plains,Netball (Indoor),5
+22490,Golden Plains,Skating,10
+22490,Golden Plains,Soccer,1
+22490,Golden Plains,Soccer (Indoor Soccer / Futsal),2
+22490,Golden Plains,Tennis (Outdoor),23
+22620,Greater Bendigo,Athletics,1
+22620,Greater Bendigo,Australian Rules Football,25
+22620,Greater Bendigo,BMX,7
+22620,Greater Bendigo,Badminton,2
+22620,Greater Bendigo,Baseball,3
+22620,Greater Bendigo,Basketball,4
+22620,Greater Bendigo,Beach Volleyball,1
+22620,Greater Bendigo,Body Building,1
+22620,Greater Bendigo,Boxing,1
+22620,Greater Bendigo,Cricket,37
+22620,Greater Bendigo,Cricket (Indoor),1
+22620,Greater Bendigo,Croquet,4
+22620,Greater Bendigo,Cycling,4
+22620,Greater Bendigo,Dancing,1
+22620,Greater Bendigo,Equestrian,7
+22620,Greater Bendigo,Fitness / Gymnasium Workouts,12
+22620,Greater Bendigo,Golf,10
+22620,Greater Bendigo,Gymnastics,3
+22620,Greater Bendigo,Hockey,2
+22620,Greater Bendigo,Lacrosse,1
+22620,Greater Bendigo,Lawn Bowls,17
+22620,Greater Bendigo,Martial Arts,1
+22620,Greater Bendigo,Motor Cycling,1
+22620,Greater Bendigo,Netball,14
+22620,Greater Bendigo,Netball (Indoor),4
+22620,Greater Bendigo,Rock Climbing / Abseiling (Indoor),1
+22620,Greater Bendigo,Rowing,1
+22620,Greater Bendigo,Sailing,1
+22620,Greater Bendigo,Shooting Sports,1
+22620,Greater Bendigo,Skating,6
+22620,Greater Bendigo,Snooker / Billiards / Pool,1
+22620,Greater Bendigo,Soccer,5
+22620,Greater Bendigo,Soccer (Indoor Soccer / Futsal),2
+22620,Greater Bendigo,Squash / Racquetball,1
+22620,Greater Bendigo,Swimming,13
+22620,Greater Bendigo,Table Tennis,1
+22620,Greater Bendigo,Tennis (Indoor),1
+22620,Greater Bendigo,Tennis (Outdoor),33
+22620,Greater Bendigo,Touch Football,1
+22620,Greater Bendigo,Volleyball,2
+22620,Greater Bendigo,Water Polo,1
+22670,Greater Dandenong,Athletics,2
+22670,Greater Dandenong,Australian Rules Football,13
+22670,Greater Dandenong,BMX,1
+22670,Greater Dandenong,Badminton,2
+22670,Greater Dandenong,Baseball,1
+22670,Greater Dandenong,Basketball,3
+22670,Greater Dandenong,Carpet Bowls,1
+22670,Greater Dandenong,Cricket,20
+22670,Greater Dandenong,Cricket (Indoor),1
+22670,Greater Dandenong,Croquet,1
+22670,Greater Dandenong,Cycling,1
+22670,Greater Dandenong,Equestrian,1
+22670,Greater Dandenong,Fitness / Gymnasium Workouts,8
+22670,Greater Dandenong,Gaelic Football,1
+22670,Greater Dandenong,Golf,2
+22670,Greater Dandenong,Gymnastics,2
+22670,Greater Dandenong,Hockey,1
+22670,Greater Dandenong,Lawn Bowls,7
+22670,Greater Dandenong,Motor Sports,1
+22670,Greater Dandenong,Netball,2
+22670,Greater Dandenong,Netball (Indoor),2
+22670,Greater Dandenong,Rugby League,1
+22670,Greater Dandenong,Shooting Sports,2
+22670,Greater Dandenong,Skating,1
+22670,Greater Dandenong,Soccer,16
+22670,Greater Dandenong,Soccer (Indoor Soccer / Futsal),2
+22670,Greater Dandenong,Softball,1
+22670,Greater Dandenong,Squash / Racquetball,2
+22670,Greater Dandenong,Swimming,3
+22670,Greater Dandenong,Table Tennis,1
+22670,Greater Dandenong,Tennis (Indoor),2
+22670,Greater Dandenong,Tennis (Outdoor),13
+22670,Greater Dandenong,Volleyball,2
+22670,Greater Dandenong,Water Skiing,1
+22750,Greater Geelong,Archery,1
+22750,Greater Geelong,Athletics,3
+22750,Greater Geelong,Australian Rules Football,37
+22750,Greater Geelong,BMX,3
+22750,Greater Geelong,Badminton,2
+22750,Greater Geelong,Baseball,4
+22750,Greater Geelong,Basketball,3
+22750,Greater Geelong,Bocce,2
+22750,Greater Geelong,Boxing,1
+22750,Greater Geelong,Cricket,51
+22750,Greater Geelong,Cricket (Indoor),2
+22750,Greater Geelong,Croquet,2
+22750,Greater Geelong,Cycling,11
+22750,Greater Geelong,Equestrian,8
+22750,Greater Geelong,Fitness / Gymnasium Workouts,43
+22750,Greater Geelong,Golf,13
+22750,Greater Geelong,Gridiron,1
+22750,Greater Geelong,Gymnastics,3
+22750,Greater Geelong,Hockey,1
+22750,Greater Geelong,Karate,2
+22750,Greater Geelong,Lawn Bowls,14
+22750,Greater Geelong,Martial Arts,1
+22750,Greater Geelong,Motor Sports,3
+22750,Greater Geelong,Netball,24
+22750,Greater Geelong,Netball (Indoor),5
+22750,Greater Geelong,Rugby Union,1
+22750,Greater Geelong,Sailing,5
+22750,Greater Geelong,Shooting Sports,3
+22750,Greater Geelong,Soccer,13
+22750,Greater Geelong,Soccer (Indoor Soccer / Futsal),4
+22750,Greater Geelong,Softball,2
+22750,Greater Geelong,Squash / Racquetball,2
+22750,Greater Geelong,Surf Life Saving,3
+22750,Greater Geelong,Swimming,6
+22750,Greater Geelong,Table Tennis,1
+22750,Greater Geelong,Tae Kwon Do,1
+22750,Greater Geelong,Tennis (Outdoor),38
+22750,Greater Geelong,Volleyball,3
+22830,Greater Shepparton,Aerobics,11
+22830,Greater Shepparton,Athletics,1
+22830,Greater Shepparton,Australian Rules Football,19
+22830,Greater Shepparton,BMX,4
+22830,Greater Shepparton,Badminton,2
+22830,Greater Shepparton,Baseball,1
+22830,Greater Shepparton,Basketball,2
+22830,Greater Shepparton,Cricket,21
+22830,Greater Shepparton,Cricket (Indoor),2
+22830,Greater Shepparton,Croquet,2
+22830,Greater Shepparton,Cycling,3
+22830,Greater Shepparton,Equestrian,1
+22830,Greater Shepparton,Fitness / Gymnasium Workouts,11
+22830,Greater Shepparton,Golf,7
+22830,Greater Shepparton,Gymnastics,2
+22830,Greater Shepparton,Hockey,1
+22830,Greater Shepparton,Lawn Bowls,13
+22830,Greater Shepparton,Martial Arts,1
+22830,Greater Shepparton,Motor Cycling,1
+22830,Greater Shepparton,Netball,15
+22830,Greater Shepparton,Netball (Indoor),3
+22830,Greater Shepparton,Roller Sports - Other,2
+22830,Greater Shepparton,Shooting Sports,2
+22830,Greater Shepparton,Skating,3
+22830,Greater Shepparton,Soccer,6
+22830,Greater Shepparton,Soccer (Indoor Soccer / Futsal),1
+22830,Greater Shepparton,Swimming,5
+22830,Greater Shepparton,Table Tennis,2
+22830,Greater Shepparton,Tae Kwon Do,1
+22830,Greater Shepparton,Tennis (Outdoor),22
+22830,Greater Shepparton,Touch Football,1
+22830,Greater Shepparton,Volleyball,2
+22910,Hepburn,Australian Rules Football,8
+22910,Hepburn,BMX,1
+22910,Hepburn,Badminton,2
+22910,Hepburn,Basketball,2
+22910,Hepburn,Cricket,9
+22910,Hepburn,Cycling,1
+22910,Hepburn,Equestrian,2
+22910,Hepburn,Golf,4
+22910,Hepburn,Lawn Bowls,5
+22910,Hepburn,Netball,7
+22910,Hepburn,Netball (Indoor),2
+22910,Hepburn,Skating,2
+22910,Hepburn,Soccer,3
+22910,Hepburn,Soccer (Indoor Soccer / Futsal),1
+22910,Hepburn,Squash / Racquetball,1
+22910,Hepburn,Swimming,4
+22910,Hepburn,Table Tennis,1
+22910,Hepburn,Tennis (Outdoor),6
+22910,Hepburn,Volleyball,1
+22980,Hindmarsh,Australian Rules Football,4
+22980,Hindmarsh,Badminton,2
+22980,Hindmarsh,Basketball,2
+22980,Hindmarsh,Cricket,4
+22980,Hindmarsh,Equestrian,1
+22980,Hindmarsh,Fitness / Gymnasium Workouts,3
+22980,Hindmarsh,Golf,5
+22980,Hindmarsh,Hockey,3
+22980,Hindmarsh,Lawn Bowls,4
+22980,Hindmarsh,Netball,4
+22980,Hindmarsh,Rowing,1
+22980,Hindmarsh,Soccer,1
+22980,Hindmarsh,Squash / Racquetball,1
+22980,Hindmarsh,Swimming,4
+22980,Hindmarsh,Tennis (Outdoor),5
+22980,Hindmarsh,Volleyball,1
+23110,Hobsons Bay,AFL (Indoor),1
+23110,Hobsons Bay,Athletics,2
+23110,Hobsons Bay,Australian Rules Football,10
+23110,Hobsons Bay,BMX,1
+23110,Hobsons Bay,Badminton,1
+23110,Hobsons Bay,Baseball,4
+23110,Hobsons Bay,Basketball,4
+23110,Hobsons Bay,Beach Volleyball,1
+23110,Hobsons Bay,Bocce,1
+23110,Hobsons Bay,Carpet Bowls,1
+23110,Hobsons Bay,Cricket,25
+23110,Hobsons Bay,Cricket (Indoor),1
+23110,Hobsons Bay,Croquet,1
+23110,Hobsons Bay,Equestrian,2
+23110,Hobsons Bay,Fitness / Gymnasium Workouts,12
+23110,Hobsons Bay,Golf,3
+23110,Hobsons Bay,Gymnastics,1
+23110,Hobsons Bay,Hockey,1
+23110,Hobsons Bay,Lacrosse,4
+23110,Hobsons Bay,Lawn Bowls,7
+23110,Hobsons Bay,Netball,5
+23110,Hobsons Bay,Netball (Indoor),2
+23110,Hobsons Bay,Rock Climbing / Abseiling (Indoor),1
+23110,Hobsons Bay,Rugby League,1
+23110,Hobsons Bay,Rugby Union,1
+23110,Hobsons Bay,Sailing,4
+23110,Hobsons Bay,Skating,1
+23110,Hobsons Bay,Soccer,8
+23110,Hobsons Bay,Soccer (Indoor Soccer / Futsal),1
+23110,Hobsons Bay,Softball,1
+23110,Hobsons Bay,Surf Life Saving,2
+23110,Hobsons Bay,Swimming,3
+23110,Hobsons Bay,Ten Pin Bowling,1
+23110,Hobsons Bay,Tennis (Indoor),1
+23110,Hobsons Bay,Tennis (Outdoor),11
+23110,Hobsons Bay,Touch Football,1
+23190,Horsham,Athletics,1
+23190,Horsham,Australian Rules Football,10
+23190,Horsham,Basketball,1
+23190,Horsham,Cricket,12
+23190,Horsham,Croquet,2
+23190,Horsham,Cycling,1
+23190,Horsham,Equestrian,1
+23190,Horsham,Fitness / Gymnasium Workouts,1
+23190,Horsham,Golf,6
+23190,Horsham,Gymnastics,1
+23190,Horsham,Hockey,2
+23190,Horsham,Lawn Bowls,6
+23190,Horsham,Motor Cycling,2
+23190,Horsham,Motor Sports,1
+23190,Horsham,Netball,7
+23190,Horsham,Netball (Indoor),1
+23190,Horsham,Rowing,1
+23190,Horsham,Sailing,2
+23190,Horsham,Shooting Sports,3
+23190,Horsham,Skating,2
+23190,Horsham,Soccer,2
+23190,Horsham,Softball,1
+23190,Horsham,Swimming,1
+23190,Horsham,Tennis (Outdoor),12
+23190,Horsham,Volleyball,1
+23190,Horsham,Water Skiing,1
+23270,Hume,Aerobics,11
+23270,Hume,Athletics,2
+23270,Hume,Australian Rules Football,21
+23270,Hume,BMX,3
+23270,Hume,Badminton,1
+23270,Hume,Basketball,8
+23270,Hume,Beach Volleyball,1
+23270,Hume,Bocce,1
+23270,Hume,Callisthenics,2
+23270,Hume,Carpet Bowls,2
+23270,Hume,Cricket,32
+23270,Hume,Cricket (Indoor),3
+23270,Hume,Cycling,1
+23270,Hume,Equestrian,3
+23270,Hume,Fitness / Gymnasium Workouts,16
+23270,Hume,Golf,3
+23270,Hume,Gymnastics,1
+23270,Hume,Lawn Bowls,4
+23270,Hume,Martial Arts,1
+23270,Hume,Netball,3
+23270,Hume,Netball (Indoor),6
+23270,Hume,Rugby League,3
+23270,Hume,Rugby Union,1
+23270,Hume,Skating,1
+23270,Hume,Soccer,12
+23270,Hume,Soccer (Indoor Soccer / Futsal),3
+23270,Hume,Softball,1
+23270,Hume,Squash / Racquetball,2
+23270,Hume,Swimming,4
+23270,Hume,Tae Kwon Do,4
+23270,Hume,Tennis (Outdoor),12
+23270,Hume,Volleyball,2
+23350,Indigo,Australian Rules Football,7
+23350,Indigo,Cricket,8
+23350,Indigo,Croquet,1
+23350,Indigo,Cycling,3
+23350,Indigo,Equestrian,1
+23350,Indigo,Fitness / Gymnasium Workouts,1
+23350,Indigo,Golf,5
+23350,Indigo,Hockey,1
+23350,Indigo,Lawn Bowls,5
+23350,Indigo,Motor Sports,1
+23350,Indigo,Netball,6
+23350,Indigo,Shooting Sports,1
+23350,Indigo,Skating,2
+23350,Indigo,Soccer,1
+23350,Indigo,Squash / Racquetball,1
+23350,Indigo,Swimming,4
+23350,Indigo,Tennis (Outdoor),9
+23430,Kingston,Archery,1
+23430,Kingston,Athletics,3
+23430,Kingston,Australian Rules Football,19
+23430,Kingston,Baseball,4
+23430,Kingston,Basketball,2
+23430,Kingston,Cricket,28
+23430,Kingston,Cycling,3
+23430,Kingston,Equestrian,1
+23430,Kingston,Fencing,1
+23430,Kingston,Fitness / Gymnasium Workouts,13
+23430,Kingston,Golf,11
+23430,Kingston,Gymnastics,3
+23430,Kingston,Hockey,3
+23430,Kingston,Karate,1
+23430,Kingston,Lawn Bowls,8
+23430,Kingston,Martial Arts,1
+23430,Kingston,Motor Sports,1
+23430,Kingston,Netball,4
+23430,Kingston,Netball (Indoor),1
+23430,Kingston,Rugby Union,1
+23430,Kingston,Sailing,5
+23430,Kingston,Shooting Sports,1
+23430,Kingston,Skating,4
+23430,Kingston,Soccer,8
+23430,Kingston,Soccer (Indoor Soccer / Futsal),1
+23430,Kingston,Squash / Racquetball,1
+23430,Kingston,Surf Life Saving,7
+23430,Kingston,Swimming,4
+23430,Kingston,Tennis (Indoor),1
+23430,Kingston,Tennis (Outdoor),17
+23670,Knox,Aerobics,13
+23670,Knox,Athletics,2
+23670,Knox,Australian Rules Football,23
+23670,Knox,BMX,2
+23670,Knox,Badminton,1
+23670,Knox,Baseball,2
+23670,Knox,Basketball,7
+23670,Knox,Boxing,3
+23670,Knox,Cricket,39
+23670,Knox,Cricket (Indoor),2
+23670,Knox,Cycling,1
+23670,Knox,Fitness / Gymnasium Workouts,17
+23670,Knox,Golf,4
+23670,Knox,Gymnastics,3
+23670,Knox,Hockey,1
+23670,Knox,Lacrosse,1
+23670,Knox,Lawn Bowls,6
+23670,Knox,Martial Arts,8
+23670,Knox,Netball,9
+23670,Knox,Netball (Indoor),5
+23670,Knox,Rugby League,1
+23670,Knox,Rugby Union,2
+23670,Knox,Soccer,10
+23670,Knox,Soccer (Indoor Soccer / Futsal),5
+23670,Knox,Softball,2
+23670,Knox,Squash / Racquetball,5
+23670,Knox,Swimming,5
+23670,Knox,Tae Kwon Do,1
+23670,Knox,Ten Pin Bowling,2
+23670,Knox,Tennis (Indoor),1
+23670,Knox,Tennis (Outdoor),31
+23670,Knox,Volleyball,3
+23810,Latrobe,Archery,1
+23810,Latrobe,Athletics,3
+23810,Latrobe,Australian Rules Football,18
+23810,Latrobe,BMX,7
+23810,Latrobe,Badminton,3
+23810,Latrobe,Baseball,4
+23810,Latrobe,Basketball,5
+23810,Latrobe,Carpet Bowls,2
+23810,Latrobe,Cricket,26
+23810,Latrobe,Croquet,2
+23810,Latrobe,Cycling,3
+23810,Latrobe,Equestrian,4
+23810,Latrobe,Fitness / Gymnasium Workouts,8
+23810,Latrobe,Golf,6
+23810,Latrobe,Gridiron,1
+23810,Latrobe,Gymnastics,3
+23810,Latrobe,Hockey,1
+23810,Latrobe,Karate,1
+23810,Latrobe,Lawn Bowls,6
+23810,Latrobe,Motor Cycling,3
+23810,Latrobe,Motor Sports,1
+23810,Latrobe,Netball,13
+23810,Latrobe,Netball (Indoor),2
+23810,Latrobe,Shooting Sports,2
+23810,Latrobe,Skating,5
+23810,Latrobe,Soccer,8
+23810,Latrobe,Soccer (Indoor Soccer / Futsal),1
+23810,Latrobe,Squash / Racquetball,2
+23810,Latrobe,Swimming,7
+23810,Latrobe,Tennis (Indoor),2
+23810,Latrobe,Tennis (Outdoor),12
+23810,Latrobe,Touch Football,1
+23810,Latrobe,Volleyball,1
+23940,Loddon,Australian Rules Football,9
+23940,Loddon,Badminton,1
+23940,Loddon,Basketball,1
+23940,Loddon,Carpet Bowls,1
+23940,Loddon,Cricket,12
+23940,Loddon,Croquet,1
+23940,Loddon,Equestrian,1
+23940,Loddon,Golf,10
+23940,Loddon,Hockey,2
+23940,Loddon,Lawn Bowls,9
+23940,Loddon,Netball,7
+23940,Loddon,Swimming,5
+23940,Loddon,Tennis (Outdoor),11
+24130,Macedon Ranges,Athletics,3
+24130,Macedon Ranges,Australian Rules Football,14
+24130,Macedon Ranges,BMX,2
+24130,Macedon Ranges,Badminton,1
+24130,Macedon Ranges,Basketball,7
+24130,Macedon Ranges,Bocce,1
+24130,Macedon Ranges,Cricket,17
+24130,Macedon Ranges,Croquet,2
+24130,Macedon Ranges,Cycling,7
+24130,Macedon Ranges,Equestrian,9
+24130,Macedon Ranges,Fitness / Gymnasium Workouts,2
+24130,Macedon Ranges,Golf,6
+24130,Macedon Ranges,Gymnastics,1
+24130,Macedon Ranges,Lawn Bowls,6
+24130,Macedon Ranges,Motor Sports,1
+24130,Macedon Ranges,Netball,6
+24130,Macedon Ranges,Netball (Indoor),4
+24130,Macedon Ranges,Orienteering,1
+24130,Macedon Ranges,Soccer,2
+24130,Macedon Ranges,Soccer (Indoor Soccer / Futsal),3
+24130,Macedon Ranges,Squash / Racquetball,2
+24130,Macedon Ranges,Swimming,5
+24130,Macedon Ranges,Table Tennis,1
+24130,Macedon Ranges,Tennis (Indoor),1
+24130,Macedon Ranges,Tennis (Outdoor),12
+24130,Macedon Ranges,Volleyball,3
+24210,Manningham,Aerobics,1
+24210,Manningham,Archery,1
+24210,Manningham,Athletics,1
+24210,Manningham,Australian Rules Football,17
+24210,Manningham,BMX,2
+24210,Manningham,Badminton,2
+24210,Manningham,Baseball,1
+24210,Manningham,Basketball,9
+24210,Manningham,Cricket,19
+24210,Manningham,Equestrian,2
+24210,Manningham,Fitness / Gymnasium Workouts,11
+24210,Manningham,Golf,2
+24210,Manningham,Gymnastics,2
+24210,Manningham,Hockey,2
+24210,Manningham,Lawn Bowls,4
+24210,Manningham,Martial Arts,2
+24210,Manningham,Motor Sports,1
+24210,Manningham,Netball,5
+24210,Manningham,Netball (Indoor),5
+24210,Manningham,Skating,2
+24210,Manningham,Soccer,7
+24210,Manningham,Soccer (Indoor Soccer / Futsal),2
+24210,Manningham,Squash / Racquetball,2
+24210,Manningham,Swimming,2
+24210,Manningham,Table Tennis,1
+24210,Manningham,Tennis (Outdoor),14
+24210,Manningham,Volleyball,3
+24250,Mansfield,Athletics,1
+24250,Mansfield,Australian Rules Football,2
+24250,Mansfield,BMX,1
+24250,Mansfield,Badminton,1
+24250,Mansfield,Basketball,1
+24250,Mansfield,Cricket,3
+24250,Mansfield,Cycling,10
+24250,Mansfield,Equestrian,1
+24250,Mansfield,Fitness / Gymnasium Workouts,1
+24250,Mansfield,Golf,1
+24250,Mansfield,Gymnastics,1
+24250,Mansfield,Lawn Bowls,1
+24250,Mansfield,Motor Cycling,1
+24250,Mansfield,Motor Sports,1
+24250,Mansfield,Netball,2
+24250,Mansfield,Soccer,1
+24250,Mansfield,Soccer (Indoor Soccer / Futsal),1
+24250,Mansfield,Swimming,1
+24250,Mansfield,Tae Kwon Do,1
+24250,Mansfield,Tennis (Outdoor),4
+24330,Maribyrnong,Archery,1
+24330,Maribyrnong,Australian Rules Football,11
+24330,Maribyrnong,BMX,1
+24330,Maribyrnong,Badminton,3
+24330,Maribyrnong,Baseball,1
+24330,Maribyrnong,Basketball,7
+24330,Maribyrnong,Beach Volleyball,1
+24330,Maribyrnong,Canoeing,1
+24330,Maribyrnong,Cricket,16
+24330,Maribyrnong,Cricket (Indoor),1
+24330,Maribyrnong,Cycling,1
+24330,Maribyrnong,Fitness / Gymnasium Workouts,14
+24330,Maribyrnong,Golf,1
+24330,Maribyrnong,Gridiron,1
+24330,Maribyrnong,Gymnastics,2
+24330,Maribyrnong,Hockey,1
+24330,Maribyrnong,Lacrosse,1
+24330,Maribyrnong,Lawn Bowls,5
+24330,Maribyrnong,Netball,5
+24330,Maribyrnong,Netball (Indoor),2
+24330,Maribyrnong,Rugby Union,1
+24330,Maribyrnong,Soccer,7
+24330,Maribyrnong,Soccer (Indoor Soccer / Futsal),3
+24330,Maribyrnong,Swimming,2
+24330,Maribyrnong,Tae Kwon Do,2
+24330,Maribyrnong,Ten Pin Bowling,1
+24330,Maribyrnong,Tennis (Outdoor),8
+24330,Maribyrnong,Volleyball,3
+24410,Maroondah,Aerobics,8
+24410,Maroondah,Athletics,2
+24410,Maroondah,Australian Rules Football,14
+24410,Maroondah,BMX,4
+24410,Maroondah,Badminton,1
+24410,Maroondah,Baseball,3
+24410,Maroondah,Basketball,2
+24410,Maroondah,Cricket,26
+24410,Maroondah,Cricket (Indoor),1
+24410,Maroondah,Croquet,2
+24410,Maroondah,Equestrian,2
+24410,Maroondah,Fitness / Gymnasium Workouts,9
+24410,Maroondah,Golf,2
+24410,Maroondah,Gridiron,1
+24410,Maroondah,Gymnastics,2
+24410,Maroondah,Hockey,1
+24410,Maroondah,Lawn Bowls,4
+24410,Maroondah,Netball,2
+24410,Maroondah,Netball (Indoor),3
+24410,Maroondah,Rugby Union,1
+24410,Maroondah,Skating,2
+24410,Maroondah,Soccer,7
+24410,Maroondah,Soccer (Indoor Soccer / Futsal),1
+24410,Maroondah,Squash / Racquetball,1
+24410,Maroondah,Swimming,3
+24410,Maroondah,Table Tennis,1
+24410,Maroondah,Tae Kwon Do,1
+24410,Maroondah,Tennis (Outdoor),14
+24410,Maroondah,Volleyball,1
+24410,Maroondah,Water Polo,1
+24600,Melbourne,Australian Rules Football,10
+24600,Melbourne,BMX,1
+24600,Melbourne,Badminton,1
+24600,Melbourne,Baseball,1
+24600,Melbourne,Basketball,5
+24600,Melbourne,Cricket,10
+24600,Melbourne,Cycling,2
+24600,Melbourne,Fitness / Gymnasium Workouts,26
+24600,Melbourne,Golf,1
+24600,Melbourne,Gridiron,2
+24600,Melbourne,Gymnastics,2
+24600,Melbourne,Hockey,2
+24600,Melbourne,Lacrosse,2
+24600,Melbourne,Lawn Bowls,3
+24600,Melbourne,Martial Arts,1
+24600,Melbourne,Netball,2
+24600,Melbourne,Netball (Indoor),4
+24600,Melbourne,Rugby League,3
+24600,Melbourne,Rugby Union,5
+24600,Melbourne,Sailing,1
+24600,Melbourne,Shooting Sports,1
+24600,Melbourne,Skating,1
+24600,Melbourne,Soccer,10
+24600,Melbourne,Soccer (Indoor Soccer / Futsal),4
+24600,Melbourne,Softball,1
+24600,Melbourne,Squash / Racquetball,1
+24600,Melbourne,Swimming,6
+24600,Melbourne,Team Handball,1
+24600,Melbourne,Tennis (Outdoor),7
+24600,Melbourne,Touch Football,4
+24600,Melbourne,Volleyball,2
+24650,Melton,Athletics,2
+24650,Melton,Australian Rules Football,9
+24650,Melton,Badminton,1
+24650,Melton,Basketball,5
+24650,Melton,Beach Volleyball,1
+24650,Melton,Cricket,14
+24650,Melton,Cricket (Indoor),1
+24650,Melton,Equestrian,1
+24650,Melton,Fitness / Gymnasium Workouts,10
+24650,Melton,Golf,3
+24650,Melton,Gymnastics,2
+24650,Melton,Hockey,3
+24650,Melton,Lawn Bowls,3
+24650,Melton,Martial Arts,1
+24650,Melton,Netball,6
+24650,Melton,Netball (Indoor),3
+24650,Melton,Power Boating,1
+24650,Melton,Rugby League,1
+24650,Melton,Rugby Union,1
+24650,Melton,Shooting Sports,1
+24650,Melton,Skating,5
+24650,Melton,Soccer,4
+24650,Melton,Soccer (Indoor Soccer / Futsal),2
+24650,Melton,Squash / Racquetball,2
+24650,Melton,Swimming,5
+24650,Melton,Table Tennis,2
+24650,Melton,Tennis (Outdoor),15
+24650,Melton,Volleyball,2
+24650,Melton,Wheelchair Sports,1
+24780,Mildura,Athletics,1
+24780,Mildura,Australian Rules Football,13
+24780,Mildura,BMX,1
+24780,Mildura,Badminton,1
+24780,Mildura,Baseball,3
+24780,Mildura,Basketball,4
+24780,Mildura,Beach Volleyball,1
+24780,Mildura,Cricket,15
+24780,Mildura,Cricket (Indoor),1
+24780,Mildura,Croquet,3
+24780,Mildura,Equestrian,1
+24780,Mildura,Fitness / Gymnasium Workouts,4
+24780,Mildura,Golf,6
+24780,Mildura,Gymnastics,2
+24780,Mildura,Hockey,1
+24780,Mildura,Lawn Bowls,9
+24780,Mildura,Martial Arts,1
+24780,Mildura,Motor Cycling,2
+24780,Mildura,Netball,12
+24780,Mildura,Netball (Indoor),1
+24780,Mildura,Rugby League,1
+24780,Mildura,Rugby Union,1
+24780,Mildura,Sailing,1
+24780,Mildura,Shooting Sports,1
+24780,Mildura,Soccer,4
+24780,Mildura,Soccer (Indoor Soccer / Futsal),1
+24780,Mildura,Softball,1
+24780,Mildura,Squash / Racquetball,1
+24780,Mildura,Swimming,8
+24780,Mildura,Table Tennis,1
+24780,Mildura,Tennis (Outdoor),11
+24780,Mildura,Volleyball,1
+24850,Mitchell,Aerobics,5
+24850,Mitchell,Athletics,1
+24850,Mitchell,Australian Rules Football,7
+24850,Mitchell,BMX,1
+24850,Mitchell,Badminton,3
+24850,Mitchell,Baseball,1
+24850,Mitchell,Basketball,4
+24850,Mitchell,Cricket,7
+24850,Mitchell,Cycling,5
+24850,Mitchell,Equestrian,6
+24850,Mitchell,Fitness / Gymnasium Workouts,5
+24850,Mitchell,Golf,4
+24850,Mitchell,Gymnastics,1
+24850,Mitchell,Lawn Bowls,5
+24850,Mitchell,Motor Cycling,2
+24850,Mitchell,Netball,6
+24850,Mitchell,Netball (Indoor),4
+24850,Mitchell,Skating,4
+24850,Mitchell,Softball,1
+24850,Mitchell,Squash / Racquetball,1
+24850,Mitchell,Swimming,6
+24850,Mitchell,Tennis (Outdoor),11
+24850,Mitchell,Volleyball,2
+24900,Moira,Australian Rules Football,12
+24900,Moira,BMX,1
+24900,Moira,Badminton,2
+24900,Moira,Basketball,2
+24900,Moira,Cricket,14
+24900,Moira,Croquet,1
+24900,Moira,Equestrian,7
+24900,Moira,Fitness / Gymnasium Workouts,3
+24900,Moira,Golf,4
+24900,Moira,Lawn Bowls,10
+24900,Moira,Motor Cycling,1
+24900,Moira,Motor Sports,3
+24900,Moira,Netball,15
+24900,Moira,Rugby Union,1
+24900,Moira,Sailing,1
+24900,Moira,Skating,5
+24900,Moira,Soccer,3
+24900,Moira,Soccer (Indoor Soccer / Futsal),2
+24900,Moira,Squash / Racquetball,1
+24900,Moira,Swimming,6
+24900,Moira,Table Tennis,1
+24900,Moira,Tennis (Indoor),2
+24900,Moira,Tennis (Outdoor),20
+24970,Monash,Athletics,2
+24970,Monash,Australian Rules Football,19
+24970,Monash,BMX,1
+24970,Monash,Badminton,1
+24970,Monash,Baseball,5
+24970,Monash,Basketball,5
+24970,Monash,Bocce,3
+24970,Monash,Boxing,1
+24970,Monash,Callisthenics,1
+24970,Monash,Cricket,33
+24970,Monash,Cricket (Indoor),2
+24970,Monash,Croquet,1
+24970,Monash,Equestrian,1
+24970,Monash,Fitness / Gymnasium Workouts,18
+24970,Monash,Golf,6
+24970,Monash,Gymnastics,5
+24970,Monash,Hockey,3
+24970,Monash,Ice Hockey,1
+24970,Monash,Karate,2
+24970,Monash,Lacrosse,1
+24970,Monash,Lawn Bowls,7
+24970,Monash,Netball,2
+24970,Monash,Netball (Indoor),3
+24970,Monash,Rugby League,1
+24970,Monash,Rugby Union,1
+24970,Monash,Skating,1
+24970,Monash,Soccer,15
+24970,Monash,Soccer (Indoor Soccer / Futsal),3
+24970,Monash,Softball,1
+24970,Monash,Squash / Racquetball,2
+24970,Monash,Swimming,4
+24970,Monash,Tennis (Indoor),1
+24970,Monash,Tennis (Outdoor),15
+24970,Monash,Volleyball,2
+25060,Moonee Valley,Aerobics,16
+25060,Moonee Valley,Athletics,1
+25060,Moonee Valley,Australian Rules Football,13
+25060,Moonee Valley,Badminton,2
+25060,Moonee Valley,Baseball,1
+25060,Moonee Valley,Boxing,1
+25060,Moonee Valley,Cricket,19
+25060,Moonee Valley,Croquet,1
+25060,Moonee Valley,Fitness / Gymnasium Workouts,19
+25060,Moonee Valley,Golf,1
+25060,Moonee Valley,Gymnastics,4
+25060,Moonee Valley,Hockey,2
+25060,Moonee Valley,Lawn Bowls,9
+25060,Moonee Valley,Martial Arts,1
+25060,Moonee Valley,Netball,3
+25060,Moonee Valley,Rugby League,1
+25060,Moonee Valley,Soccer,8
+25060,Moonee Valley,Soccer (Indoor Soccer / Futsal),1
+25060,Moonee Valley,Squash / Racquetball,1
+25060,Moonee Valley,Swimming,6
+25060,Moonee Valley,Tae Kwon Do,1
+25060,Moonee Valley,Tennis (Outdoor),10
+25150,Moorabool,Athletics,1
+25150,Moorabool,Australian Rules Football,11
+25150,Moorabool,Badminton,1
+25150,Moorabool,Baseball,1
+25150,Moorabool,Basketball,1
+25150,Moorabool,Cricket,12
+25150,Moorabool,Cycling,5
+25150,Moorabool,Equestrian,2
+25150,Moorabool,Fitness / Gymnasium Workouts,1
+25150,Moorabool,Golf,3
+25150,Moorabool,Gymnastics,1
+25150,Moorabool,Lawn Bowls,3
+25150,Moorabool,Netball,7
+25150,Moorabool,Netball (Indoor),1
+25150,Moorabool,Skating,1
+25150,Moorabool,Soccer,1
+25150,Moorabool,Soccer (Indoor Soccer / Futsal),1
+25150,Moorabool,Swimming,2
+25150,Moorabool,Tennis (Outdoor),13
+25250,Moreland,Aerobics,7
+25250,Moreland,Athletics,2
+25250,Moreland,Australian Rules Football,16
+25250,Moreland,BMX,1
+25250,Moreland,Baseball,1
+25250,Moreland,Basketball,2
+25250,Moreland,Boxing,2
+25250,Moreland,Cricket,26
+25250,Moreland,Croquet,1
+25250,Moreland,Cycling,2
+25250,Moreland,Fitness / Gymnasium Workouts,10
+25250,Moreland,Golf,1
+25250,Moreland,Hockey,1
+25250,Moreland,Lacrosse,1
+25250,Moreland,Lawn Bowls,5
+25250,Moreland,Martial Arts,1
+25250,Moreland,Netball,3
+25250,Moreland,Netball (Indoor),1
+25250,Moreland,Skating,1
+25250,Moreland,Soccer,17
+25250,Moreland,Soccer (Indoor Soccer / Futsal),2
+25250,Moreland,Squash / Racquetball,1
+25250,Moreland,Swimming,6
+25250,Moreland,Table Tennis,1
+25250,Moreland,Tennis (Outdoor),13
+25340,Mornington Peninsula,Athletics,2
+25340,Mornington Peninsula,Australian Rules Football,24
+25340,Mornington Peninsula,Badminton,2
+25340,Mornington Peninsula,Baseball,3
+25340,Mornington Peninsula,Basketball,4
+25340,Mornington Peninsula,Beach Volleyball,1
+25340,Mornington Peninsula,Bocce,1
+25340,Mornington Peninsula,Cricket,34
+25340,Mornington Peninsula,Cricket (Indoor),1
+25340,Mornington Peninsula,Croquet,1
+25340,Mornington Peninsula,Cycling,2
+25340,Mornington Peninsula,Equestrian,6
+25340,Mornington Peninsula,Fitness / Gymnasium Workouts,15
+25340,Mornington Peninsula,Golf,17
+25340,Mornington Peninsula,Gymnastics,3
+25340,Mornington Peninsula,Hockey,1
+25340,Mornington Peninsula,Lawn Bowls,17
+25340,Mornington Peninsula,Motor Cycling,1
+25340,Mornington Peninsula,Motor Sports,1
+25340,Mornington Peninsula,Netball,9
+25340,Mornington Peninsula,Netball (Indoor),3
+25340,Mornington Peninsula,Sailing,18
+25340,Mornington Peninsula,Shooting Sports,2
+25340,Mornington Peninsula,Skating,4
+25340,Mornington Peninsula,Soccer,4
+25340,Mornington Peninsula,Soccer (Indoor Soccer / Futsal),2
+25340,Mornington Peninsula,Surf Life Saving,8
+25340,Mornington Peninsula,Swimming,2
+25340,Mornington Peninsula,Table Tennis,1
+25340,Mornington Peninsula,Tennis (Indoor),2
+25340,Mornington Peninsula,Tennis (Outdoor),24
+25340,Mornington Peninsula,Volleyball,2
+25430,Mount Alexander,Archery,1
+25430,Mount Alexander,Athletics,1
+25430,Mount Alexander,Australian Rules Football,7
+25430,Mount Alexander,BMX,1
+25430,Mount Alexander,Badminton,1
+25430,Mount Alexander,Basketball,1
+25430,Mount Alexander,Carpet Bowls,3
+25430,Mount Alexander,Cricket,14
+25430,Mount Alexander,Cricket (Indoor),1
+25430,Mount Alexander,Croquet,3
+25430,Mount Alexander,Cycling,3
+25430,Mount Alexander,Equestrian,4
+25430,Mount Alexander,Fitness / Gymnasium Workouts,2
+25430,Mount Alexander,Golf,3
+25430,Mount Alexander,Hockey,1
+25430,Mount Alexander,Lawn Bowls,5
+25430,Mount Alexander,Motor Cycling,1
+25430,Mount Alexander,Netball,7
+25430,Mount Alexander,Netball (Indoor),1
+25430,Mount Alexander,Sailing,1
+25430,Mount Alexander,Shooting Sports,1
+25430,Mount Alexander,Snooker / Billiards / Pool,1
+25430,Mount Alexander,Soccer,1
+25430,Mount Alexander,Soccer (Indoor Soccer / Futsal),1
+25430,Mount Alexander,Swimming,7
+25430,Mount Alexander,Table Tennis,1
+25430,Mount Alexander,Tennis (Outdoor),14
+25490,Moyne,Australian Rules Football,9
+25490,Moyne,Cricket,16
+25490,Moyne,Croquet,1
+25490,Moyne,Cycling,4
+25490,Moyne,Equestrian,6
+25490,Moyne,Fitness / Gymnasium Workouts,1
+25490,Moyne,Golf,6
+25490,Moyne,Lawn Bowls,4
+25490,Moyne,Netball,10
+25490,Moyne,Sailing,1
+25490,Moyne,Shooting Sports,1
+25490,Moyne,Squash / Racquetball,1
+25490,Moyne,Surf Life Saving,1
+25490,Moyne,Swimming,4
+25490,Moyne,Tennis (Indoor),1
+25490,Moyne,Tennis (Outdoor),6
+25620,Murrindindi,Aerobics,1
+25620,Murrindindi,Athletics,1
+25620,Murrindindi,Australian Rules Football,5
+25620,Murrindindi,BMX,6
+25620,Murrindindi,Basketball,4
+25620,Murrindindi,Cricket,13
+25620,Murrindindi,Cycling,3
+25620,Murrindindi,Equestrian,4
+25620,Murrindindi,Fitness / Gymnasium Workouts,2
+25620,Murrindindi,Golf,4
+25620,Murrindindi,Lawn Bowls,4
+25620,Murrindindi,Netball,7
+25620,Murrindindi,Netball (Indoor),2
+25620,Murrindindi,Skating,5
+25620,Murrindindi,Soccer,1
+25620,Murrindindi,Swimming,4
+25620,Murrindindi,Tennis (Outdoor),13
+25710,Nillumbik,Archery,1
+25710,Nillumbik,Australian Rules Football,11
+25710,Nillumbik,Badminton,2
+25710,Nillumbik,Baseball,2
+25710,Nillumbik,Basketball,4
+25710,Nillumbik,Cricket,19
+25710,Nillumbik,Equestrian,6
+25710,Nillumbik,Fitness / Gymnasium Workouts,10
+25710,Nillumbik,Golf,1
+25710,Nillumbik,Gymnastics,3
+25710,Nillumbik,Hockey,1
+25710,Nillumbik,Lacrosse,1
+25710,Nillumbik,Lawn Bowls,3
+25710,Nillumbik,Martial Arts,1
+25710,Nillumbik,Netball,2
+25710,Nillumbik,Netball (Indoor),2
+25710,Nillumbik,Rugby Union,1
+25710,Nillumbik,Sailing,1
+25710,Nillumbik,Shooting Sports,1
+25710,Nillumbik,Skating,4
+25710,Nillumbik,Soccer,2
+25710,Nillumbik,Soccer (Indoor Soccer / Futsal),2
+25710,Nillumbik,Squash / Racquetball,1
+25710,Nillumbik,Swimming,2
+25710,Nillumbik,Table Tennis,1
+25710,Nillumbik,Tennis (Outdoor),12
+25710,Nillumbik,Volleyball,2
+25810,Northern Grampians,Athletics,1
+25810,Northern Grampians,Australian Rules Football,8
+25810,Northern Grampians,Badminton,1
+25810,Northern Grampians,Basketball,2
+25810,Northern Grampians,Cricket,11
+25810,Northern Grampians,Cricket (Indoor),1
+25810,Northern Grampians,Cycling,2
+25810,Northern Grampians,Equestrian,2
+25810,Northern Grampians,Golf,6
+25810,Northern Grampians,Gymnastics,1
+25810,Northern Grampians,Hockey,2
+25810,Northern Grampians,Lawn Bowls,4
+25810,Northern Grampians,Netball,5
+25810,Northern Grampians,Netball (Indoor),1
+25810,Northern Grampians,Rock Climbing / Abseiling (Indoor),1
+25810,Northern Grampians,Sailing,1
+25810,Northern Grampians,Soccer (Indoor Soccer / Futsal),1
+25810,Northern Grampians,Squash / Racquetball,1
+25810,Northern Grampians,Swimming,4
+25810,Northern Grampians,Tennis (Outdoor),8
+25810,Northern Grampians,Volleyball,1
+25900,Port Phillip,Athletics,1
+25900,Port Phillip,Australian Rules Football,6
+25900,Port Phillip,Badminton,1
+25900,Port Phillip,Baseball,2
+25900,Port Phillip,Basketball,3
+25900,Port Phillip,Boxing,1
+25900,Port Phillip,Cricket,9
+25900,Port Phillip,Croquet,1
+25900,Port Phillip,Fitness / Gymnasium Workouts,2
+25900,Port Phillip,Flying Disk,1
+25900,Port Phillip,Gaelic Football,1
+25900,Port Phillip,Golf,1
+25900,Port Phillip,Gymnastics,2
+25900,Port Phillip,Hockey,2
+25900,Port Phillip,Lacrosse,1
+25900,Port Phillip,Lawn Bowls,4
+25900,Port Phillip,Netball,1
+25900,Port Phillip,Netball (Indoor),1
+25900,Port Phillip,Sailing,5
+25900,Port Phillip,Skating,1
+25900,Port Phillip,Soccer,6
+25900,Port Phillip,Soccer (Indoor Soccer / Futsal),1
+25900,Port Phillip,Squash / Racquetball,1
+25900,Port Phillip,Surf Life Saving,5
+25900,Port Phillip,Swimming,1
+25900,Port Phillip,Table Tennis,2
+25900,Port Phillip,Tennis (Outdoor),6
+25900,Port Phillip,Touch Football,2
+25900,Port Phillip,Volleyball,1
+25990,Pyrenees,Australian Rules Football,9
+25990,Pyrenees,Carpet Bowls,1
+25990,Pyrenees,Cricket,9
+25990,Pyrenees,Equestrian,1
+25990,Pyrenees,Golf,4
+25990,Pyrenees,Lawn Bowls,4
+25990,Pyrenees,Netball,6
+25990,Pyrenees,Swimming,2
+25990,Pyrenees,Table Tennis,1
+25990,Pyrenees,Tennis (Outdoor),8
+26080,Queenscliffe,Australian Rules Football,2
+26080,Queenscliffe,Cricket,2
+26080,Queenscliffe,Croquet,1
+26080,Queenscliffe,Lawn Bowls,2
+26080,Queenscliffe,Netball,1
+26080,Queenscliffe,Sailing,2
+26080,Queenscliffe,Skating,1
+26080,Queenscliffe,Surf Life Saving,1
+26080,Queenscliffe,Tennis (Outdoor),2
+26170,South Gippsland,Archery,1
+26170,South Gippsland,Australian Rules Football,11
+26170,South Gippsland,Badminton,1
+26170,South Gippsland,Basketball,8
+26170,South Gippsland,Cricket,20
+26170,South Gippsland,Croquet,2
+26170,South Gippsland,Cycling,5
+26170,South Gippsland,Equestrian,8
+26170,South Gippsland,Fitness / Gymnasium Workouts,1
+26170,South Gippsland,Golf,8
+26170,South Gippsland,Gymnastics,1
+26170,South Gippsland,Lawn Bowls,10
+26170,South Gippsland,Motor Cycling,2
+26170,South Gippsland,Motor Sports,1
+26170,South Gippsland,Netball,12
+26170,South Gippsland,Netball (Indoor),1
+26170,South Gippsland,Shooting Sports,6
+26170,South Gippsland,Skating,1
+26170,South Gippsland,Soccer,6
+26170,South Gippsland,Soccer (Indoor Soccer / Futsal),1
+26170,South Gippsland,Squash / Racquetball,1
+26170,South Gippsland,Surf Life Saving,2
+26170,South Gippsland,Swimming,7
+26170,South Gippsland,Table Tennis,1
+26170,South Gippsland,Tennis (Indoor),1
+26170,South Gippsland,Tennis (Outdoor),23
+26170,South Gippsland,Volleyball,1
+26260,Southern Grampians,Athletics,1
+26260,Southern Grampians,Australian Rules Football,12
+26260,Southern Grampians,Baseball,1
+26260,Southern Grampians,Basketball,1
+26260,Southern Grampians,Cricket,12
+26260,Southern Grampians,Croquet,1
+26260,Southern Grampians,Equestrian,3
+26260,Southern Grampians,Fitness / Gymnasium Workouts,2
+26260,Southern Grampians,Golf,6
+26260,Southern Grampians,Gymnastics,1
+26260,Southern Grampians,Hockey,2
+26260,Southern Grampians,Lawn Bowls,7
+26260,Southern Grampians,Netball,8
+26260,Southern Grampians,Shooting Sports,1
+26260,Southern Grampians,Soccer,2
+26260,Southern Grampians,Squash / Racquetball,1
+26260,Southern Grampians,Swimming,7
+26260,Southern Grampians,Table Tennis,1
+26260,Southern Grampians,Tennis (Outdoor),15
+26350,Stonnington,Athletics,1
+26350,Stonnington,Australian Rules Football,9
+26350,Stonnington,Baseball,1
+26350,Stonnington,Basketball,4
+26350,Stonnington,Cricket,17
+26350,Stonnington,Fitness / Gymnasium Workouts,22
+26350,Stonnington,Golf,1
+26350,Stonnington,Gymnastics,4
+26350,Stonnington,Hockey,2
+26350,Stonnington,Lacrosse,2
+26350,Stonnington,Lawn Bowls,5
+26350,Stonnington,Netball,3
+26350,Stonnington,Netball (Indoor),1
+26350,Stonnington,Rugby Union,2
+26350,Stonnington,Skating,1
+26350,Stonnington,Soccer,5
+26350,Stonnington,Soccer (Indoor Soccer / Futsal),1
+26350,Stonnington,Squash / Racquetball,2
+26350,Stonnington,Swimming,5
+26350,Stonnington,Tennis (Outdoor),17
+26350,Stonnington,Volleyball,1
+26430,Strathbogie,Australian Rules Football,5
+26430,Strathbogie,Badminton,2
+26430,Strathbogie,Basketball,1
+26430,Strathbogie,Cricket,8
+26430,Strathbogie,Croquet,2
+26430,Strathbogie,Equestrian,2
+26430,Strathbogie,Golf,5
+26430,Strathbogie,Lacrosse,1
+26430,Strathbogie,Lawn Bowls,4
+26430,Strathbogie,Netball,5
+26430,Strathbogie,Netball (Indoor),1
+26430,Strathbogie,Rowing,2
+26430,Strathbogie,Sailing,1
+26430,Strathbogie,Skating,2
+26430,Strathbogie,Soccer,1
+26430,Strathbogie,Swimming,4
+26430,Strathbogie,Tennis (Outdoor),6
+26430,Strathbogie,Volleyball,1
+26490,Surf Coast,Australian Rules Football,9
+26490,Surf Coast,BMX,5
+26490,Surf Coast,Badminton,3
+26490,Surf Coast,Basketball,6
+26490,Surf Coast,Boxing,1
+26490,Surf Coast,Canoeing,1
+26490,Surf Coast,Cricket,14
+26490,Surf Coast,Cycling,4
+26490,Surf Coast,Equestrian,6
+26490,Surf Coast,Fitness / Gymnasium Workouts,6
+26490,Surf Coast,Golf,5
+26490,Surf Coast,Gymnastics,2
+26490,Surf Coast,Lawn Bowls,4
+26490,Surf Coast,Motor Cycling,1
+26490,Surf Coast,Netball,7
+26490,Surf Coast,Netball (Indoor),2
+26490,Surf Coast,Sailing,2
+26490,Surf Coast,Skating,11
+26490,Surf Coast,Soccer,4
+26490,Surf Coast,Soccer (Indoor Soccer / Futsal),1
+26490,Surf Coast,Surf Life Saving,5
+26490,Surf Coast,Swimming,3
+26490,Surf Coast,Tennis (Outdoor),17
+26490,Surf Coast,Volleyball,1
+26610,Swan Hill,Athletics,1
+26610,Swan Hill,Australian Rules Football,10
+26610,Swan Hill,BMX,1
+26610,Swan Hill,Badminton,3
+26610,Swan Hill,Basketball,3
+26610,Swan Hill,Cricket,11
+26610,Swan Hill,Croquet,1
+26610,Swan Hill,Equestrian,3
+26610,Swan Hill,Fitness / Gymnasium Workouts,4
+26610,Swan Hill,Golf,5
+26610,Swan Hill,Gymnastics,1
+26610,Swan Hill,Lawn Bowls,5
+26610,Swan Hill,Motor Cycling,1
+26610,Swan Hill,Netball,7
+26610,Swan Hill,Netball (Indoor),2
+26610,Swan Hill,Rugby League,1
+26610,Swan Hill,Sailing,1
+26610,Swan Hill,Shooting Sports,1
+26610,Swan Hill,Skating,2
+26610,Swan Hill,Soccer,1
+26610,Swan Hill,Soccer (Indoor Soccer / Futsal),2
+26610,Swan Hill,Squash / Racquetball,1
+26610,Swan Hill,Swimming,5
+26610,Swan Hill,Tennis (Outdoor),5
+26610,Swan Hill,Volleyball,2
+26670,Towong,Australian Rules Football,5
+26670,Towong,Cricket,6
+26670,Towong,Equestrian,1
+26670,Towong,Golf,6
+26670,Towong,Lawn Bowls,3
+26670,Towong,Netball,3
+26670,Towong,Swimming,3
+26670,Towong,Tennis (Indoor),1
+26670,Towong,Tennis (Outdoor),7
+26700,Wangaratta,Athletics,1
+26700,Wangaratta,Australian Rules Football,13
+26700,Wangaratta,Badminton,1
+26700,Wangaratta,Baseball,1
+26700,Wangaratta,Basketball,1
+26700,Wangaratta,Cricket,17
+26700,Wangaratta,Cricket (Indoor),1
+26700,Wangaratta,Croquet,1
+26700,Wangaratta,Cycling,7
+26700,Wangaratta,Equestrian,2
+26700,Wangaratta,Fitness / Gymnasium Workouts,1
+26700,Wangaratta,Golf,6
+26700,Wangaratta,Gymnastics,1
+26700,Wangaratta,Hockey,1
+26700,Wangaratta,Lawn Bowls,4
+26700,Wangaratta,Motor Sports,1
+26700,Wangaratta,Netball,13
+26700,Wangaratta,Netball (Indoor),1
+26700,Wangaratta,Rodeo,1
+26700,Wangaratta,Shooting Sports,4
+26700,Wangaratta,Skating,1
+26700,Wangaratta,Soccer,1
+26700,Wangaratta,Soccer (Indoor Soccer / Futsal),1
+26700,Wangaratta,Squash / Racquetball,2
+26700,Wangaratta,Swimming,3
+26700,Wangaratta,Table Tennis,1
+26700,Wangaratta,Tennis (Outdoor),24
+26700,Wangaratta,Volleyball,1
+26730,Warrnambool,Archery,1
+26730,Warrnambool,Athletics,2
+26730,Warrnambool,Australian Rules Football,8
+26730,Warrnambool,BMX,1
+26730,Warrnambool,Badminton,1
+26730,Warrnambool,Baseball,1
+26730,Warrnambool,Basketball,2
+26730,Warrnambool,Canoeing,1
+26730,Warrnambool,Carpet Bowls,2
+26730,Warrnambool,Cricket,14
+26730,Warrnambool,Cricket (Indoor),1
+26730,Warrnambool,Croquet,1
+26730,Warrnambool,Cycling,1
+26730,Warrnambool,Equestrian,2
+26730,Warrnambool,Fitness / Gymnasium Workouts,6
+26730,Warrnambool,Golf,2
+26730,Warrnambool,Gymnastics,1
+26730,Warrnambool,Hockey,1
+26730,Warrnambool,Lawn Bowls,4
+26730,Warrnambool,Martial Arts,1
+26730,Warrnambool,Motor Cycling,1
+26730,Warrnambool,Motor Sports,2
+26730,Warrnambool,Netball,9
+26730,Warrnambool,Netball (Indoor),2
+26730,Warrnambool,Rowing,2
+26730,Warrnambool,Rugby Union,1
+26730,Warrnambool,Sailing,1
+26730,Warrnambool,Shooting Sports,2
+26730,Warrnambool,Skating,1
+26730,Warrnambool,Soccer,3
+26730,Warrnambool,Soccer (Indoor Soccer / Futsal),1
+26730,Warrnambool,Surf Life Saving,1
+26730,Warrnambool,Swimming,2
+26730,Warrnambool,Table Tennis,1
+26730,Warrnambool,Tennis (Indoor),1
+26730,Warrnambool,Tennis (Outdoor),2
+26730,Warrnambool,Touch Football,1
+26730,Warrnambool,Volleyball,1
+26730,Warrnambool,Water Skiing,1
+26810,Wellington,Aerobics,1
+26810,Wellington,Athletics,1
+26810,Wellington,Australian Rules Football,13
+26810,Wellington,Badminton,1
+26810,Wellington,Baseball,1
+26810,Wellington,Basketball,5
+26810,Wellington,Cricket,23
+26810,Wellington,Croquet,2
+26810,Wellington,Cycling,2
+26810,Wellington,Equestrian,6
+26810,Wellington,Fitness / Gymnasium Workouts,7
+26810,Wellington,Golf,8
+26810,Wellington,Gymnastics,1
+26810,Wellington,Hockey,3
+26810,Wellington,Lawn Bowls,10
+26810,Wellington,Motor Cycling,2
+26810,Wellington,Motor Sports,1
+26810,Wellington,Netball,16
+26810,Wellington,Netball (Indoor),2
+26810,Wellington,Polocrosse,1
+26810,Wellington,Sailing,2
+26810,Wellington,Shooting Sports,1
+26810,Wellington,Soccer,2
+26810,Wellington,Soccer (Indoor Soccer / Futsal),2
+26810,Wellington,Softball,1
+26810,Wellington,Squash / Racquetball,1
+26810,Wellington,Swimming,7
+26810,Wellington,Table Tennis,2
+26810,Wellington,Tennis (Indoor),1
+26810,Wellington,Tennis (Outdoor),18
+26890,West Wimmera,Australian Rules Football,5
+26890,West Wimmera,Badminton,1
+26890,West Wimmera,Basketball,2
+26890,West Wimmera,Cricket,7
+26890,West Wimmera,Cricket (Indoor),1
+26890,West Wimmera,Croquet,1
+26890,West Wimmera,Equestrian,1
+26890,West Wimmera,Fitness / Gymnasium Workouts,1
+26890,West Wimmera,Golf,6
+26890,West Wimmera,Lawn Bowls,4
+26890,West Wimmera,Netball,5
+26890,West Wimmera,Squash / Racquetball,2
+26890,West Wimmera,Swimming,3
+26890,West Wimmera,Table Tennis,1
+26890,West Wimmera,Tennis (Outdoor),8
+26890,West Wimmera,Volleyball,1
+26980,Whitehorse,Archery,1
+26980,Whitehorse,Athletics,2
+26980,Whitehorse,Australian Rules Football,17
+26980,Whitehorse,BMX,2
+26980,Whitehorse,Badminton,3
+26980,Whitehorse,Baseball,3
+26980,Whitehorse,Basketball,7
+26980,Whitehorse,Cricket,26
+26980,Whitehorse,Cycling,2
+26980,Whitehorse,Diving,1
+26980,Whitehorse,Fitness / Gymnasium Workouts,19
+26980,Whitehorse,Golf,3
+26980,Whitehorse,Gymnastics,4
+26980,Whitehorse,Hockey,2
+26980,Whitehorse,Lacrosse,1
+26980,Whitehorse,Lawn Bowls,7
+26980,Whitehorse,Netball,5
+26980,Whitehorse,Netball (Indoor),4
+26980,Whitehorse,Rugby Union,1
+26980,Whitehorse,Skating,2
+26980,Whitehorse,Soccer,6
+26980,Whitehorse,Soccer (Indoor Soccer / Futsal),3
+26980,Whitehorse,Squash / Racquetball,2
+26980,Whitehorse,Swimming,3
+26980,Whitehorse,Tennis (Indoor),1
+26980,Whitehorse,Tennis (Outdoor),16
+26980,Whitehorse,Volleyball,4
+27070,Whittlesea,Aerobics,10
+27070,Whittlesea,Athletics,1
+27070,Whittlesea,Australian Rules Football,12
+27070,Whittlesea,BMX,2
+27070,Whittlesea,Badminton,1
+27070,Whittlesea,Baseball,1
+27070,Whittlesea,Basketball,7
+27070,Whittlesea,Beach Volleyball,1
+27070,Whittlesea,Bocce,3
+27070,Whittlesea,Boxing,1
+27070,Whittlesea,Cricket,18
+27070,Whittlesea,Cricket (Indoor),2
+27070,Whittlesea,Equestrian,3
+27070,Whittlesea,Fitness / Gymnasium Workouts,13
+27070,Whittlesea,Golf,2
+27070,Whittlesea,Gymnastics,2
+27070,Whittlesea,Hockey,1
+27070,Whittlesea,Karate,1
+27070,Whittlesea,Lawn Bowls,3
+27070,Whittlesea,Martial Arts,1
+27070,Whittlesea,Netball,3
+27070,Whittlesea,Netball (Indoor),2
+27070,Whittlesea,Rugby League,1
+27070,Whittlesea,Skating,5
+27070,Whittlesea,Soccer,13
+27070,Whittlesea,Soccer (Indoor Soccer / Futsal),3
+27070,Whittlesea,Softball,1
+27070,Whittlesea,Squash / Racquetball,2
+27070,Whittlesea,Swimming,4
+27070,Whittlesea,Tennis (Outdoor),15
+27070,Whittlesea,Volleyball,1
+27170,Wodonga,Athletics,1
+27170,Wodonga,Australian Rules Football,3
+27170,Wodonga,BMX,1
+27170,Wodonga,Baseball,1
+27170,Wodonga,Basketball,1
+27170,Wodonga,Canoeing,1
+27170,Wodonga,Cricket,6
+27170,Wodonga,Croquet,1
+27170,Wodonga,Cycling,4
+27170,Wodonga,Equestrian,1
+27170,Wodonga,Fitness / Gymnasium Workouts,4
+27170,Wodonga,Go Karting,1
+27170,Wodonga,Golf,3
+27170,Wodonga,Gymnastics,1
+27170,Wodonga,Hockey,1
+27170,Wodonga,Karate,1
+27170,Wodonga,Lawn Bowls,1
+27170,Wodonga,Martial Arts,1
+27170,Wodonga,Motor Cycling,1
+27170,Wodonga,Netball,4
+27170,Wodonga,Netball (Indoor),1
+27170,Wodonga,Rugby League,1
+27170,Wodonga,Sailing,1
+27170,Wodonga,Shooting Sports,1
+27170,Wodonga,Skating,2
+27170,Wodonga,Soccer,3
+27170,Wodonga,Softball,1
+27170,Wodonga,Squash / Racquetball,1
+27170,Wodonga,Swimming,3
+27170,Wodonga,Tennis (Outdoor),4
+27170,Wodonga,Volleyball,1
+27170,Wodonga,Water Polo,2
+27170,Wodonga,Water Skiing,1
+27260,Wyndham,Aerobics,12
+27260,Wyndham,Archery,1
+27260,Wyndham,Athletics,1
+27260,Wyndham,Australian Rules Football,17
+27260,Wyndham,BMX,3
+27260,Wyndham,Badminton,1
+27260,Wyndham,Baseball,1
+27260,Wyndham,Basketball,1
+27260,Wyndham,Beach Volleyball,1
+27260,Wyndham,Boxing,1
+27260,Wyndham,Cricket,24
+27260,Wyndham,Cricket (Indoor),2
+27260,Wyndham,Equestrian,2
+27260,Wyndham,Fitness / Gymnasium Workouts,15
+27260,Wyndham,Golf,2
+27260,Wyndham,Gymnastics,3
+27260,Wyndham,Hockey,1
+27260,Wyndham,Lawn Bowls,2
+27260,Wyndham,Netball,3
+27260,Wyndham,Netball (Indoor),2
+27260,Wyndham,Polo,1
+27260,Wyndham,Rugby League,2
+27260,Wyndham,Rugby Union,2
+27260,Wyndham,Shooting Sports,1
+27260,Wyndham,Skating,4
+27260,Wyndham,Soccer,6
+27260,Wyndham,Soccer (Indoor Soccer / Futsal),1
+27260,Wyndham,Softball,2
+27260,Wyndham,Swimming,4
+27260,Wyndham,Table Tennis,1
+27260,Wyndham,Tennis (Outdoor),15
+27260,Wyndham,Volleyball,1
+27350,Yarra,Athletics,2
+27350,Yarra,Australian Rules Football,7
+27350,Yarra,BMX,1
+27350,Yarra,Basketball,4
+27350,Yarra,Bocce,2
+27350,Yarra,Boxing,3
+27350,Yarra,Canoe Polo,1
+27350,Yarra,Canoeing,2
+27350,Yarra,Cricket,17
+27350,Yarra,Cycling,2
+27350,Yarra,Fitness / Gymnasium Workouts,52
+27350,Yarra,Gaelic Football,1
+27350,Yarra,Golf,3
+27350,Yarra,Lawn Bowls,3
+27350,Yarra,Martial Arts,9
+27350,Yarra,Netball,4
+27350,Yarra,Skating,2
+27350,Yarra,Soccer,13
+27350,Yarra,Soccer (Indoor Soccer / Futsal),3
+27350,Yarra,Squash / Racquetball,1
+27350,Yarra,Swimming,4
+27350,Yarra,Tennis (Indoor),1
+27350,Yarra,Tennis (Outdoor),4
+27350,Yarra,Underwater Hockey,1
+27350,Yarra,Volleyball,1
+27450,Yarra Ranges,Archery,1
+27450,Yarra Ranges,Athletics,1
+27450,Yarra Ranges,Australian Rules Football,32
+27450,Yarra Ranges,BMX,3
+27450,Yarra Ranges,Badminton,1
+27450,Yarra Ranges,Basketball,1
+27450,Yarra Ranges,Cricket,41
+27450,Yarra Ranges,Cycling,1
+27450,Yarra Ranges,Equestrian,10
+27450,Yarra Ranges,Fitness / Gymnasium Workouts,12
+27450,Yarra Ranges,Golf,5
+27450,Yarra Ranges,Gymnastics,1
+27450,Yarra Ranges,Lawn Bowls,9
+27450,Yarra Ranges,Motor Sports,1
+27450,Yarra Ranges,Netball,17
+27450,Yarra Ranges,Netball (Indoor),1
+27450,Yarra Ranges,Sailing,1
+27450,Yarra Ranges,Shooting Sports,2
+27450,Yarra Ranges,Skating,7
+27450,Yarra Ranges,Soccer,12
+27450,Yarra Ranges,Softball,1
+27450,Yarra Ranges,Squash / Racquetball,1
+27450,Yarra Ranges,Swimming,7
+27450,Yarra Ranges,Table Tennis,1
+27450,Yarra Ranges,Tennis (Outdoor),26
+27630,Yarriambiack,Australian Rules Football,12
+27630,Yarriambiack,Badminton,1
+27630,Yarriambiack,Basketball,2
+27630,Yarriambiack,Cricket,9
+27630,Yarriambiack,Cricket (Indoor),1
+27630,Yarriambiack,Croquet,2
+27630,Yarriambiack,Fitness / Gymnasium Workouts,1
+27630,Yarriambiack,Golf,9
+27630,Yarriambiack,Hockey,2
+27630,Yarriambiack,Lawn Bowls,9
+27630,Yarriambiack,Netball,8
+27630,Yarriambiack,Netball (Indoor),1
+27630,Yarriambiack,Skating,1
+27630,Yarriambiack,Swimming,7
+27630,Yarriambiack,Table Tennis,1
+27630,Yarriambiack,Tennis (Outdoor),13
+27630,Yarriambiack,Volleyball,1
