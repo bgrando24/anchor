@@ -24,6 +24,10 @@ const STATIC_ROUTES = [
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
+  // Dev over TLS, so a secure origin is available locally. Needs a certificate pair, which is
+  // untracked: run `mkcert localhost` in the repo root to make one. Cloudflare terminates TLS
+  // for the deployed site, so this is dev only.
+  devServer: { https: { key: "localhost-key.pem", cert: "localhost.pem" } },
   modules: ["@vite-pwa/nuxt"],
   css: ["~/assets/css/main.css"],
   vite: {
