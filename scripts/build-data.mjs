@@ -1,50 +1,125 @@
 // Builds app/data/lgas.json from the team's dataset plus the app-owned region lookup.
 // Run by hand after new data lands; the output is committed:  node scripts/build-data.mjs
+//
+// Units, because the source mixes them: anything named *_pct here is a percentage out of 100,
+// *_pp is a change in percentage points, and bulk_billing_rate stays the 0-1 share the source
+// gives (the pages that show it multiply by 100). The source file states green space and AEDC
+// as percentages already but affordability as a 0-1 share, so only the latter is scaled.
 import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const SOURCE_DIR = resolve(here, '../app/data/source')
+const TEAM_DIR = resolve(here, '../data_pipeline/iteration_2_data')
 const OUT = resolve(here, '../app/data/lgas.json')
+const SERIES = resolve(here, '../app/data/affordability-series.json')
 
 const EXPECTED_ROWS = 79
 const RENT_QUARTER = 'September quarter 2025'
+const AEDC_YEARS = [2009, 2012, 2015, 2018, 2021, 2024]
+const SCHOOL_SECTORS = ['Government', 'Catholic', 'Independent']
 
 // The council renamed itself in 2022; the source still carries the old name.
 const NAME_FIXES = { Moreland: 'Merri-bek' }
 
-const REQUIRED_NUMBERS = ['lga_code', 'school_count', 'station_count', 'bulk_billing_rate', 'affordability_pct']
+const REQUIRED_NUMBERS = [
+  'lga_code',
+  'school_count',
+  'station_count',
+  'bulk_billing_rate',
+  'affordability_pct',
+  'affordability_trend',
+  'seifa_irsd',
+  'green_space_pct',
+  'sport_variety'
+]
 
 function fail(message) {
   console.error(`build-data: ${message}`)
   process.exit(1)
 }
 
-function readJson(name) {
+function readJson(dir, name) {
   try {
-    return JSON.parse(readFileSync(resolve(SOURCE_DIR, name), 'utf8'))
+    return JSON.parse(readFileSync(resolve(dir, name), 'utf8'))
   } catch (error) {
     fail(`could not read ${name}: ${error.message}`)
   }
 }
 
-const source = readJson('master_data_v2.json')
-const regionFile = readJson('regions.json')
+const source = readJson(TEAM_DIR, 'master_data_v4.json')
+const regionFile = readJson(SOURCE_DIR, 'regions.json')
+const seriesFile = readJson(resolve(here, '../app/data'), 'affordability-series.json')
 
-if (!Array.isArray(source)) fail('master_data_v2.json is not an array')
+if (!Array.isArray(source)) fail('master_data_v4.json is not an array')
 if (source.length !== EXPECTED_ROWS) fail(`expected ${EXPECTED_ROWS} rows, got ${source.length}`)
 
 const regions = new Map()
 for (const row of regionFile.regions) regions.set(row.lga_code, row)
 if (regions.size !== EXPECTED_ROWS) fail(`regions.json has ${regions.size} unique codes, expected ${EXPECTED_ROWS}`)
 
+const lastQuarter = seriesFile.quarters.at(-1)
+
+const num = (value) => (typeof value === 'number' && Number.isFinite(value) ? value : null)
+const round1 = (value) => Math.round(value * 10) / 10
+
+function wholeOrNull(row, key) {
+  const value = num(row[key])
+  if (value === null) return null
+  if (!Number.isInteger(value) || value < 0) fail(`${row.lga_name}: ${key} is ${row[key]}, expected a count`)
+  return value
+}
+
+function schoolBreakdown(row) {
+  const side = (prefix) => {
+    const out = {}
+    for (const sector of SCHOOL_SECTORS) {
+      const key = `${prefix}_${sector}`
+      const value = wholeOrNull(row, key)
+      if (value === null) fail(`${row.lga_name}: ${key} is missing`)
+      out[sector.toLowerCase()] = value
+    }
+    return out
+  }
+  // Schools teaching both levels are counted on both sides, so these never sum to school_count.
+  return { primary: side('primary'), secondary: side('secondary') }
+}
+
+function aedc(row) {
+  const points = []
+  for (const year of AEDC_YEARS) {
+    const pct = num(row[`aedc_vulnerable_pct_${year}`])
+    if (pct === null) continue
+    if (pct < 0 || pct > 100) fail(`${row.lga_name}: AEDC ${year} is ${pct}, expected a percentage`)
+    points.push({
+      year,
+      vulnerable_pct: round1(pct),
+      valid_n: wholeOrNull(row, `aedc_valid_n_${year}`),
+      vulnerable_n: wholeOrNull(row, `aedc_vulnerable_n_${year}`)
+    })
+  }
+  // One small borough is suppressed in every year; the page has to cope with no AEDC at all.
+  return points.length ? points : null
+}
+
+function sports(row) {
+  const value = row.sports
+  if (value === null || typeof value !== 'object' || Array.isArray(value)) {
+    fail(`${row.lga_name}: sports is ${JSON.stringify(value)}, expected an object`)
+  }
+  const out = {}
+  for (const [name, count] of Object.entries(value)) {
+    if (!Number.isInteger(count) || count < 0) fail(`${row.lga_name}: sports.${name} is ${count}, expected a count`)
+    out[name] = count
+  }
+  return out
+}
+
 const seen = new Set()
 const lgas = source.map((row) => {
   for (const key of REQUIRED_NUMBERS) {
-    if (typeof row[key] !== 'number' || !Number.isFinite(row[key])) {
-      fail(`${row.lga_name ?? 'unknown area'}: ${key} is missing or not a number`)
-    }
+    if (num(row[key]) === null) fail(`${row.lga_name ?? 'unknown area'}: ${key} is missing or not a number`)
   }
   if (seen.has(row.lga_code)) fail(`duplicate lga_code ${row.lga_code}`)
   seen.add(row.lga_code)
@@ -57,7 +132,21 @@ const lgas = source.map((row) => {
     fail(`lga_code ${row.lga_code}: source calls it "${row.lga_name}", regions.json calls it "${region.lga_name}"`)
   }
 
-  const rent = (value) => (typeof value === 'number' && Number.isFinite(value) ? value : null)
+  const block = seriesFile.series[String(row.lga_code)]
+  if (!block) fail(`${name}: no affordability series; re-run scripts/extract-affordability-series.py`)
+  const seriesLast = block.all.pct.at(-1) / 10
+  if (Math.abs(seriesLast - row.affordability_pct * 100) > 0.05) {
+    fail(
+      `${name}: the series ends at ${seriesLast}% for ${lastQuarter} but affordability_pct is ` +
+        `${round1(row.affordability_pct * 100)}%; the two sources disagree`
+    )
+  }
+
+  const sportVariety = wholeOrNull(row, 'sport_variety')
+  const sportsByName = sports(row)
+  if (Object.keys(sportsByName).length !== sportVariety) {
+    fail(`${name}: sport_variety is ${sportVariety} but sports lists ${Object.keys(sportsByName).length} sports`)
+  }
 
   return {
     lga_code: row.lga_code,
@@ -67,16 +156,22 @@ const lgas = source.map((row) => {
     school_count: row.school_count,
     station_count: row.station_count,
     bulk_billing_rate: row.bulk_billing_rate,
-    affordable_lettings_pct: Math.round(row.affordability_pct * 1000) / 10,
+    affordable_lettings_pct: round1(row.affordability_pct * 100),
+    affordability_trend_pp: round1(row.affordability_trend * 100),
+    seifa_irsd: Math.round(row.seifa_irsd),
+    green_space_pct: round1(row.green_space_pct),
+    schools: schoolBreakdown(row),
+    sport_variety: sportVariety,
+    sports: sportsByName,
+    aedc: aedc(row),
     rent: {
-      flat_1br: rent(row.flat_1br_median),
-      flat_2br: rent(row.flat_2br_median),
-      house_2br: rent(row.house_2br_median),
-      house_3br: rent(row.house_3br_median)
+      flat_1br: num(row.flat_1br_median),
+      flat_2br: num(row.flat_2br_median),
+      house_2br: num(row.house_2br_median),
+      house_3br: num(row.house_3br_median)
     },
-    // Not in v2 yet. population unlocks per-10,000 ranking; the series unlocks the chart.
-    population: rent(row.population),
-    lettings_series_5yr: Array.isArray(row.lettings_series_5yr) ? row.lettings_series_5yr : null
+    // Not in the source yet; it would let schools and stations be ranked per 10,000 residents.
+    population: num(row.population)
   }
 })
 
@@ -84,13 +179,19 @@ lgas.sort((a, b) => a.lga_name.localeCompare(b.lga_name))
 
 const file = {
   meta: {
-    source: 'master_data_v2.json (data team) plus app-owned regions.json',
+    source: 'master_data_v4.json (data team) plus app-owned regions.json',
     generated: new Date().toISOString().slice(0, 10),
-    rentQuarter: RENT_QUARTER
+    rentQuarter: RENT_QUARTER,
+    affordabilityQuarter: lastQuarter
   },
   lgas
 }
 
 writeFileSync(OUT, JSON.stringify(file, null, 2) + '\n')
+
 const withRent = lgas.filter((l) => Object.values(l.rent).some((v) => v !== null)).length
-console.log(`build-data: wrote ${lgas.length} areas to app/data/lgas.json (${withRent} with rent data)`)
+const withAedc = lgas.filter((l) => l.aedc).length
+console.log(
+  `build-data: wrote ${lgas.length} areas to app/data/lgas.json ` +
+    `(${withRent} with rent data, ${withAedc} with AEDC), checked against ${SERIES.split('/').at(-1)}`
+)

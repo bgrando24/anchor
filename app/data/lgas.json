@@ -1,8 +1,9 @@
 {
   "meta": {
-    "source": "master_data_v2.json (data team) plus app-owned regions.json",
-    "generated": "2026-09-22",
-    "rentQuarter": "September quarter 2025"
+    "source": "master_data_v4.json (data team) plus app-owned regions.json",
+    "generated": "2026-10-01",
+    "rentQuarter": "September quarter 2025",
+    "affordabilityQuarter": "Sep 2025"
   },
   "lgas": [
     {
@@ -14,14 +15,97 @@
       "station_count": 0,
       "bulk_billing_rate": 0.947583333,
       "affordable_lettings_pct": 38.5,
+      "affordability_trend_pp": 32.1,
+      "seifa_irsd": 1028,
+      "green_space_pct": 0.1,
+      "schools": {
+        "primary": {
+          "government": 8,
+          "catholic": 1,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 1,
+          "independent": 0
+        }
+      },
+      "sport_variety": 28,
+      "sports": {
+        "Aerobics": 1,
+        "Athletics": 1,
+        "Australian Rules Football": 4,
+        "BMX": 1,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 3,
+        "Bocce": 1,
+        "Cricket": 11,
+        "Cricket (Indoor)": 1,
+        "Cycling": 1,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 4,
+        "Gymnastics": 2,
+        "Lawn Bowls": 4,
+        "Motor Cycling": 2,
+        "Motor Sports": 1,
+        "Netball": 2,
+        "Netball (Indoor)": 1,
+        "Skating": 3,
+        "Soccer": 3,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 2,
+        "Swimming": 2,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 7,
+        "Volleyball": 2
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 14.5,
+          "valid_n": 124,
+          "vulnerable_n": 18
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 15.7,
+          "valid_n": 121,
+          "vulnerable_n": 19
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 17.1,
+          "valid_n": 129,
+          "vulnerable_n": 22
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 21.6,
+          "valid_n": 125,
+          "vulnerable_n": 27
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 8.8,
+          "valid_n": 114,
+          "vulnerable_n": 10
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 17.5,
+          "valid_n": 114,
+          "vulnerable_n": 20
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": 485
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 20260,
@@ -32,14 +116,89 @@
       "station_count": 1,
       "bulk_billing_rate": 0.989916667,
       "affordable_lettings_pct": 69,
+      "affordability_trend_pp": 16.5,
+      "seifa_irsd": 955,
+      "green_space_pct": 0.2,
+      "schools": {
+        "primary": {
+          "government": 9,
+          "catholic": 1,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 1,
+          "independent": 0
+        }
+      },
+      "sport_variety": 20,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 8,
+        "Badminton": 1,
+        "Basketball": 1,
+        "Cricket": 13,
+        "Croquet": 1,
+        "Cycling": 6,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 6,
+        "Hockey": 1,
+        "Lawn Bowls": 6,
+        "Motor Cycling": 1,
+        "Netball": 5,
+        "Netball (Indoor)": 1,
+        "Shooting Sports": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 4,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 14
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 20,
+          "valid_n": 120,
+          "vulnerable_n": 24
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 17.8,
+          "valid_n": 129,
+          "vulnerable_n": 23
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 23.6,
+          "valid_n": 110,
+          "vulnerable_n": 26
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 29.7,
+          "valid_n": 118,
+          "vulnerable_n": 35
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 27.1,
+          "valid_n": 118,
+          "vulnerable_n": 32
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 38.3,
+          "valid_n": 107,
+          "vulnerable_n": 41
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 340,
         "house_2br": 365,
         "house_3br": 430
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 20570,
@@ -50,14 +209,106 @@
       "station_count": 2,
       "bulk_billing_rate": 0.967416667,
       "affordable_lettings_pct": 74.4,
+      "affordability_trend_pp": 31.1,
+      "seifa_irsd": 986,
+      "green_space_pct": 2.3,
+      "schools": {
+        "primary": {
+          "government": 25,
+          "catholic": 11,
+          "independent": 4
+        },
+        "secondary": {
+          "government": 6,
+          "catholic": 3,
+          "independent": 3
+        }
+      },
+      "sport_variety": 37,
+      "sports": {
+        "Aerobics": 14,
+        "Archery": 1,
+        "Athletics": 4,
+        "Australian Rules Football": 17,
+        "BMX": 6,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 4,
+        "Beach Volleyball": 1,
+        "Boxing": 1,
+        "Cricket": 23,
+        "Cricket (Indoor)": 1,
+        "Croquet": 2,
+        "Cycling": 8,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 16,
+        "Golf": 4,
+        "Gymnastics": 1,
+        "Hockey": 1,
+        "Karate": 2,
+        "Lawn Bowls": 15,
+        "Motor Cycling": 1,
+        "Netball": 10,
+        "Netball (Indoor)": 3,
+        "Sailing": 1,
+        "Shooting Sports": 1,
+        "Skating": 1,
+        "Soccer": 12,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Squash / Racquetball": 3,
+        "Swimming": 10,
+        "Table Tennis": 1,
+        "Tae Kwon Do": 1,
+        "Ten Pin Bowling": 1,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 8,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 20.6,
+          "valid_n": 975,
+          "vulnerable_n": 201
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 21.1,
+          "valid_n": 1189,
+          "vulnerable_n": 251
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 22,
+          "valid_n": 1207,
+          "vulnerable_n": 265
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 19.5,
+          "valid_n": 1241,
+          "vulnerable_n": 242
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 21.6,
+          "valid_n": 1308,
+          "vulnerable_n": 283
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 27.1,
+          "valid_n": 1119,
+          "vulnerable_n": 303
+        }
+      ],
       "rent": {
         "flat_1br": 288,
         "flat_2br": 360,
         "house_2br": 370,
         "house_3br": 410
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 20660,
@@ -68,14 +319,91 @@
       "station_count": 9,
       "bulk_billing_rate": 0.788666667,
       "affordable_lettings_pct": 2.2,
+      "affordability_trend_pp": -1.3,
+      "seifa_irsd": 1058,
+      "green_space_pct": 14.1,
+      "schools": {
+        "primary": {
+          "government": 21,
+          "catholic": 8,
+          "independent": 3
+        },
+        "secondary": {
+          "government": 6,
+          "catholic": 3,
+          "independent": 2
+        }
+      },
+      "sport_variety": 22,
+      "sports": {
+        "Aerobics": 1,
+        "Athletics": 2,
+        "Australian Rules Football": 26,
+        "Badminton": 1,
+        "Baseball": 6,
+        "Basketball": 2,
+        "Boxing": 1,
+        "Cricket": 33,
+        "Croquet": 1,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 23,
+        "Golf": 3,
+        "Gymnastics": 3,
+        "Hockey": 1,
+        "Lawn Bowls": 8,
+        "Netball (Indoor)": 2,
+        "Skating": 1,
+        "Soccer": 8,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Swimming": 4,
+        "Tennis (Outdoor)": 22,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 14.3,
+          "valid_n": 1277,
+          "vulnerable_n": 183
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 17.1,
+          "valid_n": 1407,
+          "vulnerable_n": 240
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 13.4,
+          "valid_n": 1406,
+          "vulnerable_n": 189
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 14.5,
+          "valid_n": 1428,
+          "vulnerable_n": 207
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 13.6,
+          "valid_n": 1345,
+          "vulnerable_n": 183
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 16.5,
+          "valid_n": 1152,
+          "vulnerable_n": 190
+        }
+      ],
       "rent": {
         "flat_1br": 470,
         "flat_2br": 540,
         "house_2br": 528,
         "house_3br": 600
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 20740,
@@ -86,14 +414,93 @@
       "station_count": 0,
       "bulk_billing_rate": 0.951083333,
       "affordable_lettings_pct": 34.9,
+      "affordability_trend_pp": 22.3,
+      "seifa_irsd": 993,
+      "green_space_pct": 0.8,
+      "schools": {
+        "primary": {
+          "government": 8,
+          "catholic": 2,
+          "independent": 2
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 0,
+          "independent": 2
+        }
+      },
+      "sport_variety": 24,
+      "sports": {
+        "Australian Rules Football": 5,
+        "BMX": 2,
+        "Badminton": 1,
+        "Basketball": 7,
+        "Cricket": 10,
+        "Croquet": 2,
+        "Cycling": 3,
+        "Disk Golf": 1,
+        "Equestrian": 3,
+        "Fitness / Gymnasium Workouts": 2,
+        "Golf": 3,
+        "Lawn Bowls": 5,
+        "Motor Cycling": 1,
+        "Motor Sports": 2,
+        "Netball": 5,
+        "Netball (Indoor)": 2,
+        "Sailing": 4,
+        "Shooting Sports": 2,
+        "Skating": 4,
+        "Soccer": 4,
+        "Squash / Racquetball": 2,
+        "Surf Life Saving": 4,
+        "Swimming": 2,
+        "Tennis (Outdoor)": 11
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 22.4,
+          "valid_n": 303,
+          "vulnerable_n": 68
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 26,
+          "valid_n": 281,
+          "vulnerable_n": 73
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 14.2,
+          "valid_n": 339,
+          "vulnerable_n": 48
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 18.7,
+          "valid_n": 363,
+          "vulnerable_n": 68
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 26.8,
+          "valid_n": 336,
+          "vulnerable_n": 90
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 24,
+          "valid_n": 300,
+          "vulnerable_n": 72
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 393,
         "house_2br": 410,
         "house_3br": 460
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 20830,
@@ -104,14 +511,97 @@
       "station_count": 5,
       "bulk_billing_rate": 0.942666667,
       "affordable_lettings_pct": 14.2,
+      "affordability_trend_pp": 3,
+      "seifa_irsd": 1003,
+      "green_space_pct": 0.2,
+      "schools": {
+        "primary": {
+          "government": 24,
+          "catholic": 4,
+          "independent": 2
+        },
+        "secondary": {
+          "government": 4,
+          "catholic": 1,
+          "independent": 2
+        }
+      },
+      "sport_variety": 28,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 16,
+        "BMX": 3,
+        "Badminton": 4,
+        "Basketball": 6,
+        "Boxing": 2,
+        "Cricket": 25,
+        "Croquet": 2,
+        "Cycling": 9,
+        "Equestrian": 6,
+        "Fitness / Gymnasium Workouts": 9,
+        "Golf": 3,
+        "Gymnastics": 1,
+        "Hockey": 1,
+        "Karate": 1,
+        "Lawn Bowls": 8,
+        "Martial Arts": 2,
+        "Motor Sports": 1,
+        "Netball": 11,
+        "Netball (Indoor)": 2,
+        "Polo": 1,
+        "Shooting Sports": 1,
+        "Skating": 4,
+        "Soccer": 6,
+        "Squash / Racquetball": 2,
+        "Swimming": 6,
+        "Tennis (Outdoor)": 21,
+        "Volleyball": 2
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 22.4,
+          "valid_n": 456,
+          "vulnerable_n": 102
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 20.5,
+          "valid_n": 474,
+          "vulnerable_n": 97
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 20,
+          "valid_n": 590,
+          "vulnerable_n": 118
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 20.2,
+          "valid_n": 555,
+          "vulnerable_n": 112
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 24,
+          "valid_n": 645,
+          "vulnerable_n": 155
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 25.5,
+          "valid_n": 644,
+          "vulnerable_n": 164
+        }
+      ],
       "rent": {
         "flat_1br": 252,
         "flat_2br": 425,
         "house_2br": 450,
         "house_3br": 500
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 20910,
@@ -122,14 +612,87 @@
       "station_count": 7,
       "bulk_billing_rate": 0.687916667,
       "affordable_lettings_pct": 0,
+      "affordability_trend_pp": -0.3,
+      "seifa_irsd": 1090,
+      "green_space_pct": 6.8,
+      "schools": {
+        "primary": {
+          "government": 11,
+          "catholic": 7,
+          "independent": 4
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 1,
+          "independent": 4
+        }
+      },
+      "sport_variety": 18,
+      "sports": {
+        "Athletics": 4,
+        "Australian Rules Football": 18,
+        "Baseball": 2,
+        "Cricket": 35,
+        "Croquet": 3,
+        "Fitness / Gymnasium Workouts": 24,
+        "Golf": 8,
+        "Gymnastics": 1,
+        "Hockey": 2,
+        "Lawn Bowls": 14,
+        "Netball": 2,
+        "Sailing": 6,
+        "Skating": 2,
+        "Soccer": 10,
+        "Softball": 2,
+        "Surf Life Saving": 6,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 11
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 10.4,
+          "valid_n": 1133,
+          "vulnerable_n": 118
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 12.6,
+          "valid_n": 1164,
+          "vulnerable_n": 147
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 10.1,
+          "valid_n": 1154,
+          "vulnerable_n": 116
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 10.1,
+          "valid_n": 1122,
+          "vulnerable_n": 113
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 9.6,
+          "valid_n": 932,
+          "vulnerable_n": 89
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 10.1,
+          "valid_n": 776,
+          "vulnerable_n": 78
+        }
+      ],
       "rent": {
         "flat_1br": 495,
         "flat_2br": 650,
         "house_2br": 695,
         "house_3br": 900
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 21010,
@@ -140,14 +703,88 @@
       "station_count": 1,
       "bulk_billing_rate": 0.91,
       "affordable_lettings_pct": 28.8,
+      "affordability_trend_pp": 14.8,
+      "seifa_irsd": 968,
+      "green_space_pct": 0.2,
+      "schools": {
+        "primary": {
+          "government": 3,
+          "catholic": 1,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 1,
+          "independent": 1
+        }
+      },
+      "sport_variety": 19,
+      "sports": {
+        "Aerobics": 1,
+        "Athletics": 1,
+        "Australian Rules Football": 5,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 1,
+        "Cricket": 8,
+        "Dancing": 1,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 2,
+        "Gymnastics": 1,
+        "Hockey": 1,
+        "Lawn Bowls": 3,
+        "Motor Cycling": 1,
+        "Netball": 6,
+        "Soccer": 1,
+        "Swimming": 1,
+        "Tennis (Outdoor)": 5
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 22.1,
+          "valid_n": 140,
+          "vulnerable_n": 31
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 31.1,
+          "valid_n": 167,
+          "vulnerable_n": 52
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 32.9,
+          "valid_n": 149,
+          "vulnerable_n": 49
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 23.5,
+          "valid_n": 119,
+          "vulnerable_n": 28
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 21.2,
+          "valid_n": 113,
+          "vulnerable_n": 24
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 30.2,
+          "valid_n": 126,
+          "vulnerable_n": 38
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 375,
         "house_2br": null,
         "house_3br": 450
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 21110,
@@ -158,14 +795,99 @@
       "station_count": 14,
       "bulk_billing_rate": 0.74025,
       "affordable_lettings_pct": 0.9,
+      "affordability_trend_pp": 0.4,
+      "seifa_irsd": 1090,
+      "green_space_pct": 9.5,
+      "schools": {
+        "primary": {
+          "government": 20,
+          "catholic": 11,
+          "independent": 12
+        },
+        "secondary": {
+          "government": 6,
+          "catholic": 3,
+          "independent": 13
+        }
+      },
+      "sport_variety": 30,
+      "sports": {
+        "Aerobics": 12,
+        "Archery": 1,
+        "Athletics": 1,
+        "Australian Rules Football": 20,
+        "BMX": 2,
+        "Badminton": 2,
+        "Baseball": 1,
+        "Basketball": 3,
+        "Cricket": 38,
+        "Croquet": 1,
+        "Cycling": 1,
+        "Fitness / Gymnasium Workouts": 19,
+        "Golf": 3,
+        "Gymnastics": 5,
+        "Hockey": 2,
+        "Karate": 1,
+        "Lacrosse": 3,
+        "Lawn Bowls": 9,
+        "Netball": 1,
+        "Netball (Indoor)": 2,
+        "Rowing": 1,
+        "Rugby Union": 2,
+        "Skating": 2,
+        "Snooker / Billiards / Pool": 1,
+        "Soccer": 15,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Squash / Racquetball": 1,
+        "Swimming": 4,
+        "Tennis (Outdoor)": 19,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 10.9,
+          "valid_n": 1768,
+          "vulnerable_n": 192
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 9.5,
+          "valid_n": 1667,
+          "vulnerable_n": 159
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 11.8,
+          "valid_n": 1752,
+          "vulnerable_n": 206
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 12.7,
+          "valid_n": 1648,
+          "vulnerable_n": 210
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 13,
+          "valid_n": 1292,
+          "vulnerable_n": 168
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 17,
+          "valid_n": 1074,
+          "vulnerable_n": 182
+        }
+      ],
       "rent": {
         "flat_1br": 470,
         "flat_2br": 600,
         "house_2br": 688,
         "house_3br": 850
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 21180,
@@ -176,14 +898,99 @@
       "station_count": 8,
       "bulk_billing_rate": 0.957333333,
       "affordable_lettings_pct": 20.4,
+      "affordability_trend_pp": -7.6,
+      "seifa_irsd": 912,
+      "green_space_pct": 9.2,
+      "schools": {
+        "primary": {
+          "government": 29,
+          "catholic": 15,
+          "independent": 2
+        },
+        "secondary": {
+          "government": 6,
+          "catholic": 4,
+          "independent": 1
+        }
+      },
+      "sport_variety": 30,
+      "sports": {
+        "Athletics": 5,
+        "Australian Rules Football": 20,
+        "BMX": 2,
+        "Baseball": 1,
+        "Basketball": 34,
+        "Bocce": 4,
+        "Boxing": 1,
+        "Callisthenics": 2,
+        "Cricket": 21,
+        "Dancing": 6,
+        "Fitness / Gymnasium Workouts": 29,
+        "Golf": 2,
+        "Gymnastics": 2,
+        "Judo": 1,
+        "Karate": 1,
+        "Lawn Bowls": 5,
+        "Martial Arts": 4,
+        "Netball": 1,
+        "Netball (Indoor)": 1,
+        "Roller Sports - Other": 1,
+        "Skating": 1,
+        "Soccer": 18,
+        "Softball": 2,
+        "Swimming": 8,
+        "Table Tennis": 1,
+        "Tae Kwon Do": 2,
+        "Ten Pin Bowling": 1,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 13,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 26.9,
+          "valid_n": 2029,
+          "vulnerable_n": 545
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 27.6,
+          "valid_n": 2172,
+          "vulnerable_n": 599
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 31,
+          "valid_n": 2170,
+          "vulnerable_n": 673
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 26.2,
+          "valid_n": 2405,
+          "vulnerable_n": 630
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 29.3,
+          "valid_n": 2155,
+          "vulnerable_n": 632
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 27.8,
+          "valid_n": 1771,
+          "vulnerable_n": 493
+        }
+      ],
       "rent": {
         "flat_1br": 330,
         "flat_2br": 400,
         "house_2br": 450,
         "house_3br": 500
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 21270,
@@ -194,14 +1001,88 @@
       "station_count": 0,
       "bulk_billing_rate": 0.965583333,
       "affordable_lettings_pct": 90,
+      "affordability_trend_pp": -10,
+      "seifa_irsd": 975,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 5,
+          "catholic": 3,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 5,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 19,
+      "sports": {
+        "Archery": 1,
+        "Australian Rules Football": 6,
+        "Badminton": 1,
+        "Basketball": 4,
+        "Cricket": 7,
+        "Croquet": 3,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 2,
+        "Golf": 9,
+        "Hockey": 4,
+        "Lawn Bowls": 8,
+        "Netball": 5,
+        "Netball (Indoor)": 1,
+        "Shooting Sports": 1,
+        "Skating": 1,
+        "Squash / Racquetball": 5,
+        "Swimming": 7,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 9
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 24.2,
+          "valid_n": 62,
+          "vulnerable_n": 15
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 24.7,
+          "valid_n": 81,
+          "vulnerable_n": 20
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 11.3,
+          "valid_n": 62,
+          "vulnerable_n": 7
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 30.8,
+          "valid_n": 52,
+          "vulnerable_n": 16
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 33.3,
+          "valid_n": 51,
+          "vulnerable_n": 17
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 37.5,
+          "valid_n": 48,
+          "vulnerable_n": 18
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": null
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 21370,
@@ -212,14 +1093,96 @@
       "station_count": 2,
       "bulk_billing_rate": 0.972166667,
       "affordable_lettings_pct": 29.9,
+      "affordability_trend_pp": -1.8,
+      "seifa_irsd": 965,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 14,
+          "catholic": 5,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 4,
+          "catholic": 2,
+          "independent": 0
+        }
+      },
+      "sport_variety": 27,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 16,
+        "BMX": 1,
+        "Badminton": 5,
+        "Basketball": 7,
+        "Carpet Bowls": 1,
+        "Cricket": 20,
+        "Cricket (Indoor)": 2,
+        "Croquet": 1,
+        "Cycling": 4,
+        "Equestrian": 5,
+        "Fitness / Gymnasium Workouts": 2,
+        "Golf": 9,
+        "Gymnastics": 1,
+        "Hockey": 2,
+        "Lawn Bowls": 10,
+        "Netball": 15,
+        "Netball (Indoor)": 4,
+        "Sailing": 1,
+        "Shooting Sports": 1,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 2,
+        "Swimming": 8,
+        "Table Tennis": 2,
+        "Tennis (Indoor)": 2,
+        "Tennis (Outdoor)": 19,
+        "Volleyball": 3
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 21.6,
+          "valid_n": 458,
+          "vulnerable_n": 99
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 20.5,
+          "valid_n": 430,
+          "vulnerable_n": 88
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 26.6,
+          "valid_n": 455,
+          "vulnerable_n": 121
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 22.4,
+          "valid_n": 450,
+          "vulnerable_n": 101
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 31.2,
+          "valid_n": 413,
+          "vulnerable_n": 129
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 22.8,
+          "valid_n": 320,
+          "vulnerable_n": 73
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 400,
         "house_2br": 410,
         "house_3br": 480
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 21450,
@@ -230,14 +1193,90 @@
       "station_count": 9,
       "bulk_billing_rate": 0.978666667,
       "affordable_lettings_pct": 5,
+      "affordability_trend_pp": -8.8,
+      "seifa_irsd": 1021,
+      "green_space_pct": 1.3,
+      "schools": {
+        "primary": {
+          "government": 24,
+          "catholic": 6,
+          "independent": 5
+        },
+        "secondary": {
+          "government": 5,
+          "catholic": 1,
+          "independent": 4
+        }
+      },
+      "sport_variety": 21,
+      "sports": {
+        "Athletics": 2,
+        "Australian Rules Football": 19,
+        "BMX": 8,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 3,
+        "Cricket": 25,
+        "Cycling": 6,
+        "Equestrian": 10,
+        "Fitness / Gymnasium Workouts": 6,
+        "Golf": 5,
+        "Lawn Bowls": 5,
+        "Netball": 15,
+        "Netball (Indoor)": 1,
+        "Sailing": 1,
+        "Shooting Sports": 3,
+        "Skating": 6,
+        "Soccer": 3,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Swimming": 5,
+        "Tennis (Outdoor)": 21
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 17.5,
+          "valid_n": 890,
+          "vulnerable_n": 156
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 17.3,
+          "valid_n": 1177,
+          "vulnerable_n": 203
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 20.3,
+          "valid_n": 1328,
+          "vulnerable_n": 269
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 18.3,
+          "valid_n": 1610,
+          "vulnerable_n": 295
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 18.7,
+          "valid_n": 1612,
+          "vulnerable_n": 301
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 23.4,
+          "valid_n": 1607,
+          "vulnerable_n": 376
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 450,
         "house_2br": 490,
         "house_3br": 540
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 21610,
@@ -248,14 +1287,104 @@
       "station_count": 6,
       "bulk_billing_rate": 0.978833333,
       "affordable_lettings_pct": 2.7,
+      "affordability_trend_pp": -4.6,
+      "seifa_irsd": 995,
+      "green_space_pct": 6.6,
+      "schools": {
+        "primary": {
+          "government": 52,
+          "catholic": 14,
+          "independent": 10
+        },
+        "secondary": {
+          "government": 17,
+          "catholic": 1,
+          "independent": 8
+        }
+      },
+      "sport_variety": 35,
+      "sports": {
+        "AFL (Indoor)": 1,
+        "Athletics": 3,
+        "Australian Rules Football": 35,
+        "BMX": 9,
+        "Badminton": 2,
+        "Baseball": 1,
+        "Basketball": 11,
+        "Beach Volleyball": 2,
+        "Bocce": 2,
+        "Cricket": 44,
+        "Cricket (Indoor)": 1,
+        "Cycling": 2,
+        "Equestrian": 4,
+        "Fitness / Gymnasium Workouts": 18,
+        "Golf": 5,
+        "Gridiron": 2,
+        "Gymnastics": 4,
+        "Hockey": 2,
+        "Karate": 1,
+        "Lawn Bowls": 7,
+        "Netball": 14,
+        "Netball (Indoor)": 3,
+        "Rugby League": 3,
+        "Rugby Union": 3,
+        "Sailing": 1,
+        "Skating": 1,
+        "Soccer": 14,
+        "Soccer (Indoor Soccer / Futsal)": 3,
+        "Softball": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 5,
+        "Tae Kwon Do": 1,
+        "Tennis (Indoor)": 2,
+        "Tennis (Outdoor)": 19,
+        "Volleyball": 2
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 25.9,
+          "valid_n": 3469,
+          "vulnerable_n": 899
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 22,
+          "valid_n": 4023,
+          "vulnerable_n": 886
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 22.5,
+          "valid_n": 4367,
+          "vulnerable_n": 981
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 20.4,
+          "valid_n": 4989,
+          "vulnerable_n": 1018
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 19.7,
+          "valid_n": 5315,
+          "vulnerable_n": 1048
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 25.4,
+          "valid_n": 5268,
+          "vulnerable_n": 1336
+        }
+      ],
       "rent": {
         "flat_1br": 340,
         "flat_2br": 480,
         "house_2br": 500,
         "house_3br": 550
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 21670,
@@ -266,14 +1395,95 @@
       "station_count": 2,
       "bulk_billing_rate": 0.991916667,
       "affordable_lettings_pct": 82.5,
+      "affordability_trend_pp": 21.8,
+      "seifa_irsd": 898,
+      "green_space_pct": 0.7,
+      "schools": {
+        "primary": {
+          "government": 6,
+          "catholic": 1,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 0,
+          "independent": 1
+        }
+      },
+      "sport_variety": 26,
+      "sports": {
+        "Archery": 1,
+        "Athletics": 2,
+        "Australian Rules Football": 6,
+        "BMX": 1,
+        "Badminton": 2,
+        "Basketball": 2,
+        "Cricket": 9,
+        "Croquet": 1,
+        "Cycling": 2,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 3,
+        "Gymnastics": 1,
+        "Hockey": 1,
+        "Lawn Bowls": 5,
+        "Netball": 5,
+        "Netball (Indoor)": 4,
+        "Shooting Sports": 1,
+        "Soccer": 1,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 4,
+        "Table Tennis": 1,
+        "Tae Kwon Do": 1,
+        "Tennis (Outdoor)": 8,
+        "Volleyball": 2
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 35.7,
+          "valid_n": 112,
+          "vulnerable_n": 40
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 33.6,
+          "valid_n": 134,
+          "vulnerable_n": 45
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 28.1,
+          "valid_n": 128,
+          "vulnerable_n": 36
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 33.3,
+          "valid_n": 123,
+          "vulnerable_n": 41
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 34.2,
+          "valid_n": 117,
+          "vulnerable_n": 40
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 40.2,
+          "valid_n": 82,
+          "vulnerable_n": 33
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": 380
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 21750,
@@ -284,14 +1494,93 @@
       "station_count": 0,
       "bulk_billing_rate": 0.917583333,
       "affordable_lettings_pct": 35.4,
+      "affordability_trend_pp": 24.8,
+      "seifa_irsd": 973,
+      "green_space_pct": 0.1,
+      "schools": {
+        "primary": {
+          "government": 11,
+          "catholic": 3,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 1,
+          "independent": 0
+        }
+      },
+      "sport_variety": 24,
+      "sports": {
+        "Australian Rules Football": 12,
+        "Baseball": 1,
+        "Basketball": 2,
+        "Beach Volleyball": 1,
+        "Cricket": 16,
+        "Cricket (Indoor)": 1,
+        "Croquet": 1,
+        "Cycling": 3,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 3,
+        "Golf": 4,
+        "Lawn Bowls": 5,
+        "Motor Cycling": 1,
+        "Netball": 9,
+        "Netball (Indoor)": 1,
+        "Sailing": 2,
+        "Skating": 3,
+        "Soccer": 2,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 2,
+        "Surf Life Saving": 3,
+        "Swimming": 1,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 26
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 23.7,
+          "valid_n": 241,
+          "vulnerable_n": 57
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 22.4,
+          "valid_n": 259,
+          "vulnerable_n": 58
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 26.7,
+          "valid_n": 255,
+          "vulnerable_n": 68
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 23.3,
+          "valid_n": 253,
+          "vulnerable_n": 59
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 20.2,
+          "valid_n": 243,
+          "vulnerable_n": 49
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 36.1,
+          "valid_n": 183,
+          "vulnerable_n": 66
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 370,
         "house_2br": null,
         "house_3br": 475
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 21830,
@@ -302,14 +1591,94 @@
       "station_count": 2,
       "bulk_billing_rate": 0.873,
       "affordable_lettings_pct": 59.5,
+      "affordability_trend_pp": 12.6,
+      "seifa_irsd": 985,
+      "green_space_pct": 0.1,
+      "schools": {
+        "primary": {
+          "government": 9,
+          "catholic": 2,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 5,
+          "catholic": 1,
+          "independent": 0
+        }
+      },
+      "sport_variety": 25,
+      "sports": {
+        "Australian Rules Football": 9,
+        "Badminton": 3,
+        "Basketball": 4,
+        "Cricket": 16,
+        "Croquet": 1,
+        "Cycling": 3,
+        "Equestrian": 5,
+        "Fitness / Gymnasium Workouts": 2,
+        "Golf": 6,
+        "Hockey": 1,
+        "Lawn Bowls": 8,
+        "Martial Arts": 1,
+        "Motor Sports": 1,
+        "Netball": 9,
+        "Netball (Indoor)": 4,
+        "Sailing": 1,
+        "Skating": 6,
+        "Soccer": 1,
+        "Soccer (Indoor Soccer / Futsal)": 3,
+        "Squash / Racquetball": 2,
+        "Surf Life Saving": 1,
+        "Swimming": 6,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 11,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 18.6,
+          "valid_n": 194,
+          "vulnerable_n": 36
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 23.6,
+          "valid_n": 216,
+          "vulnerable_n": 51
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 21.9,
+          "valid_n": 178,
+          "vulnerable_n": 39
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 21.2,
+          "valid_n": 203,
+          "vulnerable_n": 43
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 24.3,
+          "valid_n": 169,
+          "vulnerable_n": 41
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 17.7,
+          "valid_n": 119,
+          "vulnerable_n": 21
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": 350,
         "house_3br": 420
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 21890,
@@ -320,14 +1689,102 @@
       "station_count": 13,
       "bulk_billing_rate": 0.767666667,
       "affordable_lettings_pct": 1.7,
+      "affordability_trend_pp": -2.2,
+      "seifa_irsd": 1018,
+      "green_space_pct": 16.7,
+      "schools": {
+        "primary": {
+          "government": 20,
+          "catholic": 10,
+          "independent": 3
+        },
+        "secondary": {
+          "government": 8,
+          "catholic": 1,
+          "independent": 2
+        }
+      },
+      "sport_variety": 33,
+      "sports": {
+        "Aerobics": 6,
+        "Athletics": 1,
+        "Australian Rules Football": 13,
+        "BMX": 3,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 3,
+        "Beach Volleyball": 1,
+        "Boxing": 2,
+        "Carpet Bowls": 2,
+        "Cricket": 20,
+        "Cricket (Indoor)": 1,
+        "Cycling": 2,
+        "Fitness / Gymnasium Workouts": 7,
+        "Golf": 3,
+        "Gridiron": 1,
+        "Gymnastics": 3,
+        "Hockey": 1,
+        "Inline Hockey": 1,
+        "Lawn Bowls": 6,
+        "Netball": 5,
+        "Netball (Indoor)": 2,
+        "Rugby Union": 1,
+        "Skating": 3,
+        "Soccer": 13,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Softball": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 2,
+        "Ten Pin Bowling": 1,
+        "Tennis (Outdoor)": 12,
+        "Volleyball": 2,
+        "Wheelchair Sports": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 20.2,
+          "valid_n": 1331,
+          "vulnerable_n": 269
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 15.4,
+          "valid_n": 1514,
+          "vulnerable_n": 233
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 15.9,
+          "valid_n": 1568,
+          "vulnerable_n": 250
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 17.4,
+          "valid_n": 1554,
+          "vulnerable_n": 270
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 15.8,
+          "valid_n": 1199,
+          "vulnerable_n": 189
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 15.8,
+          "valid_n": 1153,
+          "vulnerable_n": 182
+        }
+      ],
       "rent": {
         "flat_1br": 420,
         "flat_2br": 530,
         "house_2br": 580,
         "house_3br": 680
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 22110,
@@ -338,14 +1795,97 @@
       "station_count": 1,
       "bulk_billing_rate": 0.975,
       "affordable_lettings_pct": 39.3,
+      "affordability_trend_pp": 13.9,
+      "seifa_irsd": 963,
+      "green_space_pct": 0.1,
+      "schools": {
+        "primary": {
+          "government": 24,
+          "catholic": 3,
+          "independent": 2
+        },
+        "secondary": {
+          "government": 6,
+          "catholic": 1,
+          "independent": 1
+        }
+      },
+      "sport_variety": 28,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 16,
+        "BMX": 2,
+        "Basketball": 2,
+        "Boxing": 1,
+        "Carpet Bowls": 1,
+        "Cricket": 24,
+        "Croquet": 2,
+        "Cycling": 10,
+        "Equestrian": 10,
+        "Fitness / Gymnasium Workouts": 5,
+        "Golf": 11,
+        "Gymnastics": 1,
+        "Hockey": 1,
+        "Lawn Bowls": 12,
+        "Motor Cycling": 1,
+        "Motor Sports": 2,
+        "Netball": 15,
+        "Rowing": 1,
+        "Sailing": 2,
+        "Shooting Sports": 3,
+        "Skating": 4,
+        "Soccer": 3,
+        "Squash / Racquetball": 3,
+        "Surf Life Saving": 4,
+        "Swimming": 5,
+        "Table Tennis": 3,
+        "Tennis (Outdoor)": 23
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 28,
+          "valid_n": 382,
+          "vulnerable_n": 107
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 23.3,
+          "valid_n": 468,
+          "vulnerable_n": 109
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 21.3,
+          "valid_n": 513,
+          "vulnerable_n": 109
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 22.4,
+          "valid_n": 477,
+          "vulnerable_n": 107
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 24.1,
+          "valid_n": 406,
+          "vulnerable_n": 98
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 29.8,
+          "valid_n": 285,
+          "vulnerable_n": 85
+        }
+      ],
       "rent": {
         "flat_1br": 320,
         "flat_2br": 365,
         "house_2br": 400,
         "house_3br": 460
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 22170,
@@ -356,14 +1896,100 @@
       "station_count": 4,
       "bulk_billing_rate": 0.92,
       "affordable_lettings_pct": 1.6,
+      "affordability_trend_pp": -3.1,
+      "seifa_irsd": 1003,
+      "green_space_pct": 7.3,
+      "schools": {
+        "primary": {
+          "government": 22,
+          "catholic": 6,
+          "independent": 2
+        },
+        "secondary": {
+          "government": 7,
+          "catholic": 1,
+          "independent": 2
+        }
+      },
+      "sport_variety": 31,
+      "sports": {
+        "AFL (Indoor)": 1,
+        "Archery": 1,
+        "Athletics": 4,
+        "Australian Rules Football": 17,
+        "BMX": 1,
+        "Badminton": 1,
+        "Baseball": 2,
+        "Basketball": 2,
+        "Beach Volleyball": 1,
+        "Cricket": 23,
+        "Cricket (Indoor)": 2,
+        "Croquet": 1,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 22,
+        "Golf": 6,
+        "Gymnastics": 2,
+        "Hockey": 1,
+        "Lawn Bowls": 9,
+        "Motor Sports": 1,
+        "Netball": 2,
+        "Netball (Indoor)": 2,
+        "Rugby Union": 1,
+        "Sailing": 1,
+        "Shooting Sports": 1,
+        "Skating": 3,
+        "Soccer": 8,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Softball": 1,
+        "Surf Life Saving": 2,
+        "Swimming": 4,
+        "Tennis (Outdoor)": 15
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 25.1,
+          "valid_n": 1397,
+          "vulnerable_n": 351
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 23.3,
+          "valid_n": 1598,
+          "vulnerable_n": 372
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 20.9,
+          "valid_n": 1640,
+          "vulnerable_n": 342
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 18.6,
+          "valid_n": 1637,
+          "vulnerable_n": 304
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 19.8,
+          "valid_n": 1621,
+          "vulnerable_n": 321
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 23.4,
+          "valid_n": 1212,
+          "vulnerable_n": 284
+        }
+      ],
       "rent": {
         "flat_1br": 385,
         "flat_2br": 490,
         "house_2br": 500,
         "house_3br": 575
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 22250,
@@ -374,14 +2000,94 @@
       "station_count": 1,
       "bulk_billing_rate": 0.98825,
       "affordable_lettings_pct": 80,
+      "affordability_trend_pp": -11.7,
+      "seifa_irsd": 952,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 6,
+          "catholic": 2,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 0,
+          "independent": 1
+        }
+      },
+      "sport_variety": 25,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 8,
+        "Badminton": 2,
+        "Basketball": 2,
+        "Cricket": 9,
+        "Cricket (Indoor)": 1,
+        "Croquet": 1,
+        "Dancing": 1,
+        "Equestrian": 3,
+        "Golf": 5,
+        "Gymnastics": 1,
+        "Hockey": 1,
+        "Jet Skiing": 1,
+        "Lawn Bowls": 6,
+        "Modern Pentathlon": 1,
+        "Netball": 8,
+        "Netball (Indoor)": 1,
+        "Sailing": 1,
+        "Shooting Sports": 3,
+        "Skating": 1,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 6,
+        "Tennis (Outdoor)": 14,
+        "Water Skiing": 3
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 18.7,
+          "valid_n": 75,
+          "vulnerable_n": 14
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 15.2,
+          "valid_n": 112,
+          "vulnerable_n": 17
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 28.7,
+          "valid_n": 94,
+          "vulnerable_n": 27
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 12.5,
+          "valid_n": 96,
+          "vulnerable_n": 12
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 19.1,
+          "valid_n": 115,
+          "vulnerable_n": 22
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 24,
+          "valid_n": 104,
+          "vulnerable_n": 25
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": 375
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 22310,
@@ -392,14 +2098,98 @@
       "station_count": 9,
       "bulk_billing_rate": 0.771666667,
       "affordable_lettings_pct": 1.2,
+      "affordability_trend_pp": 0.3,
+      "seifa_irsd": 1075,
+      "green_space_pct": 4.4,
+      "schools": {
+        "primary": {
+          "government": 14,
+          "catholic": 5,
+          "independent": 9
+        },
+        "secondary": {
+          "government": 4,
+          "catholic": 1,
+          "independent": 8
+        }
+      },
+      "sport_variety": 29,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 13,
+        "Badminton": 2,
+        "Baseball": 1,
+        "Basketball": 1,
+        "Beach Volleyball": 1,
+        "Bocce": 1,
+        "Cricket": 18,
+        "Croquet": 2,
+        "Cycling": 1,
+        "Dancing": 1,
+        "Diving": 1,
+        "Fitness / Gymnasium Workouts": 17,
+        "Golf": 1,
+        "Gymnastics": 4,
+        "Lacrosse": 1,
+        "Lawn Bowls": 13,
+        "Martial Arts": 2,
+        "Netball": 1,
+        "Netball (Indoor)": 1,
+        "Skating": 1,
+        "Snooker / Billiards / Pool": 1,
+        "Soccer": 8,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Softball": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 2,
+        "Tae Kwon Do": 1,
+        "Tennis (Outdoor)": 20
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 14.4,
+          "valid_n": 1283,
+          "vulnerable_n": 185
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 12.7,
+          "valid_n": 1389,
+          "vulnerable_n": 176
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 14.1,
+          "valid_n": 1504,
+          "vulnerable_n": 212
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 13.6,
+          "valid_n": 1423,
+          "vulnerable_n": 194
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 15.3,
+          "valid_n": 1369,
+          "vulnerable_n": 209
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 18.7,
+          "valid_n": 1163,
+          "vulnerable_n": 218
+        }
+      ],
       "rent": {
         "flat_1br": 430,
         "flat_2br": 600,
         "house_2br": 650,
         "house_3br": 800
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 22410,
@@ -410,14 +2200,99 @@
       "station_count": 0,
       "bulk_billing_rate": 0.9865,
       "affordable_lettings_pct": 55.4,
+      "affordability_trend_pp": 13,
+      "seifa_irsd": 952,
+      "green_space_pct": 0.5,
+      "schools": {
+        "primary": {
+          "government": 10,
+          "catholic": 2,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 0,
+          "independent": 1
+        }
+      },
+      "sport_variety": 30,
+      "sports": {
+        "Archery": 1,
+        "Athletics": 2,
+        "Australian Rules Football": 11,
+        "BMX": 1,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 3,
+        "Boxing": 1,
+        "Cricket": 13,
+        "Croquet": 2,
+        "Equestrian": 4,
+        "Fitness / Gymnasium Workouts": 1,
+        "Go Karting": 1,
+        "Golf": 5,
+        "Gymnastics": 1,
+        "Hockey": 3,
+        "Lawn Bowls": 5,
+        "Motor Sports": 1,
+        "Netball": 9,
+        "Polocrosse": 2,
+        "Sailing": 1,
+        "Shooting Sports": 9,
+        "Soccer": 1,
+        "Squash / Racquetball": 3,
+        "Surf Life Saving": 2,
+        "Swimming": 4,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 12,
+        "Touch Football": 1,
+        "Water Skiing": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 15.1,
+          "valid_n": 251,
+          "vulnerable_n": 38
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 25.1,
+          "valid_n": 207,
+          "vulnerable_n": 52
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 29.9,
+          "valid_n": 204,
+          "vulnerable_n": 61
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 30.2,
+          "valid_n": 189,
+          "vulnerable_n": 57
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 24.5,
+          "valid_n": 188,
+          "vulnerable_n": 46
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 23.3,
+          "valid_n": 146,
+          "vulnerable_n": 34
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 305,
         "house_2br": null,
         "house_3br": 440
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 22490,
@@ -428,14 +2303,89 @@
       "station_count": 0,
       "bulk_billing_rate": 0.94475,
       "affordable_lettings_pct": 45.3,
+      "affordability_trend_pp": 31,
+      "seifa_irsd": 1040,
+      "green_space_pct": 0.4,
+      "schools": {
+        "primary": {
+          "government": 12,
+          "catholic": 1,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 20,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 9,
+        "BMX": 9,
+        "Badminton": 3,
+        "Basketball": 5,
+        "Carpet Bowls": 3,
+        "Cricket": 13,
+        "Cycling": 6,
+        "Dancing": 1,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 4,
+        "Gymnastics": 2,
+        "Lawn Bowls": 3,
+        "Netball": 5,
+        "Netball (Indoor)": 5,
+        "Skating": 10,
+        "Soccer": 1,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Tennis (Outdoor)": 23
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 14.6,
+          "valid_n": 275,
+          "vulnerable_n": 40
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 15.9,
+          "valid_n": 283,
+          "vulnerable_n": 45
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 14.2,
+          "valid_n": 332,
+          "vulnerable_n": 47
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 17.6,
+          "valid_n": 301,
+          "vulnerable_n": 53
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 22.4,
+          "valid_n": 344,
+          "vulnerable_n": 77
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 28,
+          "valid_n": 268,
+          "vulnerable_n": 75
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": 480
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 22620,
@@ -446,14 +2396,110 @@
       "station_count": 8,
       "bulk_billing_rate": 0.9825,
       "affordable_lettings_pct": 23.4,
+      "affordability_trend_pp": 4.5,
+      "seifa_irsd": 985,
+      "green_space_pct": 0.5,
+      "schools": {
+        "primary": {
+          "government": 28,
+          "catholic": 11,
+          "independent": 3
+        },
+        "secondary": {
+          "government": 5,
+          "catholic": 2,
+          "independent": 3
+        }
+      },
+      "sport_variety": 41,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 25,
+        "BMX": 7,
+        "Badminton": 2,
+        "Baseball": 3,
+        "Basketball": 4,
+        "Beach Volleyball": 1,
+        "Body Building": 1,
+        "Boxing": 1,
+        "Cricket": 37,
+        "Cricket (Indoor)": 1,
+        "Croquet": 4,
+        "Cycling": 4,
+        "Dancing": 1,
+        "Equestrian": 7,
+        "Fitness / Gymnasium Workouts": 12,
+        "Golf": 10,
+        "Gymnastics": 3,
+        "Hockey": 2,
+        "Lacrosse": 1,
+        "Lawn Bowls": 17,
+        "Martial Arts": 1,
+        "Motor Cycling": 1,
+        "Netball": 14,
+        "Netball (Indoor)": 4,
+        "Rock Climbing / Abseiling (Indoor)": 1,
+        "Rowing": 1,
+        "Sailing": 1,
+        "Shooting Sports": 1,
+        "Skating": 6,
+        "Snooker / Billiards / Pool": 1,
+        "Soccer": 5,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Squash / Racquetball": 1,
+        "Swimming": 13,
+        "Table Tennis": 1,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 33,
+        "Touch Football": 1,
+        "Volleyball": 2,
+        "Water Polo": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 23.1,
+          "valid_n": 1066,
+          "vulnerable_n": 246
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 19.2,
+          "valid_n": 1294,
+          "vulnerable_n": 249
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 20.9,
+          "valid_n": 1348,
+          "vulnerable_n": 281
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 22.5,
+          "valid_n": 1498,
+          "vulnerable_n": 337
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 23.8,
+          "valid_n": 1272,
+          "vulnerable_n": 303
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 24.7,
+          "valid_n": 1318,
+          "vulnerable_n": 326
+        }
+      ],
       "rent": {
         "flat_1br": 350,
         "flat_2br": 400,
         "house_2br": 450,
         "house_3br": 490
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 22670,
@@ -464,14 +2510,103 @@
       "station_count": 5,
       "bulk_billing_rate": 0.983,
       "affordable_lettings_pct": 2.1,
+      "affordability_trend_pp": -7.6,
+      "seifa_irsd": 887,
+      "green_space_pct": 6.7,
+      "schools": {
+        "primary": {
+          "government": 20,
+          "catholic": 6,
+          "independent": 6
+        },
+        "secondary": {
+          "government": 5,
+          "catholic": 3,
+          "independent": 5
+        }
+      },
+      "sport_variety": 34,
+      "sports": {
+        "Athletics": 2,
+        "Australian Rules Football": 13,
+        "BMX": 1,
+        "Badminton": 2,
+        "Baseball": 1,
+        "Basketball": 3,
+        "Carpet Bowls": 1,
+        "Cricket": 20,
+        "Cricket (Indoor)": 1,
+        "Croquet": 1,
+        "Cycling": 1,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 8,
+        "Gaelic Football": 1,
+        "Golf": 2,
+        "Gymnastics": 2,
+        "Hockey": 1,
+        "Lawn Bowls": 7,
+        "Motor Sports": 1,
+        "Netball": 2,
+        "Netball (Indoor)": 2,
+        "Rugby League": 1,
+        "Shooting Sports": 2,
+        "Skating": 1,
+        "Soccer": 16,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Softball": 1,
+        "Squash / Racquetball": 2,
+        "Swimming": 3,
+        "Table Tennis": 1,
+        "Tennis (Indoor)": 2,
+        "Tennis (Outdoor)": 13,
+        "Volleyball": 2,
+        "Water Skiing": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 33.6,
+          "valid_n": 1431,
+          "vulnerable_n": 481
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 37.1,
+          "valid_n": 1560,
+          "vulnerable_n": 578
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 28.4,
+          "valid_n": 1739,
+          "vulnerable_n": 493
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 27.7,
+          "valid_n": 1822,
+          "vulnerable_n": 504
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 28.2,
+          "valid_n": 1701,
+          "vulnerable_n": 480
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 28.8,
+          "valid_n": 1526,
+          "vulnerable_n": 440
+        }
+      ],
       "rent": {
         "flat_1br": 360,
         "flat_2br": 470,
         "house_2br": 505,
         "house_3br": 570
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 22750,
@@ -482,14 +2617,107 @@
       "station_count": 8,
       "bulk_billing_rate": 0.8195,
       "affordable_lettings_pct": 21.5,
+      "affordability_trend_pp": 12.6,
+      "seifa_irsd": 1007,
+      "green_space_pct": 1.8,
+      "schools": {
+        "primary": {
+          "government": 42,
+          "catholic": 15,
+          "independent": 8
+        },
+        "secondary": {
+          "government": 11,
+          "catholic": 5,
+          "independent": 7
+        }
+      },
+      "sport_variety": 38,
+      "sports": {
+        "Archery": 1,
+        "Athletics": 3,
+        "Australian Rules Football": 37,
+        "BMX": 3,
+        "Badminton": 2,
+        "Baseball": 4,
+        "Basketball": 3,
+        "Bocce": 2,
+        "Boxing": 1,
+        "Cricket": 51,
+        "Cricket (Indoor)": 2,
+        "Croquet": 2,
+        "Cycling": 11,
+        "Equestrian": 8,
+        "Fitness / Gymnasium Workouts": 43,
+        "Golf": 13,
+        "Gridiron": 1,
+        "Gymnastics": 3,
+        "Hockey": 1,
+        "Karate": 2,
+        "Lawn Bowls": 14,
+        "Martial Arts": 1,
+        "Motor Sports": 3,
+        "Netball": 24,
+        "Netball (Indoor)": 5,
+        "Rugby Union": 1,
+        "Sailing": 5,
+        "Shooting Sports": 3,
+        "Soccer": 13,
+        "Soccer (Indoor Soccer / Futsal)": 4,
+        "Softball": 2,
+        "Squash / Racquetball": 2,
+        "Surf Life Saving": 3,
+        "Swimming": 6,
+        "Table Tennis": 1,
+        "Tae Kwon Do": 1,
+        "Tennis (Outdoor)": 38,
+        "Volleyball": 3
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 19.1,
+          "valid_n": 2278,
+          "vulnerable_n": 435
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 18.7,
+          "valid_n": 2437,
+          "vulnerable_n": 455
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 17.6,
+          "valid_n": 2524,
+          "vulnerable_n": 443
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 21.3,
+          "valid_n": 2744,
+          "vulnerable_n": 583
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 19,
+          "valid_n": 2653,
+          "vulnerable_n": 503
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 22.4,
+          "valid_n": 2543,
+          "vulnerable_n": 569
+        }
+      ],
       "rent": {
         "flat_1br": 340,
         "flat_2br": 435,
         "house_2br": 440,
         "house_3br": 500
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 22830,
@@ -500,14 +2728,101 @@
       "station_count": 3,
       "bulk_billing_rate": 0.9425,
       "affordable_lettings_pct": 29.2,
+      "affordability_trend_pp": -0.6,
+      "seifa_irsd": 944,
+      "green_space_pct": 0.7,
+      "schools": {
+        "primary": {
+          "government": 26,
+          "catholic": 6,
+          "independent": 3
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 2,
+          "independent": 4
+        }
+      },
+      "sport_variety": 32,
+      "sports": {
+        "Aerobics": 11,
+        "Athletics": 1,
+        "Australian Rules Football": 19,
+        "BMX": 4,
+        "Badminton": 2,
+        "Baseball": 1,
+        "Basketball": 2,
+        "Cricket": 21,
+        "Cricket (Indoor)": 2,
+        "Croquet": 2,
+        "Cycling": 3,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 11,
+        "Golf": 7,
+        "Gymnastics": 2,
+        "Hockey": 1,
+        "Lawn Bowls": 13,
+        "Martial Arts": 1,
+        "Motor Cycling": 1,
+        "Netball": 15,
+        "Netball (Indoor)": 3,
+        "Roller Sports - Other": 2,
+        "Shooting Sports": 2,
+        "Skating": 3,
+        "Soccer": 6,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Swimming": 5,
+        "Table Tennis": 2,
+        "Tae Kwon Do": 1,
+        "Tennis (Outdoor)": 22,
+        "Touch Football": 1,
+        "Volleyball": 2
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 23.9,
+          "valid_n": 750,
+          "vulnerable_n": 179
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 24.6,
+          "valid_n": 909,
+          "vulnerable_n": 224
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 26.6,
+          "valid_n": 914,
+          "vulnerable_n": 243
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 30.8,
+          "valid_n": 842,
+          "vulnerable_n": 259
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 25.6,
+          "valid_n": 781,
+          "vulnerable_n": 200
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 34.6,
+          "valid_n": 740,
+          "vulnerable_n": 256
+        }
+      ],
       "rent": {
         "flat_1br": 310,
         "flat_2br": 400,
         "house_2br": 400,
         "house_3br": 480
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 22910,
@@ -518,14 +2833,88 @@
       "station_count": 2,
       "bulk_billing_rate": 0.97975,
       "affordable_lettings_pct": 26.2,
+      "affordability_trend_pp": 8.2,
+      "seifa_irsd": 1006,
+      "green_space_pct": 0.5,
+      "schools": {
+        "primary": {
+          "government": 9,
+          "catholic": 2,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 19,
+      "sports": {
+        "Australian Rules Football": 8,
+        "BMX": 1,
+        "Badminton": 2,
+        "Basketball": 2,
+        "Cricket": 9,
+        "Cycling": 1,
+        "Equestrian": 2,
+        "Golf": 4,
+        "Lawn Bowls": 5,
+        "Netball": 7,
+        "Netball (Indoor)": 2,
+        "Skating": 2,
+        "Soccer": 3,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 4,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 6,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 13.4,
+          "valid_n": 134,
+          "vulnerable_n": 18
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 24.1,
+          "valid_n": 170,
+          "vulnerable_n": 41
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 24,
+          "valid_n": 167,
+          "vulnerable_n": 40
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 22.5,
+          "valid_n": 129,
+          "vulnerable_n": 29
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 19.5,
+          "valid_n": 123,
+          "vulnerable_n": 24
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 19.9,
+          "valid_n": 131,
+          "vulnerable_n": 26
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": 450,
         "house_3br": 550
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 22980,
@@ -536,14 +2925,85 @@
       "station_count": 0,
       "bulk_billing_rate": 0.992666667,
       "affordable_lettings_pct": 94.7,
+      "affordability_trend_pp": 3.8,
+      "seifa_irsd": 940,
+      "green_space_pct": 0.1,
+      "schools": {
+        "primary": {
+          "government": 4,
+          "catholic": 1,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 0,
+          "independent": 1
+        }
+      },
+      "sport_variety": 16,
+      "sports": {
+        "Australian Rules Football": 4,
+        "Badminton": 2,
+        "Basketball": 2,
+        "Cricket": 4,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 3,
+        "Golf": 5,
+        "Hockey": 3,
+        "Lawn Bowls": 4,
+        "Netball": 4,
+        "Rowing": 1,
+        "Soccer": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 4,
+        "Tennis (Outdoor)": 5,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 29.4,
+          "valid_n": 68,
+          "vulnerable_n": 20
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 18.8,
+          "valid_n": 48,
+          "vulnerable_n": 9
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 14.6,
+          "valid_n": 48,
+          "vulnerable_n": 7
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 23.4,
+          "valid_n": 64,
+          "vulnerable_n": 15
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 33.3,
+          "valid_n": 45,
+          "vulnerable_n": 15
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 17.1,
+          "valid_n": 41,
+          "vulnerable_n": 7
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": 320
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 23110,
@@ -554,14 +3014,105 @@
       "station_count": 10,
       "bulk_billing_rate": 0.880083333,
       "affordable_lettings_pct": 2.9,
+      "affordability_trend_pp": -2.7,
+      "seifa_irsd": 1021,
+      "green_space_pct": 11.4,
+      "schools": {
+        "primary": {
+          "government": 14,
+          "catholic": 8,
+          "independent": 2
+        },
+        "secondary": {
+          "government": 4,
+          "catholic": 2,
+          "independent": 0
+        }
+      },
+      "sport_variety": 36,
+      "sports": {
+        "AFL (Indoor)": 1,
+        "Athletics": 2,
+        "Australian Rules Football": 10,
+        "BMX": 1,
+        "Badminton": 1,
+        "Baseball": 4,
+        "Basketball": 4,
+        "Beach Volleyball": 1,
+        "Bocce": 1,
+        "Carpet Bowls": 1,
+        "Cricket": 25,
+        "Cricket (Indoor)": 1,
+        "Croquet": 1,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 12,
+        "Golf": 3,
+        "Gymnastics": 1,
+        "Hockey": 1,
+        "Lacrosse": 4,
+        "Lawn Bowls": 7,
+        "Netball": 5,
+        "Netball (Indoor)": 2,
+        "Rock Climbing / Abseiling (Indoor)": 1,
+        "Rugby League": 1,
+        "Rugby Union": 1,
+        "Sailing": 4,
+        "Skating": 1,
+        "Soccer": 8,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Softball": 1,
+        "Surf Life Saving": 2,
+        "Swimming": 3,
+        "Ten Pin Bowling": 1,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 11,
+        "Touch Football": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 21.1,
+          "valid_n": 891,
+          "vulnerable_n": 188
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 18.9,
+          "valid_n": 960,
+          "vulnerable_n": 181
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 21.1,
+          "valid_n": 1051,
+          "vulnerable_n": 222
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 19.5,
+          "valid_n": 1115,
+          "vulnerable_n": 217
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 16.4,
+          "valid_n": 1008,
+          "vulnerable_n": 165
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 21.2,
+          "valid_n": 721,
+          "vulnerable_n": 153
+        }
+      ],
       "rent": {
         "flat_1br": 410,
         "flat_2br": 500,
         "house_2br": 540,
         "house_3br": 630
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 23190,
@@ -572,14 +3123,95 @@
       "station_count": 0,
       "bulk_billing_rate": 0.987833333,
       "affordable_lettings_pct": 46.7,
+      "affordability_trend_pp": -2.8,
+      "seifa_irsd": 990,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 3,
+          "catholic": 1,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 1,
+          "independent": 0
+        }
+      },
+      "sport_variety": 26,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 10,
+        "Basketball": 1,
+        "Cricket": 12,
+        "Croquet": 2,
+        "Cycling": 1,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 6,
+        "Gymnastics": 1,
+        "Hockey": 2,
+        "Lawn Bowls": 6,
+        "Motor Cycling": 2,
+        "Motor Sports": 1,
+        "Netball": 7,
+        "Netball (Indoor)": 1,
+        "Rowing": 1,
+        "Sailing": 2,
+        "Shooting Sports": 3,
+        "Skating": 2,
+        "Soccer": 2,
+        "Softball": 1,
+        "Swimming": 1,
+        "Tennis (Outdoor)": 12,
+        "Volleyball": 1,
+        "Water Skiing": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 18.4,
+          "valid_n": 223,
+          "vulnerable_n": 41
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 23.1,
+          "valid_n": 247,
+          "vulnerable_n": 57
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 25.2,
+          "valid_n": 254,
+          "vulnerable_n": 64
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 23.2,
+          "valid_n": 241,
+          "vulnerable_n": 56
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 22.2,
+          "valid_n": 234,
+          "vulnerable_n": 52
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 27.3,
+          "valid_n": 198,
+          "vulnerable_n": 54
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 350,
         "house_2br": null,
         "house_3br": 450
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 23270,
@@ -590,14 +3222,101 @@
       "station_count": 6,
       "bulk_billing_rate": 0.961166667,
       "affordable_lettings_pct": 18.9,
+      "affordability_trend_pp": 1.7,
+      "seifa_irsd": 941,
+      "green_space_pct": 4.1,
+      "schools": {
+        "primary": {
+          "government": 35,
+          "catholic": 13,
+          "independent": 7
+        },
+        "secondary": {
+          "government": 10,
+          "catholic": 3,
+          "independent": 7
+        }
+      },
+      "sport_variety": 32,
+      "sports": {
+        "Aerobics": 11,
+        "Athletics": 2,
+        "Australian Rules Football": 21,
+        "BMX": 3,
+        "Badminton": 1,
+        "Basketball": 8,
+        "Beach Volleyball": 1,
+        "Bocce": 1,
+        "Callisthenics": 2,
+        "Carpet Bowls": 2,
+        "Cricket": 32,
+        "Cricket (Indoor)": 3,
+        "Cycling": 1,
+        "Equestrian": 3,
+        "Fitness / Gymnasium Workouts": 16,
+        "Golf": 3,
+        "Gymnastics": 1,
+        "Lawn Bowls": 4,
+        "Martial Arts": 1,
+        "Netball": 3,
+        "Netball (Indoor)": 6,
+        "Rugby League": 3,
+        "Rugby Union": 1,
+        "Skating": 1,
+        "Soccer": 12,
+        "Soccer (Indoor Soccer / Futsal)": 3,
+        "Softball": 1,
+        "Squash / Racquetball": 2,
+        "Swimming": 4,
+        "Tae Kwon Do": 4,
+        "Tennis (Outdoor)": 12,
+        "Volleyball": 2
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 29.6,
+          "valid_n": 1970,
+          "vulnerable_n": 584
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 27.2,
+          "valid_n": 2360,
+          "vulnerable_n": 641
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 25.3,
+          "valid_n": 2627,
+          "vulnerable_n": 664
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 29,
+          "valid_n": 3109,
+          "vulnerable_n": 900
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 28.7,
+          "valid_n": 3216,
+          "vulnerable_n": 923
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 30.7,
+          "valid_n": 3070,
+          "vulnerable_n": 943
+        }
+      ],
       "rent": {
         "flat_1br": 350,
         "flat_2br": 450,
         "house_2br": 460,
         "house_3br": 500
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 23350,
@@ -608,14 +3327,86 @@
       "station_count": 1,
       "bulk_billing_rate": 0.847083333,
       "affordable_lettings_pct": 14,
+      "affordability_trend_pp": -5,
+      "seifa_irsd": 1029,
+      "green_space_pct": 0.6,
+      "schools": {
+        "primary": {
+          "government": 11,
+          "catholic": 3,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 17,
+      "sports": {
+        "Australian Rules Football": 7,
+        "Cricket": 8,
+        "Croquet": 1,
+        "Cycling": 3,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 5,
+        "Hockey": 1,
+        "Lawn Bowls": 5,
+        "Motor Sports": 1,
+        "Netball": 6,
+        "Shooting Sports": 1,
+        "Skating": 2,
+        "Soccer": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 4,
+        "Tennis (Outdoor)": 9
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 12.1,
+          "valid_n": 207,
+          "vulnerable_n": 25
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 18.5,
+          "valid_n": 216,
+          "vulnerable_n": 40
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 21.7,
+          "valid_n": 157,
+          "vulnerable_n": 34
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 27.8,
+          "valid_n": 194,
+          "vulnerable_n": 54
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 9.9,
+          "valid_n": 182,
+          "vulnerable_n": 18
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 25.2,
+          "valid_n": 143,
+          "vulnerable_n": 36
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": 510
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 23430,
@@ -626,14 +3417,99 @@
       "station_count": 12,
       "bulk_billing_rate": 0.855916667,
       "affordable_lettings_pct": 1.2,
+      "affordability_trend_pp": -0.2,
+      "seifa_irsd": 1044,
+      "green_space_pct": 10.1,
+      "schools": {
+        "primary": {
+          "government": 23,
+          "catholic": 9,
+          "independent": 4
+        },
+        "secondary": {
+          "government": 5,
+          "catholic": 2,
+          "independent": 3
+        }
+      },
+      "sport_variety": 30,
+      "sports": {
+        "Archery": 1,
+        "Athletics": 3,
+        "Australian Rules Football": 19,
+        "Baseball": 4,
+        "Basketball": 2,
+        "Cricket": 28,
+        "Cycling": 3,
+        "Equestrian": 1,
+        "Fencing": 1,
+        "Fitness / Gymnasium Workouts": 13,
+        "Golf": 11,
+        "Gymnastics": 3,
+        "Hockey": 3,
+        "Karate": 1,
+        "Lawn Bowls": 8,
+        "Martial Arts": 1,
+        "Motor Sports": 1,
+        "Netball": 4,
+        "Netball (Indoor)": 1,
+        "Rugby Union": 1,
+        "Sailing": 5,
+        "Shooting Sports": 1,
+        "Skating": 4,
+        "Soccer": 8,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 1,
+        "Surf Life Saving": 7,
+        "Swimming": 4,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 17
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 15.4,
+          "valid_n": 1554,
+          "vulnerable_n": 239
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 16.9,
+          "valid_n": 1751,
+          "vulnerable_n": 296
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 13.7,
+          "valid_n": 1828,
+          "vulnerable_n": 250
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 16.4,
+          "valid_n": 1783,
+          "vulnerable_n": 292
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 14.7,
+          "valid_n": 1687,
+          "vulnerable_n": 248
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 16.3,
+          "valid_n": 1432,
+          "vulnerable_n": 234
+        }
+      ],
       "rent": {
         "flat_1br": 410,
         "flat_2br": 550,
         "house_2br": 585,
         "house_3br": 690
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 23670,
@@ -644,14 +3520,101 @@
       "station_count": 4,
       "bulk_billing_rate": 0.926333333,
       "affordable_lettings_pct": 1.7,
+      "affordability_trend_pp": -1.2,
+      "seifa_irsd": 1042,
+      "green_space_pct": 11.4,
+      "schools": {
+        "primary": {
+          "government": 27,
+          "catholic": 8,
+          "independent": 4
+        },
+        "secondary": {
+          "government": 6,
+          "catholic": 1,
+          "independent": 5
+        }
+      },
+      "sport_variety": 32,
+      "sports": {
+        "Aerobics": 13,
+        "Athletics": 2,
+        "Australian Rules Football": 23,
+        "BMX": 2,
+        "Badminton": 1,
+        "Baseball": 2,
+        "Basketball": 7,
+        "Boxing": 3,
+        "Cricket": 39,
+        "Cricket (Indoor)": 2,
+        "Cycling": 1,
+        "Fitness / Gymnasium Workouts": 17,
+        "Golf": 4,
+        "Gymnastics": 3,
+        "Hockey": 1,
+        "Lacrosse": 1,
+        "Lawn Bowls": 6,
+        "Martial Arts": 8,
+        "Netball": 9,
+        "Netball (Indoor)": 5,
+        "Rugby League": 1,
+        "Rugby Union": 2,
+        "Soccer": 10,
+        "Soccer (Indoor Soccer / Futsal)": 5,
+        "Softball": 2,
+        "Squash / Racquetball": 5,
+        "Swimming": 5,
+        "Tae Kwon Do": 1,
+        "Ten Pin Bowling": 2,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 31,
+        "Volleyball": 3
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 16.7,
+          "valid_n": 1517,
+          "vulnerable_n": 253
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 15.6,
+          "valid_n": 1594,
+          "vulnerable_n": 248
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 15.8,
+          "valid_n": 1714,
+          "vulnerable_n": 271
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 16.3,
+          "valid_n": 1579,
+          "vulnerable_n": 258
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 17.6,
+          "valid_n": 1639,
+          "vulnerable_n": 289
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 17.8,
+          "valid_n": 1244,
+          "vulnerable_n": 221
+        }
+      ],
       "rent": {
         "flat_1br": 405,
         "flat_2br": 540,
         "house_2br": 545,
         "house_3br": 600
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 23810,
@@ -662,14 +3625,102 @@
       "station_count": 3,
       "bulk_billing_rate": 0.984916667,
       "affordable_lettings_pct": 49.6,
+      "affordability_trend_pp": 9.4,
+      "seifa_irsd": 931,
+      "green_space_pct": 0.9,
+      "schools": {
+        "primary": {
+          "government": 22,
+          "catholic": 7,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 1,
+          "independent": 0
+        }
+      },
+      "sport_variety": 33,
+      "sports": {
+        "Archery": 1,
+        "Athletics": 3,
+        "Australian Rules Football": 18,
+        "BMX": 7,
+        "Badminton": 3,
+        "Baseball": 4,
+        "Basketball": 5,
+        "Carpet Bowls": 2,
+        "Cricket": 26,
+        "Croquet": 2,
+        "Cycling": 3,
+        "Equestrian": 4,
+        "Fitness / Gymnasium Workouts": 8,
+        "Golf": 6,
+        "Gridiron": 1,
+        "Gymnastics": 3,
+        "Hockey": 1,
+        "Karate": 1,
+        "Lawn Bowls": 6,
+        "Motor Cycling": 3,
+        "Motor Sports": 1,
+        "Netball": 13,
+        "Netball (Indoor)": 2,
+        "Shooting Sports": 2,
+        "Skating": 5,
+        "Soccer": 8,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 2,
+        "Swimming": 7,
+        "Tennis (Indoor)": 2,
+        "Tennis (Outdoor)": 12,
+        "Touch Football": 1,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 26.1,
+          "valid_n": 853,
+          "vulnerable_n": 223
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 27.1,
+          "valid_n": 764,
+          "vulnerable_n": 207
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 29.4,
+          "valid_n": 773,
+          "vulnerable_n": 227
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 28.2,
+          "valid_n": 909,
+          "vulnerable_n": 256
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 26,
+          "valid_n": 809,
+          "vulnerable_n": 210
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 28.9,
+          "valid_n": 698,
+          "vulnerable_n": 202
+        }
+      ],
       "rent": {
         "flat_1br": 280,
         "flat_2br": 330,
         "house_2br": 350,
         "house_3br": 435
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 23940,
@@ -680,14 +3731,82 @@
       "station_count": 2,
       "bulk_billing_rate": 0.981916667,
       "affordable_lettings_pct": 42.9,
+      "affordability_trend_pp": -44.6,
+      "seifa_irsd": 948,
+      "green_space_pct": 0.2,
+      "schools": {
+        "primary": {
+          "government": 7,
+          "catholic": 1,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 4,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 13,
+      "sports": {
+        "Australian Rules Football": 9,
+        "Badminton": 1,
+        "Basketball": 1,
+        "Carpet Bowls": 1,
+        "Cricket": 12,
+        "Croquet": 1,
+        "Equestrian": 1,
+        "Golf": 10,
+        "Hockey": 2,
+        "Lawn Bowls": 9,
+        "Netball": 7,
+        "Swimming": 5,
+        "Tennis (Outdoor)": 11
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 26.9,
+          "valid_n": 78,
+          "vulnerable_n": 21
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 18.7,
+          "valid_n": 75,
+          "vulnerable_n": 14
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 26.9,
+          "valid_n": 67,
+          "vulnerable_n": 18
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 23.9,
+          "valid_n": 67,
+          "vulnerable_n": 16
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 22,
+          "valid_n": 59,
+          "vulnerable_n": 13
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 24.6,
+          "valid_n": 69,
+          "vulnerable_n": 17
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": null
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 24130,
@@ -698,14 +3817,95 @@
       "station_count": 7,
       "bulk_billing_rate": 0.968833333,
       "affordable_lettings_pct": 4.6,
+      "affordability_trend_pp": 1.9,
+      "seifa_irsd": 1063,
+      "green_space_pct": 0.6,
+      "schools": {
+        "primary": {
+          "government": 16,
+          "catholic": 5,
+          "independent": 3
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 1,
+          "independent": 3
+        }
+      },
+      "sport_variety": 26,
+      "sports": {
+        "Athletics": 3,
+        "Australian Rules Football": 14,
+        "BMX": 2,
+        "Badminton": 1,
+        "Basketball": 7,
+        "Bocce": 1,
+        "Cricket": 17,
+        "Croquet": 2,
+        "Cycling": 7,
+        "Equestrian": 9,
+        "Fitness / Gymnasium Workouts": 2,
+        "Golf": 6,
+        "Gymnastics": 1,
+        "Lawn Bowls": 6,
+        "Motor Sports": 1,
+        "Netball": 6,
+        "Netball (Indoor)": 4,
+        "Orienteering": 1,
+        "Soccer": 2,
+        "Soccer (Indoor Soccer / Futsal)": 3,
+        "Squash / Racquetball": 2,
+        "Swimming": 5,
+        "Table Tennis": 1,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 12,
+        "Volleyball": 3
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 14.6,
+          "valid_n": 522,
+          "vulnerable_n": 76
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 19.1,
+          "valid_n": 603,
+          "vulnerable_n": 115
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 13.5,
+          "valid_n": 616,
+          "vulnerable_n": 83
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 16.1,
+          "valid_n": 638,
+          "vulnerable_n": 103
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 15.3,
+          "valid_n": 628,
+          "vulnerable_n": 96
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 10.1,
+          "valid_n": 523,
+          "vulnerable_n": 53
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 470,
         "house_2br": 493,
         "house_3br": 580
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 24210,
@@ -716,14 +3916,96 @@
       "station_count": 0,
       "bulk_billing_rate": 0.9095,
       "affordable_lettings_pct": 1.1,
+      "affordability_trend_pp": -0.3,
+      "seifa_irsd": 1056,
+      "green_space_pct": 10,
+      "schools": {
+        "primary": {
+          "government": 15,
+          "catholic": 6,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 4,
+          "catholic": 2,
+          "independent": 1
+        }
+      },
+      "sport_variety": 27,
+      "sports": {
+        "Aerobics": 1,
+        "Archery": 1,
+        "Athletics": 1,
+        "Australian Rules Football": 17,
+        "BMX": 2,
+        "Badminton": 2,
+        "Baseball": 1,
+        "Basketball": 9,
+        "Cricket": 19,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 11,
+        "Golf": 2,
+        "Gymnastics": 2,
+        "Hockey": 2,
+        "Lawn Bowls": 4,
+        "Martial Arts": 2,
+        "Motor Sports": 1,
+        "Netball": 5,
+        "Netball (Indoor)": 5,
+        "Skating": 2,
+        "Soccer": 7,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Squash / Racquetball": 2,
+        "Swimming": 2,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 14,
+        "Volleyball": 3
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 14.2,
+          "valid_n": 1169,
+          "vulnerable_n": 166
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 13.8,
+          "valid_n": 1049,
+          "vulnerable_n": 145
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 16,
+          "valid_n": 961,
+          "vulnerable_n": 154
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 19.1,
+          "valid_n": 1179,
+          "vulnerable_n": 225
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 15.5,
+          "valid_n": 1166,
+          "vulnerable_n": 181
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 15.5,
+          "valid_n": 1103,
+          "vulnerable_n": 171
+        }
+      ],
       "rent": {
         "flat_1br": 493,
         "flat_2br": 600,
         "house_2br": 550,
         "house_3br": 680
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 24250,
@@ -734,14 +4016,89 @@
       "station_count": 0,
       "bulk_billing_rate": 0.6275,
       "affordable_lettings_pct": 12.9,
+      "affordability_trend_pp": 12.9,
+      "seifa_irsd": 1028,
+      "green_space_pct": 0.1,
+      "schools": {
+        "primary": {
+          "government": 3,
+          "catholic": 1,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 0,
+          "independent": 1
+        }
+      },
+      "sport_variety": 20,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 2,
+        "BMX": 1,
+        "Badminton": 1,
+        "Basketball": 1,
+        "Cricket": 3,
+        "Cycling": 10,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 1,
+        "Gymnastics": 1,
+        "Lawn Bowls": 1,
+        "Motor Cycling": 1,
+        "Motor Sports": 1,
+        "Netball": 2,
+        "Soccer": 1,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Swimming": 1,
+        "Tae Kwon Do": 1,
+        "Tennis (Outdoor)": 4
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 3.8,
+          "valid_n": 53,
+          "vulnerable_n": 2
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 12.6,
+          "valid_n": 87,
+          "vulnerable_n": 11
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 14.7,
+          "valid_n": 95,
+          "vulnerable_n": 14
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 9.8,
+          "valid_n": 82,
+          "vulnerable_n": 8
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 6.7,
+          "valid_n": 75,
+          "vulnerable_n": 5
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 16.2,
+          "valid_n": 68,
+          "vulnerable_n": 11
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": 550
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 24330,
@@ -752,14 +4109,97 @@
       "station_count": 6,
       "bulk_billing_rate": 0.867583333,
       "affordable_lettings_pct": 1.7,
+      "affordability_trend_pp": -2.9,
+      "seifa_irsd": 1010,
+      "green_space_pct": 10.7,
+      "schools": {
+        "primary": {
+          "government": 8,
+          "catholic": 6,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 1,
+          "independent": 1
+        }
+      },
+      "sport_variety": 28,
+      "sports": {
+        "Archery": 1,
+        "Australian Rules Football": 11,
+        "BMX": 1,
+        "Badminton": 3,
+        "Baseball": 1,
+        "Basketball": 7,
+        "Beach Volleyball": 1,
+        "Canoeing": 1,
+        "Cricket": 16,
+        "Cricket (Indoor)": 1,
+        "Cycling": 1,
+        "Fitness / Gymnasium Workouts": 14,
+        "Golf": 1,
+        "Gridiron": 1,
+        "Gymnastics": 2,
+        "Hockey": 1,
+        "Lacrosse": 1,
+        "Lawn Bowls": 5,
+        "Netball": 5,
+        "Netball (Indoor)": 2,
+        "Rugby Union": 1,
+        "Soccer": 7,
+        "Soccer (Indoor Soccer / Futsal)": 3,
+        "Swimming": 2,
+        "Tae Kwon Do": 2,
+        "Ten Pin Bowling": 1,
+        "Tennis (Outdoor)": 8,
+        "Volleyball": 3
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 25.2,
+          "valid_n": 667,
+          "vulnerable_n": 168
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 18.6,
+          "valid_n": 790,
+          "vulnerable_n": 147
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 18.9,
+          "valid_n": 923,
+          "vulnerable_n": 174
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 16.5,
+          "valid_n": 929,
+          "vulnerable_n": 153
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 15.4,
+          "valid_n": 820,
+          "vulnerable_n": 126
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 22,
+          "valid_n": 767,
+          "vulnerable_n": 169
+        }
+      ],
       "rent": {
         "flat_1br": 440,
         "flat_2br": 533,
         "house_2br": 580,
         "house_3br": 650
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 24410,
@@ -770,14 +4210,99 @@
       "station_count": 4,
       "bulk_billing_rate": 0.869,
       "affordable_lettings_pct": 1.9,
+      "affordability_trend_pp": -0.5,
+      "seifa_irsd": 1041,
+      "green_space_pct": 11.8,
+      "schools": {
+        "primary": {
+          "government": 17,
+          "catholic": 3,
+          "independent": 5
+        },
+        "secondary": {
+          "government": 5,
+          "catholic": 1,
+          "independent": 4
+        }
+      },
+      "sport_variety": 30,
+      "sports": {
+        "Aerobics": 8,
+        "Athletics": 2,
+        "Australian Rules Football": 14,
+        "BMX": 4,
+        "Badminton": 1,
+        "Baseball": 3,
+        "Basketball": 2,
+        "Cricket": 26,
+        "Cricket (Indoor)": 1,
+        "Croquet": 2,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 9,
+        "Golf": 2,
+        "Gridiron": 1,
+        "Gymnastics": 2,
+        "Hockey": 1,
+        "Lawn Bowls": 4,
+        "Netball": 2,
+        "Netball (Indoor)": 3,
+        "Rugby Union": 1,
+        "Skating": 2,
+        "Soccer": 7,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 3,
+        "Table Tennis": 1,
+        "Tae Kwon Do": 1,
+        "Tennis (Outdoor)": 14,
+        "Volleyball": 1,
+        "Water Polo": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 19.2,
+          "valid_n": 1107,
+          "vulnerable_n": 212
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 14.9,
+          "valid_n": 1198,
+          "vulnerable_n": 178
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 16.2,
+          "valid_n": 1271,
+          "vulnerable_n": 206
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 17.8,
+          "valid_n": 1261,
+          "vulnerable_n": 225
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 15.3,
+          "valid_n": 1221,
+          "vulnerable_n": 187
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 14.6,
+          "valid_n": 1123,
+          "vulnerable_n": 164
+        }
+      ],
       "rent": {
         "flat_1br": 410,
         "flat_2br": 520,
         "house_2br": 550,
         "house_3br": 630
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 24600,
@@ -788,14 +4313,100 @@
       "station_count": 15,
       "bulk_billing_rate": 0.774416667,
       "affordable_lettings_pct": 1.1,
+      "affordability_trend_pp": 0.2,
+      "seifa_irsd": 1017,
+      "green_space_pct": 16.4,
+      "schools": {
+        "primary": {
+          "government": 6,
+          "catholic": 2,
+          "independent": 4
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 2,
+          "independent": 6
+        }
+      },
+      "sport_variety": 31,
+      "sports": {
+        "Australian Rules Football": 10,
+        "BMX": 1,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 5,
+        "Cricket": 10,
+        "Cycling": 2,
+        "Fitness / Gymnasium Workouts": 26,
+        "Golf": 1,
+        "Gridiron": 2,
+        "Gymnastics": 2,
+        "Hockey": 2,
+        "Lacrosse": 2,
+        "Lawn Bowls": 3,
+        "Martial Arts": 1,
+        "Netball": 2,
+        "Netball (Indoor)": 4,
+        "Rugby League": 3,
+        "Rugby Union": 5,
+        "Sailing": 1,
+        "Shooting Sports": 1,
+        "Skating": 1,
+        "Soccer": 10,
+        "Soccer (Indoor Soccer / Futsal)": 4,
+        "Softball": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 6,
+        "Team Handball": 1,
+        "Tennis (Outdoor)": 7,
+        "Touch Football": 4,
+        "Volleyball": 2
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 27.7,
+          "valid_n": 274,
+          "vulnerable_n": 76
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 25.7,
+          "valid_n": 377,
+          "vulnerable_n": 97
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 22.8,
+          "valid_n": 444,
+          "vulnerable_n": 101
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 20.9,
+          "valid_n": 590,
+          "vulnerable_n": 123
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 20.7,
+          "valid_n": 620,
+          "vulnerable_n": 128
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 23.9,
+          "valid_n": 615,
+          "vulnerable_n": 147
+        }
+      ],
       "rent": {
         "flat_1br": 570,
         "flat_2br": 730,
         "house_2br": 678,
         "house_3br": 900
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 24650,
@@ -806,14 +4417,98 @@
       "station_count": 5,
       "bulk_billing_rate": 0.966666667,
       "affordable_lettings_pct": 58.7,
+      "affordability_trend_pp": 13.1,
+      "seifa_irsd": 985,
+      "green_space_pct": 3.7,
+      "schools": {
+        "primary": {
+          "government": 24,
+          "catholic": 7,
+          "independent": 6
+        },
+        "secondary": {
+          "government": 8,
+          "catholic": 2,
+          "independent": 7
+        }
+      },
+      "sport_variety": 29,
+      "sports": {
+        "Athletics": 2,
+        "Australian Rules Football": 9,
+        "Badminton": 1,
+        "Basketball": 5,
+        "Beach Volleyball": 1,
+        "Cricket": 14,
+        "Cricket (Indoor)": 1,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 10,
+        "Golf": 3,
+        "Gymnastics": 2,
+        "Hockey": 3,
+        "Lawn Bowls": 3,
+        "Martial Arts": 1,
+        "Netball": 6,
+        "Netball (Indoor)": 3,
+        "Power Boating": 1,
+        "Rugby League": 1,
+        "Rugby Union": 1,
+        "Shooting Sports": 1,
+        "Skating": 5,
+        "Soccer": 4,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Squash / Racquetball": 2,
+        "Swimming": 5,
+        "Table Tennis": 2,
+        "Tennis (Outdoor)": 15,
+        "Volleyball": 2,
+        "Wheelchair Sports": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 20.3,
+          "valid_n": 1352,
+          "vulnerable_n": 275
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 20.9,
+          "valid_n": 1641,
+          "vulnerable_n": 343
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 21,
+          "valid_n": 2094,
+          "vulnerable_n": 439
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 20.6,
+          "valid_n": 2380,
+          "vulnerable_n": 489
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 23.8,
+          "valid_n": 2691,
+          "vulnerable_n": 640
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 29.4,
+          "valid_n": 2470,
+          "vulnerable_n": 727
+        }
+      ],
       "rent": {
         "flat_1br": 360,
         "flat_2br": 425,
         "house_2br": 400,
         "house_3br": 450
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 25250,
@@ -824,14 +4519,94 @@
       "station_count": 13,
       "bulk_billing_rate": 0.815583333,
       "affordable_lettings_pct": 2.6,
+      "affordability_trend_pp": 0.2,
+      "seifa_irsd": 1027,
+      "green_space_pct": 9.2,
+      "schools": {
+        "primary": {
+          "government": 19,
+          "catholic": 13,
+          "independent": 3
+        },
+        "secondary": {
+          "government": 6,
+          "catholic": 2,
+          "independent": 4
+        }
+      },
+      "sport_variety": 25,
+      "sports": {
+        "Aerobics": 7,
+        "Athletics": 2,
+        "Australian Rules Football": 16,
+        "BMX": 1,
+        "Baseball": 1,
+        "Basketball": 2,
+        "Boxing": 2,
+        "Cricket": 26,
+        "Croquet": 1,
+        "Cycling": 2,
+        "Fitness / Gymnasium Workouts": 10,
+        "Golf": 1,
+        "Hockey": 1,
+        "Lacrosse": 1,
+        "Lawn Bowls": 5,
+        "Martial Arts": 1,
+        "Netball": 3,
+        "Netball (Indoor)": 1,
+        "Skating": 1,
+        "Soccer": 17,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Squash / Racquetball": 1,
+        "Swimming": 6,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 13
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 21.2,
+          "valid_n": 1297,
+          "vulnerable_n": 275
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 17.3,
+          "valid_n": 1535,
+          "vulnerable_n": 266
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 20.7,
+          "valid_n": 1605,
+          "vulnerable_n": 332
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 20,
+          "valid_n": 1720,
+          "vulnerable_n": 344
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 19.9,
+          "valid_n": 1487,
+          "vulnerable_n": 296
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 19.2,
+          "valid_n": 1396,
+          "vulnerable_n": 268
+        }
+      ],
       "rent": {
         "flat_1br": 450,
         "flat_2br": 540,
         "house_2br": 600,
         "house_3br": 695
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 24780,
@@ -842,14 +4617,101 @@
       "station_count": 0,
       "bulk_billing_rate": 0.91925,
       "affordable_lettings_pct": 37,
+      "affordability_trend_pp": -9.7,
+      "seifa_irsd": 940,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 18,
+          "catholic": 4,
+          "independent": 3
+        },
+        "secondary": {
+          "government": 8,
+          "catholic": 1,
+          "independent": 3
+        }
+      },
+      "sport_variety": 32,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 13,
+        "BMX": 1,
+        "Badminton": 1,
+        "Baseball": 3,
+        "Basketball": 4,
+        "Beach Volleyball": 1,
+        "Cricket": 15,
+        "Cricket (Indoor)": 1,
+        "Croquet": 3,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 4,
+        "Golf": 6,
+        "Gymnastics": 2,
+        "Hockey": 1,
+        "Lawn Bowls": 9,
+        "Martial Arts": 1,
+        "Motor Cycling": 2,
+        "Netball": 12,
+        "Netball (Indoor)": 1,
+        "Rugby League": 1,
+        "Rugby Union": 1,
+        "Sailing": 1,
+        "Shooting Sports": 1,
+        "Soccer": 4,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Softball": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 8,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 11,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 24.9,
+          "valid_n": 583,
+          "vulnerable_n": 145
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 23.6,
+          "valid_n": 755,
+          "vulnerable_n": 178
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 22.3,
+          "valid_n": 700,
+          "vulnerable_n": 156
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 23.3,
+          "valid_n": 678,
+          "vulnerable_n": 158
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 23,
+          "valid_n": 651,
+          "vulnerable_n": 150
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 27.9,
+          "valid_n": 419,
+          "vulnerable_n": 117
+        }
+      ],
       "rent": {
         "flat_1br": 278,
         "flat_2br": 350,
         "house_2br": 375,
         "house_3br": 490
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 24850,
@@ -860,14 +4722,92 @@
       "station_count": 7,
       "bulk_billing_rate": 0.980666667,
       "affordable_lettings_pct": 78.3,
+      "affordability_trend_pp": 24.6,
+      "seifa_irsd": 1000,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 11,
+          "catholic": 3,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 2,
+          "independent": 0
+        }
+      },
+      "sport_variety": 23,
+      "sports": {
+        "Aerobics": 5,
+        "Athletics": 1,
+        "Australian Rules Football": 7,
+        "BMX": 1,
+        "Badminton": 3,
+        "Baseball": 1,
+        "Basketball": 4,
+        "Cricket": 7,
+        "Cycling": 5,
+        "Equestrian": 6,
+        "Fitness / Gymnasium Workouts": 5,
+        "Golf": 4,
+        "Gymnastics": 1,
+        "Lawn Bowls": 5,
+        "Motor Cycling": 2,
+        "Netball": 6,
+        "Netball (Indoor)": 4,
+        "Skating": 4,
+        "Softball": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 6,
+        "Tennis (Outdoor)": 11,
+        "Volleyball": 2
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 20.1,
+          "valid_n": 482,
+          "vulnerable_n": 97
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 24.3,
+          "valid_n": 523,
+          "vulnerable_n": 127
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 23.6,
+          "valid_n": 576,
+          "vulnerable_n": 136
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 18.9,
+          "valid_n": 588,
+          "vulnerable_n": 111
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 24.9,
+          "valid_n": 668,
+          "vulnerable_n": 166
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 24,
+          "valid_n": 583,
+          "vulnerable_n": 140
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 398,
         "house_2br": 393,
         "house_3br": 433
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 24900,
@@ -878,14 +4818,92 @@
       "station_count": 0,
       "bulk_billing_rate": 0.955083333,
       "affordable_lettings_pct": 37.2,
+      "affordability_trend_pp": 4.1,
+      "seifa_irsd": 958,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 9,
+          "catholic": 4,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 4,
+          "catholic": 2,
+          "independent": 1
+        }
+      },
+      "sport_variety": 23,
+      "sports": {
+        "Australian Rules Football": 12,
+        "BMX": 1,
+        "Badminton": 2,
+        "Basketball": 2,
+        "Cricket": 14,
+        "Croquet": 1,
+        "Equestrian": 7,
+        "Fitness / Gymnasium Workouts": 3,
+        "Golf": 4,
+        "Lawn Bowls": 10,
+        "Motor Cycling": 1,
+        "Motor Sports": 3,
+        "Netball": 15,
+        "Rugby Union": 1,
+        "Sailing": 1,
+        "Skating": 5,
+        "Soccer": 3,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Squash / Racquetball": 1,
+        "Swimming": 6,
+        "Table Tennis": 1,
+        "Tennis (Indoor)": 2,
+        "Tennis (Outdoor)": 20
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 22.3,
+          "valid_n": 300,
+          "vulnerable_n": 67
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 17.3,
+          "valid_n": 347,
+          "vulnerable_n": 60
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 25.6,
+          "valid_n": 313,
+          "vulnerable_n": 80
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 21,
+          "valid_n": 305,
+          "vulnerable_n": 64
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 23.3,
+          "valid_n": 322,
+          "vulnerable_n": 75
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 24.6,
+          "valid_n": 285,
+          "vulnerable_n": 70
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 380,
         "house_2br": null,
         "house_3br": 460
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 24970,
@@ -896,14 +4914,103 @@
       "station_count": 8,
       "bulk_billing_rate": 0.924333333,
       "affordable_lettings_pct": 2.9,
+      "affordability_trend_pp": -0.4,
+      "seifa_irsd": 1042,
+      "green_space_pct": 9.4,
+      "schools": {
+        "primary": {
+          "government": 25,
+          "catholic": 9,
+          "independent": 2
+        },
+        "secondary": {
+          "government": 9,
+          "catholic": 4,
+          "independent": 2
+        }
+      },
+      "sport_variety": 34,
+      "sports": {
+        "Athletics": 2,
+        "Australian Rules Football": 19,
+        "BMX": 1,
+        "Badminton": 1,
+        "Baseball": 5,
+        "Basketball": 5,
+        "Bocce": 3,
+        "Boxing": 1,
+        "Callisthenics": 1,
+        "Cricket": 33,
+        "Cricket (Indoor)": 2,
+        "Croquet": 1,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 18,
+        "Golf": 6,
+        "Gymnastics": 5,
+        "Hockey": 3,
+        "Ice Hockey": 1,
+        "Karate": 2,
+        "Lacrosse": 1,
+        "Lawn Bowls": 7,
+        "Netball": 2,
+        "Netball (Indoor)": 3,
+        "Rugby League": 1,
+        "Rugby Union": 1,
+        "Skating": 1,
+        "Soccer": 15,
+        "Soccer (Indoor Soccer / Futsal)": 3,
+        "Softball": 1,
+        "Squash / Racquetball": 2,
+        "Swimming": 4,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 15,
+        "Volleyball": 2
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 19.4,
+          "valid_n": 1585,
+          "vulnerable_n": 307
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 17.5,
+          "valid_n": 1551,
+          "vulnerable_n": 271
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 15.2,
+          "valid_n": 1862,
+          "vulnerable_n": 282
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 15.9,
+          "valid_n": 2001,
+          "vulnerable_n": 318
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 15.2,
+          "valid_n": 1700,
+          "vulnerable_n": 259
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 17.8,
+          "valid_n": 1553,
+          "vulnerable_n": 276
+        }
+      ],
       "rent": {
         "flat_1br": 495,
         "flat_2br": 600,
         "house_2br": 589,
         "house_3br": 650
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 25060,
@@ -914,14 +5021,91 @@
       "station_count": 6,
       "bulk_billing_rate": 0.811333333,
       "affordable_lettings_pct": 1.6,
+      "affordability_trend_pp": -1.3,
+      "seifa_irsd": 1041,
+      "green_space_pct": 9.2,
+      "schools": {
+        "primary": {
+          "government": 14,
+          "catholic": 10,
+          "independent": 2
+        },
+        "secondary": {
+          "government": 5,
+          "catholic": 3,
+          "independent": 2
+        }
+      },
+      "sport_variety": 22,
+      "sports": {
+        "Aerobics": 16,
+        "Athletics": 1,
+        "Australian Rules Football": 13,
+        "Badminton": 2,
+        "Baseball": 1,
+        "Boxing": 1,
+        "Cricket": 19,
+        "Croquet": 1,
+        "Fitness / Gymnasium Workouts": 19,
+        "Golf": 1,
+        "Gymnastics": 4,
+        "Hockey": 2,
+        "Lawn Bowls": 9,
+        "Martial Arts": 1,
+        "Netball": 3,
+        "Rugby League": 1,
+        "Soccer": 8,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 6,
+        "Tae Kwon Do": 1,
+        "Tennis (Outdoor)": 10
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 10.5,
+          "valid_n": 1111,
+          "vulnerable_n": 117
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 16.2,
+          "valid_n": 1145,
+          "vulnerable_n": 185
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 16,
+          "valid_n": 1091,
+          "vulnerable_n": 174
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 14.9,
+          "valid_n": 1251,
+          "vulnerable_n": 186
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 13.4,
+          "valid_n": 1110,
+          "vulnerable_n": 149
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 14.6,
+          "valid_n": 855,
+          "vulnerable_n": 125
+        }
+      ],
       "rent": {
         "flat_1br": 450,
         "flat_2br": 525,
         "house_2br": 610,
         "house_3br": 700
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 25150,
@@ -932,14 +5116,88 @@
       "station_count": 2,
       "bulk_billing_rate": 0.938083333,
       "affordable_lettings_pct": 47,
+      "affordability_trend_pp": 23.4,
+      "seifa_irsd": 1017,
+      "green_space_pct": 0.4,
+      "schools": {
+        "primary": {
+          "government": 12,
+          "catholic": 4,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 0,
+          "independent": 1
+        }
+      },
+      "sport_variety": 19,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 11,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 1,
+        "Cricket": 12,
+        "Cycling": 5,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 3,
+        "Gymnastics": 1,
+        "Lawn Bowls": 3,
+        "Netball": 7,
+        "Netball (Indoor)": 1,
+        "Skating": 1,
+        "Soccer": 1,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Swimming": 2,
+        "Tennis (Outdoor)": 13
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 15.9,
+          "valid_n": 347,
+          "vulnerable_n": 55
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 15.6,
+          "valid_n": 385,
+          "vulnerable_n": 60
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 21.5,
+          "valid_n": 354,
+          "vulnerable_n": 76
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 11.7,
+          "valid_n": 402,
+          "vulnerable_n": 47
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 22,
+          "valid_n": 419,
+          "vulnerable_n": 92
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 21.2,
+          "valid_n": 406,
+          "vulnerable_n": 86
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 355,
         "house_2br": 375,
         "house_3br": 480
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 25340,
@@ -950,14 +5208,101 @@
       "station_count": 8,
       "bulk_billing_rate": 0.819,
       "affordable_lettings_pct": 1.5,
+      "affordability_trend_pp": -0.1,
+      "seifa_irsd": 1038,
+      "green_space_pct": 4.6,
+      "schools": {
+        "primary": {
+          "government": 28,
+          "catholic": 7,
+          "independent": 4
+        },
+        "secondary": {
+          "government": 6,
+          "catholic": 1,
+          "independent": 4
+        }
+      },
+      "sport_variety": 32,
+      "sports": {
+        "Athletics": 2,
+        "Australian Rules Football": 24,
+        "Badminton": 2,
+        "Baseball": 3,
+        "Basketball": 4,
+        "Beach Volleyball": 1,
+        "Bocce": 1,
+        "Cricket": 34,
+        "Cricket (Indoor)": 1,
+        "Croquet": 1,
+        "Cycling": 2,
+        "Equestrian": 6,
+        "Fitness / Gymnasium Workouts": 15,
+        "Golf": 17,
+        "Gymnastics": 3,
+        "Hockey": 1,
+        "Lawn Bowls": 17,
+        "Motor Cycling": 1,
+        "Motor Sports": 1,
+        "Netball": 9,
+        "Netball (Indoor)": 3,
+        "Sailing": 18,
+        "Shooting Sports": 2,
+        "Skating": 4,
+        "Soccer": 4,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Surf Life Saving": 8,
+        "Swimming": 2,
+        "Table Tennis": 1,
+        "Tennis (Indoor)": 2,
+        "Tennis (Outdoor)": 24,
+        "Volleyball": 2
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 23.3,
+          "valid_n": 1645,
+          "vulnerable_n": 383
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 18.1,
+          "valid_n": 1757,
+          "vulnerable_n": 318
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 18.8,
+          "valid_n": 1792,
+          "vulnerable_n": 336
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 18.2,
+          "valid_n": 1754,
+          "vulnerable_n": 319
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 14.9,
+          "valid_n": 1542,
+          "vulnerable_n": 230
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 15.9,
+          "valid_n": 1355,
+          "vulnerable_n": 216
+        }
+      ],
       "rent": {
         "flat_1br": 395,
         "flat_2br": 515,
         "house_2br": 495,
         "house_3br": 595
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 25430,
@@ -968,14 +5313,96 @@
       "station_count": 1,
       "bulk_billing_rate": 0.991166667,
       "affordable_lettings_pct": 11.7,
+      "affordability_trend_pp": 1.5,
+      "seifa_irsd": 1007,
+      "green_space_pct": 0.9,
+      "schools": {
+        "primary": {
+          "government": 11,
+          "catholic": 1,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 0,
+          "independent": 1
+        }
+      },
+      "sport_variety": 27,
+      "sports": {
+        "Archery": 1,
+        "Athletics": 1,
+        "Australian Rules Football": 7,
+        "BMX": 1,
+        "Badminton": 1,
+        "Basketball": 1,
+        "Carpet Bowls": 3,
+        "Cricket": 14,
+        "Cricket (Indoor)": 1,
+        "Croquet": 3,
+        "Cycling": 3,
+        "Equestrian": 4,
+        "Fitness / Gymnasium Workouts": 2,
+        "Golf": 3,
+        "Hockey": 1,
+        "Lawn Bowls": 5,
+        "Motor Cycling": 1,
+        "Netball": 7,
+        "Netball (Indoor)": 1,
+        "Sailing": 1,
+        "Shooting Sports": 1,
+        "Snooker / Billiards / Pool": 1,
+        "Soccer": 1,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Swimming": 7,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 14
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 18.8,
+          "valid_n": 181,
+          "vulnerable_n": 34
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 21.6,
+          "valid_n": 181,
+          "vulnerable_n": 39
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 25.6,
+          "valid_n": 156,
+          "vulnerable_n": 40
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 28.5,
+          "valid_n": 151,
+          "vulnerable_n": 43
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 19.3,
+          "valid_n": 166,
+          "vulnerable_n": 32
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 22.5,
+          "valid_n": 151,
+          "vulnerable_n": 34
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": 445,
         "house_3br": 510
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 25490,
@@ -986,14 +5413,85 @@
       "station_count": 0,
       "bulk_billing_rate": 0.853666667,
       "affordable_lettings_pct": 21.7,
+      "affordability_trend_pp": -5.4,
+      "seifa_irsd": 1029,
+      "green_space_pct": 0.2,
+      "schools": {
+        "primary": {
+          "government": 9,
+          "catholic": 3,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 16,
+      "sports": {
+        "Australian Rules Football": 9,
+        "Cricket": 16,
+        "Croquet": 1,
+        "Cycling": 4,
+        "Equestrian": 6,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 6,
+        "Lawn Bowls": 4,
+        "Netball": 10,
+        "Sailing": 1,
+        "Shooting Sports": 1,
+        "Squash / Racquetball": 1,
+        "Surf Life Saving": 1,
+        "Swimming": 4,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 6
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 17.4,
+          "valid_n": 213,
+          "vulnerable_n": 37
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 13.6,
+          "valid_n": 251,
+          "vulnerable_n": 34
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 10.7,
+          "valid_n": 233,
+          "vulnerable_n": 25
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 13.7,
+          "valid_n": 190,
+          "vulnerable_n": 26
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 16.9,
+          "valid_n": 207,
+          "vulnerable_n": 35
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 18.5,
+          "valid_n": 178,
+          "vulnerable_n": 33
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": 498
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 25620,
@@ -1004,14 +5502,86 @@
       "station_count": 0,
       "bulk_billing_rate": 0.946416667,
       "affordable_lettings_pct": 65.9,
+      "affordability_trend_pp": 22,
+      "seifa_irsd": 1005,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 10,
+          "catholic": 2,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 17,
+      "sports": {
+        "Aerobics": 1,
+        "Athletics": 1,
+        "Australian Rules Football": 5,
+        "BMX": 6,
+        "Basketball": 4,
+        "Cricket": 13,
+        "Cycling": 3,
+        "Equestrian": 4,
+        "Fitness / Gymnasium Workouts": 2,
+        "Golf": 4,
+        "Lawn Bowls": 4,
+        "Netball": 7,
+        "Netball (Indoor)": 2,
+        "Skating": 5,
+        "Soccer": 1,
+        "Swimming": 4,
+        "Tennis (Outdoor)": 13
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 20.2,
+          "valid_n": 124,
+          "vulnerable_n": 25
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 28.6,
+          "valid_n": 154,
+          "vulnerable_n": 44
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 23.1,
+          "valid_n": 147,
+          "vulnerable_n": 34
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 17.1,
+          "valid_n": 123,
+          "vulnerable_n": 21
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 10.8,
+          "valid_n": 120,
+          "vulnerable_n": 13
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 18,
+          "valid_n": 122,
+          "vulnerable_n": 22
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": 400
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 25710,
@@ -1022,14 +5592,96 @@
       "station_count": 4,
       "bulk_billing_rate": 0.767916667,
       "affordable_lettings_pct": 8.4,
+      "affordability_trend_pp": -0.8,
+      "seifa_irsd": 1093,
+      "green_space_pct": 2.7,
+      "schools": {
+        "primary": {
+          "government": 17,
+          "catholic": 3,
+          "independent": 3
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 1,
+          "independent": 2
+        }
+      },
+      "sport_variety": 27,
+      "sports": {
+        "Archery": 1,
+        "Australian Rules Football": 11,
+        "Badminton": 2,
+        "Baseball": 2,
+        "Basketball": 4,
+        "Cricket": 19,
+        "Equestrian": 6,
+        "Fitness / Gymnasium Workouts": 10,
+        "Golf": 1,
+        "Gymnastics": 3,
+        "Hockey": 1,
+        "Lacrosse": 1,
+        "Lawn Bowls": 3,
+        "Martial Arts": 1,
+        "Netball": 2,
+        "Netball (Indoor)": 2,
+        "Rugby Union": 1,
+        "Sailing": 1,
+        "Shooting Sports": 1,
+        "Skating": 4,
+        "Soccer": 2,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Squash / Racquetball": 1,
+        "Swimming": 2,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 12,
+        "Volleyball": 2
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 12.1,
+          "valid_n": 793,
+          "vulnerable_n": 96
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 10.3,
+          "valid_n": 805,
+          "vulnerable_n": 83
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 11.7,
+          "valid_n": 753,
+          "vulnerable_n": 88
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 10.9,
+          "valid_n": 704,
+          "vulnerable_n": 77
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 12.7,
+          "valid_n": 566,
+          "vulnerable_n": 72
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 13.2,
+          "valid_n": 630,
+          "vulnerable_n": 83
+        }
+      ],
       "rent": {
         "flat_1br": 345,
         "flat_2br": 515,
         "house_2br": null,
         "house_3br": 580
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 25810,
@@ -1040,14 +5692,90 @@
       "station_count": 0,
       "bulk_billing_rate": 0.98725,
       "affordable_lettings_pct": 51.1,
+      "affordability_trend_pp": -31.7,
+      "seifa_irsd": 951,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 8,
+          "catholic": 2,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 21,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 8,
+        "Badminton": 1,
+        "Basketball": 2,
+        "Cricket": 11,
+        "Cricket (Indoor)": 1,
+        "Cycling": 2,
+        "Equestrian": 2,
+        "Golf": 6,
+        "Gymnastics": 1,
+        "Hockey": 2,
+        "Lawn Bowls": 4,
+        "Netball": 5,
+        "Netball (Indoor)": 1,
+        "Rock Climbing / Abseiling (Indoor)": 1,
+        "Sailing": 1,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 4,
+        "Tennis (Outdoor)": 8,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 29.4,
+          "valid_n": 126,
+          "vulnerable_n": 37
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 10.6,
+          "valid_n": 113,
+          "vulnerable_n": 12
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 21.5,
+          "valid_n": 93,
+          "vulnerable_n": 20
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 14.4,
+          "valid_n": 104,
+          "vulnerable_n": 15
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 33.3,
+          "valid_n": 81,
+          "vulnerable_n": 27
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 27.2,
+          "valid_n": 81,
+          "vulnerable_n": 22
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": 420
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 25900,
@@ -1058,14 +5786,98 @@
       "station_count": 2,
       "bulk_billing_rate": 0.63475,
       "affordable_lettings_pct": 0.6,
+      "affordability_trend_pp": 0.2,
+      "seifa_irsd": 1061,
+      "green_space_pct": 6.9,
+      "schools": {
+        "primary": {
+          "government": 8,
+          "catholic": 3,
+          "independent": 3
+        },
+        "secondary": {
+          "government": 4,
+          "catholic": 1,
+          "independent": 3
+        }
+      },
+      "sport_variety": 29,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 6,
+        "Badminton": 1,
+        "Baseball": 2,
+        "Basketball": 3,
+        "Boxing": 1,
+        "Cricket": 9,
+        "Croquet": 1,
+        "Fitness / Gymnasium Workouts": 2,
+        "Flying Disk": 1,
+        "Gaelic Football": 1,
+        "Golf": 1,
+        "Gymnastics": 2,
+        "Hockey": 2,
+        "Lacrosse": 1,
+        "Lawn Bowls": 4,
+        "Netball": 1,
+        "Netball (Indoor)": 1,
+        "Sailing": 5,
+        "Skating": 1,
+        "Soccer": 6,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 1,
+        "Surf Life Saving": 5,
+        "Swimming": 1,
+        "Table Tennis": 2,
+        "Tennis (Outdoor)": 6,
+        "Touch Football": 2,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 12.3,
+          "valid_n": 528,
+          "vulnerable_n": 65
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 11.8,
+          "valid_n": 689,
+          "vulnerable_n": 81
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 14.1,
+          "valid_n": 696,
+          "vulnerable_n": 98
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 13.4,
+          "valid_n": 756,
+          "vulnerable_n": 101
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 15,
+          "valid_n": 739,
+          "vulnerable_n": 111
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 17.1,
+          "valid_n": 526,
+          "vulnerable_n": 90
+        }
+      ],
       "rent": {
         "flat_1br": 485,
         "flat_2br": 650,
         "house_2br": 750,
         "house_3br": 1040
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 25990,
@@ -1076,14 +5888,79 @@
       "station_count": 1,
       "bulk_billing_rate": 0.971583333,
       "affordable_lettings_pct": 46.7,
+      "affordability_trend_pp": -14.8,
+      "seifa_irsd": 959,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 8,
+          "catholic": 0,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 10,
+      "sports": {
+        "Australian Rules Football": 9,
+        "Carpet Bowls": 1,
+        "Cricket": 9,
+        "Equestrian": 1,
+        "Golf": 4,
+        "Lawn Bowls": 4,
+        "Netball": 6,
+        "Swimming": 2,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 8
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 17.5,
+          "valid_n": 57,
+          "vulnerable_n": 10
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 31.4,
+          "valid_n": 70,
+          "vulnerable_n": 22
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 15.9,
+          "valid_n": 63,
+          "vulnerable_n": 10
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 18.1,
+          "valid_n": 72,
+          "vulnerable_n": 13
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 19.1,
+          "valid_n": 68,
+          "vulnerable_n": 13
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 13,
+          "valid_n": 46,
+          "vulnerable_n": 6
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": null
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26080,
@@ -1094,14 +5971,41 @@
       "station_count": 0,
       "bulk_billing_rate": 0.923363636,
       "affordable_lettings_pct": 0,
+      "affordability_trend_pp": 0,
+      "seifa_irsd": 1082,
+      "green_space_pct": 1.5,
+      "schools": {
+        "primary": {
+          "government": 2,
+          "catholic": 1,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 0,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 9,
+      "sports": {
+        "Australian Rules Football": 2,
+        "Cricket": 2,
+        "Croquet": 1,
+        "Lawn Bowls": 2,
+        "Netball": 1,
+        "Sailing": 2,
+        "Skating": 1,
+        "Surf Life Saving": 1,
+        "Tennis (Outdoor)": 2
+      },
+      "aedc": null,
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": null
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26170,
@@ -1112,14 +6016,96 @@
       "station_count": 0,
       "bulk_billing_rate": 0.96725,
       "affordable_lettings_pct": 49.4,
+      "affordability_trend_pp": 22.5,
+      "seifa_irsd": 1003,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 13,
+          "catholic": 2,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 4,
+          "catholic": 1,
+          "independent": 1
+        }
+      },
+      "sport_variety": 27,
+      "sports": {
+        "Archery": 1,
+        "Australian Rules Football": 11,
+        "Badminton": 1,
+        "Basketball": 8,
+        "Cricket": 20,
+        "Croquet": 2,
+        "Cycling": 5,
+        "Equestrian": 8,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 8,
+        "Gymnastics": 1,
+        "Lawn Bowls": 10,
+        "Motor Cycling": 2,
+        "Motor Sports": 1,
+        "Netball": 12,
+        "Netball (Indoor)": 1,
+        "Shooting Sports": 6,
+        "Skating": 1,
+        "Soccer": 6,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 1,
+        "Surf Life Saving": 2,
+        "Swimming": 7,
+        "Table Tennis": 1,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 23,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 19.6,
+          "valid_n": 327,
+          "vulnerable_n": 64
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 14,
+          "valid_n": 250,
+          "vulnerable_n": 35
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 17.5,
+          "valid_n": 321,
+          "vulnerable_n": 56
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 24,
+          "valid_n": 358,
+          "vulnerable_n": 86
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 27.3,
+          "valid_n": 308,
+          "vulnerable_n": 84
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 28.5,
+          "valid_n": 267,
+          "vulnerable_n": 76
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": 395,
         "house_3br": 435
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26260,
@@ -1130,14 +6116,88 @@
       "station_count": 0,
       "bulk_billing_rate": 0.971916667,
       "affordable_lettings_pct": 70.4,
+      "affordability_trend_pp": 19.5,
+      "seifa_irsd": 994,
+      "green_space_pct": 0.1,
+      "schools": {
+        "primary": {
+          "government": 9,
+          "catholic": 3,
+          "independent": 3
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 1,
+          "independent": 2
+        }
+      },
+      "sport_variety": 19,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 12,
+        "Baseball": 1,
+        "Basketball": 1,
+        "Cricket": 12,
+        "Croquet": 1,
+        "Equestrian": 3,
+        "Fitness / Gymnasium Workouts": 2,
+        "Golf": 6,
+        "Gymnastics": 1,
+        "Hockey": 2,
+        "Lawn Bowls": 7,
+        "Netball": 8,
+        "Shooting Sports": 1,
+        "Soccer": 2,
+        "Squash / Racquetball": 1,
+        "Swimming": 7,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 15
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 15.4,
+          "valid_n": 188,
+          "vulnerable_n": 29
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 13.5,
+          "valid_n": 171,
+          "vulnerable_n": 23
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 13.2,
+          "valid_n": 197,
+          "vulnerable_n": 26
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 22.8,
+          "valid_n": 167,
+          "vulnerable_n": 38
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 22.3,
+          "valid_n": 166,
+          "vulnerable_n": 37
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 24,
+          "valid_n": 146,
+          "vulnerable_n": 35
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": 398
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26350,
@@ -1148,14 +6208,90 @@
       "station_count": 15,
       "bulk_billing_rate": 0.625166667,
       "affordable_lettings_pct": 1.3,
+      "affordability_trend_pp": 0.4,
+      "seifa_irsd": 1084,
+      "green_space_pct": 7,
+      "schools": {
+        "primary": {
+          "government": 7,
+          "catholic": 8,
+          "independent": 4
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 4,
+          "independent": 4
+        }
+      },
+      "sport_variety": 21,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 9,
+        "Baseball": 1,
+        "Basketball": 4,
+        "Cricket": 17,
+        "Fitness / Gymnasium Workouts": 22,
+        "Golf": 1,
+        "Gymnastics": 4,
+        "Hockey": 2,
+        "Lacrosse": 2,
+        "Lawn Bowls": 5,
+        "Netball": 3,
+        "Netball (Indoor)": 1,
+        "Rugby Union": 2,
+        "Skating": 1,
+        "Soccer": 5,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 2,
+        "Swimming": 5,
+        "Tennis (Outdoor)": 17,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 15.4,
+          "valid_n": 702,
+          "vulnerable_n": 108
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 9.9,
+          "valid_n": 647,
+          "vulnerable_n": 64
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 11.9,
+          "valid_n": 705,
+          "vulnerable_n": 84
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 16.8,
+          "valid_n": 695,
+          "vulnerable_n": 117
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 12.4,
+          "valid_n": 606,
+          "vulnerable_n": 75
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 12.6,
+          "valid_n": 509,
+          "vulnerable_n": 64
+        }
+      ],
       "rent": {
         "flat_1br": 500,
         "flat_2br": 675,
         "house_2br": 763,
         "house_3br": 1010
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26430,
@@ -1166,14 +6302,87 @@
       "station_count": 4,
       "bulk_billing_rate": 0.971083333,
       "affordable_lettings_pct": 27.5,
+      "affordability_trend_pp": 9.2,
+      "seifa_irsd": 982,
+      "green_space_pct": 0.4,
+      "schools": {
+        "primary": {
+          "government": 5,
+          "catholic": 2,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 18,
+      "sports": {
+        "Australian Rules Football": 5,
+        "Badminton": 2,
+        "Basketball": 1,
+        "Cricket": 8,
+        "Croquet": 2,
+        "Equestrian": 2,
+        "Golf": 5,
+        "Lacrosse": 1,
+        "Lawn Bowls": 4,
+        "Netball": 5,
+        "Netball (Indoor)": 1,
+        "Rowing": 2,
+        "Sailing": 1,
+        "Skating": 2,
+        "Soccer": 1,
+        "Swimming": 4,
+        "Tennis (Outdoor)": 6,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 22.6,
+          "valid_n": 84,
+          "vulnerable_n": 19
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 15.1,
+          "valid_n": 93,
+          "vulnerable_n": 14
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 15.8,
+          "valid_n": 101,
+          "vulnerable_n": 16
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 15.5,
+          "valid_n": 84,
+          "vulnerable_n": 13
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 21.3,
+          "valid_n": 108,
+          "vulnerable_n": 23
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 18.5,
+          "valid_n": 81,
+          "vulnerable_n": 15
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": 475
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26490,
@@ -1184,14 +6393,93 @@
       "station_count": 1,
       "bulk_billing_rate": 0.851166667,
       "affordable_lettings_pct": 10.4,
+      "affordability_trend_pp": 7.7,
+      "seifa_irsd": 1086,
+      "green_space_pct": 0.6,
+      "schools": {
+        "primary": {
+          "government": 9,
+          "catholic": 2,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 24,
+      "sports": {
+        "Australian Rules Football": 9,
+        "BMX": 5,
+        "Badminton": 3,
+        "Basketball": 6,
+        "Boxing": 1,
+        "Canoeing": 1,
+        "Cricket": 14,
+        "Cycling": 4,
+        "Equestrian": 6,
+        "Fitness / Gymnasium Workouts": 6,
+        "Golf": 5,
+        "Gymnastics": 2,
+        "Lawn Bowls": 4,
+        "Motor Cycling": 1,
+        "Netball": 7,
+        "Netball (Indoor)": 2,
+        "Sailing": 2,
+        "Skating": 11,
+        "Soccer": 4,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Surf Life Saving": 5,
+        "Swimming": 3,
+        "Tennis (Outdoor)": 17,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 14,
+          "valid_n": 335,
+          "vulnerable_n": 47
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 13.6,
+          "valid_n": 389,
+          "vulnerable_n": 53
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 15.8,
+          "valid_n": 425,
+          "vulnerable_n": 67
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 12.4,
+          "valid_n": 421,
+          "vulnerable_n": 52
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 10.2,
+          "valid_n": 440,
+          "vulnerable_n": 45
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 7.3,
+          "valid_n": 356,
+          "vulnerable_n": 26
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": 498,
         "house_3br": 600
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26610,
@@ -1202,14 +6490,94 @@
       "station_count": 1,
       "bulk_billing_rate": 0.981,
       "affordable_lettings_pct": 37.7,
+      "affordability_trend_pp": -21.5,
+      "seifa_irsd": 941,
+      "green_space_pct": 0.5,
+      "schools": {
+        "primary": {
+          "government": 8,
+          "catholic": 2,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 2,
+          "independent": 0
+        }
+      },
+      "sport_variety": 25,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 10,
+        "BMX": 1,
+        "Badminton": 3,
+        "Basketball": 3,
+        "Cricket": 11,
+        "Croquet": 1,
+        "Equestrian": 3,
+        "Fitness / Gymnasium Workouts": 4,
+        "Golf": 5,
+        "Gymnastics": 1,
+        "Lawn Bowls": 5,
+        "Motor Cycling": 1,
+        "Netball": 7,
+        "Netball (Indoor)": 2,
+        "Rugby League": 1,
+        "Sailing": 1,
+        "Shooting Sports": 1,
+        "Skating": 2,
+        "Soccer": 1,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Squash / Racquetball": 1,
+        "Swimming": 5,
+        "Tennis (Outdoor)": 5,
+        "Volleyball": 2
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 23.4,
+          "valid_n": 261,
+          "vulnerable_n": 61
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 21,
+          "valid_n": 276,
+          "vulnerable_n": 58
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 28.6,
+          "valid_n": 287,
+          "vulnerable_n": 82
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 27,
+          "valid_n": 293,
+          "vulnerable_n": 79
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 25.8,
+          "valid_n": 221,
+          "vulnerable_n": 57
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 21.3,
+          "valid_n": 211,
+          "vulnerable_n": 45
+        }
+      ],
       "rent": {
         "flat_1br": 240,
         "flat_2br": 340,
         "house_2br": null,
         "house_3br": 490
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26670,
@@ -1220,14 +6588,78 @@
       "station_count": 0,
       "bulk_billing_rate": 0.840166667,
       "affordable_lettings_pct": 66.7,
+      "affordability_trend_pp": 26.7,
+      "seifa_irsd": 1001,
+      "green_space_pct": 0.1,
+      "schools": {
+        "primary": {
+          "government": 7,
+          "catholic": 2,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 9,
+      "sports": {
+        "Australian Rules Football": 5,
+        "Cricket": 6,
+        "Equestrian": 1,
+        "Golf": 6,
+        "Lawn Bowls": 3,
+        "Netball": 3,
+        "Swimming": 3,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 7
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 27.7,
+          "valid_n": 65,
+          "vulnerable_n": 18
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 17.5,
+          "valid_n": 57,
+          "vulnerable_n": 10
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 25,
+          "valid_n": 60,
+          "vulnerable_n": 15
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 24.1,
+          "valid_n": 58,
+          "vulnerable_n": 14
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 23.3,
+          "valid_n": 43,
+          "vulnerable_n": 10
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 23.6,
+          "valid_n": 55,
+          "vulnerable_n": 13
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": null
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26700,
@@ -1238,14 +6670,97 @@
       "station_count": 2,
       "bulk_billing_rate": 0.784583333,
       "affordable_lettings_pct": 32,
+      "affordability_trend_pp": 6.7,
+      "seifa_irsd": 988,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 15,
+          "catholic": 3,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 1,
+          "catholic": 1,
+          "independent": 1
+        }
+      },
+      "sport_variety": 28,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 13,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 1,
+        "Cricket": 17,
+        "Cricket (Indoor)": 1,
+        "Croquet": 1,
+        "Cycling": 7,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 6,
+        "Gymnastics": 1,
+        "Hockey": 1,
+        "Lawn Bowls": 4,
+        "Motor Sports": 1,
+        "Netball": 13,
+        "Netball (Indoor)": 1,
+        "Rodeo": 1,
+        "Shooting Sports": 4,
+        "Skating": 1,
+        "Soccer": 1,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Squash / Racquetball": 2,
+        "Swimming": 3,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 24,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 17.9,
+          "valid_n": 335,
+          "vulnerable_n": 60
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 13.2,
+          "valid_n": 326,
+          "vulnerable_n": 43
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 25.6,
+          "valid_n": 332,
+          "vulnerable_n": 85
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 12.7,
+          "valid_n": 324,
+          "vulnerable_n": 41
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 23.6,
+          "valid_n": 327,
+          "vulnerable_n": 77
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 14.1,
+          "valid_n": 241,
+          "vulnerable_n": 34
+        }
+      ],
       "rent": {
         "flat_1br": 265,
         "flat_2br": 360,
         "house_2br": 420,
         "house_3br": 500
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26730,
@@ -1256,14 +6771,108 @@
       "station_count": 2,
       "bulk_billing_rate": 0.8745,
       "affordable_lettings_pct": 10.1,
+      "affordability_trend_pp": -0.9,
+      "seifa_irsd": 995,
+      "green_space_pct": 3.1,
+      "schools": {
+        "primary": {
+          "government": 6,
+          "catholic": 4,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 1,
+          "independent": 1
+        }
+      },
+      "sport_variety": 39,
+      "sports": {
+        "Archery": 1,
+        "Athletics": 2,
+        "Australian Rules Football": 8,
+        "BMX": 1,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 2,
+        "Canoeing": 1,
+        "Carpet Bowls": 2,
+        "Cricket": 14,
+        "Cricket (Indoor)": 1,
+        "Croquet": 1,
+        "Cycling": 1,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 6,
+        "Golf": 2,
+        "Gymnastics": 1,
+        "Hockey": 1,
+        "Lawn Bowls": 4,
+        "Martial Arts": 1,
+        "Motor Cycling": 1,
+        "Motor Sports": 2,
+        "Netball": 9,
+        "Netball (Indoor)": 2,
+        "Rowing": 2,
+        "Rugby Union": 1,
+        "Sailing": 1,
+        "Shooting Sports": 2,
+        "Skating": 1,
+        "Soccer": 3,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Surf Life Saving": 1,
+        "Swimming": 2,
+        "Table Tennis": 1,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 2,
+        "Touch Football": 1,
+        "Volleyball": 1,
+        "Water Skiing": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 20.1,
+          "valid_n": 399,
+          "vulnerable_n": 80
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 14.8,
+          "valid_n": 379,
+          "vulnerable_n": 56
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 18.7,
+          "valid_n": 422,
+          "vulnerable_n": 79
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 13.5,
+          "valid_n": 342,
+          "vulnerable_n": 46
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 17.6,
+          "valid_n": 364,
+          "vulnerable_n": 64
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 21.9,
+          "valid_n": 365,
+          "vulnerable_n": 80
+        }
+      ],
       "rent": {
         "flat_1br": 318,
         "flat_2br": 420,
         "house_2br": 430,
         "house_3br": 550
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26810,
@@ -1274,14 +6883,99 @@
       "station_count": 3,
       "bulk_billing_rate": 0.974916667,
       "affordable_lettings_pct": 44,
+      "affordability_trend_pp": 15.2,
+      "seifa_irsd": 973,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 21,
+          "catholic": 6,
+          "independent": 1
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 1,
+          "independent": 1
+        }
+      },
+      "sport_variety": 30,
+      "sports": {
+        "Aerobics": 1,
+        "Athletics": 1,
+        "Australian Rules Football": 13,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 5,
+        "Cricket": 23,
+        "Croquet": 2,
+        "Cycling": 2,
+        "Equestrian": 6,
+        "Fitness / Gymnasium Workouts": 7,
+        "Golf": 8,
+        "Gymnastics": 1,
+        "Hockey": 3,
+        "Lawn Bowls": 10,
+        "Motor Cycling": 2,
+        "Motor Sports": 1,
+        "Netball": 16,
+        "Netball (Indoor)": 2,
+        "Polocrosse": 1,
+        "Sailing": 2,
+        "Shooting Sports": 1,
+        "Soccer": 2,
+        "Soccer (Indoor Soccer / Futsal)": 2,
+        "Softball": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 7,
+        "Table Tennis": 2,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 18
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 19.4,
+          "valid_n": 459,
+          "vulnerable_n": 89
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 21.8,
+          "valid_n": 561,
+          "vulnerable_n": 122
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 19.3,
+          "valid_n": 493,
+          "vulnerable_n": 95
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 26.3,
+          "valid_n": 536,
+          "vulnerable_n": 141
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 24,
+          "valid_n": 525,
+          "vulnerable_n": 126
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 27,
+          "valid_n": 429,
+          "vulnerable_n": 116
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": 360,
         "house_2br": 360,
         "house_3br": 450
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26890,
@@ -1292,14 +6986,85 @@
       "station_count": 0,
       "bulk_billing_rate": 0.975416667,
       "affordable_lettings_pct": 100,
+      "affordability_trend_pp": 0,
+      "seifa_irsd": 991,
+      "green_space_pct": 0.3,
+      "schools": {
+        "primary": {
+          "government": 4,
+          "catholic": 1,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 16,
+      "sports": {
+        "Australian Rules Football": 5,
+        "Badminton": 1,
+        "Basketball": 2,
+        "Cricket": 7,
+        "Cricket (Indoor)": 1,
+        "Croquet": 1,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 6,
+        "Lawn Bowls": 4,
+        "Netball": 5,
+        "Squash / Racquetball": 2,
+        "Swimming": 3,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 8,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 18.8,
+          "valid_n": 48,
+          "vulnerable_n": 9
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 0,
+          "valid_n": 34,
+          "vulnerable_n": 0
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 23.7,
+          "valid_n": 59,
+          "vulnerable_n": 14
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 27.5,
+          "valid_n": 40,
+          "vulnerable_n": 11
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 29,
+          "valid_n": 31,
+          "vulnerable_n": 9
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 7,
+          "valid_n": 43,
+          "vulnerable_n": 3
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": null
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 26980,
@@ -1310,14 +7075,96 @@
       "station_count": 6,
       "bulk_billing_rate": 0.880666667,
       "affordable_lettings_pct": 1.6,
+      "affordability_trend_pp": -0.7,
+      "seifa_irsd": 1043,
+      "green_space_pct": 11.2,
+      "schools": {
+        "primary": {
+          "government": 22,
+          "catholic": 9,
+          "independent": 4
+        },
+        "secondary": {
+          "government": 7,
+          "catholic": 2,
+          "independent": 4
+        }
+      },
+      "sport_variety": 27,
+      "sports": {
+        "Archery": 1,
+        "Athletics": 2,
+        "Australian Rules Football": 17,
+        "BMX": 2,
+        "Badminton": 3,
+        "Baseball": 3,
+        "Basketball": 7,
+        "Cricket": 26,
+        "Cycling": 2,
+        "Diving": 1,
+        "Fitness / Gymnasium Workouts": 19,
+        "Golf": 3,
+        "Gymnastics": 4,
+        "Hockey": 2,
+        "Lacrosse": 1,
+        "Lawn Bowls": 7,
+        "Netball": 5,
+        "Netball (Indoor)": 4,
+        "Rugby Union": 1,
+        "Skating": 2,
+        "Soccer": 6,
+        "Soccer (Indoor Soccer / Futsal)": 3,
+        "Squash / Racquetball": 2,
+        "Swimming": 3,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 16,
+        "Volleyball": 4
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 13.5,
+          "valid_n": 1558,
+          "vulnerable_n": 211
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 12.7,
+          "valid_n": 1719,
+          "vulnerable_n": 218
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 13.4,
+          "valid_n": 1610,
+          "vulnerable_n": 216
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 13,
+          "valid_n": 1711,
+          "vulnerable_n": 222
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 15.6,
+          "valid_n": 1553,
+          "vulnerable_n": 242
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 14.9,
+          "valid_n": 1423,
+          "vulnerable_n": 212
+        }
+      ],
       "rent": {
         "flat_1br": 450,
         "flat_2br": 600,
         "house_2br": 580,
         "house_3br": 650
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 27070,
@@ -1328,14 +7175,100 @@
       "station_count": 9,
       "bulk_billing_rate": 0.964916667,
       "affordable_lettings_pct": 17.5,
+      "affordability_trend_pp": 4.5,
+      "seifa_irsd": 990,
+      "green_space_pct": 4.6,
+      "schools": {
+        "primary": {
+          "government": 31,
+          "catholic": 14,
+          "independent": 3
+        },
+        "secondary": {
+          "government": 12,
+          "catholic": 2,
+          "independent": 5
+        }
+      },
+      "sport_variety": 31,
+      "sports": {
+        "Aerobics": 10,
+        "Athletics": 1,
+        "Australian Rules Football": 12,
+        "BMX": 2,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 7,
+        "Beach Volleyball": 1,
+        "Bocce": 3,
+        "Boxing": 1,
+        "Cricket": 18,
+        "Cricket (Indoor)": 2,
+        "Equestrian": 3,
+        "Fitness / Gymnasium Workouts": 13,
+        "Golf": 2,
+        "Gymnastics": 2,
+        "Hockey": 1,
+        "Karate": 1,
+        "Lawn Bowls": 3,
+        "Martial Arts": 1,
+        "Netball": 3,
+        "Netball (Indoor)": 2,
+        "Rugby League": 1,
+        "Skating": 5,
+        "Soccer": 13,
+        "Soccer (Indoor Soccer / Futsal)": 3,
+        "Softball": 1,
+        "Squash / Racquetball": 2,
+        "Swimming": 4,
+        "Tennis (Outdoor)": 15,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 23.2,
+          "valid_n": 1644,
+          "vulnerable_n": 381
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 21.8,
+          "valid_n": 2073,
+          "vulnerable_n": 451
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 21.4,
+          "valid_n": 2518,
+          "vulnerable_n": 538
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 20.4,
+          "valid_n": 2853,
+          "vulnerable_n": 583
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 20,
+          "valid_n": 2968,
+          "vulnerable_n": 592
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 21.3,
+          "valid_n": 2583,
+          "vulnerable_n": 549
+        }
+      ],
       "rent": {
         "flat_1br": 375,
         "flat_2br": 460,
         "house_2br": 480,
         "house_3br": 520
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 27170,
@@ -1346,14 +7279,102 @@
       "station_count": 1,
       "bulk_billing_rate": 0.828666667,
       "affordable_lettings_pct": 13.2,
+      "affordability_trend_pp": -3.9,
+      "seifa_irsd": 973,
+      "green_space_pct": 3.1,
+      "schools": {
+        "primary": {
+          "government": 7,
+          "catholic": 3,
+          "independent": 2
+        },
+        "secondary": {
+          "government": 2,
+          "catholic": 1,
+          "independent": 2
+        }
+      },
+      "sport_variety": 33,
+      "sports": {
+        "Athletics": 1,
+        "Australian Rules Football": 3,
+        "BMX": 1,
+        "Baseball": 1,
+        "Basketball": 1,
+        "Canoeing": 1,
+        "Cricket": 6,
+        "Croquet": 1,
+        "Cycling": 4,
+        "Equestrian": 1,
+        "Fitness / Gymnasium Workouts": 4,
+        "Go Karting": 1,
+        "Golf": 3,
+        "Gymnastics": 1,
+        "Hockey": 1,
+        "Karate": 1,
+        "Lawn Bowls": 1,
+        "Martial Arts": 1,
+        "Motor Cycling": 1,
+        "Netball": 4,
+        "Netball (Indoor)": 1,
+        "Rugby League": 1,
+        "Sailing": 1,
+        "Shooting Sports": 1,
+        "Skating": 2,
+        "Soccer": 3,
+        "Softball": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 3,
+        "Tennis (Outdoor)": 4,
+        "Volleyball": 1,
+        "Water Polo": 2,
+        "Water Skiing": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 24.2,
+          "valid_n": 434,
+          "vulnerable_n": 105
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 22.9,
+          "valid_n": 480,
+          "vulnerable_n": 110
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 21.7,
+          "valid_n": 521,
+          "vulnerable_n": 113
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 23.1,
+          "valid_n": 584,
+          "vulnerable_n": 135
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 21.4,
+          "valid_n": 557,
+          "vulnerable_n": 119
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 27.5,
+          "valid_n": 505,
+          "vulnerable_n": 139
+        }
+      ],
       "rent": {
         "flat_1br": 290,
         "flat_2br": 415,
         "house_2br": 385,
         "house_3br": 525
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 27260,
@@ -1364,14 +7385,101 @@
       "station_count": 6,
       "bulk_billing_rate": 0.984583333,
       "affordable_lettings_pct": 48.9,
+      "affordability_trend_pp": 1.2,
+      "seifa_irsd": 1006,
+      "green_space_pct": 3.9,
+      "schools": {
+        "primary": {
+          "government": 37,
+          "catholic": 14,
+          "independent": 5
+        },
+        "secondary": {
+          "government": 21,
+          "catholic": 2,
+          "independent": 5
+        }
+      },
+      "sport_variety": 32,
+      "sports": {
+        "Aerobics": 12,
+        "Archery": 1,
+        "Athletics": 1,
+        "Australian Rules Football": 17,
+        "BMX": 3,
+        "Badminton": 1,
+        "Baseball": 1,
+        "Basketball": 1,
+        "Beach Volleyball": 1,
+        "Boxing": 1,
+        "Cricket": 24,
+        "Cricket (Indoor)": 2,
+        "Equestrian": 2,
+        "Fitness / Gymnasium Workouts": 15,
+        "Golf": 2,
+        "Gymnastics": 3,
+        "Hockey": 1,
+        "Lawn Bowls": 2,
+        "Netball": 3,
+        "Netball (Indoor)": 2,
+        "Polo": 1,
+        "Rugby League": 2,
+        "Rugby Union": 2,
+        "Shooting Sports": 1,
+        "Skating": 4,
+        "Soccer": 6,
+        "Soccer (Indoor Soccer / Futsal)": 1,
+        "Softball": 2,
+        "Swimming": 4,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 15,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 23.9,
+          "valid_n": 1949,
+          "vulnerable_n": 465
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 25,
+          "valid_n": 2561,
+          "vulnerable_n": 640
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 26,
+          "valid_n": 3441,
+          "vulnerable_n": 895
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 22.8,
+          "valid_n": 4376,
+          "vulnerable_n": 997
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 21.8,
+          "valid_n": 4671,
+          "vulnerable_n": 1017
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 25.4,
+          "valid_n": 4470,
+          "vulnerable_n": 1133
+        }
+      ],
       "rent": {
         "flat_1br": 420,
         "flat_2br": 410,
         "house_2br": 420,
         "house_3br": 460
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 27350,
@@ -1382,14 +7490,94 @@
       "station_count": 9,
       "bulk_billing_rate": 0.703916667,
       "affordable_lettings_pct": 1.7,
+      "affordability_trend_pp": 1.1,
+      "seifa_irsd": 1046,
+      "green_space_pct": 12.9,
+      "schools": {
+        "primary": {
+          "government": 13,
+          "catholic": 3,
+          "independent": 4
+        },
+        "secondary": {
+          "government": 6,
+          "catholic": 2,
+          "independent": 2
+        }
+      },
+      "sport_variety": 25,
+      "sports": {
+        "Athletics": 2,
+        "Australian Rules Football": 7,
+        "BMX": 1,
+        "Basketball": 4,
+        "Bocce": 2,
+        "Boxing": 3,
+        "Canoe Polo": 1,
+        "Canoeing": 2,
+        "Cricket": 17,
+        "Cycling": 2,
+        "Fitness / Gymnasium Workouts": 52,
+        "Gaelic Football": 1,
+        "Golf": 3,
+        "Lawn Bowls": 3,
+        "Martial Arts": 9,
+        "Netball": 4,
+        "Skating": 2,
+        "Soccer": 13,
+        "Soccer (Indoor Soccer / Futsal)": 3,
+        "Squash / Racquetball": 1,
+        "Swimming": 4,
+        "Tennis (Indoor)": 1,
+        "Tennis (Outdoor)": 4,
+        "Underwater Hockey": 1,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 22.5,
+          "valid_n": 534,
+          "vulnerable_n": 120
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 18.1,
+          "valid_n": 564,
+          "vulnerable_n": 102
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 25.9,
+          "valid_n": 619,
+          "vulnerable_n": 160
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 19.3,
+          "valid_n": 596,
+          "vulnerable_n": 115
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 18.5,
+          "valid_n": 524,
+          "vulnerable_n": 97
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 17.6,
+          "valid_n": 558,
+          "vulnerable_n": 98
+        }
+      ],
       "rent": {
         "flat_1br": 525,
         "flat_2br": 700,
         "house_2br": 750,
         "house_3br": 995
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 27450,
@@ -1400,14 +7588,94 @@
       "station_count": 5,
       "bulk_billing_rate": 0.909333333,
       "affordable_lettings_pct": 3.1,
+      "affordability_trend_pp": 0.9,
+      "seifa_irsd": 1041,
+      "green_space_pct": 0.9,
+      "schools": {
+        "primary": {
+          "government": 48,
+          "catholic": 8,
+          "independent": 8
+        },
+        "secondary": {
+          "government": 9,
+          "catholic": 2,
+          "independent": 7
+        }
+      },
+      "sport_variety": 25,
+      "sports": {
+        "Archery": 1,
+        "Athletics": 1,
+        "Australian Rules Football": 32,
+        "BMX": 3,
+        "Badminton": 1,
+        "Basketball": 1,
+        "Cricket": 41,
+        "Cycling": 1,
+        "Equestrian": 10,
+        "Fitness / Gymnasium Workouts": 12,
+        "Golf": 5,
+        "Gymnastics": 1,
+        "Lawn Bowls": 9,
+        "Motor Sports": 1,
+        "Netball": 17,
+        "Netball (Indoor)": 1,
+        "Sailing": 1,
+        "Shooting Sports": 2,
+        "Skating": 7,
+        "Soccer": 12,
+        "Softball": 1,
+        "Squash / Racquetball": 1,
+        "Swimming": 7,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 26
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 18.1,
+          "valid_n": 1589,
+          "vulnerable_n": 287
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 17,
+          "valid_n": 1852,
+          "vulnerable_n": 314
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 17.2,
+          "valid_n": 1767,
+          "vulnerable_n": 303
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 19.5,
+          "valid_n": 1731,
+          "vulnerable_n": 338
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 19.7,
+          "valid_n": 1580,
+          "vulnerable_n": 311
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 18.5,
+          "valid_n": 1543,
+          "vulnerable_n": 285
+        }
+      ],
       "rent": {
         "flat_1br": 370,
         "flat_2br": 530,
         "house_2br": 550,
         "house_3br": 605
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     },
     {
       "lga_code": 27630,
@@ -1418,14 +7686,86 @@
       "station_count": 0,
       "bulk_billing_rate": 0.992666667,
       "affordable_lettings_pct": 100,
+      "affordability_trend_pp": 10,
+      "seifa_irsd": 946,
+      "green_space_pct": 0.2,
+      "schools": {
+        "primary": {
+          "government": 7,
+          "catholic": 3,
+          "independent": 0
+        },
+        "secondary": {
+          "government": 3,
+          "catholic": 0,
+          "independent": 0
+        }
+      },
+      "sport_variety": 17,
+      "sports": {
+        "Australian Rules Football": 12,
+        "Badminton": 1,
+        "Basketball": 2,
+        "Cricket": 9,
+        "Cricket (Indoor)": 1,
+        "Croquet": 2,
+        "Fitness / Gymnasium Workouts": 1,
+        "Golf": 9,
+        "Hockey": 2,
+        "Lawn Bowls": 9,
+        "Netball": 8,
+        "Netball (Indoor)": 1,
+        "Skating": 1,
+        "Swimming": 7,
+        "Table Tennis": 1,
+        "Tennis (Outdoor)": 13,
+        "Volleyball": 1
+      },
+      "aedc": [
+        {
+          "year": 2009,
+          "vulnerable_pct": 29,
+          "valid_n": 69,
+          "vulnerable_n": 20
+        },
+        {
+          "year": 2012,
+          "vulnerable_pct": 27.3,
+          "valid_n": 77,
+          "vulnerable_n": 21
+        },
+        {
+          "year": 2015,
+          "vulnerable_pct": 29.6,
+          "valid_n": 81,
+          "vulnerable_n": 24
+        },
+        {
+          "year": 2018,
+          "vulnerable_pct": 29.1,
+          "valid_n": 55,
+          "vulnerable_n": 16
+        },
+        {
+          "year": 2021,
+          "vulnerable_pct": 20.3,
+          "valid_n": 59,
+          "vulnerable_n": 12
+        },
+        {
+          "year": 2024,
+          "vulnerable_pct": 25,
+          "valid_n": 44,
+          "vulnerable_n": 11
+        }
+      ],
       "rent": {
         "flat_1br": null,
         "flat_2br": null,
         "house_2br": null,
         "house_3br": null
       },
-      "population": null,
-      "lettings_series_5yr": null
+      "population": null
     }
   ]
 }
