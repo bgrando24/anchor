@@ -47,7 +47,7 @@ withDefaults(
       <div
         v-for="i in total"
         :key="i"
-        class="h-[5px] flex-1 rounded-[3px]"
+        class="h-[6px] flex-1 rounded-[3px]"
         :class="i <= currentStep ? 'bg-accent' : 'bg-line'"
       />
     </div>

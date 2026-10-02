@@ -91,7 +91,7 @@ const canContinue = computed(() => answers.value.currentLga != null)
     </template>
 
     <div class="flex flex-col gap-5">
-      <div class="font-sans font-semibold text-[19px] leading-[1.3] text-ink">Or choose a region</div>
+      <h2 class="m-0 heading-sub">Or choose a region</h2>
       <div v-for="group in REGION_GROUPS" :key="group.area" class="flex flex-col gap-[10px]">
         <div class="font-sans font-medium text-[15px] leading-none text-ink">
           {{ group.area }}
@@ -101,7 +101,7 @@ const canContinue = computed(() => answers.value.currentLga != null)
             v-for="region in group.regions"
             :key="region"
             :to="{ path: '/location/area', query: { region } }"
-            class="min-h-[76px] px-[14px] py-3 text-left bg-surface-2 border border-line-focus rounded-md font-sans font-medium text-[17px] leading-[1.3] text-ink no-underline flex flex-col gap-[7px]"
+            class="min-h-[76px] px-4 py-3 text-left bg-surface-2 border border-line rounded-[14px] font-sans font-medium text-[17px] leading-[1.3] text-ink no-underline flex flex-col gap-[7px]"
           >
             {{ region }}
             <span class="font-sans text-[14px] leading-none text-muted">{{ regionCount(region) }} areas</span>

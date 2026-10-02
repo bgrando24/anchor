@@ -65,35 +65,38 @@ onBeforeUnmount(() => {
       </h1>
       <p class="m-0 font-sans text-[17px] leading-[1.5] text-body">This link opens your results again on any device.</p>
 
-      <div class="py-4 px-[18px] bg-surface-2 border border-line-strong rounded-md">
-        <div class="font-sans font-medium text-[15px] leading-none text-body mb-[10px]">
-          Your link
+      <div class="on-band p-5 bg-header-band rounded-[18px]">
+        <div class="font-sans font-medium text-[15px] leading-none text-header-cta mb-[10px]">Your link</div>
+        <div class="p-3 rounded-[10px] bg-header-chip-bg font-mono text-[15px] leading-[1.5] text-header-chip-text break-all">
+          {{ link }}
         </div>
-        <div class="font-mono text-[15px] leading-[1.5] text-surface-info-text break-all">{{ link }}</div>
-      </div>
-
-      <div class="flex flex-col gap-3">
-        <button type="button" class="btn-primary gap-2" @click="copyLink">
+        <button
+          type="button"
+          class="btn-secondary w-full mt-4 gap-2 bg-header-cta border-header-cta text-on-header-cta font-semibold"
+          @click="copyLink"
+        >
           <component :is="copied ? Check : Copy" :size="20" aria-hidden="true" />
           {{ copied ? 'Copied' : 'Copy link' }}
         </button>
-        <button type="button" class="btn-secondary gap-2" @click="shareLink">
-          <Share2 :size="18" aria-hidden="true" />
+      </div>
+
+      <!-- Two equal ways to take the results elsewhere. -->
+      <div class="grid grid-cols-2 gap-3">
+        <button type="button" class="btn-secondary flex-col gap-2 min-h-[92px]" @click="shareLink">
+          <Share2 :size="20" aria-hidden="true" />
           Share
         </button>
-        <NuxtLink :to="printHref" class="btn-secondary gap-2" target="_blank">
-          <Download :size="18" aria-hidden="true" />
+        <NuxtLink :to="printHref" class="btn-secondary flex-col gap-2 min-h-[92px]" target="_blank">
+          <Download :size="20" aria-hidden="true" />
           Download PDF
         </NuxtLink>
       </div>
 
-      <div class="py-[18px] px-5 bg-surface-info rounded-md">
-        <div class="font-sans font-semibold text-[17px] leading-[1.4] text-ink mb-[6px]">What's in the link</div>
-        <div class="font-sans text-[16px] leading-[1.5] text-body">
-          The link holds your answers as short codes: your payment, income range, bedrooms, area and priorities. It
-          doesn't include your name or contact details. Only share it with people you're happy to tell those things.
-        </div>
-      </div>
+      <PrivacyNote title="What's in the link">
+        The link holds your answers as short codes: your payment, income range, bedrooms, area and
+        priorities. It doesn't include your name or contact details. Only share it with people
+        you're happy to tell those things.
+      </PrivacyNote>
 
       <p class="m-0 font-sans text-[15px] leading-[1.5] text-muted">
         Download PDF opens a one-page summary you can print or save. It leaves out your payment and income.

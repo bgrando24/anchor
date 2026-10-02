@@ -69,21 +69,25 @@ const split = computed(() =>
     </h1>
     <p class="-mt-3 mb-0 font-sans text-[17px] leading-[1.5] text-body">Your answers change the order of the areas.</p>
 
-    <div class="py-[18px] px-5 bg-surface-info rounded-md">
-      <div class="flex justify-between items-baseline gap-3 mb-[10px]">
-        <div class="font-sans font-semibold text-[18px] leading-[1.3] text-ink">Rent</div>
-        <div class="figure font-semibold text-[17px] leading-none text-surface-info-text">Always 50%</div>
+    <div class="on-band py-5 px-5 bg-header-band rounded-[18px]">
+      <div class="flex justify-between items-center gap-3 mb-[12px]">
+        <div class="font-sans font-semibold text-[18px] leading-[1.3] text-header-band-text">Rent</div>
+        <div
+          class="py-[5px] px-3 rounded-full bg-header-cta font-sans font-semibold text-[14px] leading-none text-on-header-cta"
+        >
+          Always half
+        </div>
       </div>
-      <div class="h-[10px] rounded-[5px] bg-line overflow-hidden mb-3">
-        <div class="w-1/2 h-full rounded-[5px] bg-data-main" />
+      <div class="h-[10px] rounded-[5px] bg-header-chip-bg overflow-hidden mb-3">
+        <div class="w-1/2 h-full rounded-[5px] bg-header-cta" />
       </div>
-      <div class="font-sans text-[16px] leading-[1.5] text-body">
+      <div class="font-sans text-[16px] leading-[1.5] text-header-band-body">
         How much of your income the rent takes is always half of each area's score.
       </div>
     </div>
 
     <div class="flex flex-col gap-[22px]">
-      <div v-for="f in factors" :key="f.key">
+      <div v-for="f in factors" :key="f.key" class="p-5 rounded-[16px] bg-surface-2 border border-line">
         <div class="font-sans font-semibold text-[19px] leading-[1.3] text-ink mb-[3px]">{{ f.question }}</div>
         <div class="font-sans text-[16px] leading-[1.45] text-body mb-5">{{ f.hint }}</div>
         <!-- Plain copy rather than a tooltip: a hover has nowhere to happen on a phone, and the

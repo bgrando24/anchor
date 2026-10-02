@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const ALL_ROWS = [
-  { key: 'rent', label: 'Rent', colour: 'bg-data-main' },
+  { key: 'rent', label: 'Rent', colour: 'bg-accent' },
   { key: 'schools', label: 'Schools', colour: 'bg-data-mid' },
   { key: 'transport', label: 'Train stations', colour: 'bg-data-light' },
   { key: 'gp_access', label: 'Bulk-billing doctors', colour: 'bg-data-mid' }

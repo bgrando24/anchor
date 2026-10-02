@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeft, ChevronDown } from "lucide-vue-next";
+import { ArrowLeft } from "lucide-vue-next";
 
 useHead({ title: "FAQs" });
 
@@ -121,7 +121,7 @@ function toggle(i: number) {
                 v-for="(item, i) in items"
                 :id="item.id"
                 :key="item.id"
-                class="border border-line-strong rounded-lg overflow-hidden"
+                class="bg-surface-2 border border-line rounded-[16px] overflow-hidden"
             >
                 <button
                     type="button"
@@ -131,12 +131,17 @@ function toggle(i: number) {
                     @click="toggle(i)"
                 >
                     <span>{{ item.question }}</span>
-                    <ChevronDown
-                        :size="20"
-                        class="shrink-0 text-body transition-transform"
-                        :class="{ 'rotate-180': openIndex === i }"
+                    <span
+                        class="shrink-0 w-[30px] h-[30px] rounded-full flex items-center justify-center border font-sans font-semibold text-[17px] leading-none"
+                        :class="
+                            openIndex === i
+                                ? 'bg-accent border-accent text-accent-on'
+                                : 'bg-transparent border-line-focus text-body'
+                        "
                         aria-hidden="true"
-                    />
+                    >
+                        {{ openIndex === i ? '\u2212' : '+' }}
+                    </span>
                 </button>
                 <div
                     v-if="openIndex === i"

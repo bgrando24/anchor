@@ -25,7 +25,7 @@ withDefaults(defineProps<{ variant?: "light" | "band" | "accent" }>(), {
                 'text-ink': variant === 'light',
             }"
         >
-            <LogoMark :size="26" />
+            <LogoMark :size="26" :class="variant === 'light' ? 'text-accent' : ''" />
             <span
                 class="font-sans font-bold text-[15px] leading-none tracking-[0.18em]"
                 >ANCHOR</span

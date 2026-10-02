@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { CircleAlert } from 'lucide-vue-next'
 
 useHead({ title: "This link doesn't work" })
 
@@ -11,9 +10,23 @@ function startOver() {
 
 <template>
   <main class="max-w-[480px] mx-auto px-4 dt:px-6 pt-10 pb-12 flex flex-col items-center text-center gap-3">
-    <div class="w-16 h-16 rounded-full bg-surface-info flex items-center justify-center mb-2 text-surface-info-text">
-      <CircleAlert :size="30" aria-hidden="true" />
-    </div>
+    <!-- The app's own mark with a gap broken out of its base: a roof that no longer sits on
+         anything, which says "this link is broken" without a generic warning triangle. -->
+    <svg
+      width="72"
+      height="72"
+      viewBox="0 0 512 512"
+      fill="none"
+      stroke-width="44"
+      stroke-linecap="round"
+      class="mb-2"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M148 300 L256 192 L364 300" class="stroke-header-cta" />
+      <line x1="160" y1="360" x2="228" y2="360" class="stroke-ink" />
+      <line x1="284" y1="360" x2="352" y2="360" class="stroke-ink" />
+    </svg>
     <h1 class="m-0 display-question">
       This link doesn't work
     </h1>

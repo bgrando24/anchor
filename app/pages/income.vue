@@ -33,7 +33,7 @@ function selectPayment(value: string | number) {
       <NuxtLink to="/faq#payments" class="inline-flex items-center min-h-11">Why only these payments?</NuxtLink>
     </p>
 
-    <div class="flex flex-col gap-1">
+    <div class="flex flex-col gap-1 p-5 rounded-[16px] bg-surface-2 border border-line">
       <label for="income-band" class="font-sans font-semibold text-[19px] leading-[1.3] text-ink">
         Do you have any other income?
       </label>
