@@ -54,7 +54,8 @@
   --accent-band-chip: #7e3812;
   --accent-band-chip-text: #ffffff; /* 8.53:1 on the pill */
   --accent-band-chip-border: #edba9b; /* 3.32:1 on the band, 4.91:1 on the pill fill */
-  --accent-band-mark: #b4592a; /* watermark, decorative and aria-hidden */
+  --accent-band-mark: #b4592a;
+  --on-header-cta: #17202b; /* 8.01:1 on the light apricot */ /* watermark, decorative and aria-hidden */
   --focus-ring-on-accent: #ffffff; /* 5.76:1 on the band */
 
   --mark-bg: #1b2a3a;
@@ -117,6 +118,7 @@
   --accent-band-chip-text: #f4cca9; /* 11.00:1 on the pill */
   --accent-band-chip-border: #5e3a22;
   --accent-band-mark: #d27a3f;
+  --on-header-cta: #17202b; /* 6.20:1 on the dark apricot */
   --focus-ring-on-accent: #17202b; /* 6.20:1 */
 
   --mark-bg: #e08a4f;

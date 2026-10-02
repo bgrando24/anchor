@@ -67,9 +67,13 @@ function isCurrent(code: number) {
   </div>
 
   <template v-else>
-    <div class="on-band bg-header-band text-header-band-text">
+    <div class="on-band relative overflow-hidden bg-header-band text-header-band-text">
+      <LogoMark
+        :size="260"
+        class="pointer-events-none absolute -right-10 -top-12 text-header-chip-bg opacity-70"
+      />
       <div
-        class="max-w-[1280px] mx-auto px-4 dt:px-10 pb-[18px] dt:pb-[22px] flex flex-col gap-4 dt:flex-row dt:items-start dt:justify-between dt:gap-8"
+        class="relative max-w-[1280px] mx-auto px-4 dt:px-10 pb-[18px] dt:pb-[22px] flex flex-col gap-4 dt:flex-row dt:items-start dt:justify-between dt:gap-8"
       >
         <div class="flex flex-col gap-2 min-w-0">
           <h1 class="m-0 display-question">
@@ -92,7 +96,7 @@ function isCurrent(code: number) {
           </NuxtLink>
           <NuxtLink
             to="/share"
-            class="btn-secondary min-h-11 bg-transparent border-header-chip-outline text-header-chip-text text-[15px]"
+            class="btn-secondary min-h-11 bg-header-cta border-header-cta text-on-header-cta font-semibold text-[15px]"
           >
             Save or share
           </NuxtLink>
@@ -151,13 +155,18 @@ function isCurrent(code: number) {
               <h2 class="m-0 heading-sub">{{ group.heading }}</h2>
               <p v-if="group.note" class="mt-1 mb-0 font-sans text-[15px] leading-[1.5] text-muted">{{ group.note }}</p>
             </div>
-            <ol class="list-none m-0 p-0">
+            <ol class="list-none m-0 mx-4 dt:mx-10 p-0 rounded-[16px] bg-surface-2 border border-line overflow-hidden">
               <li
                 v-for="r in group.rows"
                 :key="r.lga_code"
-                class="py-4 px-4 dt:px-10 border-t border-line-soft grid grid-cols-[34px_minmax(0,1fr)] gap-x-3 gap-y-2 items-start dt:grid-cols-[44px_minmax(240px,1fr)_minmax(170px,auto)] dt:gap-5"
+                class="py-4 px-4 dt:px-5 border-t border-line-soft first:border-t-0 grid grid-cols-[40px_minmax(0,1fr)] gap-x-3 gap-y-2 items-start dt:grid-cols-[48px_minmax(240px,1fr)_minmax(170px,auto)] dt:gap-5"
               >
-                <div class="figure font-semibold text-[20px] leading-[1.3] text-data-main">{{ r.rank }}</div>
+                <!-- A ring rather than a bare number, so the rank reads as a badge at a glance. -->
+                <div
+                  class="w-9 h-9 dt:w-10 dt:h-10 rounded-full border-2 border-accent flex items-center justify-center figure font-bold text-[15px] text-accent"
+                >
+                  {{ r.rank }}
+                </div>
                 <div class="min-w-0">
                   <h3 class="m-0 heading-section">
                     <NuxtLink
