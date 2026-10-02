@@ -132,7 +132,7 @@ function toggle(i: number) {
                 >
                     <span>{{ item.question }}</span>
                     <span
-                        class="shrink-0 w-[30px] h-[30px] rounded-full flex items-center justify-center border font-sans font-semibold text-[17px] leading-none"
+                        class="motion-colors shrink-0 w-[30px] h-[30px] rounded-full flex items-center justify-center border font-sans font-semibold text-[17px] leading-none"
                         :class="
                             openIndex === i
                                 ? 'bg-accent border-accent text-accent-on'

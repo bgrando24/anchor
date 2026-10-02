@@ -104,7 +104,7 @@ function onKeydown(event: KeyboardEvent, index: number) {
           :aria-selected="tab.key === modelValue"
           :aria-controls="`lga-panel-${tab.key}`"
           :tabindex="tab.key === modelValue ? 0 : -1"
-          class="shrink-0 min-h-11 px-4 border-b-2 bg-transparent font-sans text-[15px] leading-none cursor-pointer whitespace-nowrap"
+          class="motion-colors shrink-0 min-h-11 px-4 border-b-2 bg-transparent font-sans text-[15px] leading-none cursor-pointer whitespace-nowrap"
           :class="
             tab.key === modelValue
               ? 'border-accent text-ink font-semibold'

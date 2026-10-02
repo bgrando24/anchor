@@ -127,6 +127,48 @@
     @apply max-w-[64ch];
   }
 
+  /*
+   * Motion lives here and nowhere else, so the reduced-motion guard cannot be forgotten by
+   * whoever adds the next animated thing. Everything is short and eases out: the point is to
+   * make a control feel answered, not to put on a show.
+   *
+   * Only colour, border, shadow and transform are animated. Nothing animates layout, so nothing
+   * here can push text around while someone is reading it.
+   */
+  .motion-colors,
+  .motion-lift {
+    /* No transition at all unless the reader has said motion is welcome. */
+    transition: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .motion-colors {
+      transition:
+        background-color 140ms ease-out,
+        border-color 140ms ease-out,
+        color 140ms ease-out;
+    }
+    .motion-lift {
+      transition:
+        background-color 140ms ease-out,
+        border-color 140ms ease-out,
+        box-shadow 160ms ease-out,
+        transform 160ms ease-out;
+    }
+    .motion-lift:hover {
+      transform: translateY(-2px);
+    }
+    .btn-primary,
+    .btn-primary-sm,
+    .btn-secondary,
+    .icon-button {
+      transition:
+        background-color 140ms ease-out,
+        border-color 140ms ease-out,
+        color 140ms ease-out;
+    }
+  }
+
   /* Figures read better aligned, and never reflow as a value ticks over. */
   .figure {
     @apply font-sans tabular-nums;

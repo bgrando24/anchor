@@ -20,7 +20,7 @@ const emit = defineEmits<{ 'update:modelValue': [string] }>()
       <label
         v-for="option in options"
         :key="option.value"
-        class="flex items-center justify-center min-h-11 px-[14px] rounded-[10px] font-sans text-[15px] leading-none text-center cursor-pointer has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-focus-ring has-[:focus-visible]:outline-offset-2"
+        class="motion-colors flex items-center justify-center min-h-11 px-[14px] rounded-[10px] font-sans text-[15px] leading-none text-center cursor-pointer has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-focus-ring has-[:focus-visible]:outline-offset-2"
         :class="
           modelValue === option.value
             ? 'border-2 border-accent bg-surface-accent-tint font-semibold text-ink'

@@ -101,7 +101,7 @@ const canContinue = computed(() => answers.value.currentLga != null)
             v-for="region in group.regions"
             :key="region"
             :to="{ path: '/location/area', query: { region } }"
-            class="min-h-[76px] px-4 py-3 text-left bg-surface-2 border border-line rounded-[14px] font-sans font-medium text-[17px] leading-[1.3] text-ink no-underline flex flex-col gap-[7px]"
+            class="motion-lift min-h-[76px] px-4 py-3 text-left bg-surface-2 border border-line rounded-[14px] font-sans font-medium text-[17px] leading-[1.3] text-ink no-underline flex flex-col gap-[7px]"
           >
             {{ region }}
             <span class="font-sans text-[14px] leading-none text-muted">{{ regionCount(region) }} areas</span>

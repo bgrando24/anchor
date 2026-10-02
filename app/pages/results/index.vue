@@ -159,7 +159,7 @@ function isCurrent(code: number) {
               <li
                 v-for="r in group.rows"
                 :key="r.lga_code"
-                class="py-4 px-4 dt:px-5 border-t border-line-soft first:border-t-0 grid grid-cols-[40px_minmax(0,1fr)] gap-x-3 gap-y-2 items-start dt:grid-cols-[48px_minmax(240px,1fr)_minmax(170px,auto)] dt:gap-5"
+                class="motion-colors hover:bg-surface-info py-4 px-4 dt:px-5 border-t border-line-soft first:border-t-0 grid grid-cols-[40px_minmax(0,1fr)] gap-x-3 gap-y-2 items-start dt:grid-cols-[48px_minmax(240px,1fr)_minmax(170px,auto)] dt:gap-5"
               >
                 <!-- A ring rather than a bare number, so the rank reads as a badge at a glance. -->
                 <div

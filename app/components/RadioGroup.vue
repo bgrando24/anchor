@@ -37,7 +37,7 @@ const emit = defineEmits<{ 'update:modelValue': [string | number] }>()
       <label
         v-for="o in options"
         :key="o.value"
-        class="flex items-center gap-[14px] min-h-[58px] bg-surface-2 border rounded-[14px] font-sans text-[17px] leading-[1.35] text-ink cursor-pointer has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-focus-ring has-[:focus-visible]:outline-offset-2"
+        class="motion-colors flex items-center gap-[14px] min-h-[58px] bg-surface-2 border rounded-[14px] font-sans text-[17px] leading-[1.35] text-ink cursor-pointer has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-focus-ring has-[:focus-visible]:outline-offset-2"
         :class="
           modelValue === o.value
             ? 'border-2 border-accent py-[9px] px-[17px] font-medium'
@@ -53,7 +53,7 @@ const emit = defineEmits<{ 'update:modelValue': [string | number] }>()
           @change="emit('update:modelValue', o.value)"
         />
         <span
-          class="w-[22px] h-[22px] rounded-full bg-surface-2 shrink-0"
+          class="motion-colors w-[22px] h-[22px] rounded-full bg-surface-2 shrink-0"
           :class="modelValue === o.value ? 'border-[7px] border-accent' : 'border-2 border-line-focus'"
           aria-hidden="true"
         />
