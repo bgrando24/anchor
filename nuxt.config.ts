@@ -45,6 +45,9 @@ export default defineNuxtConfig({
     },
   },
   app: {
+    // Stepping between questions was an instant swap, which is most of what moving through the
+    // questionnaire looks like. Opacity and transform only, so nothing reflows mid-change.
+    pageTransition: { name: "screen", mode: "out-in" },
     head: {
       meta: [
         {

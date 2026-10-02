@@ -37,11 +37,11 @@ const emit = defineEmits<{ 'update:modelValue': [string | number] }>()
       <label
         v-for="o in options"
         :key="o.value"
-        class="motion-colors flex items-center gap-[14px] min-h-[58px] bg-surface-2 border rounded-[14px] font-sans text-[17px] leading-[1.35] text-ink cursor-pointer has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-focus-ring has-[:focus-visible]:outline-offset-2"
+        class="motion-colors flex items-center gap-[14px] min-h-[58px] border py-[10px] px-[18px] rounded-[14px] font-sans text-[17px] leading-[1.35] text-ink cursor-pointer has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-focus-ring has-[:focus-visible]:outline-offset-2"
         :class="
           modelValue === o.value
-            ? 'border-2 border-accent py-[9px] px-[17px] font-medium'
-            : 'border-line-focus py-[10px] px-[18px]'
+            ? 'border-accent bg-surface-accent-tint font-medium shadow-[inset_0_0_0_1px_var(--accent)]'
+            : 'border-line-focus bg-surface-2'
         "
       >
         <input

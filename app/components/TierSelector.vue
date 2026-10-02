@@ -16,7 +16,7 @@ const emit = defineEmits<{ 'update:modelValue': [PriorityTier] }>()
         class="motion-colors flex-1 flex items-center justify-center min-h-[52px] px-2 rounded-[10px] font-sans text-[16px] leading-[1.2] text-center cursor-pointer has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-focus-ring has-[:focus-visible]:outline-offset-2"
         :class="
           modelValue === t.value
-            ? 'border-2 border-accent bg-surface-accent-tint font-semibold text-ink'
+            ? 'border border-accent bg-surface-accent-tint font-semibold text-ink shadow-[inset_0_0_0_1px_var(--accent)]'
             : 'border border-line-focus bg-surface-2 text-ink'
         "
       >
