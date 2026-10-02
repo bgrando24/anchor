@@ -106,3 +106,45 @@ describe('the answers, written out', () => {
     }
   })
 })
+
+describe('going back from the step list', () => {
+  const sourceOf = (p: string) =>
+    require('node:fs').readFileSync(require('node:path').join(import.meta.dirname, p), 'utf8') as string
+
+  const LIST = sourceOf('../app/components/StepList.vue')
+  const FRAME = sourceOf('../app/components/QuestionPage.vue')
+
+  it('turns a finished step into a link to that step', () => {
+    expect(LIST).toContain("canReturnTo(step) ? 'NuxtLink' : 'div'")
+    expect(LIST).toContain(':to="canReturnTo(step) ? step.path : undefined"')
+  })
+
+  it('decides what is a way back in one place', () => {
+    // Six things keyed off this before; drift between them is how a tick appears on a card that
+    // does not link anywhere.
+    expect(LIST).toContain('const canReturnTo =')
+    expect(LIST.match(/step\.done && !isCurrent/g) ?? []).toHaveLength(1)
+  })
+
+  it('says on the card that it can be gone back to', () => {
+    expect(LIST).toContain('<Pencil')
+    expect(LIST).toContain('Change this answer')
+    expect(LIST).toContain('cursor-pointer')
+  })
+
+  it('never offers a way back to the step being answered', () => {
+    for (let current = 1; current <= 5; current++) {
+      const steps = questionSteps(complete(), 'Casey')
+      const canReturn = steps.filter((s) => s.done && s.number !== current)
+      expect(canReturn.some((s) => s.number === current)).toBe(false)
+    }
+  })
+
+  it('keeps a back and a continue on wide screens, where the progress bar is hidden', () => {
+    // The bar carries both on a phone and is dt:hidden, so without these the wide layout has no
+    // way back from a question at all.
+    expect(FRAME).toMatch(/hidden dt:flex[\s\S]{0,400}ArrowLeft/)
+    expect(FRAME).toMatch(/hidden dt:flex[\s\S]{0,900}btn-primary-sm/)
+    expect(FRAME).toContain(':aria-disabled="!continueReady"')
+  })
+})
