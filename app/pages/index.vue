@@ -2,51 +2,68 @@
 useHead({ title: "ANCHOR" });
 
 const { canInstall } = useInstallPrompt();
+
+// The same promise the paragraph made, in the order it actually happens. No new claims.
+const steps = [
+    "Tell us your Centrelink payment and any other income.",
+    "Say how many bedrooms you need, and where you live now.",
+    "We'll rank all 79 council areas by how much of your income the rent would take, then by what matters most to you.",
+];
 </script>
 
 <template>
-    <main
-        class="max-w-[560px] mx-auto px-4 dt:px-6 pt-6 pb-12 flex flex-col gap-[22px]"
-    >
-        <h1
-            class="mt-2 display-home"
-        >
-            Where in Victoria could you afford to stay?
-        </h1>
-        <div
-            class="flex flex-col gap-[14px] font-sans text-[18px] leading-[1.55] text-body"
-        >
-            <p class="m-0">
-                Tell us your Centrelink payment, any other income and how many
-                bedrooms you need. We'll rank all 79 council areas in Victoria
-                by how much of your income the rent would take, then by what
-                matters most to you.
-            </p>
-            <p class="m-0">It takes about two minutes.</p>
-        </div>
+    <main>
+        <!-- Full bleed, like the header above it. Only the words are held to the column. -->
+        <section class="on-accent relative overflow-hidden bg-accent pt-2 pb-[56px]">
+            <LogoMark
+                :size="300"
+                class="pointer-events-none absolute -right-12 -top-16 text-accent-band-mark opacity-40"
+            />
+            <div class="relative max-w-[640px] mx-auto px-4 dt:px-6">
+                <h1 class="m-0 display-home text-accent-on">
+                    Where in Victoria could you afford to stay?
+                </h1>
+            </div>
+        </section>
 
-        <div class="py-[18px] px-5 bg-surface-info rounded-md">
+        <div class="max-w-[640px] mx-auto px-4 dt:px-6 pb-12">
+            <!-- Lifted over the band's lower edge, so the first thing under the headline is the
+                 way in rather than more reading. -->
             <div
-                class="font-sans font-semibold text-[17px] leading-[1.4] text-ink mb-[6px]"
+                class="relative z-10 -mt-10 p-5 dt:p-7 rounded-[18px] bg-surface border border-line shadow-[0_1px_0_var(--border),0_12px_26px_rgba(27,42,58,0.12)]"
             >
-                Your answers stay on this device
-            </div>
-            <div class="font-sans text-[16px] leading-[1.5] text-body">
-                Anchor works out your results in your browser. We don't have
-                accounts and we never see what you enter.
-            </div>
-        </div>
+                <ol class="m-0 p-0 list-none flex flex-col gap-4">
+                    <li
+                        v-for="(step, i) in steps"
+                        :key="i"
+                        class="flex items-start gap-3 font-sans text-[17px] leading-[1.5] text-body"
+                    >
+                        <span
+                            class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center bg-surface-accent-tint border border-accent figure font-semibold text-[14px] text-accent"
+                            aria-hidden="true"
+                        >
+                            {{ i + 1 }}
+                        </span>
+                        <span>{{ step }}</span>
+                    </li>
+                </ol>
 
-        <div class="flex flex-col gap-[14px] mt-2">
-            <NuxtLink to="/income" class="btn-primary">Start</NuxtLink>
-            <p
-                class="m-0 font-sans text-[15px] leading-[1.5] text-muted text-center"
-            >
-                Built from public data on rents, schools, train stations and
-                bulk-billing doctors.
+                <NuxtLink to="/income" class="btn-primary w-full mt-6">Start</NuxtLink>
+                <p class="m-0 mt-3 font-sans text-[15px] leading-[1.5] text-muted text-center">
+                    It takes about two minutes.
+                </p>
+            </div>
+
+            <PrivacyNote title="Your answers stay on this device" class="mt-5">
+                Anchor works out your results in your browser. We don't have accounts and we never
+                see what you enter.
+            </PrivacyNote>
+
+            <p class="m-0 mt-5 font-sans text-[15px] leading-[1.5] text-muted text-center">
+                Built from public data on rents, schools, train stations and bulk-billing doctors.
             </p>
-        </div>
 
-        <InstallPrompt v-if="canInstall" class="mt-2" />
+            <InstallPrompt v-if="canInstall" class="mt-5" />
+        </div>
     </main>
 </template>

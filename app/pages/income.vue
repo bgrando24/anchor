@@ -46,9 +46,7 @@ function selectPayment(value: string | number) {
       </select>
     </div>
 
-    <div class="py-[18px] px-5 bg-surface-info rounded-md font-sans text-[16px] leading-[1.5] text-body">
-      Your answers aren't sent anywhere. They're only used on this device.
-    </div>
+    <PrivacyNote>Your answers aren't sent anywhere. They're only used on this device.</PrivacyNote>
 
     <NuxtLink
       to="/bedrooms"
