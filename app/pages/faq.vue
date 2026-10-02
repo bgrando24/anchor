@@ -147,5 +147,7 @@ function toggle(i: number) {
                 </div>
             </div>
         </div>
+    
+        <SignOffCard class="mt-2" />
     </main>
 </template>

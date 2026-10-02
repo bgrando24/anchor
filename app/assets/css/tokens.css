@@ -53,7 +53,7 @@
   /* The rank pill. 1.48:1 against the band, so it carries a border to read as a pill at all. */
   --accent-band-chip: #7e3812;
   --accent-band-chip-text: #ffffff; /* 8.53:1 on the pill */
-  --accent-band-chip-border: #c98a63; /* 3.1:1 on the band, so the pill has an edge */
+  --accent-band-chip-border: #edba9b; /* 3.32:1 on the band, 4.91:1 on the pill fill */
   --accent-band-mark: #b4592a; /* watermark, decorative and aria-hidden */
   --focus-ring-on-accent: #ffffff; /* 5.76:1 on the band */
 

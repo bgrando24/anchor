@@ -19,6 +19,7 @@ import { SCHOOL_LEVELS, SCHOOL_SECTORS, type SchoolLevel, type SchoolSector } fr
 import { summariseAedc } from '~/composables/useAedc'
 import { overWholeIncomeNote, weekStrip } from '~/composables/useWeekStrip'
 import { bandsFrom, guidebookCards } from '~/composables/useGuidebook'
+import { comparisonRows } from '~/composables/useComparison'
 
 definePageMeta({ layout: 'results' })
 
@@ -32,6 +33,10 @@ const { meta, all } = useLgaData()
 const bands = bandsFrom(all)
 const strip = computed(() => weekStrip(area.value?.rentSharePct))
 const overIncome = computed(() => overWholeIncomeNote(area.value?.rentSharePct))
+const vsRows = computed(() =>
+  area.value && currentArea.value ? comparisonRows(area.value, currentArea.value, bedrooms.value) : []
+)
+
 const cards = computed(() =>
   area.value
     ? guidebookCards(area.value, { bands, bedrooms: bedrooms.value, schoolFilter: schoolFilter.value })
@@ -629,11 +634,39 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       </section>
     </div>
 
-    <section v-if="currentArea" v-show="activeTab === 'overview'" class="py-[26px] px-4 dt:px-10 bg-surface-info border-b border-line">
-      <h2 class="m-0 mb-4 heading-section">
-        Compared with {{ currentArea.lga_name }}, where you live now
-      </h2>
-      <div class="overflow-x-auto">
+    <section v-if="currentArea" v-show="activeTab === 'overview'" class="pb-[26px] px-4 dt:px-10">
+      <div class="on-band p-5 dt:p-7 rounded-[18px] bg-header-band">
+        <div class="font-sans font-medium text-[15px] leading-none text-header-cta mb-2">
+          Against where you live now
+        </div>
+        <h2 class="m-0 mb-4 heading-section text-header-band-text">
+          {{ area.lga_name }} vs {{ currentArea.lga_name }}
+        </h2>
+        <ul class="m-0 p-0 list-none flex flex-col gap-4">
+          <li v-for="row in vsRows" :key="row.key" class="flex items-start gap-3">
+            <!-- The arrow only repeats the sentence, so it is hidden rather than read out. -->
+            <span
+              class="shrink-0 w-9 h-9 rounded-full flex items-center justify-center bg-header-chip-bg font-sans font-semibold text-[15px] text-header-chip-text"
+              aria-hidden="true"
+            >
+              <template v-if="row.direction === 'up'">&uarr;</template>
+              <template v-else-if="row.direction === 'down'">&darr;</template>
+              <template v-else-if="row.direction === 'same'">=</template>
+              <template v-else>?</template>
+            </span>
+            <span class="flex flex-col gap-[2px]">
+              <span class="font-sans font-semibold text-[16px] leading-[1.3] text-header-band-text">
+                {{ row.headline }}
+              </span>
+              <span class="font-sans text-[15px] leading-[1.35] text-header-band-body">{{ row.detail }}</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- The table stays in the page as the path a screen reader follows, and the one that
+           survives a copy and paste. -->
+      <div class="visually-hidden">
         <table class="w-full border-collapse font-sans text-[16px] leading-[1.4]">
           <thead>
             <tr>
@@ -660,6 +693,10 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         </table>
       </div>
     </section>
+
+    <div class="pb-10 px-4 dt:px-10">
+      <SignOffCard />
+    </div>
   </div>
 
   <div v-else class="max-w-[560px] mx-auto py-10 px-4 dt:px-6">

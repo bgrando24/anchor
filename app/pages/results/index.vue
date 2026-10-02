@@ -134,7 +134,7 @@ function isCurrent(code: number) {
         <p
           class="m-0 py-4 px-4 dt:px-10 font-sans text-[16px] leading-[1.5] text-body"
         >
-          Rankings are based on public data, please consider your own individual circumstances when making any decisions.
+          Rankings are based on public data. Please consider your own individual circumstances when making any decisions.
         </p>
 
         <p
