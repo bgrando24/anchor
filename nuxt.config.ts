@@ -57,15 +57,14 @@ export default defineNuxtConfig({
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
         { rel: "apple-touch-icon", href: "/icons/apple-touch-icon.png" },
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        // The typefaces are served from this site, so there is nothing to preconnect to and
+        // nothing to fetch from another origin. See the @font-face block in tokens.css.
         {
-          rel: "preconnect",
-          href: "https://fonts.gstatic.com",
+          rel: "preload",
+          as: "font",
+          type: "font/woff2",
+          href: "/fonts/plex-sans-var.woff2",
           crossorigin: "anonymous",
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:ital,wght@1,500&display=swap",
         },
       ],
     },

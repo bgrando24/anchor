@@ -1,3 +1,40 @@
+/*
+ * The typefaces are served from this site rather than from Google, so they are part of the build
+ * and the service worker precaches them: the app now keeps its own type offline, which it did not
+ * before. It also means the stylesheet and font origins can come out of the policy entirely.
+ *
+ * IBM Plex is published under the SIL Open Font Licence 1.1. Latin subset only, which is what the
+ * site uses. The sans is a variable face covering 400 to 700 in one file.
+ */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/plex-sans-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/plex-mono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/plex-mono-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Serif';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/plex-serif-italic-500.woff2') format('woff2');
+}
+
 /* Dark values are picked separately, not inverted: the navy data hue vanishes on a dark surface. */
 
 :root {

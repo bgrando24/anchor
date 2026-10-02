@@ -96,9 +96,16 @@ describe('the policy permits what the app actually loads', () => {
     expect(CSP['default-src']).toEqual(["'self'"])
   })
 
-  it('allows the webfont stylesheet and its font files', () => {
-    expect(sourcesFor('style-src')).toContain('https://fonts.googleapis.com')
-    expect(sourcesFor('font-src')).toContain('https://fonts.gstatic.com')
+  it('permits no external origin at all, now the fonts are served from here', () => {
+    for (const [directive, sources] of Object.entries(CSP)) {
+      for (const source of sources) {
+        expect(source, `${directive} allows ${source}`).not.toMatch(/^https?:\/\//)
+      }
+    }
+  })
+
+  it('serves the typefaces from this site', () => {
+    expect(sourcesFor('font-src')).toEqual(["'self'"])
   })
 
   it('allows the inline scripts the framework and the theme need', () => {
@@ -125,7 +132,13 @@ describe('the policy permits what the app actually loads', () => {
     }
     // Everything the policy names anywhere, plus the documentation links that are only ever text.
     const allowed = new Set(Object.values(CSP).flat())
-    const textOnly = new Set(['https://nuxt.com', 'https://www.servicesaustralia.gov.au'])
+    const textOnly = new Set([
+      'https://nuxt.com',
+      'https://www.servicesaustralia.gov.au',
+      // Named only in a comment recording where the self-hosted faces came from.
+      'https://fonts.googleapis.com',
+      'https://fonts.gstatic.com'
+    ])
     for (const origin of origins) {
       if (textOnly.has(origin)) continue
       expect(allowed.has(origin), `${origin} is referenced but not allowed by the policy`).toBe(true)
