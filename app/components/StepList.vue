@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { Check, Pencil } from 'lucide-vue-next'
+// The component itself, not its name. Passing the string "NuxtLink" to :is makes Vue look it up
+// by name at runtime, and when that lookup misses it renders an inert <nuxtlink> element that
+// keeps every class and does nothing at all when clicked.
+import { NuxtLink } from '#components'
 import { questionSteps } from '~/composables/useQuestionSteps'
 
 // The questionnaire as a list, beside the questions on a wide screen. A finished step shows what
@@ -23,7 +27,7 @@ const canReturnTo = (step: { number: number; done: boolean }) => step.done && !i
     <ol class="list-none m-0 p-0 flex flex-col gap-2">
       <li v-for="step in steps" :key="step.number">
         <component
-          :is="canReturnTo(step) ? 'NuxtLink' : 'div'"
+          :is="canReturnTo(step) ? NuxtLink : 'div'"
           :to="canReturnTo(step) ? step.path : undefined"
           class="motion-colors flex items-start gap-3 p-3 rounded-[14px] border no-underline"
           :class="

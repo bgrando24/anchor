@@ -115,8 +115,16 @@ describe('going back from the step list', () => {
   const FRAME = sourceOf('../app/components/QuestionPage.vue')
 
   it('turns a finished step into a link to that step', () => {
-    expect(LIST).toContain("canReturnTo(step) ? 'NuxtLink' : 'div'")
     expect(LIST).toContain(':to="canReturnTo(step) ? step.path : undefined"')
+  })
+
+  it('hands :is the component itself, never its name', () => {
+    // A string makes Vue look the component up by name at runtime. When that misses it renders
+    // an inert <nuxtlink> element that keeps every class and does nothing when clicked, which is
+    // exactly how this broke: the card looked right and was dead.
+    expect(LIST).toContain("import { NuxtLink } from '#components'")
+    expect(LIST).toContain(':is="canReturnTo(step) ? NuxtLink : \'div\'"')
+    expect(LIST, 'NuxtLink is being resolved by name again').not.toMatch(/:is="[^"]*'NuxtLink'/)
   })
 
   it('decides what is a way back in one place', () => {
