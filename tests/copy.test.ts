@@ -250,3 +250,21 @@ describe('copy mechanics', () => {
     }
   })
 })
+
+describe('hiding things from sight without moving the page', () => {
+  it('never puts the hiding class straight on a table', () => {
+    // CSS overflow does not apply to table boxes and a table will not shrink below its
+    // min-content width, so a "hidden" table still lays out at full width and pushes the page
+    // sideways. The hiding has to go on a wrapper the rule can actually clip.
+    for (const { path, text } of TEMPLATES) {
+      expect(text, `${path} hides a <table> directly`).not.toMatch(/<table[^>]*class="[^"]*visually-hidden/)
+    }
+  })
+
+  it('keeps the chart data table reachable, just not visible', () => {
+    const chart = TEMPLATES.find((t) => t.path.endsWith('AffordabilityChart.vue'))!.text
+    expect(chart).toContain('<div class="visually-hidden">')
+    expect(chart).toMatch(/<div class="visually-hidden">\s*<table>/)
+    expect(chart).toContain('<caption>')
+  })
+})

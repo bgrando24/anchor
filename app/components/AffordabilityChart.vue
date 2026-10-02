@@ -138,7 +138,11 @@ function quarterLabel(i: number) {
       </div>
     </div>
 
-    <table class="visually-hidden">
+    <!-- The wrapper, not the table, carries the hiding. CSS overflow does not apply to table
+         boxes and a table will not shrink below its min-content width, so hiding it directly
+         left a full-width table laid out off the side of the page. -->
+    <div class="visually-hidden">
+      <table>
       <caption>{{ title }}</caption>
       <thead>
         <tr><th scope="col">Quarter</th><th scope="col">Share affordable</th></tr>
@@ -149,6 +153,7 @@ function quarterLabel(i: number) {
           <td>{{ v.toFixed(1) }}%</td>
         </tr>
       </tbody>
-    </table>
+      </table>
+    </div>
   </figure>
 </template>
