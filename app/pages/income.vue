@@ -15,8 +15,7 @@ function selectPayment(value: string | number) {
 </script>
 
 <template>
-  <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-5">
-    <ProgressBar :current-step="1" back-to="/" continue-to="/bedrooms" :continue-ready="canContinue" />
+  <QuestionPage :current-step="1" back-to="/" continue-to="/bedrooms" :continue-ready="canContinue">
     <h1 class="m-0 heading-step">
       Which Centrelink payment do you receive?
     </h1>
@@ -46,7 +45,9 @@ function selectPayment(value: string | number) {
       </select>
     </div>
 
-    <PrivacyNote>Your answers aren't sent anywhere. They're only used on this device.</PrivacyNote>
+    <PrivacyNote class="dt:hidden">
+      Your answers aren't sent anywhere. They're only used on this device.
+    </PrivacyNote>
 
     <NuxtLink
       to="/bedrooms"
@@ -57,5 +58,5 @@ function selectPayment(value: string | number) {
     >
       Continue
     </NuxtLink>
-  </main>
+  </QuestionPage>
 </template>

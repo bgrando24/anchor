@@ -18,8 +18,7 @@ const canContinue = computed(() => answers.value.currentLga != null)
 </script>
 
 <template>
-  <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-[18px]">
-    <ProgressBar :current-step="3" back-to="/location" continue-to="/schools" :continue-ready="canContinue" />
+  <QuestionPage :current-step="3" back-to="/location" continue-to="/schools" :continue-ready="canContinue">
 
     <h1 class="m-0 heading-step">Which area do you live in?</h1>
     <p v-if="region" class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">
@@ -48,5 +47,5 @@ const canContinue = computed(() => answers.value.currentLga != null)
     >
       Continue
     </NuxtLink>
-  </main>
+  </QuestionPage>
 </template>

@@ -18,8 +18,7 @@ function selectBedrooms(value: string | number) {
 </script>
 
 <template>
-  <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-5">
-    <ProgressBar :current-step="2" back-to="/income" continue-to="/location" :continue-ready="canContinue" />
+  <QuestionPage :current-step="2" back-to="/income" continue-to="/location" :continue-ready="canContinue">
     <h1 class="m-0 heading-step">
       How many bedrooms do you need?
     </h1>
@@ -44,5 +43,5 @@ function selectBedrooms(value: string | number) {
     >
       Continue
     </NuxtLink>
-  </main>
+  </QuestionPage>
 </template>

@@ -62,8 +62,7 @@ const split = computed(() =>
 </script>
 
 <template>
-  <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-[22px]">
-    <ProgressBar :current-step="5" back-to="/schools" continue-to="/results" continue-label="Results" />
+  <QuestionPage :current-step="5" back-to="/schools" continue-to="/results" continue-label="Results">
     <h1 class="m-0 heading-step">
       What matters most to you?
     </h1>
@@ -103,5 +102,5 @@ const split = computed(() =>
     <WeightSplitBar :split="split" />
 
     <NuxtLink to="/results" class="btn-primary">Show my results</NuxtLink>
-  </main>
+  </QuestionPage>
 </template>

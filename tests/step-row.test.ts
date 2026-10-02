@@ -17,9 +17,12 @@ function vuePages(dir: string): string[] {
   })
 }
 
+// The frame moved into QuestionPage, so a step page is now one that uses that wrapper.
 const stepPages = vuePages(PAGES)
   .map((path) => ({ path, source: readFileSync(path, 'utf8') }))
-  .filter((page) => page.source.includes('<ProgressBar'))
+  .filter((page) => page.source.includes('<QuestionPage'))
+
+const WRAPPER = readFileSync(join(import.meta.dirname, '../app/components/QuestionPage.vue'), 'utf8')
 
 describe('the questionnaire step row', () => {
   it('finds the step pages', () => {
@@ -36,6 +39,21 @@ describe('the questionnaire step row', () => {
     for (const { path, source } of stepPages) {
       expect(source, `${path} lost its bottom button`).toMatch(/class="btn-primary"/)
     }
+  })
+
+  it('still shows the progress bar on a phone, where the step list is hidden', () => {
+    expect(WRAPPER).toContain('<ProgressBar')
+    expect(WRAPPER).toMatch(/dt:hidden[\s\S]{0,200}<ProgressBar/)
+  })
+
+  it('hands the bar everything the page gave it', () => {
+    for (const prop of [':current-step="currentStep"', ':back-to="backTo"', ':continue-to="continueTo"', ':continue-ready="continueReady"']) {
+      expect(WRAPPER, `the wrapper drops ${prop}`).toContain(prop)
+    }
+  })
+
+  it('shows the step list only where there is room beside the question', () => {
+    expect(WRAPPER).toMatch(/hidden dt:block[\s\S]{0,160}<StepList/)
   })
 
   it('ties the step-row button to the same readiness as the page', () => {

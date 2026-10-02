@@ -81,13 +81,7 @@ const outcome = computed(() => {
 </script>
 
 <template>
-  <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-5">
-    <ProgressBar
-      :current-step="4"
-      :back-to="backTo"
-      continue-to="/priorities"
-      :continue-ready="canContinue"
-    />
+  <QuestionPage :current-step="4" :back-to="backTo" continue-to="/priorities" :continue-ready="canContinue">
     <h1 class="m-0 heading-step">
       Do you have children or dependants at school?
     </h1>
@@ -157,5 +151,5 @@ const outcome = computed(() => {
     >
       Continue
     </NuxtLink>
-  </main>
+  </QuestionPage>
 </template>
