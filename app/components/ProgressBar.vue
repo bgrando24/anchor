@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeft } from 'lucide-vue-next'
+import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 
 withDefaults(
   defineProps<{
@@ -31,8 +31,6 @@ withDefaults(
       <div class="min-w-0 truncate font-sans font-medium text-[15px] leading-none text-body">
         Step {{ currentStep }} of {{ total }}
       </div>
-      <!-- The same action as the button at the foot of the page. The page can be taller than a
-           phone screen, which left the only way forward below the fold. -->
       <NuxtLink
         v-if="continueTo"
         :to="continueTo"
@@ -42,6 +40,7 @@ withDefaults(
         @click="!continueReady && $event.preventDefault()"
       >
         {{ continueLabel }}
+        <ArrowRight class="ml-2" :size="22" aria-hidden="true" />
       </NuxtLink>
     </div>
     <div class="flex gap-[5px]" role="img" :aria-label="`Step ${currentStep} of ${total}`">

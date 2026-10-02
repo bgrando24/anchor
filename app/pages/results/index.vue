@@ -132,14 +132,14 @@ function isCurrent(code: number) {
 
       <main class="min-w-0">
         <p
-          class="m-0 py-4 px-4 dt:px-10 bg-banner-bg border-b border-banner-border font-sans text-[16px] leading-[1.5] text-banner-text"
+          class="m-0 py-4 px-4 dt:px-10 font-sans text-[16px] leading-[1.5] text-body"
         >
-          Rankings are based on public data. Only you know which areas suit your family.
+          Rankings are based on public data, please consider your own individual circumstances when making any decisions.
         </p>
 
         <p
           v-if="noneWithin"
-          class="m-0 py-4 px-4 dt:px-10 border-b border-line-soft font-sans text-[16px] leading-[1.5] text-body"
+          class="m-0 py-4 px-4 bg-banner-bg border-b border-banner-border dt:px-10 font-sans text-[16px] leading-[1.5] text-banner-text"
         >
           No area has a typical {{ bedrooms }}-bedroom rent under 30% of your income. The areas closest to it are
           listed first.

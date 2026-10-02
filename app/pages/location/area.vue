@@ -21,17 +21,8 @@ const canContinue = computed(() => answers.value.currentLga != null)
   <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-[18px]">
     <ProgressBar :current-step="3" back-to="/location" continue-to="/schools" :continue-ready="canContinue" />
 
-    <NuxtLink
-      to="/location"
-      class="inline-flex items-center gap-2 self-start min-h-11 py-2 px-[14px] bg-surface-info rounded-full font-sans font-medium text-[15px] leading-none text-surface-info-text no-underline"
-    >
-      <template v-if="region">{{ region }} · Change</template>
-      <template v-else>Choose a region</template>
-    </NuxtLink>
-    <h1 class="m-0 display-question">
-      Which area do you live in?
-    </h1>
-
+    <h2 class="heading-sub" v-if="region">Selected region: {{ region }}</h2>
+    
     <RadioGroup
       v-if="areas.length"
       name="area-choice"

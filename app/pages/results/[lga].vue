@@ -568,9 +568,6 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
             {{ stationLabel(currentArea.station_count) }}
           </div>
         </div>
-        <p class="m-0 mt-5 font-sans text-[15px] leading-[1.45] text-muted">
-          Train stations only. We don't have bus or tram stops in the data yet.
-        </p>
       </section>
     </div>
 

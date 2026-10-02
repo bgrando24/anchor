@@ -71,7 +71,10 @@ export function schoolFilterFor(a: SchoolAnswers): SchoolFilter | undefined {
 export function schoolsStepComplete(a: SchoolAnswers): boolean {
   if (a.hasKidsAtSchool === null) return false
   if (a.hasKidsAtSchool === false) return true
-  return a.levels.length > 0 && a.sectors.length > 0 && a.movingSchools !== null
+  // Children who would stay at their school need no further questions.
+  if (a.movingSchools === false) return true
+  if (a.movingSchools === null) return false
+  return a.levels.length > 0 && a.sectors.length > 0
 }
 
 export function useAnchorState() {

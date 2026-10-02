@@ -46,14 +46,21 @@ function setSectors(values: string[]) {
 }
 
 function setMoving(value: string | number) {
-  answers.value.schools.movingSchools = value === 'yes'
+  const moving = value === 'yes'
+  answers.value.schools.movingSchools = moving
+  // If they'd stay put, the school types are never used, so don't keep them around.
+  if (!moving) {
+    answers.value.schools.levels = []
+    answers.value.schools.sectors = []
+  }
 }
 
 // Each question appears once the one before it is answered, so nobody is asked about school
-// types before saying whether anyone is at school.
-const askLevels = computed(() => schools.value.hasKidsAtSchool === true)
+// types before saying whether anyone is at school, and nobody is asked about them if they
+// wouldn't be changing schools.
+const askMoving = computed(() => schools.value.hasKidsAtSchool === true)
+const askLevels = computed(() => askMoving.value && schools.value.movingSchools === true)
 const askSectors = computed(() => askLevels.value && schools.value.levels.length > 0)
-const askMoving = computed(() => askSectors.value && schools.value.sectors.length > 0)
 
 const canContinue = computed(() => schoolsStepComplete(schools.value))
 
@@ -82,7 +89,7 @@ const outcome = computed(() => {
       :continue-ready="canContinue"
     />
     <h1 class="m-0 display-question">
-      Do you have children at school?
+      Do you have children or dependents at school?
     </h1>
     <p class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">
       We only ask so we know whether to weigh up schools when we rank areas.
@@ -96,30 +103,6 @@ const outcome = computed(() => {
       @update:model-value="setHasKids"
     />
 
-    <CheckboxGroup
-      v-if="askLevels"
-      name="school-levels"
-      legend="Which do they go to?"
-      show-legend
-      :options="levelOptions"
-      :model-value="schools.levels"
-      @update:model-value="setLevels"
-    />
-
-    <template v-if="askSectors">
-      <CheckboxGroup
-        name="school-sectors"
-        legend="Which kinds of school would you consider?"
-        show-legend
-        :options="sectorOptions"
-        :model-value="schools.sectors"
-        @update:model-value="setSectors"
-      />
-      <p class="-mt-[6px] mb-0 font-sans text-[15px] leading-[1.5] text-muted">
-        We'll count only these kinds when we rank areas, and show them first on each area's page.
-      </p>
-    </template>
-
     <template v-if="askMoving">
       <RadioGroup
         name="moving-schools"
@@ -131,6 +114,30 @@ const outcome = computed(() => {
       />
       <p class="-mt-[6px] mb-0 font-sans text-[15px] leading-[1.5] text-muted">
         If they'd stay where they are, the schools near a new home wouldn't change your choice.
+      </p>
+    </template>
+
+    <CheckboxGroup
+      v-if="askLevels"
+      name="school-levels"
+      legend="What level(s) of schooling do they currently attend?"
+      show-legend
+      :options="levelOptions"
+      :model-value="schools.levels"
+      @update:model-value="setLevels"
+    />
+
+    <template v-if="askSectors">
+      <CheckboxGroup
+        name="school-sectors"
+        legend="What type(s) of school would you consider?"
+        show-legend
+        :options="sectorOptions"
+        :model-value="schools.sectors"
+        @update:model-value="setSectors"
+      />
+      <p class="-mt-[6px] mb-0 font-sans text-[15px] leading-[1.5] text-muted">
+        We'll only count these types when we rank areas.
       </p>
     </template>
 

@@ -12,25 +12,42 @@ onMounted(() => {
 })
 
 /**
- * Schools only appear here for a household they could matter to. Asking someone who just said
- * they have no children at school how much schools matter invites the obvious objection.
+ * Schools only appear here if the user indicated they have children who may move schools
  */
-const schoolsApply = computed(() => schoolsCount(answers.value.schools))
+const schoolsApply = computed(() => schoolsCount(answers.value.schools));
 
-const factors = computed(() => PRIORITY_FACTORS.filter((f) => f.key !== 'schools' || schoolsApply.value))
+const factors = computed(() => PRIORITY_FACTORS.filter((f) => f.key !== 'schools' || schoolsApply.value));
 
 // Set once, when schools first become relevant, and left alone after that so a deliberate
 // change is not overwritten on the way back to this page.
-const presetDone = ref(false)
+const presetDone = ref(false);
+// watch if user changed the schools priority themselves
+const userSetSchoolsPriority = ref(false);
+
+let presetting = false;
+
+// watch schools question
 watch(
   schoolsApply,
   (applies) => {
     if (applies && !presetDone.value) {
+      presetting = true
       answers.value.weights.schools = 'a_lot'
+      presetting = false
       presetDone.value = true
     }
   },
   { immediate: true }
+)
+
+// Sync flush so the preset above is seen while `presetting` is still set; any other change
+// to the weight is the user's own.
+watch(
+  () => answers.value.weights.schools,
+  () => {
+    if (!presetting) userSetSchoolsPriority.value = true
+  },
+  { flush: 'sync' }
 )
 
 /** The scoring drops schools to nought when they do not apply, so the bar has to agree. */
@@ -66,12 +83,12 @@ const split = computed(() =>
     <div class="flex flex-col gap-[22px]">
       <div v-for="f in factors" :key="f.key">
         <div class="font-sans font-semibold text-[19px] leading-[1.3] text-ink mb-[3px]">{{ f.question }}</div>
-        <div class="font-sans text-[16px] leading-[1.45] text-body mb-3">{{ f.hint }}</div>
+        <div class="font-sans text-[16px] leading-[1.45] text-body mb-5">{{ f.hint }}</div>
         <!-- Plain copy rather than a tooltip: a hover has nowhere to happen on a phone, and the
              reason for a pre-filled answer should not be something you have to go looking for. -->
-        <p v-if="f.key === 'schools'" class="m-0 mb-3 font-sans text-[16px] leading-[1.45] text-body">
-          Set to "A lot" because you're thinking about moving your children's schools. Change it if
-          you like.
+        <p v-if="f.key === 'schools' && !userSetSchoolsPriority" class="m-0 mb-3 font-sans text-[16px] leading-[1.45] text-body p-2 rounded-md border border-strong border-accent">
+          We automatically set this priority for you given your answers to the previous section. 
+          You can still change this if you like.
         </p>
         <TierSelector v-model="answers.weights[f.key]" :name="`tier-${f.key}`" :label="f.question" />
       </div>
