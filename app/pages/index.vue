@@ -19,14 +19,15 @@ const steps = [
                 :size="300"
                 class="pointer-events-none absolute -right-12 -top-16 text-accent-band-mark opacity-40"
             />
-            <div class="relative max-w-[640px] mx-auto px-4 dt:px-6">
-                <h1 class="m-0 display-home text-accent-on">
+            <div class="relative page dt:grid dt:grid-cols-[minmax(0,1fr)_440px] dt:gap-10 dt:items-end">
+                <h1 class="m-0 display-home text-accent-on measure dt:pb-6">
                     Where in Victoria could you afford to stay?
                 </h1>
             </div>
         </section>
 
-        <div class="max-w-[640px] mx-auto px-4 dt:px-6 pb-12">
+        <div class="page pb-12 dt:grid dt:grid-cols-[minmax(0,1fr)_440px] dt:gap-10 dt:items-start">
+            <div class="dt:col-start-2 dt:row-start-1 contents dt:block">
             <!-- Lifted over the band's lower edge, so the first thing under the headline is the
                  way in rather than more reading. -->
             <div
@@ -54,16 +55,38 @@ const steps = [
                 </p>
             </div>
 
-            <PrivacyNote title="Your answers stay on this device" class="mt-5">
-                Anchor works out your results in your browser. We don't have accounts and we never
-                see what you enter.
-            </PrivacyNote>
+            </div>
 
-            <p class="m-0 mt-5 font-sans text-[15px] leading-[1.5] text-muted text-center">
-                Built from public data on rents, schools, train stations and bulk-billing doctors.
-            </p>
+            <!-- Desktop puts these beside the card rather than below it; the copy is the same
+                 copy already on this page and in the FAQs. -->
+            <div class="dt:col-start-1 dt:row-start-1 flex flex-col gap-4 mt-5 dt:mt-0">
+                <PrivacyNote title="Your answers stay on this device">
+                    Anchor works out your results in your browser. We don't have accounts and we
+                    never see what you enter.
+                </PrivacyNote>
 
-            <InstallPrompt v-if="canInstall" class="mt-5" />
+                <div class="p-5 rounded-[16px] bg-surface-2 border border-line">
+                    <div class="font-sans font-semibold text-[17px] leading-[1.4] text-ink mb-[6px]">
+                        Where the numbers come from
+                    </div>
+                    <p class="m-0 font-sans text-[16px] leading-[1.5] text-body">
+                        Built from public data on rents, schools, train stations and bulk-billing
+                        doctors.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-[16px] bg-surface-2 border border-line">
+                    <div class="font-sans font-semibold text-[17px] leading-[1.4] text-ink mb-[6px]">
+                        Not a listing site
+                    </div>
+                    <p class="m-0 font-sans text-[16px] leading-[1.5] text-body">
+                        Anchor doesn't list homes. It compares areas to help you decide where to
+                        look.
+                    </p>
+                </div>
+
+                <InstallPrompt v-if="canInstall" />
+            </div>
         </div>
     </main>
 </template>

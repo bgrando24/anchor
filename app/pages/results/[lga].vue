@@ -270,7 +270,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         :size="300"
         class="pointer-events-none absolute -right-12 -top-12 text-accent-band-mark opacity-40"
       />
-      <div class="relative max-w-[960px] mx-auto px-4 dt:px-10">
+      <div class="relative page">
         <NuxtLink
           to="/results"
           class="inline-flex items-center gap-2 min-h-11 font-sans font-medium text-[15px] text-accent-band-body no-underline"
@@ -293,10 +293,11 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
     </section>
 
     <!-- Lifted over the band's lower edge, so the number you came for sits across the join. -->
-    <div class="max-w-[960px] mx-auto">
-    <section class="relative z-10 px-4 dt:px-10">
+    <div>
+    <section class="relative z-10 page">
+      <div class="-mt-10 dt:-mt-[72px] dt:grid dt:grid-cols-[minmax(0,1fr)_400px] dt:gap-5 dt:items-start">
       <div
-        class="-mt-10 dt:-mt-[72px] p-5 dt:p-7 rounded-[18px] bg-surface border border-line shadow-[0_1px_0_var(--border),0_12px_26px_rgba(27,42,58,0.12)]"
+        class="p-5 dt:p-7 rounded-[18px] bg-surface border border-line shadow-[0_1px_0_var(--border),0_12px_26px_rgba(27,42,58,0.12)]"
       >
         <template v-if="area.rentSharePct != null">
           <div class="figure font-semibold text-[50px] leading-none text-ink tracking-[-0.03em]">
@@ -349,24 +350,26 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
           </p>
         </template>
 
-        <div class="mt-5 pt-[18px] border-t border-line-soft">
-          <div class="font-sans text-[15px] leading-[1.35] text-muted mb-[6px]">
-            New leases affordable on a Centrelink income, last quarter
-          </div>
-          <div class="font-sans font-semibold text-[21px] leading-none text-ink">
-            {{ lettingsLabel(area.affordable_lettings_pct) }}
-          </div>
-          <p v-if="trendSentence" class="m-0 mt-2 font-sans text-[16px] leading-[1.45] text-body">
-            {{ trendSentence }}
-            <button
-              type="button"
-              class="inline-flex items-center min-h-11 border-none bg-transparent p-0 font-sans text-[16px] text-accent underline cursor-pointer"
-              @click="activeTab = 'rent'"
-            >
-              See the full trend
-            </button>
-          </p>
+      </div>
+
+      <div class="on-band mt-4 dt:mt-0 p-5 dt:p-7 rounded-[18px] bg-header-band">
+        <div class="font-sans text-[15px] leading-[1.35] text-header-band-body mb-[6px]">
+          New leases affordable on a Centrelink income, last quarter
         </div>
+        <div class="font-sans font-semibold text-[24px] leading-none text-header-band-text">
+          {{ lettingsLabel(area.affordable_lettings_pct) }}
+        </div>
+        <p v-if="trendSentence" class="m-0 mt-3 font-sans text-[16px] leading-[1.45] text-header-band-body">
+          {{ trendSentence }}
+        </p>
+        <button
+          type="button"
+          class="mt-3 inline-flex items-center min-h-11 border-none bg-transparent p-0 font-sans font-medium text-[16px] text-header-cta underline cursor-pointer"
+          @click="activeTab = 'rent'"
+        >
+          See the full trend
+        </button>
+      </div>
       </div>
     </section>
 
@@ -409,7 +412,67 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         </div>
       </section>
 
-      <section v-if="aedc" class="py-[26px] px-4 dt:px-10 border-b border-line">
+      <div class="dt:grid dt:grid-cols-2 dt:gap-5 dt:items-start">
+    <section v-if="currentArea" class="pb-[26px] px-4 dt:px-10">
+      <div class="on-band p-5 dt:p-7 rounded-[18px] bg-header-band">
+        <div class="font-sans font-medium text-[15px] leading-none text-header-cta mb-2">
+          Against where you live now
+        </div>
+        <h2 class="m-0 mb-4 heading-section text-header-band-text">
+          {{ area.lga_name }} vs {{ currentArea.lga_name }}
+        </h2>
+        <ul class="m-0 p-0 list-none flex flex-col gap-4">
+          <li v-for="row in vsRows" :key="row.key" class="flex items-start gap-3">
+            <!-- The arrow only repeats the sentence, so it is hidden rather than read out. -->
+            <span
+              class="shrink-0 w-9 h-9 rounded-full flex items-center justify-center bg-header-chip-bg font-sans font-semibold text-[15px] text-header-chip-text"
+              aria-hidden="true"
+            >
+              <template v-if="row.direction === 'up'">&uarr;</template>
+              <template v-else-if="row.direction === 'down'">&darr;</template>
+              <template v-else-if="row.direction === 'same'">=</template>
+              <template v-else>?</template>
+            </span>
+            <span class="flex flex-col gap-[2px]">
+              <span class="font-sans font-semibold text-[16px] leading-[1.3] text-header-band-text">
+                {{ row.headline }}
+              </span>
+              <span class="font-sans text-[15px] leading-[1.35] text-header-band-body">{{ row.detail }}</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- The table stays in the page as the path a screen reader follows, and the one that
+           survives a copy and paste. -->
+      <div class="visually-hidden">
+        <table class="w-full border-collapse font-sans text-[16px] leading-[1.4]">
+          <thead>
+            <tr>
+              <th scope="col" class="text-left py-[10px] pr-2 font-mono font-medium text-[12px] tracking-[0.08em] uppercase text-muted">
+                <span class="visually-hidden">Measure</span>
+              </th>
+              <th scope="col" class="text-right py-[10px] px-2 font-mono font-medium text-[12px] tracking-[0.08em] uppercase text-muted">
+                {{ area.lga_name }}
+              </th>
+              <th scope="col" class="text-right py-[10px] pl-2 font-mono font-medium text-[12px] tracking-[0.08em] uppercase text-muted">
+                {{ currentArea.lga_name }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="row in comparison" :key="row.label">
+              <th scope="row" class="text-left py-[12px] pr-2 border-t border-line-soft font-sans font-normal text-body">
+                {{ row.label }}
+              </th>
+              <td class="text-right py-[12px] px-2 border-t border-line-soft font-mono text-ink">{{ row.a }}</td>
+              <td class="text-right py-[12px] pl-2 border-t border-line-soft font-mono text-ink">{{ row.b }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+      <section v-if="aedc" class="py-[26px] px-4 dt:px-10">
         <div class="font-sans font-medium text-[14px] leading-none text-muted mb-2">
           Not part of the ranking
         </div>
@@ -429,6 +492,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
           {{ aedc.cohortNote }}
         </p>
       </section>
+      </div>
     </div>
 
     <div
@@ -635,66 +699,6 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         </div>
       </section>
     </div>
-
-    <section v-if="currentArea" v-show="activeTab === 'overview'" class="pb-[26px] px-4 dt:px-10">
-      <div class="on-band p-5 dt:p-7 rounded-[18px] bg-header-band">
-        <div class="font-sans font-medium text-[15px] leading-none text-header-cta mb-2">
-          Against where you live now
-        </div>
-        <h2 class="m-0 mb-4 heading-section text-header-band-text">
-          {{ area.lga_name }} vs {{ currentArea.lga_name }}
-        </h2>
-        <ul class="m-0 p-0 list-none flex flex-col gap-4">
-          <li v-for="row in vsRows" :key="row.key" class="flex items-start gap-3">
-            <!-- The arrow only repeats the sentence, so it is hidden rather than read out. -->
-            <span
-              class="shrink-0 w-9 h-9 rounded-full flex items-center justify-center bg-header-chip-bg font-sans font-semibold text-[15px] text-header-chip-text"
-              aria-hidden="true"
-            >
-              <template v-if="row.direction === 'up'">&uarr;</template>
-              <template v-else-if="row.direction === 'down'">&darr;</template>
-              <template v-else-if="row.direction === 'same'">=</template>
-              <template v-else>?</template>
-            </span>
-            <span class="flex flex-col gap-[2px]">
-              <span class="font-sans font-semibold text-[16px] leading-[1.3] text-header-band-text">
-                {{ row.headline }}
-              </span>
-              <span class="font-sans text-[15px] leading-[1.35] text-header-band-body">{{ row.detail }}</span>
-            </span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- The table stays in the page as the path a screen reader follows, and the one that
-           survives a copy and paste. -->
-      <div class="visually-hidden">
-        <table class="w-full border-collapse font-sans text-[16px] leading-[1.4]">
-          <thead>
-            <tr>
-              <th scope="col" class="text-left py-[10px] pr-2 font-mono font-medium text-[12px] tracking-[0.08em] uppercase text-muted">
-                <span class="visually-hidden">Measure</span>
-              </th>
-              <th scope="col" class="text-right py-[10px] px-2 font-mono font-medium text-[12px] tracking-[0.08em] uppercase text-muted">
-                {{ area.lga_name }}
-              </th>
-              <th scope="col" class="text-right py-[10px] pl-2 font-mono font-medium text-[12px] tracking-[0.08em] uppercase text-muted">
-                {{ currentArea.lga_name }}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="row in comparison" :key="row.label">
-              <th scope="row" class="text-left py-[12px] pr-2 border-t border-line-soft font-sans font-normal text-body">
-                {{ row.label }}
-              </th>
-              <td class="text-right py-[12px] px-2 border-t border-line-soft font-mono text-ink">{{ row.a }}</td>
-              <td class="text-right py-[12px] pl-2 border-t border-line-soft font-mono text-ink">{{ row.b }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
 
     <div class="pb-10 px-4 dt:px-10">
       <SignOffCard />

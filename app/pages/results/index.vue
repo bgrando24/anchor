@@ -73,7 +73,7 @@ function isCurrent(code: number) {
         class="pointer-events-none absolute -right-10 -top-12 text-header-chip-bg opacity-70"
       />
       <div
-        class="relative max-w-[1280px] mx-auto px-4 dt:px-10 pb-[18px] dt:pb-[22px] flex flex-col gap-4 dt:flex-row dt:items-start dt:justify-between dt:gap-8"
+        class="relative page pb-[18px] dt:pb-[22px] flex flex-col gap-4 dt:flex-row dt:items-start dt:justify-between dt:gap-8"
       >
         <div class="flex flex-col gap-2 min-w-0">
           <h1 class="m-0 display-question">
@@ -104,7 +104,7 @@ function isCurrent(code: number) {
       </div>
     </div>
 
-    <div class="max-w-[1280px] mx-auto grid grid-cols-1 dt:grid-cols-[280px_minmax(0,1fr)]">
+    <div class="max-w-[1160px] mx-auto grid grid-cols-1 dt:grid-cols-[280px_minmax(0,1fr)]">
       <aside class="hidden dt:block dt:py-[34px] dt:px-7 dt:border-r dt:border-line dt:bg-surface-2">
         <h2 class="font-sans font-medium text-[15px] leading-none text-body mb-4">
           Your answers

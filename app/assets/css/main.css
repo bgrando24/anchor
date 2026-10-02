@@ -116,6 +116,17 @@
     @apply text-[20px] leading-[1.2] dt:text-[22px];
   }
 
+  /* One container for the whole site, replacing the 480/560/640/960/1280 mix. Bands stay
+     full bleed behind it. Extra width is meant to become a second column, never a longer line,
+     so text blocks inside still cap their own measure. */
+  .page {
+    @apply max-w-[1160px] mx-auto px-4 dt:px-10;
+  }
+  /* A column of prose, held to a comfortable measure wherever the container is wider. */
+  .measure {
+    @apply max-w-[64ch];
+  }
+
   /* Figures read better aligned, and never reflow as a value ticks over. */
   .figure {
     @apply font-sans tabular-nums;

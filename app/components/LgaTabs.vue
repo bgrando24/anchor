@@ -74,7 +74,7 @@ function onKeydown(event: KeyboardEvent, index: number) {
 
 <template>
   <div class="sticky top-0 z-20 bg-bg border-b border-line">
-    <div class="relative max-w-[960px] mx-auto">
+    <div class="relative max-w-[1160px] mx-auto">
       <!-- The fades are the only sign that the row runs past the edge, so they are the one part
            that must not be decorative: each shows only while there is more that way. -->
       <div
