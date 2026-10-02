@@ -60,11 +60,11 @@ function onKeydown(event: KeyboardEvent, index: number) {
         :aria-selected="tab.key === modelValue"
         :aria-controls="`lga-panel-${tab.key}`"
         :tabindex="tab.key === modelValue ? 0 : -1"
-        class="min-h-11 px-3 rounded-md border-none bg-transparent font-sans font-medium text-[15px] leading-none cursor-pointer"
+        class="min-h-11 px-4 rounded-full border font-sans font-medium text-[15px] leading-none cursor-pointer"
         :class="
           tab.key === modelValue
-            ? 'bg-surface-2 text-ink font-semibold'
-            : 'text-body hover:bg-[rgba(127,127,127,0.12)]'
+            ? 'bg-ink border-ink text-surface font-semibold'
+            : 'bg-surface-2 border-line-strong text-body hover:bg-surface-info'
         "
         @click="select(tab.key)"
         @keydown="onKeydown($event, index)"

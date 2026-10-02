@@ -115,3 +115,28 @@ describe('the guidebook lines', () => {
     expect([...seen].sort()).toEqual([...phrases].sort())
   })
 })
+
+describe('the rent line tells apart "no rent" from "no income"', () => {
+  it('says there is no rent only when none is published', () => {
+    const area = { rentPerWeek: null, rentSharePct: null, ranks: {}, schools: {}, station_count: 0, bulk_billing_rate: 0.9, school_count: 0 } as never
+    expect(guidebookCards(area, { bands, bedrooms: 2 })[0]!.line).toBe(
+      'No typical rent is published for 2-bedroom homes here.'
+    )
+  })
+
+  it('quotes the rent without a share when the income is not known yet', () => {
+    // A ranked area with a published rent must not be described as having none.
+    const area = { rentPerWeek: 480, rentSharePct: null, ranks: {}, schools: {}, station_count: 0, bulk_billing_rate: 0.9, school_count: 0 } as never
+    expect(guidebookCards(area, { bands, bedrooms: 2 })[0]!.line).toBe('$480 a week for a 2-bedroom home.')
+  })
+
+  it('never claims there is no rent for an area that is ranked on one', () => {
+    for (const area of scored()) {
+      const line = guidebookCards(area, { bands, bedrooms: 2 })[0]!.line
+      if (area.rentPerWeek != null) {
+        expect(line, `${area.lga_name}: ${line}`).not.toContain('No typical rent')
+        expect(line).toContain(`$${area.rentPerWeek}`)
+      }
+    }
+  })
+})

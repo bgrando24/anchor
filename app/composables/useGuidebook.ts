@@ -58,8 +58,13 @@ export interface GuidebookContext {
 }
 
 export function rentLine(area: ScoredLga, ctx: GuidebookContext): string {
-  if (area.rentPerWeek == null || area.rentSharePct == null) {
+  // No published rent and no known income are different things. Treating them the same claimed
+  // there was no rent for an area that has one and is ranked on it.
+  if (area.rentPerWeek == null) {
     return `No typical rent is published for ${ctx.bedrooms}-bedroom homes here.`
+  }
+  if (area.rentSharePct == null) {
+    return `$${area.rentPerWeek} a week for a ${ctx.bedrooms}-bedroom home.`
   }
   return `$${area.rentPerWeek} a week for a ${ctx.bedrooms}-bedroom home, which is ${area.rentSharePct}% of your income.`
 }

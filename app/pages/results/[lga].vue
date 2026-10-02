@@ -17,6 +17,8 @@ import { regionLabel } from '~/composables/useLgaData'
 import { orderedLgaTabs, type LgaTabKey } from '~/composables/useLgaTabs'
 import { SCHOOL_LEVELS, SCHOOL_SECTORS, type SchoolLevel, type SchoolSector } from '~/data/options'
 import { summariseAedc } from '~/composables/useAedc'
+import { overWholeIncomeNote, weekStrip } from '~/composables/useWeekStrip'
+import { bandsFrom, guidebookCards } from '~/composables/useGuidebook'
 
 definePageMeta({ layout: 'results' })
 
@@ -24,7 +26,17 @@ useFragmentSync()
 
 const route = useRoute()
 const { answers, scored, bedrooms, schoolsApply, schoolFilter } = useResults()
-const { meta } = useLgaData()
+const { meta, all } = useLgaData()
+
+// Where each area sits against the rest, worked out once rather than per card.
+const bands = bandsFrom(all)
+const strip = computed(() => weekStrip(area.value?.rentSharePct))
+const overIncome = computed(() => overWholeIncomeNote(area.value?.rentSharePct))
+const cards = computed(() =>
+  area.value
+    ? guidebookCards(area.value, { bands, bedrooms: bedrooms.value, schoolFilter: schoolFilter.value })
+    : []
+)
 
 const code = computed(() => Number(route.params.lga))
 const area = computed(() => scored.value.find((s) => s.lga_code === code.value))
@@ -75,21 +87,6 @@ const currentArea = computed(() =>
 )
 
 const gpPct = (rate: number) => Math.round(rate * 100)
-
-const breakdown = computed(() => {
-  const a = area.value
-  if (!a) return []
-  return [
-    {
-      label: 'Rent',
-      value: a.ranks.rent,
-      sub: a.rentPerWeek ? `$${a.rentPerWeek} a week for ${bedrooms.value} bedrooms` : 'No rent data'
-    },
-    { label: 'Schools', value: a.ranks.schools, sub: `${a.school_count} schools` },
-    { label: 'Train stations', value: a.ranks.transport, sub: stationLabel(a.station_count) },
-    { label: 'Bulk-billing doctors', value: a.ranks.gp_access, sub: `${gpPct(a.bulk_billing_rate)}% of GP visits bulk-billed` }
-  ]
-})
 
 // Both ends of each window are an average across a year, so one noisy quarter in a small area
 // cannot flip the direction the sentence claims.
@@ -260,61 +257,109 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
 
 <template>
   <div v-if="area" class="max-w-[960px] mx-auto">
-    <div class="px-4 dt:px-10 pt-4">
-      <NuxtLink to="/results" class="inline-flex items-center gap-2 min-h-11 font-sans font-medium text-[15px] text-body no-underline">
-        <ArrowLeft :size="18" aria-hidden="true" />
-        All areas
-      </NuxtLink>
-    </div>
+    <!-- The arrival band. Terracotta here and navy on the list, so stepping into an area is a
+         visible change of place rather than another row. -->
+    <section class="on-accent relative overflow-hidden bg-accent pt-1 pb-[52px] px-4 dt:px-10">
+      <LogoMark
+        :size="300"
+        class="pointer-events-none absolute -right-16 -top-10 text-accent-band-mark opacity-60"
+      />
+      <div class="relative">
+        <NuxtLink
+          to="/results"
+          class="inline-flex items-center gap-2 min-h-11 font-sans font-medium text-[15px] text-accent-band-body no-underline"
+        >
+          <ArrowLeft :size="18" aria-hidden="true" />
+          All areas
+        </NuxtLink>
 
-    <section class="py-[22px] px-4 dt:px-10 bg-surface-2 border-b border-line">
-      <div class="font-sans font-medium text-[15px] leading-none text-accent mb-[10px]">
-        Ranked {{ ordinal(area.rank) }} of 79
-      </div>
-      <h1 class="m-0 mb-[6px] display-area">
-        {{ area.lga_name }}
-      </h1>
-      <p class="m-0 mb-6 font-sans text-[16px] leading-[1.4] text-body">
-        {{ area.area }} · {{ regionLabel(area.region) }}
-      </p>
+        <div
+          class="mt-2 mb-3 inline-flex items-center min-h-8 py-[6px] px-[14px] rounded-full border bg-accent-band-chip border-accent-band-chip-border font-sans font-medium text-[14px] leading-none text-accent-band-chip-text"
+        >
+          {{ ordinal(area.rank) }} of 79 areas for you
+        </div>
 
-      <div v-if="area.rentSharePct != null" class="font-sans font-semibold text-[48px] leading-none text-ink tracking-[-0.03em] mb-[10px]">
-        {{ area.rentSharePct }}%
+        <h1 class="m-0 mb-[6px] display-area text-accent-on">{{ area.lga_name }}</h1>
+        <p class="m-0 font-sans text-[17px] leading-[1.4] text-accent-band-body">
+          {{ area.area }} · {{ regionLabel(area.region) }}
+        </p>
       </div>
-      <p class="m-0 font-sans text-[18px] leading-[1.5] text-body dt:max-w-[46ch]">
+    </section>
+
+    <!-- Lifted over the band's lower edge, so the number you came for sits across the join. -->
+    <section class="px-4 dt:px-10">
+      <div
+        class="-mt-10 dt:-mt-[72px] p-5 dt:p-7 rounded-[18px] bg-surface border border-line shadow-[0_1px_0_var(--border),0_12px_26px_rgba(27,42,58,0.12)]"
+      >
         <template v-if="area.rentSharePct != null">
-          of your income for a typical {{ bedrooms }}-bedroom rent (${{ area.rentPerWeek }} a week).
-          {{
-            area.band === 'within'
-              ? "That's within the 30% usually counted as affordable."
-              : "That's more than the 30% usually counted as affordable."
-          }}
+          <div class="figure font-semibold text-[50px] leading-none text-ink tracking-[-0.03em]">
+            {{ area.rentSharePct }}%
+          </div>
+          <p class="m-0 mt-1 font-sans text-[17px] leading-[1.5] text-body">
+            of your income on rent. A typical {{ bedrooms }}-bedroom home here is
+            ${{ area.rentPerWeek }} a week.
+            {{
+              area.band === 'within'
+                ? "That's within the 30% usually counted as affordable."
+                : "That's more than the 30% usually counted as affordable."
+            }}
+          </p>
+
+          <!-- Rent as days of the week. The sentences say the same thing as the bars, so the
+               picture is never the only way to get it. -->
+          <div v-if="strip" class="mt-5 p-4 rounded-[14px] bg-bg border border-line-soft">
+            <div class="flex items-end gap-[6px] h-[52px] dt:h-[62px]" role="img" :aria-label="strip.label">
+              <div
+                v-for="bar in strip.bars"
+                :key="bar.day"
+                class="flex-1 h-full rounded-[7px] bg-border overflow-hidden flex flex-col justify-end"
+              >
+                <div class="w-full rounded-[7px] bg-accent" :style="{ height: `${bar.fill * 100}%` }" />
+              </div>
+            </div>
+            <div class="mt-2 flex gap-[6px]" aria-hidden="true">
+              <div
+                v-for="bar in strip.bars"
+                :key="bar.day"
+                class="flex-1 text-center font-sans text-[12px] leading-none text-muted"
+              >
+                {{ bar.day.charAt(0) }}
+              </div>
+            </div>
+            <p class="m-0 mt-3 font-sans font-semibold text-[16px] leading-[1.4] text-ink">
+              {{ strip.headline }}
+            </p>
+            <p class="m-0 mt-1 font-sans text-[15px] leading-[1.45] text-body">{{ strip.body }}</p>
+          </div>
+          <p v-else-if="overIncome" class="m-0 mt-5 p-4 rounded-[14px] bg-banner-bg border border-banner-border font-sans text-[16px] leading-[1.45] text-banner-text">
+            {{ overIncome }}
+          </p>
         </template>
         <template v-else>
-          Not enough {{ bedrooms }}-bedroom homes are rented here for a typical rent to be published,
-          so we can't say how much of your income one would take.
+          <p class="m-0 font-sans text-[17px] leading-[1.5] text-body">
+            Not enough {{ bedrooms }}-bedroom homes are rented here for a typical rent to be
+            published, so we can't say how much of your income one would take.
+          </p>
         </template>
-      </p>
 
-      <div class="mt-[22px] pt-[18px] border-t border-line-soft">
-        <div class="font-sans text-[14px] leading-[1.35] text-muted mb-[6px]">
-          New leases affordable on a Centrelink income, last quarter
+        <div class="mt-5 pt-[18px] border-t border-line-soft">
+          <div class="font-sans text-[15px] leading-[1.35] text-muted mb-[6px]">
+            New leases affordable on a Centrelink income, last quarter
+          </div>
+          <div class="font-sans font-semibold text-[21px] leading-none text-ink">
+            {{ lettingsLabel(area.affordable_lettings_pct) }}
+          </div>
+          <p v-if="trendSentence" class="m-0 mt-2 font-sans text-[16px] leading-[1.45] text-body">
+            {{ trendSentence }}
+            <button
+              type="button"
+              class="inline-flex items-center min-h-11 border-none bg-transparent p-0 font-sans text-[16px] text-accent underline cursor-pointer"
+              @click="activeTab = 'rent'"
+            >
+              See the full trend
+            </button>
+          </p>
         </div>
-        <div class="font-sans font-semibold text-[21px] leading-none text-ink">
-          {{ lettingsLabel(area.affordable_lettings_pct) }}
-        </div>
-        <!-- The chart lives on the Rent tab; this says what it shows, so the trend is not
-             hidden behind a click. -->
-        <p v-if="trendSentence" class="m-0 mt-2 font-sans text-[16px] leading-[1.45] text-body">
-          {{ trendSentence }}
-          <button
-            type="button"
-            class="inline-flex items-center min-h-11 border-none bg-transparent p-0 font-sans text-[16px] text-accent underline cursor-pointer"
-            @click="activeTab = 'rent'"
-          >
-            See the full trend
-          </button>
-        </p>
       </div>
     </section>
 
@@ -329,10 +374,31 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       aria-labelledby="lga-tab-overview"
       tabindex="0"
     >
-      <section class="py-[26px] px-4 dt:px-10 border-b border-line">
-        <h2 class="m-0 mb-[18px] heading-section">How this area scored</h2>
-        <div class="flex flex-col gap-5">
-          <ScoreBar v-for="row in breakdown" :key="row.label" :label="row.label" :value="row.value" :sublabel="row.sub" />
+      <section class="py-[26px] px-4 dt:px-10">
+        <h2 class="m-0 mb-[18px] heading-section">What it's like here</h2>
+        <!-- One card per scored factor: the number, how it compares, and a line built from the
+             raw value so the sentence can never disagree with the bar above it. -->
+        <div class="grid grid-cols-2 gap-3 dt:grid-cols-4 dt:gap-4">
+          <div
+            v-for="card in cards"
+            :key="card.key"
+            class="p-4 rounded-[16px] bg-surface-2 border border-line flex flex-col"
+          >
+            <div class="font-sans font-medium text-[15px] leading-[1.3] text-body">{{ card.label }}</div>
+            <div class="mt-2 figure font-semibold text-[34px] leading-none text-ink">
+              <template v-if="card.score == null">&mdash;</template>
+              <template v-else>{{ card.score.toFixed(1) }}</template>
+              <span v-if="card.score != null" class="font-sans font-normal text-[14px] text-body"> out of 10</span>
+            </div>
+            <div class="mt-3 h-2 rounded-full bg-line overflow-hidden">
+              <div
+                v-if="card.score != null"
+                class="h-full rounded-full bg-data-main"
+                :style="{ width: `${Math.min(100, Math.max(0, (card.score / 10) * 100))}%` }"
+              />
+            </div>
+            <p class="m-0 mt-3 font-sans text-[15px] leading-[1.45] text-body">{{ card.line }}</p>
+          </div>
         </div>
       </section>
 
