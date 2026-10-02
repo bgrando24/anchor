@@ -261,15 +261,16 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
 </script>
 
 <template>
-  <div v-if="area" class="max-w-[960px] mx-auto">
+  <div v-if="area">
     <!-- The arrival band. Terracotta here and navy on the list, so stepping into an area is a
          visible change of place rather than another row. -->
-    <section class="on-accent relative overflow-hidden bg-accent pt-1 pb-[52px] px-4 dt:px-10">
+    <!-- Full bleed, like the header above it. Only the words inside are held to the column. -->
+    <section class="on-accent relative overflow-hidden bg-accent pt-1 pb-[52px]">
       <LogoMark
         :size="300"
-        class="pointer-events-none absolute -right-16 -top-10 text-accent-band-mark opacity-60"
+        class="pointer-events-none absolute -right-12 -top-12 text-accent-band-mark opacity-40"
       />
-      <div class="relative">
+      <div class="relative max-w-[960px] mx-auto px-4 dt:px-10">
         <NuxtLink
           to="/results"
           class="inline-flex items-center gap-2 min-h-11 font-sans font-medium text-[15px] text-accent-band-body no-underline"
@@ -279,7 +280,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         </NuxtLink>
 
         <div
-          class="mt-2 mb-3 inline-flex items-center min-h-8 py-[6px] px-[14px] rounded-full border bg-accent-band-chip border-accent-band-chip-border font-sans font-medium text-[14px] leading-none text-accent-band-chip-text"
+          class="mt-3 mb-3 flex w-fit items-center min-h-8 py-[6px] px-[14px] rounded-full border bg-accent-band-chip border-accent-band-chip-border font-sans font-medium text-[14px] leading-none text-accent-band-chip-text"
         >
           {{ ordinal(area.rank) }} of 79 areas for you
         </div>
@@ -292,7 +293,8 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
     </section>
 
     <!-- Lifted over the band's lower edge, so the number you came for sits across the join. -->
-    <section class="px-4 dt:px-10">
+    <div class="max-w-[960px] mx-auto">
+    <section class="relative z-10 px-4 dt:px-10">
       <div
         class="-mt-10 dt:-mt-[72px] p-5 dt:p-7 rounded-[18px] bg-surface border border-line shadow-[0_1px_0_var(--border),0_12px_26px_rgba(27,42,58,0.12)]"
       >
@@ -317,7 +319,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
               <div
                 v-for="bar in strip.bars"
                 :key="bar.day"
-                class="flex-1 h-full rounded-[7px] bg-border overflow-hidden flex flex-col justify-end"
+                class="flex-1 h-full rounded-[7px] bg-line overflow-hidden flex flex-col justify-end"
               >
                 <div class="w-full rounded-[7px] bg-accent" :style="{ height: `${bar.fill * 100}%` }" />
               </div>
@@ -696,6 +698,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
 
     <div class="pb-10 px-4 dt:px-10">
       <SignOffCard />
+    </div>
     </div>
   </div>
 
