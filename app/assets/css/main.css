@@ -43,6 +43,13 @@
   --color-focus-ring: var(--focus-ring);
   --color-focus-ring-on-band: var(--focus-ring-on-band);
 
+  --color-accent-band-body: var(--accent-band-body);
+  --color-accent-band-chip: var(--accent-band-chip);
+  --color-accent-band-chip-text: var(--accent-band-chip-text);
+  --color-accent-band-chip-border: var(--accent-band-chip-border);
+  --color-accent-band-mark: var(--accent-band-mark);
+  --color-focus-ring-on-accent: var(--focus-ring-on-accent);
+
   --color-mark-bg: var(--mark-bg);
   --color-mark-text: var(--mark-text);
 

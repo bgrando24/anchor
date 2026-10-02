@@ -47,6 +47,16 @@
   --header-chip-outline: #8496a9;
   --header-cta: #e3a97c;
 
+  /* The terracotta band. Ratios measured against --accent #a64b1c, light theme. */
+  /* Body text on the band: 5.08:1. The first candidate (#fbe3d3) cleared 4.5 by only 0.17. */
+  --accent-band-body: #fdeee4;
+  /* The rank pill. 1.48:1 against the band, so it carries a border to read as a pill at all. */
+  --accent-band-chip: #7e3812;
+  --accent-band-chip-text: #ffffff; /* 8.53:1 on the pill */
+  --accent-band-chip-border: #c98a63; /* 3.1:1 on the band, so the pill has an edge */
+  --accent-band-mark: #b4592a; /* watermark, decorative and aria-hidden */
+  --focus-ring-on-accent: #ffffff; /* 5.76:1 on the band */
+
   --mark-bg: #1b2a3a;
   --mark-text: #ffffff;
 
@@ -101,6 +111,14 @@
   --header-chip-outline: #8496a9;
   --header-cta: #e08a4f;
 
+  /* Ratios against --accent #e08a4f, dark theme. All clear comfortably. */
+  --accent-band-body: #2a1a10; /* 6.32:1 */
+  --accent-band-chip: #17202b; /* 6.20:1 against the band */
+  --accent-band-chip-text: #f4cca9; /* 11.00:1 on the pill */
+  --accent-band-chip-border: #5e3a22;
+  --accent-band-mark: #d27a3f;
+  --focus-ring-on-accent: #17202b; /* 6.20:1 */
+
   --mark-bg: #e08a4f;
   --mark-text: #17202b;
 
@@ -141,6 +159,11 @@
   /* Anything sitting on the navy band needs the light ring instead. */
   .on-band :where(a, button, input, select, [tabindex]):focus-visible {
     outline-color: var(--focus-ring-on-band);
+  }
+
+  /* The same idea for the terracotta band: the page's focus ring is too dark to see on it. */
+  .on-accent :where(a, button, input, select, [tabindex]):focus-visible {
+    outline-color: var(--focus-ring-on-accent);
   }
 }
 
