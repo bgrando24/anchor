@@ -9,7 +9,7 @@ const { canInstall } = useInstallPrompt();
         class="max-w-[560px] mx-auto px-4 dt:px-6 pt-6 pb-12 flex flex-col gap-[22px]"
     >
         <h1
-            class="mt-2 font-sans font-semibold text-[34px] leading-[1.18] text-ink tracking-[-0.02em]"
+            class="mt-2 display-home"
         >
             Where in Victoria could you afford to stay?
         </h1>

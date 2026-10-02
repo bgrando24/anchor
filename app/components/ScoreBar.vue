@@ -11,8 +11,11 @@ defineProps<{
   <div class="flex flex-col">
     <div class="flex justify-between items-baseline gap-3 mb-1">
       <span class="font-sans font-semibold text-[18px] leading-[1.3] text-ink">{{ label }}</span>
-      <span class="font-mono font-medium text-[16px] leading-none text-ink shrink-0">
-        {{ value == null ? 'No data' : `${value.toFixed(1)} / 10` }}
+      <span class="figure font-semibold text-[16px] leading-none text-ink shrink-0">
+        <template v-if="value == null">No data</template>
+        <template v-else>
+          {{ value.toFixed(1) }}<span class="font-normal text-body"> out of 10</span>
+        </template>
       </span>
     </div>
     <div class="font-sans text-[16px] leading-[1.4] text-body mb-[10px]">{{ sublabel }}</div>

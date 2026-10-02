@@ -59,7 +59,7 @@ const emit = defineEmits<{ 'update:modelValue': [string | number] }>()
         />
         <span class="flex flex-col gap-1">
           <span>{{ o.label }}</span>
-          <span v-if="o.sublabel" class="font-mono text-[14px] leading-[1.3] text-muted">{{ o.sublabel }}</span>
+          <span v-if="o.sublabel" class="font-sans text-[14px] leading-[1.3] text-muted">{{ o.sublabel }}</span>
         </span>
       </label>
     </div>

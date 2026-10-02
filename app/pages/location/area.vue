@@ -28,7 +28,7 @@ const canContinue = computed(() => answers.value.currentLga != null)
       <template v-if="region">{{ region }} · Change</template>
       <template v-else>Choose a region</template>
     </NuxtLink>
-    <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
+    <h1 class="m-0 display-question">
       Which area do you live in?
     </h1>
 

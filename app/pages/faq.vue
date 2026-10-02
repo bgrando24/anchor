@@ -106,7 +106,7 @@ function toggle(i: number) {
 
         <div class="flex flex-col gap-2">
             <h1
-                class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]"
+                class="m-0 display-question"
             >
                 FAQs
             </h1>

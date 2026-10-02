@@ -57,11 +57,11 @@ function isCurrent(code: number) {
 
 <template>
   <div v-if="!hasAnswers" class="max-w-[560px] mx-auto px-4 dt:px-6 pt-10 pb-12 flex flex-col gap-4">
-    <h1 class="m-0 font-sans font-semibold text-[30px] leading-[1.2] text-ink tracking-[-0.02em]">
+    <h1 class="m-0 display-page">
       Answer a few questions first
     </h1>
     <p class="m-0 font-sans text-[17px] leading-[1.55] text-body">
-      We need your payment, bedrooms and area to rank the areas for you.
+      Your results will appear here. Answer a few short questions and we'll rank all 79 areas for you.
     </p>
     <NuxtLink to="/income" class="btn-primary mt-2">Start</NuxtLink>
   </div>
@@ -72,7 +72,7 @@ function isCurrent(code: number) {
         class="max-w-[1280px] mx-auto px-4 dt:px-10 pb-[18px] dt:pb-[22px] flex flex-col gap-4 dt:flex-row dt:items-start dt:justify-between dt:gap-8"
       >
         <div class="flex flex-col gap-2 min-w-0">
-          <h1 class="m-0 font-sans font-semibold text-[26px] leading-[1.25] tracking-[-0.01em]">
+          <h1 class="m-0 display-question">
             79 areas, ranked for you
           </h1>
           <p class="m-0 font-sans text-[16px] leading-[1.5] text-header-band-body dt:max-w-[60ch]">
@@ -102,7 +102,7 @@ function isCurrent(code: number) {
 
     <div class="max-w-[1280px] mx-auto grid grid-cols-1 dt:grid-cols-[280px_minmax(0,1fr)]">
       <aside class="hidden dt:block dt:py-[34px] dt:px-7 dt:border-r dt:border-line dt:bg-surface-2">
-        <h2 class="font-mono font-medium text-[12px] leading-none tracking-[0.12em] uppercase text-muted mb-4">
+        <h2 class="font-sans font-medium text-[15px] leading-none text-body mb-4">
           Your answers
         </h2>
         <div class="flex flex-col gap-[18px] font-sans text-[16px] leading-[1.4] mb-6">
@@ -148,7 +148,7 @@ function isCurrent(code: number) {
         <div v-if="!tableView">
           <section v-for="group in bands" :key="group.band">
             <div class="pt-6 pb-2 px-4 dt:px-10">
-              <h2 class="m-0 font-sans font-semibold text-[19px] leading-[1.3] text-ink">{{ group.heading }}</h2>
+              <h2 class="m-0 heading-sub">{{ group.heading }}</h2>
               <p v-if="group.note" class="mt-1 mb-0 font-sans text-[15px] leading-[1.5] text-muted">{{ group.note }}</p>
             </div>
             <ol class="list-none m-0 p-0">
@@ -157,9 +157,9 @@ function isCurrent(code: number) {
                 :key="r.lga_code"
                 class="py-4 px-4 dt:px-10 border-t border-line-soft grid grid-cols-[34px_minmax(0,1fr)] gap-x-3 gap-y-2 items-start dt:grid-cols-[44px_minmax(240px,1fr)_minmax(170px,auto)] dt:gap-5"
               >
-                <div class="font-mono font-medium text-[20px] leading-[1.3] text-data-main">{{ r.rank }}</div>
+                <div class="figure font-semibold text-[20px] leading-[1.3] text-data-main">{{ r.rank }}</div>
                 <div class="min-w-0">
-                  <h3 class="m-0 font-sans font-semibold text-[21px] leading-[1.25]">
+                  <h3 class="m-0 heading-section">
                     <NuxtLink
                       :to="`/results/${r.lga_code}`"
                       class="inline-flex items-center min-h-11 text-ink no-underline"
@@ -167,7 +167,7 @@ function isCurrent(code: number) {
                       {{ r.lga_name }}
                     </NuxtLink>
                   </h3>
-                  <div class="font-mono text-[14px] leading-[1.3] text-muted">{{ r.region }}</div>
+                  <div class="font-sans text-[14px] leading-[1.3] text-muted">{{ r.region }}</div>
                   <p
                     v-if="rowSentence(r, scoringWeights, schoolFilter)"
                     class="mt-2 mb-0 font-sans text-[16px] leading-[1.5] text-body dt:max-w-[52ch]"
@@ -186,7 +186,7 @@ function isCurrent(code: number) {
                     {{ r.rentSharePct }}% of your income
                   </div>
                   <div v-else class="font-sans font-semibold text-[24px] leading-[1.2] text-ink">No rent data</div>
-                  <div v-if="r.rentPerWeek" class="mt-1 font-mono text-[14px] leading-[1.35] text-muted">
+                  <div v-if="r.rentPerWeek" class="mt-1 font-sans text-[14px] leading-[1.35] text-muted">
                     Typical {{ bedrooms }}-bedroom rent: ${{ r.rentPerWeek }} a week
                   </div>
                 </div>

@@ -71,7 +71,7 @@ function toggle(value: string, checked: boolean, chosen: string[], options: Chec
         </span>
         <span class="flex flex-col gap-1">
           <span>{{ o.label }}</span>
-          <span v-if="o.sublabel" class="font-mono text-[14px] leading-[1.3] text-muted">{{ o.sublabel }}</span>
+          <span v-if="o.sublabel" class="font-sans text-[14px] leading-[1.3] text-muted">{{ o.sublabel }}</span>
         </span>
       </label>
     </div>

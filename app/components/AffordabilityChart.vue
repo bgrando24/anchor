@@ -95,7 +95,7 @@ function quarterLabel(i: number) {
       @touchmove.passive="pointAt($event.touches[0]!.clientX)"
     >
       <svg :viewBox="`0 0 ${width} ${H}`" :width="width" :height="H" class="block max-w-full" role="img" :aria-label="ariaLabel">
-        <g class="fill-muted font-mono text-[13px]">
+        <g class="fill-muted font-sans text-[13px]">
           <template v-for="t in scale.ticks" :key="t">
             <line :x1="PAD_L" :y1="yFor(t)" :x2="width - PAD_R" :y2="yFor(t)" stroke-width="1" class="stroke-line-soft" />
             <text :x="PAD_L - 8" :y="yFor(t) + 4" text-anchor="end">{{ Math.round(t) }}%</text>
@@ -118,8 +118,8 @@ function quarterLabel(i: number) {
           {{ last.toFixed(1) }}%
         </text>
 
-        <text :x="PAD_L" :y="H - 6" class="fill-muted font-mono text-[13px]">{{ firstLabel }}</text>
-        <text :x="width - PAD_R" :y="H - 6" text-anchor="end" class="fill-muted font-mono text-[13px]">
+        <text :x="PAD_L" :y="H - 6" class="fill-muted font-sans text-[13px]">{{ firstLabel }}</text>
+        <text :x="width - PAD_R" :y="H - 6" text-anchor="end" class="fill-muted font-sans text-[13px]">
           {{ lastLabel }}
         </text>
 
@@ -131,7 +131,7 @@ function quarterLabel(i: number) {
 
       <div
         v-if="active != null"
-        class="absolute top-0 py-1 px-[10px] bg-surface-2 border border-line-strong rounded-[6px] font-mono text-[13px] leading-[1.4] text-ink pointer-events-none whitespace-nowrap"
+        class="absolute top-0 py-1 px-[10px] bg-surface-2 border border-line-strong rounded-[6px] font-sans text-[13px] leading-[1.4] text-ink pointer-events-none whitespace-nowrap"
         :style="{ left: `min(${xFor(active)}px, calc(100% - 140px))` }"
       >
         {{ quarterLabel(active) }}: {{ series[active]!.toFixed(1) }}%

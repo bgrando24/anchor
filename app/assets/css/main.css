@@ -48,6 +48,7 @@
 
   --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -58,6 +59,43 @@
 }
 
 @layer components {
+  /* The display scale. Serif italic, headings only: everything people read or tap stays sans.
+     Kept here rather than spelled out per template, so the scale has one definition. */
+  .display-area,
+  .display-home,
+  .display-page,
+  .display-question,
+  .heading-section,
+  .heading-sub {
+    @apply font-serif italic font-medium text-ink;
+  }
+  /* balance keeps a long council name from leaving one word on its own line */
+  .display-area {
+    @apply text-[50px] leading-[1.0] tracking-[-0.03em] dt:text-[76px];
+    text-wrap: balance;
+  }
+  .display-home {
+    @apply text-[46px] leading-[1.04] tracking-[-0.02em] dt:text-[72px];
+    text-wrap: balance;
+  }
+  .display-page {
+    @apply text-[38px] leading-[1.08] tracking-[-0.02em] dt:text-[54px];
+  }
+  .display-question {
+    @apply text-[32px] leading-[1.12] tracking-[-0.01em] dt:text-[46px];
+  }
+  .heading-section {
+    @apply text-[24px] leading-[1.15] dt:text-[28px];
+  }
+  .heading-sub {
+    @apply text-[20px] leading-[1.2] dt:text-[22px];
+  }
+
+  /* Figures read better aligned, and never reflow as a value ticks over. */
+  .figure {
+    @apply font-sans tabular-nums;
+  }
+
   .btn-primary {
     @apply inline-flex items-center justify-center min-h-[58px] px-6 rounded-md bg-accent text-accent-on font-sans font-semibold text-[19px] leading-none cursor-pointer no-underline;
   }

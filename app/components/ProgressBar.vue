@@ -28,7 +28,7 @@ withDefaults(
       <NuxtLink v-if="backTo" :to="backTo" class="icon-button -ml-3 text-body no-underline" aria-label="Back">
         <ArrowLeft :size="22" aria-hidden="true" />
       </NuxtLink>
-      <div class="min-w-0 truncate font-mono font-medium text-[15px] leading-none text-muted">
+      <div class="min-w-0 truncate font-sans font-medium text-[15px] leading-none text-body">
         Step {{ currentStep }} of {{ total }}
       </div>
       <!-- The same action as the button at the foot of the page. The page can be taller than a

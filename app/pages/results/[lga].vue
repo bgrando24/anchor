@@ -134,9 +134,12 @@ const tooThinToChart = computed(() => {
 const thinNote = computed(() => {
   if (!tooThinToChart.value) return ''
   const lettings = Math.max(1, Math.round(shownLettings.value ?? 0))
-  const size = bedroomFilter.value === 'all' ? 'rentals' : `${bedroomLabel.value.toLowerCase()} rentals`
-  const each = lettings === 1 ? 'about one a quarter' : `about ${lettings} a quarter`
-  return `Too few ${size} here to show a trend: ${each}. One of them letting for a different price moves the share by tens of points.`
+  // "4 bed" is the chip's label; the sentence needs "4-bedroom", and it has to agree in number.
+  const beds = bedroomFilter.value.startsWith('br') ? Number(bedroomFilter.value.slice(2)) : null
+  const one = lettings === 1
+  const kind = beds ? `${beds}-bedroom ${one ? 'home' : 'homes'}` : one ? 'home' : 'homes'
+  const count = one ? 'about one' : `about ${lettings}`
+  return `Only ${count} ${kind} ${one ? 'is' : 'are'} leased here each quarter. That is too few to draw a fair trend, so we have left the chart out.`
 })
 
 const bedroomLabel = computed(
@@ -272,10 +275,10 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
     </div>
 
     <section class="py-[22px] px-4 dt:px-10 bg-surface-2 border-b border-line">
-      <div class="font-mono font-medium text-[15px] leading-none text-accent mb-[10px]">
+      <div class="font-sans font-medium text-[15px] leading-none text-accent mb-[10px]">
         Ranked {{ ordinal(area.rank) }} of 79
       </div>
-      <h1 class="m-0 mb-[6px] font-sans font-semibold text-[32px] leading-[1.15] text-ink tracking-[-0.02em]">
+      <h1 class="m-0 mb-[6px] display-area">
         {{ area.lga_name }}
       </h1>
       <p class="m-0 mb-6 font-sans text-[16px] leading-[1.4] text-body">
@@ -294,11 +297,14 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
               : "That's more than the 30% usually counted as affordable."
           }}
         </template>
-        <template v-else>We don't have a typical rent for {{ bedrooms }}-bedroom homes here.</template>
+        <template v-else>
+          Not enough {{ bedrooms }}-bedroom homes are rented here for a typical rent to be published,
+          so we can't say how much of your income one would take.
+        </template>
       </p>
 
       <div class="mt-[22px] pt-[18px] border-t border-line-soft">
-        <div class="font-mono text-[14px] leading-[1.35] text-muted mb-[6px]">
+        <div class="font-sans text-[14px] leading-[1.35] text-muted mb-[6px]">
           New leases affordable on a Centrelink income, last quarter
         </div>
         <div class="font-sans font-semibold text-[21px] leading-none text-ink">
@@ -331,17 +337,17 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       tabindex="0"
     >
       <section class="py-[26px] px-4 dt:px-10 border-b border-line">
-        <h2 class="m-0 mb-[18px] font-sans font-semibold text-[21px] leading-[1.3] text-ink">How this area scored</h2>
+        <h2 class="m-0 mb-[18px] heading-section">How this area scored</h2>
         <div class="flex flex-col gap-5">
           <ScoreBar v-for="row in breakdown" :key="row.label" :label="row.label" :value="row.value" :sublabel="row.sub" />
         </div>
       </section>
 
       <section v-if="aedc" class="py-[26px] px-4 dt:px-10 border-b border-line">
-        <div class="font-mono font-medium text-[13px] leading-none tracking-[0.08em] uppercase text-muted mb-2">
+        <div class="font-sans font-medium text-[14px] leading-none text-muted mb-2">
           Not part of the ranking
         </div>
-        <h2 class="m-0 mb-1 font-sans font-semibold text-[21px] leading-[1.3] text-ink">
+        <h2 class="m-0 mb-1 heading-section">
           How young children are doing here
         </h2>
         <p class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">{{ aedc.sentence }}</p>
@@ -367,10 +373,10 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       tabindex="0"
     >
       <section class="py-[26px] px-4 dt:px-10 border-b border-line">
-        <h2 class="m-0 mb-1 font-sans font-semibold text-[21px] leading-[1.3] text-ink">
+        <h2 class="m-0 mb-1 heading-section">
           Share of new leases that were affordable
         </h2>
-        <p v-if="chartScope" class="m-0 mb-1 font-mono text-[13px] leading-none tracking-[0.08em] uppercase text-accent">
+        <p v-if="chartScope" class="m-0 mb-1 font-sans font-medium text-[14px] leading-none text-accent">
           {{ chartScope }}
         </p>
         <p v-if="tooThinToChart" class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">
@@ -406,14 +412,14 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       </section>
 
       <section class="py-[26px] px-4 dt:px-10 border-b border-line">
-        <h2 class="m-0 mb-[18px] font-sans font-semibold text-[21px] leading-[1.3] text-ink">Typical weekly rent</h2>
+        <h2 class="m-0 mb-[18px] heading-section">Typical weekly rent</h2>
         <dl class="m-0 flex flex-col gap-3">
           <div v-for="row in rentRows" :key="row.label" class="flex items-baseline justify-between gap-4">
             <dt class="font-sans text-[16px] leading-[1.4] text-body">
               {{ row.label }}
               <span v-if="row.counts" class="text-muted">· used for your ranking</span>
             </dt>
-            <dd class="m-0 font-mono text-[17px] text-ink">
+            <dd class="m-0 figure text-[17px] text-ink">
               {{ row.value != null ? `$${row.value}` : 'No data' }}
             </dd>
           </div>
@@ -432,7 +438,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       tabindex="0"
     >
       <section class="py-[26px] px-4 dt:px-10 border-b border-line">
-        <h2 class="m-0 mb-1 font-sans font-semibold text-[21px] leading-[1.3] text-ink">Schools</h2>
+        <h2 class="m-0 mb-1 heading-section">Schools</h2>
         <!-- The big number is for the kinds chosen, not every school, so it answers the question
              the reader actually asked. -->
         <div class="font-sans font-semibold text-[40px] leading-none text-ink tracking-[-0.02em] mb-[6px]">
@@ -471,7 +477,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
           />
         </div>
 
-        <h3 class="m-0 mb-3 font-sans font-semibold text-[19px] leading-[1.3] text-ink">
+        <h3 class="m-0 mb-3 heading-sub">
           Every school in {{ area.lga_name }}
         </h3>
         <div class="flex flex-col gap-5">
@@ -482,15 +488,15 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
             <dl class="m-0 flex flex-col gap-2">
               <div class="flex items-baseline justify-between gap-4">
                 <dt class="font-sans text-[16px] text-body">Government</dt>
-                <dd class="m-0 font-mono text-[17px] text-ink">{{ level.sectors.government }}</dd>
+                <dd class="m-0 figure text-[17px] text-ink">{{ level.sectors.government }}</dd>
               </div>
               <div class="flex items-baseline justify-between gap-4">
                 <dt class="font-sans text-[16px] text-body">Catholic</dt>
-                <dd class="m-0 font-mono text-[17px] text-ink">{{ level.sectors.catholic }}</dd>
+                <dd class="m-0 figure text-[17px] text-ink">{{ level.sectors.catholic }}</dd>
               </div>
               <div class="flex items-baseline justify-between gap-4">
                 <dt class="font-sans text-[16px] text-body">Independent</dt>
-                <dd class="m-0 font-mono text-[17px] text-ink">{{ level.sectors.independent }}</dd>
+                <dd class="m-0 figure text-[17px] text-ink">{{ level.sectors.independent }}</dd>
               </div>
             </dl>
           </div>
@@ -510,7 +516,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       tabindex="0"
     >
       <section class="py-[26px] px-4 dt:px-10 border-b border-line">
-        <h2 class="m-0 mb-1 font-sans font-semibold text-[21px] leading-[1.3] text-ink">Sport and open space</h2>
+        <h2 class="m-0 mb-1 heading-section">Sport and open space</h2>
         <p class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">
           {{ area.sport_variety }} kinds of sport have somewhere to play here, and parks cover
           {{ area.green_space_pct }}% of the area.
@@ -518,7 +524,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         <dl class="m-0 flex flex-col gap-2">
           <div v-for="sport in sportsList" :key="sport.name" class="flex items-baseline justify-between gap-4">
             <dt class="font-sans text-[16px] leading-[1.4] text-body">{{ sport.name }}</dt>
-            <dd class="m-0 font-mono text-[17px] text-ink">{{ sport.facilities }}</dd>
+            <dd class="m-0 figure text-[17px] text-ink">{{ sport.facilities }}</dd>
           </div>
         </dl>
         <button
@@ -543,19 +549,19 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       tabindex="0"
     >
       <section class="py-[26px] px-4 dt:px-10 border-b border-line">
-        <h2 class="m-0 mb-1 font-sans font-semibold text-[21px] leading-[1.3] text-ink">Getting around</h2>
+        <h2 class="m-0 mb-1 heading-section">Getting around</h2>
         <p class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">
           <template v-if="area.station_count > 0">
             {{ stationLabel(area.station_count) }} in {{ area.lga_name }}. That scores
             {{ area.ranks.transport.toFixed(1) }} out of 10 for train access, against the other 78 areas.
           </template>
           <template v-else>
-            No train stations in {{ area.lga_name }}. Getting around without a car would mean buses
-            or coaches.
+            There's no train station in {{ area.lga_name }}, so without a car you'd be getting around
+            by bus or coach. It's worth checking the routes near where you'd work or go to school.
           </template>
         </p>
         <div v-if="currentArea" class="pt-[18px] border-t border-line-soft">
-          <div class="font-mono text-[14px] leading-[1.35] text-muted mb-[6px]">
+          <div class="font-sans text-[14px] leading-[1.35] text-muted mb-[6px]">
             Where you live now, {{ currentArea.lga_name }}
           </div>
           <div class="font-sans text-[17px] leading-[1.4] text-ink">
@@ -569,7 +575,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
     </div>
 
     <section v-if="currentArea" v-show="activeTab === 'overview'" class="py-[26px] px-4 dt:px-10 bg-surface-info border-b border-line">
-      <h2 class="m-0 mb-4 font-sans font-semibold text-[21px] leading-[1.3] text-ink">
+      <h2 class="m-0 mb-4 heading-section">
         Compared with {{ currentArea.lga_name }}, where you live now
       </h2>
       <div class="overflow-x-auto">
@@ -602,7 +608,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
   </div>
 
   <div v-else class="max-w-[560px] mx-auto py-10 px-4 dt:px-6">
-    <h1 class="m-0 mb-[6px] font-sans font-semibold text-[32px] leading-[1.15] text-ink tracking-[-0.02em]">
+    <h1 class="m-0 mb-[6px] display-area">
       We can't find that area
     </h1>
     <p class="mb-6 font-sans text-[16px] leading-[1.4] text-body">The link may be out of date.</p>

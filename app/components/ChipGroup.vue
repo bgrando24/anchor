@@ -13,7 +13,7 @@ const emit = defineEmits<{ 'update:modelValue': [string] }>()
 
 <template>
   <fieldset class="m-0 p-0 border-0 min-w-0">
-    <legend class="mb-[6px] p-0 font-mono font-medium text-[13px] leading-none tracking-[0.08em] uppercase text-muted">
+    <legend class="mb-[6px] p-0 font-sans font-medium text-[15px] leading-none text-ink">
       {{ label }}
     </legend>
     <div class="flex flex-wrap gap-2">

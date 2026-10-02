@@ -41,7 +41,7 @@ const canContinue = computed(() => answers.value.currentLga != null)
 <template>
   <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-5">
     <ProgressBar :current-step="3" back-to="/bedrooms" continue-to="/schools" :continue-ready="canContinue" />
-    <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
+    <h1 class="m-0 display-question">
       Where do you live now?
     </h1>
     <p class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">
@@ -85,14 +85,15 @@ const canContinue = computed(() => answers.value.currentLga != null)
         @update:model-value="selectMatch"
       />
       <p v-else class="m-0 font-sans text-[16px] leading-[1.5] text-body break-all dt:break-words">
-        No area matches "{{ queryEcho }}". Check the spelling, or choose a region below.
+        We couldn't find "{{ queryEcho }}". Suburbs often sit inside a council with a different
+        name, so try the council, or pick a region below.
       </p>
     </template>
 
     <div class="flex flex-col gap-5">
       <div class="font-sans font-semibold text-[19px] leading-[1.3] text-ink">Or choose a region</div>
       <div v-for="group in REGION_GROUPS" :key="group.area" class="flex flex-col gap-[10px]">
-        <div class="font-mono font-medium text-[13px] leading-none tracking-[0.1em] uppercase text-muted">
+        <div class="font-sans font-medium text-[15px] leading-none text-ink">
           {{ group.area }}
         </div>
         <div class="grid grid-cols-2 gap-[10px]">
@@ -103,7 +104,7 @@ const canContinue = computed(() => answers.value.currentLga != null)
             class="min-h-[76px] px-[14px] py-3 text-left bg-surface-2 border border-line-focus rounded-md font-sans font-medium text-[17px] leading-[1.3] text-ink no-underline flex flex-col gap-[7px]"
           >
             {{ region }}
-            <span class="font-mono text-[14px] leading-none text-muted">{{ regionCount(region) }} areas</span>
+            <span class="font-sans text-[14px] leading-none text-muted">{{ regionCount(region) }} areas</span>
           </NuxtLink>
         </div>
       </div>

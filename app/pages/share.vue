@@ -50,23 +50,23 @@ onBeforeUnmount(() => {
 
     <!-- Never offer a link the decoder would reject. -->
     <template v-if="!hasAnswers">
-      <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
+      <h1 class="m-0 display-question">
         Nothing to save yet
       </h1>
       <p class="m-0 font-sans text-[17px] leading-[1.5] text-body">
-        Answer the questions first, then you can save your results.
+        Once you've answered the questions, your results will be here to copy, share or print.
       </p>
       <NuxtLink to="/income" class="btn-primary mt-2">Start</NuxtLink>
     </template>
 
     <template v-else>
-      <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
+      <h1 class="m-0 display-question">
         Save or share your results
       </h1>
       <p class="m-0 font-sans text-[17px] leading-[1.5] text-body">This link opens your results again on any device.</p>
 
       <div class="py-4 px-[18px] bg-surface-2 border border-line-strong rounded-md">
-        <div class="font-mono font-medium text-[13px] leading-none tracking-[0.1em] uppercase text-muted mb-[10px]">
+        <div class="font-sans font-medium text-[15px] leading-none text-body mb-[10px]">
           Your link
         </div>
         <div class="font-mono text-[15px] leading-[1.5] text-surface-info-text break-all">{{ link }}</div>

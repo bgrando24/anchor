@@ -3,6 +3,9 @@
 :root {
   --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  /* Headings only. Georgia is the fallback and is what renders offline, because the webfonts
+     are fetched from Google and are not in the service worker's precache. */
+  --font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
 
   --bg: #f2eee8;
   --surface: #faf8f5;

@@ -81,7 +81,7 @@ const outcome = computed(() => {
       continue-to="/priorities"
       :continue-ready="canContinue"
     />
-    <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
+    <h1 class="m-0 display-question">
       Do you have children at school?
     </h1>
     <p class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">

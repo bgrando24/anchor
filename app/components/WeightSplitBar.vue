@@ -23,7 +23,7 @@ const ROWS = computed(() => ALL_ROWS.filter((r) => props.split[r.key] > 0))
   <div class="py-[18px] px-5 bg-surface-2 border border-line rounded-md">
     <h2
       v-if="showTitle"
-      class="m-0 font-mono font-medium text-[13px] leading-none tracking-[0.1em] uppercase text-muted mb-[14px]"
+      class="m-0 font-sans font-medium text-[15px] leading-none text-body mb-[14px]"
     >
       How each area is scored
     </h2>
