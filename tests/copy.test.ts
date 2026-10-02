@@ -214,7 +214,7 @@ describe('copy mechanics', () => {
 
   it('asks about children, not the household, where it means children', () => {
     const schools = TEMPLATES.find((t) => t.path === 'app/pages/schools.vue')!.text
-    expect(schools).toContain('Do you have children at school?')
+    expect(schools).toContain('Do you have children or dependants at school?')
   })
 
   it('avoids the words that read as filler', () => {

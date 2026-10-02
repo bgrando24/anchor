@@ -20,9 +20,11 @@ const factors = computed(() => PRIORITY_FACTORS.filter((f) => f.key !== 'schools
 
 // Set once, when schools first become relevant, and left alone after that so a deliberate
 // change is not overwritten on the way back to this page.
-const presetDone = ref(false);
+// Shared state, not a component ref: this page unmounts on every navigation away, and a plain
+// ref would reset, re-fire the preset and overwrite a tier the user had deliberately changed.
+const presetDone = useState('schools-tier-preset-done', () => false);
 // watch if user changed the schools priority themselves
-const userSetSchoolsPriority = ref(false);
+const userSetSchoolsPriority = useState('schools-tier-user-set', () => false);
 
 let presetting = false;
 
@@ -62,7 +64,7 @@ const split = computed(() =>
 <template>
   <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-[22px]">
     <ProgressBar :current-step="5" back-to="/schools" continue-to="/results" continue-label="Results" />
-    <h1 class="m-0 display-question">
+    <h1 class="m-0 heading-step">
       What matters most to you?
     </h1>
     <p class="-mt-3 mb-0 font-sans text-[17px] leading-[1.5] text-body">Your answers change the order of the areas.</p>

@@ -17,7 +17,7 @@ function selectPayment(value: string | number) {
 <template>
   <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-5">
     <ProgressBar :current-step="1" back-to="/" continue-to="/bedrooms" :continue-ready="canContinue" />
-    <h1 class="m-0 display-question">
+    <h1 class="m-0 heading-step">
       Which Centrelink payment do you receive?
     </h1>
     <p class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">We use this to estimate your income.</p>

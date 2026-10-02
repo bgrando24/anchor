@@ -64,7 +64,6 @@
   .display-area,
   .display-home,
   .display-page,
-  .display-question,
   .heading-section,
   .heading-sub {
     @apply font-serif italic font-medium text-ink;
@@ -93,8 +92,14 @@
   .display-page {
     @apply text-[38px] leading-[1.08] tracking-[-0.02em] dt:text-[54px];
   }
+  /* Serif, for the pages people land on rather than work through. */
   .display-question {
-    @apply text-[32px] leading-[1.12] tracking-[-0.01em] dt:text-[46px];
+    @apply font-serif italic font-medium text-ink text-[32px] leading-[1.12] tracking-[-0.01em] dt:text-[46px];
+  }
+  /* Sans, for the questionnaire. A step is something you do, not somewhere you arrive, and the
+     plainer face reads faster when you are filling something in. */
+  .heading-step {
+    @apply font-sans font-semibold text-ink text-[28px] leading-[1.18] tracking-[-0.01em] dt:text-[34px];
   }
   .heading-section {
     @apply text-[24px] leading-[1.15] dt:text-[28px];

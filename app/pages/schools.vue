@@ -88,8 +88,8 @@ const outcome = computed(() => {
       continue-to="/priorities"
       :continue-ready="canContinue"
     />
-    <h1 class="m-0 display-question">
-      Do you have children or dependents at school?
+    <h1 class="m-0 heading-step">
+      Do you have children or dependants at school?
     </h1>
     <p class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">
       We only ask so we know whether to weigh up schools when we rank areas.
