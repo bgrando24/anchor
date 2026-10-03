@@ -311,6 +311,43 @@ export function stationLabel(n: number): string {
 }
 
 /**
+ * How an area's parkland compares with the average Greater Melbourne council area.
+ *
+ * Greater Melbourne is the benchmark for every area, Melbourne or regional, which is what the
+ * report promises the app shows.
+ *
+ * Every regional council lands below it, all forty-eight. That is largely their land area
+ * talking rather than their parks: a regional council covers so much ground that its reserves
+ * are a small share of it. The sentence says so for those areas, so a low share is not read as
+ * nowhere for children to play.
+ *
+ * The band scales with the benchmark, so a tenth of a point either side is not called a
+ * difference.
+ */
+export function parkComparison(
+  area: Pick<Lga, 'green_space_pct' | 'area'>,
+  all: Pick<Lga, 'green_space_pct' | 'area'>[]
+): { benchmark: number; direction: 'more' | 'less' | 'about the same'; sentence: string } | null {
+  const melbourne = all.filter((a) => a.area === 'Melbourne')
+  if (!melbourne.length) return null
+  const benchmark =
+    Math.round((melbourne.reduce((sum, a) => sum + a.green_space_pct, 0) / melbourne.length) * 10) / 10
+  const band = Math.max(0.3, benchmark * 0.1)
+  const diff = area.green_space_pct - benchmark
+  const direction = Math.abs(diff) < band ? 'about the same' : diff > 0 ? 'more' : 'less'
+  const against = `the ${benchmark}% of the average Greater Melbourne council area`
+  const opening =
+    direction === 'about the same' ? `That is about the same as ${against}.` : `That is ${direction} than ${against}.`
+  // Regional councils cover far more ground, so their parks are a smaller share of it whatever
+  // open space is actually around.
+  const context =
+    area.area === 'Melbourne'
+      ? ''
+      : ' Regional council areas cover much more land, so their parks are a smaller share of it.'
+  return { benchmark, direction, sentence: `${opening}${context}` }
+}
+
+/**
  * Why the two columns of the schools table do not add up to the area's total.
  *
  * A school that teaches primary and secondary is published under both, so it is counted twice

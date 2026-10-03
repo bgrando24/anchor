@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowLeft } from 'lucide-vue-next'
-import { lettingsLabel, ordinal, schoolOverlapNote, stationLabel } from '~/composables/useScoring'
+import { lettingsLabel, ordinal, parkComparison, schoolOverlapNote, stationLabel } from '~/composables/useScoring'
 import {
   areaSeries,
   BEDROOM_FILTERS,
@@ -265,6 +265,12 @@ const schoolsNote = computed(() => {
     a.school_count,
     schoolLevels.value.reduce((sum, level) => sum + level.total, 0)
   )
+})
+
+/** How this area's parkland sits against the average council area of its kind. */
+const parkNote = computed(() => {
+  const a = area.value
+  return a ? parkComparison(a, all) : null
 })
 
 useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
@@ -673,6 +679,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         <p class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">
           {{ area.sport_variety }} kinds of sport have somewhere to play here, and parks cover
           {{ area.green_space_pct }}% of the area.
+          <template v-if="parkNote">{{ parkNote.sentence }}</template>
         </p>
         <dl class="m-0 flex flex-col gap-2">
           <div v-for="sport in sportsList" :key="sport.name" class="flex items-baseline justify-between gap-4">
