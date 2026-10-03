@@ -55,7 +55,7 @@ const items = computed<FaqItem[]>(() => [
     {
         id: "privacy",
         question: "What happens to my answers?",
-        answer: "They stay in your browser. There are no accounts and nothing is sent to us. If you save a link, your answers are stored in that link.",
+        answer: "They stay in your browser. There are no accounts and nothing is sent to us. While you are answering, they are kept in this tab so refreshing the page doesn't lose your progress, and they are cleared when you close it. If you save a link, your answers are stored in that link.",
     },
     {
         id: "limits",

@@ -6,9 +6,13 @@ useHead({ title: 'Bedrooms' })
 
 definePageMeta({ layout: 'questions' })
 
-const { answers } = useAnchorState()
+const { answers, restore } = useAnchorState()
 
-onMounted(() => {
+onMounted(async () => {
+  // After the page has settled, so putting answers back cannot disagree with the prerendered
+  // HTML, and before the check, or a refresh part way through would read as never having started.
+  await nextTick()
+  restore()
   if (answers.value.paymentType == null) navigateTo('/income')
 })
 

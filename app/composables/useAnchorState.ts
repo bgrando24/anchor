@@ -1,4 +1,4 @@
-import { PAYMENT_TYPES, INCOME_BANDS, SCHOOL_LEVELS, SCHOOL_SECTORS } from '~/data/options'
+import { PAYMENT_TYPES, INCOME_BANDS, PRIORITY_TIERS, SCHOOL_LEVELS, SCHOOL_SECTORS } from '~/data/options'
 import type { SchoolLevel, SchoolSector } from '~/data/options'
 import type { PriorityTier } from '~/data/options'
 import type { Bedrooms, PriorityWeights, SchoolFilter } from './useScoring'
@@ -79,18 +79,140 @@ export function schoolsStepComplete(a: SchoolAnswers): boolean {
 
 export function useAnchorState() {
   const answers = useState<AnchorAnswers>('anchor-answers', defaultAnswers)
+  // Captured before anything renders, because by the time a prerendered page mounts the hash has
+  // been cleared, and whether a link was opened decides whether kept progress may be used at all.
+  const initialHash = useState<string>('anchor-initial-hash', () => '')
+  const restored = useState<boolean>('anchor-restored', () => false)
 
   function reset() {
     answers.value = defaultAnswers()
   }
 
+  /**
+   * Puts back what this tab was part way through. Runs once, and only after the page has
+   * hydrated: restoring before that would have the first render disagree with the prerendered
+   * HTML, which Vue then has to patch back out.
+   */
+  function restore() {
+    if (!import.meta.client || restored.value) return
+    restored.value = true
+    let saved: string | null = null
+    try {
+      saved = sessionStorage.getItem(SAVED_ANSWERS_KEY)
+    } catch {
+      // Blocked or unavailable: there is simply nothing to put back.
+    }
+    const next = answersToRestore(initialHash.value, saved)
+    if (next) answers.value = next
+  }
+
   const isComplete = computed(() => answersComplete(answers.value))
 
-  return { answers, reset, isComplete }
+  return { answers, reset, isComplete, restore, initialHash }
 }
 
 export function answersComplete(a: AnchorAnswers): boolean {
   return a.paymentType != null && a.bedrooms != null && a.currentLga != null && schoolsStepComplete(a.schools)
+}
+
+/** Where a tab's own progress is kept, so a refresh does not start the questionnaire again. */
+export const SAVED_ANSWERS_KEY = 'anchor-answers'
+
+/**
+ * What a tab keeps of its own progress.
+ *
+ * Not the link format: that one carries a finished set of answers, and its decoder rightly
+ * refuses the half-filled state someone is in while they are still answering. Loosening it to
+ * accept partial answers would weaken the check every real shared link gets.
+ */
+export function encodeSavedAnswers(a: AnchorAnswers): string {
+  return JSON.stringify({
+    paymentType: a.paymentType,
+    incomeBand: a.incomeBand,
+    bedrooms: a.bedrooms,
+    currentLga: a.currentLga,
+    schools: a.schools,
+    weights: a.weights
+  })
+}
+
+/**
+ * Reads back what a tab kept, field by field.
+ *
+ * Anything unrecognised throws the whole lot away rather than restoring someone into a state
+ * only half of which is understood: a stale shape left by an older build is exactly the case
+ * where a partial restore would be worse than starting again.
+ */
+export function parseSavedAnswers(raw: string | null | undefined): AnchorAnswers | null {
+  if (!raw) return null
+  let parsed: unknown
+  try {
+    parsed = JSON.parse(raw)
+  } catch {
+    return null
+  }
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return null
+  const saved = parsed as Record<string, unknown>
+  const next = defaultAnswers()
+
+  if (saved.paymentType != null) {
+    if (!PAYMENT_TYPES.some((p) => p.value === saved.paymentType)) return null
+    next.paymentType = saved.paymentType as string
+  }
+  if (saved.incomeBand != null) {
+    if (!INCOME_BANDS.some((b) => b.value === saved.incomeBand)) return null
+    next.incomeBand = saved.incomeBand as string
+  }
+  if (saved.bedrooms != null) {
+    if (saved.bedrooms !== 1 && saved.bedrooms !== 2 && saved.bedrooms !== 3) return null
+    next.bedrooms = saved.bedrooms as Bedrooms
+  }
+  if (saved.currentLga != null) {
+    if (typeof saved.currentLga !== 'number' || !useLgaData().byCode(saved.currentLga)) return null
+    next.currentLga = saved.currentLga
+  }
+
+  if (saved.schools != null) {
+    if (typeof saved.schools !== 'object' || Array.isArray(saved.schools)) return null
+    const schools = saved.schools as Record<string, unknown>
+    const levels = schools.levels ?? []
+    const sectors = schools.sectors ?? []
+    if (!Array.isArray(levels) || !levels.every((l) => SCHOOL_LEVELS.some((x) => x.value === l))) return null
+    if (!Array.isArray(sectors) || !sectors.every((x) => SCHOOL_SECTORS.some((y) => y.value === x))) return null
+    for (const key of ['hasKidsAtSchool', 'movingSchools'] as const) {
+      if (schools[key] != null && typeof schools[key] !== 'boolean') return null
+    }
+    next.schools = {
+      hasKidsAtSchool: (schools.hasKidsAtSchool ?? null) as boolean | null,
+      movingSchools: (schools.movingSchools ?? null) as boolean | null,
+      levels: levels as SchoolLevel[],
+      sectors: sectors as SchoolSector[]
+    }
+  }
+
+  if (saved.weights != null) {
+    if (typeof saved.weights !== 'object' || Array.isArray(saved.weights)) return null
+    const weights = saved.weights as Record<string, unknown>
+    for (const key of ['schools', 'transport', 'gp_access'] as const) {
+      const tier = weights[key]
+      if (tier == null) continue
+      if (!PRIORITY_TIERS.some((t) => t.value === tier)) return null
+      next.weights[key] = tier as PriorityTier
+    }
+  }
+
+  return next
+}
+
+/**
+ * Which answers a page should open with.
+ *
+ * A link always wins. Opening someone else's link has to show that link's answers, not whatever
+ * this tab was part way through, or the two would quietly mix.
+ */
+export function answersToRestore(hash: string | null | undefined, saved: string | null | undefined): AnchorAnswers | null {
+  if (hash) return null
+  return parseSavedAnswers(saved)
 }
 
 /** The first step the user still has to answer, used to bounce deep links back into the flow. */

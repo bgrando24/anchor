@@ -5,6 +5,8 @@ import {
   defaultAnswers,
   encodeAnswersToFragment,
   firstUnansweredStep,
+  answersToRestore,
+  encodeSavedAnswers,
   defaultSchoolAnswers,
   schoolsCode,
   schoolsFromCode,
@@ -279,5 +281,66 @@ describe('the schools step gates the flow', () => {
 
   it('asks the earlier steps first', () => {
     expect(firstUnansweredStep(answers({ bedrooms: null, schools: defaultSchoolAnswers() }))).toBe('/bedrooms')
+  })
+})
+
+describe('picking up where a tab left off', () => {
+  const partWayThrough = (): AnchorAnswers => ({
+    ...defaultAnswers(),
+    paymentType: PAYMENT_TYPES[0]!.value,
+    bedrooms: 3 as Bedrooms,
+    currentLga: CASEY
+  })
+
+  // The case the link format cannot carry, and the whole reason progress is kept separately:
+  // someone one question in has answered nothing else yet.
+  it('keeps progress from the very first answer, before anything else is chosen', () => {
+    const justStarted = { ...defaultAnswers(), paymentType: PAYMENT_TYPES[0]!.value }
+    expect(answersToRestore(null, encodeSavedAnswers(justStarted))).toEqual(justStarted)
+  })
+
+  it('restores a part-finished questionnaire', () => {
+    expect(answersToRestore(null, encodeSavedAnswers(partWayThrough()))).toEqual(partWayThrough())
+  })
+
+  // Opening someone else's link has to show that link, or the two sets of answers mix and the
+  // results belong to neither person.
+  it('lets a link win over whatever the tab was part way through', () => {
+    const mine = encodeSavedAnswers(partWayThrough())
+    const theirs = encodeAnswersToFragment({ ...partWayThrough(), currentLga: WYNDHAM })
+    expect(answersToRestore(theirs, mine)).toBeNull()
+  })
+
+  it('has nothing to restore on a first visit', () => {
+    expect(answersToRestore(null, null)).toBeNull()
+    expect(answersToRestore('', '')).toBeNull()
+  })
+
+  it('throws away anything it does not recognise rather than half-restoring it', () => {
+    const bad = [
+      'nonsense',
+      '[]',
+      '{"paymentType":"not_a_payment"}',
+      '{"bedrooms":9}',
+      '{"currentLga":99999}',
+      '{"currentLga":"21610"}',
+      '{"schools":{"levels":["kindergarten"]}}',
+      '{"schools":{"hasKidsAtSchool":"yes"}}',
+      '{"weights":{"schools":"enormously"}}'
+    ]
+    for (const saved of bad) {
+      expect(answersToRestore(null, saved), saved).toBeNull()
+    }
+  })
+
+  it('survives a round trip for every shape of answer', () => {
+    for (const schools of SCHOOL_CASES) {
+      const answers = { ...partWayThrough(), schools }
+      expect(answersToRestore(null, encodeSavedAnswers(answers))).toEqual(answers)
+    }
+  })
+
+  it('keeps nothing a first-time visitor has not chosen', () => {
+    expect(answersToRestore(null, encodeSavedAnswers(defaultAnswers()))).toEqual(defaultAnswers())
   })
 })
