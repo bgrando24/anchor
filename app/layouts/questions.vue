@@ -27,7 +27,9 @@ const frame = useQuestionFrame()
         />
       </div>
 
-      <div class="hidden dt:block dt:sticky dt:top-6">
+      <!-- Offset so the question is the first thing down the page and this column reads as the
+           record beside it. It still rises to the top once the page scrolls. -->
+      <div class="hidden dt:block dt:mt-[116px] dt:sticky dt:top-6">
         <StepList v-if="frame" :current-step="frame.currentStep" />
         <PrivacyNote class="mt-5">
           Your answers aren't sent anywhere. They're only used on this device.

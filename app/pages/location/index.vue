@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { X } from 'lucide-vue-next'
 
-useHead({ title: 'What LGA do you live in now?' })
+useHead({ title: 'What LGA (council area) do you live in?' })
 
 definePageMeta({ layout: 'questions' })
 
@@ -49,7 +49,7 @@ const canContinue = computed(() => frame.value?.continueReady ?? false)
 <template>
   <div class="flex flex-col gap-5">
     <h1 class="m-0 heading-step">
-      What LGA do you live in now?
+      What LGA (council area) do you live in?
     </h1>
     <p class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">
       This is your council, not your suburb. We'll compare other councils with this one. It
