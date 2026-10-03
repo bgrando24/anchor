@@ -38,7 +38,17 @@ describe('question frame', () => {
 
   it('holds continue shut until the step is answered', () => {
     expect(questionFrame('/income', EMPTY, null)!.continueReady).toBe(false)
-    const answered = { ...EMPTY, paymentType: 'parenting_single' } as AnchorAnswers
+    // The payment alone is not the whole step. On a phone continue sits above the other-income
+    // question, so going live on the first answer let testers past one they had not seen.
+    const payment = { ...EMPTY, paymentType: 'parenting_single' } as AnchorAnswers
+    expect(questionFrame('/income', payment, null)!.continueReady).toBe(false)
+    const both = { ...payment, incomeBand: 'none' } as AnchorAnswers
+    expect(questionFrame('/income', both, null)!.continueReady).toBe(true)
+  })
+
+  // "No other income" is an answer, not an absence of one.
+  it('counts no other income as having answered', () => {
+    const answered = { ...EMPTY, paymentType: 'parenting_single', incomeBand: 'none' } as AnchorAnswers
     expect(questionFrame('/income', answered, null)!.continueReady).toBe(true)
   })
 

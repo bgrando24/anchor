@@ -25,14 +25,19 @@ describe('the step list', () => {
   })
 
   it('marks a step done as soon as its own question is answered', () => {
-    const steps = questionSteps(answers({ paymentType: 'jobseeker' }), null)
+    const steps = questionSteps(answers({ paymentType: 'jobseeker', incomeBand: 'none' }), null)
     expect(steps[0]!.done).toBe(true)
     expect(steps[1]!.done).toBe(false)
   })
 
+  // The first step asks two things, and the second sits below the fold on a phone.
+  it('does not call the income step done on the payment alone', () => {
+    expect(questionSteps(answers({ paymentType: 'jobseeker' }), null)[0]!.done).toBe(false)
+  })
+
   it('does not call the last step done until every earlier one is', () => {
     // Its tiers always hold a value, so it has no unanswered state of its own.
-    expect(questionSteps(answers({ paymentType: 'jobseeker' }), null)[4]!.done).toBe(false)
+    expect(questionSteps(answers({ paymentType: 'jobseeker', incomeBand: 'none' }), null)[4]!.done).toBe(false)
     expect(questionSteps(complete(), 'Casey')[4]!.done).toBe(true)
   })
 

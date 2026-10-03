@@ -131,6 +131,11 @@ function isCurrent(code: number) {
             <div class="text-ink font-medium">{{ currentLgaName ?? 'Not answered' }}</div>
           </div>
         </div>
+        <!-- Said once in words, because the arrow on each row was not enough on its own. -->
+        <p class="m-0 mb-4 px-4 dt:px-10 font-sans text-[16px] leading-[1.5] text-body">
+          Choose any area to see its rents, schools, transport, sport and parks.
+        </p>
+
         <NuxtLink to="/income" class="btn-secondary w-full gap-2 mb-6">
           <Pencil :size="16" aria-hidden="true" />
           Change answers
@@ -160,11 +165,13 @@ function isCurrent(code: number) {
               <p v-if="group.note" class="mt-1 mb-0 font-sans text-[15px] leading-[1.5] text-muted">{{ group.note }}</p>
             </div>
             <ol class="list-none m-0 mx-4 dt:mx-10 p-0 rounded-[16px] bg-surface-2 border border-line overflow-hidden">
-              <li
-                v-for="r in group.rows"
-                :key="r.lga_code"
-                class="motion-colors hover:bg-surface-info py-4 px-4 dt:px-5 border-t border-line-soft first:border-t-0 grid grid-cols-[40px_minmax(0,1fr)] gap-x-3 gap-y-2 items-start dt:grid-cols-[48px_minmax(240px,1fr)_minmax(170px,auto)] dt:gap-5"
-              >
+              <li v-for="r in group.rows" :key="r.lga_code" class="border-t border-line-soft first:border-t-0">
+                <!-- The whole row is the link. Testers aimed at the card and nothing happened,
+                     because only the name itself was clickable. -->
+                <NuxtLink
+                  :to="`/results/${r.lga_code}`"
+                  class="motion-colors hover:bg-surface-info py-4 px-4 dt:px-5 grid grid-cols-[40px_minmax(0,1fr)] gap-x-3 gap-y-2 items-start dt:grid-cols-[48px_minmax(240px,1fr)_minmax(170px,auto)] dt:gap-5 no-underline text-ink focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-focus-ring focus-visible:-outline-offset-2"
+                >
                 <!-- A ring rather than a bare number, so the rank reads as a badge at a glance. -->
                 <div
                   class="w-9 h-9 dt:w-10 dt:h-10 rounded-full border-2 border-accent flex items-center justify-center figure font-bold text-[15px] text-accent"
@@ -173,17 +180,11 @@ function isCurrent(code: number) {
                 </div>
                 <div class="min-w-0">
                   <h3 class="m-0 heading-section">
-                    <!-- Not one tester realised this was a link. It was ink coloured with no
-                         underline and no marker, so it read as a heading. It now carries the
-                         accent every other link uses, says what it does, and shows an arrow. -->
-                    <NuxtLink
-                      :to="`/results/${r.lga_code}`"
-                      class="motion-colors inline-flex items-center gap-1 min-h-11 text-accent no-underline hover:underline"
-                    >
+                    <span class="inline-flex items-center gap-1 text-accent">
                       {{ r.lga_name }}
                       <ChevronRight :size="20" class="shrink-0" aria-hidden="true" />
                       <span class="visually-hidden">, see this area in full</span>
-                    </NuxtLink>
+                    </span>
                   </h3>
                   <div class="font-sans text-[14px] leading-[1.3] text-muted">{{ r.region }}</div>
                   <p
@@ -208,6 +209,7 @@ function isCurrent(code: number) {
                     Typical {{ bedrooms }}-bedroom rent: ${{ r.rentPerWeek }} a week
                   </div>
                 </div>
+                </NuxtLink>
               </li>
             </ol>
           </section>

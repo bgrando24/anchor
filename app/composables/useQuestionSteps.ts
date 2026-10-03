@@ -68,7 +68,10 @@ export function questionSteps(a: AnchorAnswers, currentAreaName: string | null):
       number: 1,
       label: 'Your income',
       path: '/income',
-      done: a.paymentType != null,
+      // Both answers, not just the payment. On a phone the continue button sits at the top, so
+      // with only the payment answered it went live while the other-income question was still
+      // below the fold and testers moved on thinking they had finished.
+      done: a.paymentType != null && a.incomeBand != null,
       answer: incomeAnswer(a)
     },
     {
