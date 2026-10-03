@@ -434,10 +434,12 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         <div class="font-sans font-medium text-[15px] leading-none text-header-cta mb-2">
           Against where you live now
         </div>
-        <h2 class="m-0 mb-4 heading-section text-header-band-text">
-          {{ area.lga_name }} vs {{ currentArea.lga_name }}
-        </h2>
-        <ul class="m-0 p-0 list-none flex flex-col gap-4">
+        <DisclosureSection
+          :title="`${area.lga_name} vs ${currentArea.lga_name}`"
+          title-class="heading-section text-header-band-text"
+          tone-class="text-header-cta"
+        >
+          <ul class="m-0 p-0 list-none flex flex-col gap-4 mt-3">
           <li v-for="row in vsRows" :key="row.key" class="flex items-start gap-3">
             <!-- The arrow only repeats the sentence, so it is hidden rather than read out. -->
             <span
@@ -457,6 +459,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
             </span>
           </li>
         </ul>
+        </DisclosureSection>
       </div>
 
       <!-- The table stays in the page as the path a screen reader follows, and the one that
@@ -492,10 +495,8 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         <div class="font-sans font-medium text-[14px] leading-none text-muted mb-2">
           Not part of the ranking
         </div>
-        <h2 class="m-0 mb-1 heading-section">
-          How young children are doing here
-        </h2>
-        <p class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">{{ aedc.sentence }}</p>
+        <DisclosureSection title="How young children are doing here">
+          <p class="m-0 mt-1 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">{{ aedc.sentence }}</p>
         <AffordabilityChart
           show-trend
           :series="aedc.shares"
@@ -508,7 +509,8 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
           years. It describes how children are doing, not how good the schools are.
           The dashed line is a straight line fitted through the collections, showing the direction
           across the whole run. {{ aedc.cohortNote }}
-        </p>
+          </p>
+        </DisclosureSection>
       </section>
       </div>
     </div>

@@ -316,3 +316,30 @@ describe('the trend sentence and the chart it sits above', () => {
     )
   })
 })
+
+describe('the sections you open when you want them', () => {
+  const source = TEMPLATES.find((t) => t.path.endsWith('DisclosureSection.vue'))!.text
+
+  it('says "Show" in words, not only an icon', () => {
+    // The same testers walked past a tab strip, so nothing here rests on noticing a chevron.
+    expect(source).toContain("open ? 'Hide' : 'Show'")
+  })
+
+  it('tells assistive software what it opens, and what state it is in', () => {
+    expect(source).toContain(':aria-expanded="open"')
+    expect(source).toContain(':aria-controls="panelId"')
+    expect(source).toContain(':id="panelId"')
+  })
+
+  // A random id differs between the server render and the client one, so the button ends up
+  // pointing at an id the panel never had.
+  it('uses an id that survives hydration', () => {
+    expect(source).toContain('useId()')
+    expect(source, 'a random id does not survive hydration').not.toMatch(/Math\.random/)
+  })
+
+  // v-if, not v-show: a chart inside a hidden parent measures its width as zero.
+  it('leaves the contents out of the page until opened', () => {
+    expect(source).toMatch(/<div v-if="open"/)
+  })
+})
