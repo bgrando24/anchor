@@ -139,11 +139,6 @@ function isCurrent(code: number) {
             <div class="text-ink font-medium">{{ currentLgaName ?? 'Not answered' }}</div>
           </div>
         </div>
-        <!-- Said once in words, because the arrow on each row was not enough on its own. -->
-        <p class="m-0 mb-4 px-4 dt:px-10 font-sans text-[16px] leading-[1.5] text-body">
-          Choose any area to see its rents, schools, transport, sport and parks.
-        </p>
-
         <NuxtLink to="/income" class="btn-secondary w-full gap-2 mb-6">
           <Pencil :size="16" aria-hidden="true" />
           Change answers
@@ -152,6 +147,18 @@ function isCurrent(code: number) {
       </aside>
 
       <main class="min-w-0">
+        <!-- Before the list, because the pattern it shows is the thing someone cannot get by
+             reading seventy-nine rows in order. In <main> rather than the sidebar beside it:
+             that sidebar is hidden on a phone, where most of this is read. -->
+        <div class="mt-6 mb-6 px-4 dt:px-10">
+          <VictoriaMap :areas="scored" :current-lga="answers.currentLga" />
+        </div>
+
+        <!-- Said once in words, because the arrow on each row was not enough on its own. -->
+        <p class="m-0 mb-4 px-4 dt:px-10 font-sans text-[16px] leading-[1.5] text-body">
+          Choose any area to see its rents, schools, transport, sport and parks.
+        </p>
+
         <p
           class="m-0 py-4 px-4 dt:px-10 font-sans text-[16px] leading-[1.5] text-body"
         >

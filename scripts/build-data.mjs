@@ -76,6 +76,56 @@ function readCoordinates(dir, name) {
   return points
 }
 
+/**
+ * The state outline, turned into one SVG path at build time.
+ *
+ * Projected here rather than in the browser so the path ships as a few kilobytes of string and
+ * the page has no projection to do. The same transform is written out beside it, because the
+ * council points have to land on the same picture.
+ *
+ * Equirectangular, with longitude squashed by the cosine of the middle latitude. Victoria is
+ * small enough that the error over its width is far under one pixel at the size this is drawn,
+ * and anything fancier would need the projection repeated in the client.
+ */
+function readOutline(dir, name) {
+  let parsed
+  try {
+    parsed = JSON.parse(readFileSync(resolve(dir, name), 'utf8'))
+  } catch (error) {
+    fail(`could not read ${name}: ${error.message}`)
+  }
+  const geometry = parsed.geometry ?? parsed.features?.[0]?.geometry
+  if (!geometry) fail(`${name} has no geometry`)
+  const rings = geometry.type === 'Polygon' ? geometry.coordinates : geometry.coordinates.flat()
+  if (!rings.length) fail(`${name} has no rings`)
+
+  let minLon = Infinity, maxLon = -Infinity, minLat = Infinity, maxLat = -Infinity
+  for (const ring of rings) {
+    for (const [lon, lat] of ring) {
+      minLon = Math.min(minLon, lon); maxLon = Math.max(maxLon, lon)
+      minLat = Math.min(minLat, lat); maxLat = Math.max(maxLat, lat)
+    }
+  }
+  const WIDTH = 1000
+  const squash = Math.cos((((minLat + maxLat) / 2) * Math.PI) / 180)
+  const scale = WIDTH / (maxLon - minLon)
+  const height = Math.round((maxLat - minLat) * scale * (1 / squash) * squash * 100) / 100
+  const x = (lon) => ((lon - minLon) * scale).toFixed(1)
+  const y = (lat) => ((maxLat - lat) * scale * squash).toFixed(1)
+
+  const path = rings
+    .map((ring) => `M${ring.map(([lon, lat]) => `${x(lon)},${y(lat)}`).join('L')}Z`)
+    .join('')
+
+  return {
+    width: WIDTH,
+    height: Math.round((maxLat - minLat) * scale * squash * 10) / 10,
+    path,
+    // What the page needs to put a point on this picture.
+    projection: { minLon, maxLat, scale: Math.round(scale * 1000) / 1000, squash: Math.round(squash * 100000) / 100000 }
+  }
+}
+
 function readJson(dir, name) {
   try {
     return JSON.parse(readFileSync(resolve(dir, name), 'utf8'))
@@ -261,6 +311,13 @@ const file = {
 }
 
 writeFileSync(OUT, JSON.stringify(file, null, 2) + '\n')
+
+const outline = readOutline(SOURCE_DIR, 'victoria_outline.geojson')
+const OUTLINE_OUT = resolve(here, '../app/data/victoria-outline.json')
+writeFileSync(OUTLINE_OUT, JSON.stringify(outline) + '\n')
+console.log(
+  `build-data: wrote the state outline (${(outline.path.length / 1024).toFixed(1)}kB of path) to app/data/victoria-outline.json`
+)
 
 const withRent = lgas.filter((l) => Object.values(l.rent).some((v) => v !== null)).length
 const withAedc = lgas.filter((l) => l.aedc).length
