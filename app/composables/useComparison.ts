@@ -21,6 +21,10 @@ export interface ComparisonRow {
 
 const NO_DATA = 'No data for one of them'
 
+// When two areas match, the headline used to read "Same as Westmeadows" — which names the other
+// area but never says what is the same, leaving a row like "2 here, 2 in Port Phillip" with no
+// subject at all. Every headline names its own measure now, matched or not.
+
 function plural(n: number, singular: string, pluralForm = `${singular}s`) {
   return `${n} ${n === 1 ? singular : pluralForm}`
 }
@@ -34,7 +38,7 @@ export function comparisonRows(area: ScoredLga, current: ScoredLga, bedrooms: nu
     key: 'rank',
     headline:
       area.rank === current.rank
-        ? `Same as ${here}`
+        ? 'Ranked the same for you'
         : area.rank < current.rank
           ? 'Ranked higher for you'
           : 'Ranked lower for you',
@@ -54,7 +58,7 @@ export function comparisonRows(area: ScoredLga, current: ScoredLga, bedrooms: nu
     const diff = area.rentPerWeek - current.rentPerWeek
     rows.push({
       key: 'rent',
-      headline: diff === 0 ? `Same as ${here}` : `$${Math.abs(diff)} a week ${diff < 0 ? 'cheaper' : 'dearer'}`,
+      headline: diff === 0 ? 'The same rent' : `$${Math.abs(diff)} a week ${diff < 0 ? 'cheaper' : 'dearer'}`,
       detail: `$${area.rentPerWeek} a week here, $${current.rentPerWeek} in ${here}`,
       direction: diff === 0 ? 'same' : diff < 0 ? 'down' : 'up'
     })
@@ -74,7 +78,7 @@ export function comparisonRows(area: ScoredLga, current: ScoredLga, bedrooms: nu
       key: 'share',
       headline:
         diff === 0
-          ? `Same as ${here}`
+          ? 'The same share of your income'
           : `${plural(Math.abs(diff), 'point')} ${diff < 0 ? 'less' : 'more'} of your income`,
       detail: `${area.rentSharePct}% here, ${current.rentSharePct}% in ${here}`,
       direction: diff === 0 ? 'same' : diff < 0 ? 'down' : 'up'
@@ -92,7 +96,9 @@ export function comparisonRows(area: ScoredLga, current: ScoredLga, bedrooms: nu
     rows.push({
       key,
       headline:
-        diff === 0 ? `Same as ${here}` : `${plural(Math.abs(diff), singular)} ${diff > 0 ? 'more' : 'fewer'}`,
+        diff === 0
+          ? `The same number of ${singular}s`
+          : `${plural(Math.abs(diff), singular)} ${diff > 0 ? 'more' : 'fewer'}`,
       detail: `${a} here, ${b} in ${here}`,
       direction: diff === 0 ? 'same' : diff > 0 ? 'up' : 'down'
     })
@@ -104,7 +110,9 @@ export function comparisonRows(area: ScoredLga, current: ScoredLga, bedrooms: nu
   rows.push({
     key: 'gp',
     headline:
-      gpHere === gpThere ? `Same as ${here}` : `${gpHere > gpThere ? 'More' : 'Fewer'} GP visits bulk-billed`,
+      gpHere === gpThere
+        ? 'GP visits bulk-billed as often'
+        : `${gpHere > gpThere ? 'More' : 'Fewer'} GP visits bulk-billed`,
     detail: `${gpHere}% here, ${gpThere}% in ${here}`,
     direction: gpHere === gpThere ? 'same' : gpHere > gpThere ? 'up' : 'down'
   })

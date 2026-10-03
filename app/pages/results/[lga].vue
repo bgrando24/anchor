@@ -491,6 +491,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         </h2>
         <p class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">{{ aedc.sentence }}</p>
         <AffordabilityChart
+          show-trend
           :series="aedc.shares"
           :labels="aedc.years"
           :description="aedc.sentence"
@@ -499,7 +500,8 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         <p class="m-0 mt-4 font-sans text-[15px] leading-[1.45] text-muted">
           From the Australian Early Development Census, which their teachers fill in every three
           years. It describes how children are doing, not how good the schools are.
-          {{ aedc.cohortNote }}
+          The dashed line is a straight line fitted through the collections, showing the direction
+          across the whole run. {{ aedc.cohortNote }}
         </p>
       </section>
       </div>
@@ -526,7 +528,13 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
           <p class="m-0 mb-1 font-sans text-[16px] leading-[1.45] text-body">
             {{ chartSentence }} {{ chartRecentSentence }}
           </p>
-          <p class="m-0 mb-[18px] font-sans text-[15px] leading-[1.45] text-muted">Each point is one quarter.</p>
+          <!-- The sentence above and the end points disagree slightly on purpose: a single quarter
+               in a small area is noisy enough to flip the direction, so each end of the sentence
+               averages a year. Saying so is what stops it reading as a mistake. -->
+          <p class="m-0 mb-[18px] font-sans text-[15px] leading-[1.45] text-muted">
+            Each point is one quarter. The sentence above averages a year at each end, so its
+            figures sit a little away from the first and last points.
+          </p>
         </template>
 
         <!-- Only the drawing waits for the quarterly series; everything around it is already

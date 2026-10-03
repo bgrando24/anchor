@@ -42,8 +42,26 @@ describe('comparing an area with where you live now', () => {
     const area = list[10]!
     const rows = comparisonRows(area, area, 2)
     for (const row of rows) {
-      expect(row.headline, row.key).toBe(`Same as ${area.lga_name}`)
-      expect(row.direction).toBe('same')
+      expect(row.direction, row.key).toBe('same')
+    }
+  })
+
+  // "Same as Port Phillip" named the other area but never what was the same, so a row reading
+  // "2 here, 2 in Port Phillip" had no subject anywhere on it.
+  it('says what is the same, not just who it is the same as', () => {
+    const list = scored()
+    const area = list[10]!
+    const expected: Record<string, string> = {
+      rank: 'Ranked the same for you',
+      rent: 'The same rent',
+      share: 'The same share of your income',
+      schools: 'The same number of schools',
+      stations: 'The same number of train stations',
+      gp: 'GP visits bulk-billed as often'
+    }
+    for (const row of comparisonRows(area, area, 2)) {
+      expect(row.headline, row.key).toBe(expected[row.key])
+      expect(row.headline, `${row.key} names the other area instead of the measure`).not.toContain(area.lga_name)
     }
   })
 

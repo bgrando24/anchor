@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { niceScale } from '~/composables/useChartScale'
+import { linearTrend, niceScale } from '~/composables/useChartScale'
 import { trendWord } from '~/composables/useAffordabilitySeries'
 
 // One series, no legend: the section title names it. The SVG is rendered at its real pixel
@@ -16,8 +16,10 @@ const props = withDefaults(
      * second one worked out from the two end quarters.
      */
     description?: string | null
+    /** Draws a straight line fitted through the points, for a run short enough to read as one. */
+    showTrend?: boolean
   }>(),
-  { labels: null, description: null }
+  { labels: null, description: null, showTrend: false }
 )
 
 const wrapper = ref<HTMLElement | null>(null)
@@ -41,7 +43,11 @@ onBeforeUnmount(() => observer?.disconnect())
 
 const plotWidth = computed(() => Math.max(60, width.value - PAD_L - PAD_R))
 
-const scale = computed(() => niceScale(props.series))
+const trend = computed(() => (props.showTrend ? linearTrend(props.series) : null))
+
+// The fitted line can sit outside the points it was fitted to, so the scale has to hold both or
+// the line leaves the plot.
+const scale = computed(() => niceScale(trend.value ? [...props.series, ...trend.value] : props.series))
 
 function xFor(i: number) {
   const n = props.series.length
@@ -55,6 +61,10 @@ function yFor(v: number) {
 
 const points = computed(() => props.series.map((v, i) => `${xFor(i).toFixed(1)},${yFor(v).toFixed(1)}`).join(' '))
 
+const trendPoints = computed(() =>
+  trend.value ? trend.value.map((v, i) => `${xFor(i).toFixed(1)},${yFor(v).toFixed(1)}`).join(' ') : ''
+)
+
 const first = computed(() => props.series[0]!)
 const last = computed(() => props.series[props.series.length - 1]!)
 const firstLabel = computed(() => props.labels?.[0] ?? '5 years ago')
@@ -64,7 +74,8 @@ const word = computed(() => trendWord(first.value, last.value))
 
 // The same two numbers the caption compares, unless the page supplied its own sentence.
 const ariaLabel = computed(() => {
-  if (props.description) return `Line chart. ${props.description}`
+  const fitted = trend.value ? ' A dashed line shows a straight line fitted through the points.' : ''
+  if (props.description) return `Line chart. ${props.description}${fitted}`
   return `Line chart. The share of new leases that were affordable ${word.value} from ${first.value.toFixed(1)}% in ${firstLabel.value} to ${last.value.toFixed(1)}% in ${lastLabel.value}.`
 })
 
@@ -102,6 +113,16 @@ function quarterLabel(i: number) {
           </template>
         </g>
 
+        <!-- Underneath the real line, so the points are never hidden by the fit. -->
+        <polyline
+          v-if="trendPoints"
+          :points="trendPoints"
+          fill="none"
+          class="stroke-muted"
+          stroke-width="2"
+          stroke-dasharray="6 5"
+          stroke-linecap="round"
+        />
         <polyline :points="points" fill="none" class="stroke-data-main" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
 
         <circle :cx="xFor(0)" :cy="yFor(first)" r="4" class="fill-data-main" />
@@ -145,12 +166,17 @@ function quarterLabel(i: number) {
       <table>
       <caption>{{ title }}</caption>
       <thead>
-        <tr><th scope="col">Quarter</th><th scope="col">Share affordable</th></tr>
+        <tr>
+          <th scope="col">Quarter</th>
+          <th scope="col">Share affordable</th>
+          <th v-if="trend" scope="col">Fitted line</th>
+        </tr>
       </thead>
       <tbody>
         <tr v-for="(v, i) in series" :key="i">
           <th scope="row">{{ quarterLabel(i) }}</th>
           <td>{{ v.toFixed(1) }}%</td>
+          <td v-if="trend">{{ trend[i]!.toFixed(1) }}%</td>
         </tr>
       </tbody>
       </table>

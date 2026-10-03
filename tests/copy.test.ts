@@ -303,3 +303,16 @@ describe('why the schools columns do not match the total', () => {
     }
   })
 })
+
+describe('the trend sentence and the chart it sits above', () => {
+  // Both ends of the sentence are a four-quarter mean, while the chart labels its first and last
+  // quarter. Ballarat reads 45.0% against a 43.8% end point, which was reported as a bug. The
+  // page has to say which is which.
+  it('says the sentence averages a year, where the chart shows single quarters', () => {
+    const page = TEMPLATES.find((t) => t.path.endsWith('results/[lga].vue'))!
+    expect(page.text).toContain('Each point is one quarter.')
+    expect(page.text, 'nothing explains why the sentence and the end points differ').toMatch(
+      /averages a year at each end/
+    )
+  })
+})
