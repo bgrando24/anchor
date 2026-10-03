@@ -66,7 +66,9 @@ function isCurrent(code: number) {
     <NuxtLink to="/income" class="btn-primary mt-2">Start</NuxtLink>
   </div>
 
-  <template v-else>
+  <!-- One element, not a fragment: a page with several roots cannot be transitioned, and
+       silently renders nothing when it is navigated away from. -->
+  <div v-else>
     <div class="on-band relative overflow-hidden bg-header-band text-header-band-text">
       <LogoMark
         :size="260"
@@ -247,5 +249,5 @@ function isCurrent(code: number) {
         </div>
       </main>
     </div>
-  </template>
+  </div>
 </template>
