@@ -68,13 +68,16 @@
 
 @layer components {
   /* The display scale. Kept here rather than spelled out per template, so it has one definition.
-     Italic is for the one hero on a page and nothing else: when the section headings carried it
-     too, every screen had five or six italic lines and testers said so. */
-  .display-area,
-  .display-home,
-  .display-page {
+
+     Italic means one thing: the name of the area being looked at. Nothing else in the app uses
+     it. It was on every hero and every section heading, which put five or six italic lines on a
+     screen and was the first thing testers said about the look. Used once, on the one word a
+     page is about, it reads as emphasis rather than as a typeface choice. */
+  .display-area {
     @apply font-serif italic font-medium text-ink;
   }
+  .display-home,
+  .display-page,
   .heading-section,
   .heading-sub {
     @apply font-serif font-medium text-ink;
@@ -105,7 +108,7 @@
   }
   /* Serif, for the pages people land on rather than work through. */
   .display-question {
-    @apply font-serif italic font-medium text-ink text-[32px] leading-[1.12] tracking-[-0.01em] dt:text-[46px];
+    @apply font-serif font-medium text-ink text-[32px] leading-[1.12] tracking-[-0.01em] dt:text-[46px];
   }
   /* Sans, for the questionnaire. A step is something you do, not somewhere you arrive, and the
      plainer face reads faster when you are filling something in. */

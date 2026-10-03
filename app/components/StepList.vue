@@ -30,9 +30,6 @@ const canReturnTo = (step: { number: number; done: boolean }) => step.done && !i
     <h2 id="step-list-heading" class="m-0 mb-3 font-sans font-semibold text-[15px] leading-[1.3] text-ink">
       Your answers so far
     </h2>
-    <!-- <p class="m-0 mb-3 font-sans text-[14px] leading-[1.4] text-muted">
-      Answer the question beside this. You can come back to any step you have finished.
-    </p> -->
     <ol class="list-none m-0 p-0 flex flex-col gap-2">
       <li v-for="step in steps" :key="step.number">
         <component

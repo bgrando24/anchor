@@ -343,3 +343,24 @@ describe('the sections you open when you want them', () => {
     expect(source).toMatch(/<div v-if="open"/)
   })
 })
+
+describe('italic', () => {
+  // Testers said there was too much of it. It now means one thing: the name of the area you are
+  // looking at. A second italic class anywhere is the drift this guards against.
+  it('is reserved for the area name and nothing else', () => {
+    const css = readFileSync('app/assets/css/main.css', 'utf8')
+    // Innermost rules only: a body that cannot contain a brace never swallows a nested rule, so
+    // this does not match the @layer wrapper the way a looser pattern did.
+    const italicRules = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)]
+      .filter((m) => /(^|[^-])\bitalic\b/.test(m[2]!))
+      .map((m) => m[1]!.replace(/\/\*[\s\S]*?\*\//g, '').trim())
+    expect(italicRules).toEqual(['.display-area'])
+  })
+
+  it('is not applied straight onto a template either', () => {
+    for (const { path, text } of TEMPLATES) {
+      // not-italic is the opposite, and is how a nested run of serif is set upright again.
+      expect(text, `${path} sets italic in the markup`).not.toMatch(/class="[^"]*(?<!not-)\bitalic\b/)
+    }
+  })
+})

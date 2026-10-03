@@ -740,7 +740,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
   </div>
 
   <div v-else class="max-w-[560px] mx-auto py-10 px-4 dt:px-6">
-    <h1 class="m-0 mb-[6px] display-area">
+    <h1 class="m-0 mb-[6px] display-page">
       We can't find that area
     </h1>
     <p class="mb-6 font-sans text-[16px] leading-[1.4] text-body">The link may be out of date.</p>
