@@ -364,3 +364,25 @@ describe('italic', () => {
     }
   })
 })
+
+describe('opening an area from the list', () => {
+  const page = TEMPLATES.find((t) => t.path.endsWith('results/index.vue'))!.text
+
+  // Testers aimed at the card and nothing happened, because only the name was a link.
+  it('makes the whole row the link', () => {
+    expect(page).toMatch(/<NuxtLink\s+:to="`\/results\/\$\{r\.lga_code\}`"/)
+  })
+
+  // A line above the list was not enough on its own: the next round of testing still asked for
+  // something saying it on the row itself.
+  it('says so on every row, not only once above the list', () => {
+    expect(page, 'no per-row cue').toContain('Click to see more')
+    expect(page, 'the line above the list went missing').toContain('Choose any area to see its')
+  })
+
+  it('never puts a link inside that link', () => {
+    const row = page.slice(page.indexOf('v-for="r in group.rows"'), page.indexOf('</ol>'))
+    const inner = row.slice(row.indexOf('<NuxtLink') + 1)
+    expect(inner, 'a nested link makes the row invalid').not.toContain('<NuxtLink')
+  })
+})

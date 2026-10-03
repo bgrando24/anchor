@@ -187,12 +187,8 @@ function isCurrent(code: number) {
                   {{ r.rank }}
                 </div>
                 <div class="min-w-0">
-                  <h3 class="m-0 heading-section">
-                    <span class="inline-flex items-center gap-1 text-accent">
-                      {{ r.lga_name }}
-                      <ChevronRight :size="20" class="shrink-0" aria-hidden="true" />
-                      <span class="visually-hidden">, see this area in full</span>
-                    </span>
+                  <h3 class="m-0 heading-section text-accent">
+                    {{ r.lga_name }}
                   </h3>
                   <div class="font-sans text-[14px] leading-[1.3] text-muted">
                     {{ r.region }}<template v-if="distanceFrom(r)"> · {{ distanceFrom(r) }}</template>
@@ -202,6 +198,10 @@ function isCurrent(code: number) {
                     class="mt-2 mb-0 font-sans text-[16px] leading-[1.5] text-body dt:max-w-[52ch]"
                   >
                     {{ rowSentence(r, scoringWeights, schoolFilter) }}
+                  </p>
+                  <p class="mt-2 mb-0 inline-flex items-center gap-1 font-sans font-medium text-[15px] leading-[1.3] text-accent">
+                    Click to see more
+                    <ChevronRight :size="18" class="shrink-0" aria-hidden="true" />
                   </p>
                   <p
                     v-if="isCurrent(r.lga_code)"
