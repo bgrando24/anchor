@@ -67,3 +67,26 @@ describe('motion', () => {
     expect(main).toMatch(/\.motion-colors,[\s\S]{0,80}\.motion-lift\s*\{\s*[\s\S]{0,120}transition:\s*none/)
   })
 })
+
+describe('the tab strip on an area page', () => {
+  const source = readFileSync('app/components/LgaTabs.vue', 'utf8')
+
+  // Missed by testers twice, so it is no longer the smallest type on the page.
+  it('is set at the size of the rest of the page', () => {
+    const size = source.match(/text-\[(\d+)px\][^"]*leading-none/)
+    expect(size, 'the tab type size is not where it was').not.toBeNull()
+    expect(Number(size![1])).toBeGreaterThanOrEqual(19)
+  })
+
+  // An older reader skips greyed text, so every label is at full contrast and the bar under the
+  // strip is what says which one is chosen. Colour alone never carried it anyway.
+  it('shows every label at full contrast, chosen or not', () => {
+    expect(source, 'an unselected tab is greyed again').not.toMatch(/text-body['"\s]/)
+    expect(source).toContain('text-ink')
+  })
+
+  it('still marks the chosen one for assistive software', () => {
+    expect(source).toContain(':aria-selected="tab.key === modelValue"')
+    expect(source).toContain('role="tab"')
+  })
+})

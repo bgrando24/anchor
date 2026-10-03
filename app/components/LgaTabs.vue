@@ -99,21 +99,23 @@ function onKeydown(event: KeyboardEvent, index: number) {
 <template>
   <div class="sticky top-0 z-20 bg-bg border-b border-line">
     <div class="relative max-w-[1160px] mx-auto">
-      <!-- The strip was missed entirely in testing. The label it already carried for screen
-           readers is on the page now, so there is something saying these are here. -->
-      <p class="m-0 pt-3 px-4 dt:px-10 font-sans font-medium text-[13px] uppercase tracking-[0.07em] text-muted">
+      <!-- The strip was missed entirely in testing, twice. It is the smallest type on a page
+           where everything else is large, which is exactly what an older reader skips over, so
+           it now matches the rest of the page and every label is at full contrast rather than
+           the unselected ones being greyed. Which one is chosen is shown by the bar under it. -->
+      <p class="m-0 pt-3 px-4 dt:px-10 font-sans font-medium text-[15px] uppercase tracking-[0.06em] text-muted">
         More about this area
       </p>
       <!-- The fades are the only sign that the row runs past the edge, so they are the one part
            that must not be decorative: each shows only while there is more that way. -->
       <div
         v-show="!atStart"
-        class="pointer-events-none absolute left-0 bottom-0 h-[52px] w-8 z-10 bg-gradient-to-r from-bg to-transparent"
+        class="pointer-events-none absolute left-0 bottom-0 h-[60px] w-8 z-10 bg-gradient-to-r from-bg to-transparent"
         aria-hidden="true"
       />
       <div
         v-show="!atEnd"
-        class="pointer-events-none absolute right-0 bottom-0 h-[52px] w-8 z-10 bg-gradient-to-l from-bg to-transparent"
+        class="pointer-events-none absolute right-0 bottom-0 h-[60px] w-8 z-10 bg-gradient-to-l from-bg to-transparent"
         aria-hidden="true"
       />
       <div
@@ -140,11 +142,8 @@ function onKeydown(event: KeyboardEvent, index: number) {
           :aria-selected="tab.key === modelValue"
           :aria-controls="`lga-panel-${tab.key}`"
           :tabindex="tab.key === modelValue ? 0 : -1"
-          class="motion-colors shrink-0 min-h-[52px] px-[18px] border-b-[3px] bg-transparent font-sans font-medium text-[17px] leading-none cursor-pointer whitespace-nowrap"
-          :class="[
-            tab.key === modelValue ? 'text-ink' : 'text-body hover:text-ink',
-            tab.key === modelValue && !measured ? 'border-accent' : 'border-transparent',
-          ]"
+          class="motion-colors shrink-0 min-h-[60px] px-5 border-b-[3px] bg-transparent font-sans font-medium text-[20px] leading-none text-ink cursor-pointer whitespace-nowrap hover:bg-surface-2"
+          :class="[tab.key === modelValue && !measured ? 'border-accent' : 'border-transparent']"
           @click="select(tab.key)"
           @keydown="onKeydown($event, index)"
         >
