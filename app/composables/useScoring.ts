@@ -309,3 +309,21 @@ export function rowSentence(
 export function stationLabel(n: number): string {
   return n === 0 ? 'No train stations' : plural(n, 'train station')
 }
+
+/**
+ * Why the two columns of the schools table do not add up to the area's total.
+ *
+ * A school that teaches primary and secondary is published under both, so it is counted twice
+ * across the columns. Someone comparing the total on the overview with the table reads that as a
+ * contradiction, which is exactly what it looks like without this.
+ *
+ * Empty where no school teaches both levels: in 12 of the 79 areas the columns really do add up
+ * to the total, and a note claiming otherwise would be the error it is meant to prevent.
+ */
+export function schoolOverlapNote(total: number, columnsTotal: number): string {
+  const both = columnsTotal - total
+  if (both <= 0) return ''
+  const subject = both === 1 ? '1 school teaches' : `${both} schools teach`
+  const pronoun = both === 1 ? 'it is counted' : 'they are counted'
+  return `${subject} both levels, so ${pronoun} in both columns. The columns add up to ${columnsTotal}, not ${total}.`
+}

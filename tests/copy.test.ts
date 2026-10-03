@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { lettingsLabel, ordinal, rowSentence, stationLabel, rankAreas } from '../app/composables/useScoring'
+import { lettingsLabel, ordinal, rowSentence, schoolOverlapNote, stationLabel, rankAreas } from '../app/composables/useScoring'
 import type { PriorityWeights, SchoolFilter } from '../app/composables/useScoring'
 import type { Lga } from '../app/composables/useLgaData'
 import lgaFile from '../app/data/lgas.json'
@@ -266,5 +266,40 @@ describe('hiding things from sight without moving the page', () => {
     expect(chart).toContain('<div class="visually-hidden">')
     expect(chart).toMatch(/<div class="visually-hidden">\s*<table>/)
     expect(chart).toContain('<caption>')
+  })
+})
+
+describe('why the schools columns do not match the total', () => {
+  it('says how many schools are counted twice, and what the columns really come to', () => {
+    expect(schoolOverlapNote(7, 9)).toBe(
+      '2 schools teach both levels, so they are counted in both columns. The columns add up to 9, not 7.'
+    )
+  })
+
+  it('agrees with itself for a single school', () => {
+    expect(schoolOverlapNote(17, 18)).toBe(
+      '1 school teaches both levels, so it is counted in both columns. The columns add up to 18, not 17.'
+    )
+  })
+
+  // 12 of the 79 areas have no school teaching both levels, and there the columns do add up to
+  // the total. Claiming a discrepancy there would be the mistake this note exists to prevent.
+  it('says nothing when the columns really do add up to the total', () => {
+    expect(schoolOverlapNote(17, 17)).toBe('')
+  })
+
+  it('matches the published figures for every area', () => {
+    for (const area of areas) {
+      const columns = (['primary', 'secondary'] as const).reduce(
+        (t, level) => t + area.schools[level].government + area.schools[level].catholic + area.schools[level].independent,
+        0
+      )
+      const note = schoolOverlapNote(area.school_count, columns)
+      if (columns === area.school_count) {
+        expect(note, `${area.lga_name} claims a gap that is not there`).toBe('')
+      } else {
+        expect(note, `${area.lga_name} has no note for a real gap`).toContain(`add up to ${columns}, not ${area.school_count}`)
+      }
+    }
   })
 })

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowLeft } from 'lucide-vue-next'
-import { lettingsLabel, ordinal, stationLabel } from '~/composables/useScoring'
+import { lettingsLabel, ordinal, schoolOverlapNote, stationLabel } from '~/composables/useScoring'
 import {
   areaSeries,
   BEDROOM_FILTERS,
@@ -255,6 +255,16 @@ const schoolLevels = computed(() => {
     ...row,
     total: row.sectors.government + row.sectors.catholic + row.sectors.independent
   }))
+})
+
+/** Why the columns do not add up to the total on the overview. Empty when they do. */
+const schoolsNote = computed(() => {
+  const a = area.value
+  if (!a) return ''
+  return schoolOverlapNote(
+    a.school_count,
+    schoolLevels.value.reduce((sum, level) => sum + level.total, 0)
+  )
 })
 
 useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
@@ -569,8 +579,18 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
     >
       <section class="py-[26px] px-4 dt:px-10 border-b border-line">
         <h2 class="m-0 mb-1 heading-section">Schools</h2>
-        <p class="m-0 mb-5 font-sans text-[16px] leading-[1.45] text-body">
+        <p class="m-0 font-sans text-[16px] leading-[1.45] text-body" :class="schoolsNote ? 'mb-3' : 'mb-5'">
           {{ area.school_count }} schools in {{ area.lga_name }}, by level and kind.
+        </p>
+
+        <!-- Above the table, because it explains a gap someone reads as a mistake the moment they
+             compare this with the total on the overview. It was under the table before, which is
+             after the point the question has already been asked. -->
+        <p
+          v-if="schoolsNote"
+          class="m-0 mb-5 py-[14px] px-4 bg-surface-info rounded-md font-sans text-[15px] leading-[1.5] text-body"
+        >
+          {{ schoolsNote }}
         </p>
 
         <!-- A table rather than a filter: six numbers at once says more than one number that
@@ -629,10 +649,6 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
 
         <p v-if="chosenSchoolsNote" class="m-0 mt-4 font-sans text-[15px] leading-[1.45] text-muted">
           {{ chosenSchoolsNote }}
-        </p>
-        <p class="m-0 mt-3 font-sans text-[15px] leading-[1.45] text-muted">
-          A school that teaches both levels is counted in both columns, so the two columns add up to
-          more than {{ area.school_count }}.
         </p>
       </section>
     </div>
