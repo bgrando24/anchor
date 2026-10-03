@@ -66,9 +66,11 @@ function isCurrent(code: number) {
     <NuxtLink to="/income" class="btn-primary mt-2">Start</NuxtLink>
   </div>
 
-  <!-- One element, not a fragment: a page with several roots cannot be transitioned, and
-       silently renders nothing when it is navigated away from. -->
   <div v-else>
+    <!-- One element, not a fragment: a page with several roots cannot be transitioned, and
+         silently renders nothing when it is navigated away from. Note this comment sits inside
+         the branch: between v-if and v-else it would separate them, and the page would be two
+         roots again in dev, where template comments are kept. -->
     <div class="on-band relative overflow-hidden bg-header-band text-header-band-text">
       <LogoMark
         :size="260"

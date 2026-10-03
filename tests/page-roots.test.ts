@@ -11,7 +11,7 @@ function walk(dir: string): string[] {
 
 const VOID_TAGS = new Set(['br', 'img', 'input', 'hr', 'meta', 'link', 'source', 'area'])
 
-/** The nodes at the top level of a template, with the branch directive each one carries. */
+/** The nodes at the top level of a template, in order, comments included. */
 function rootNodes(text: string): { tag: string; branch: string | null; children: number }[] {
   const template = text.match(/<template>([\s\S]*)<\/template>/)
   if (!template) return []
@@ -19,8 +19,14 @@ function rootNodes(text: string): { tag: string; branch: string | null; children
   const roots: { tag: string; branch: string | null; children: number }[] = []
   let depth = 0
   let open: { tag: string; branch: string | null; children: number } | null = null
-  for (const token of body.matchAll(/<(\/?)([A-Za-z][\w.-]*)([^>]*?)(\/?)>/g)) {
-    const [, close, tag, attrs, selfClose] = token as unknown as string[]
+  // Comments count: one sitting between v-if and v-else separates the two, and the page is then
+  // two roots rather than one.
+  for (const token of body.matchAll(/<!--[\s\S]*?-->|<(\/?)([A-Za-z][\w.-]*)([^>]*?)(\/?)>/g)) {
+    const [raw, close, tag, attrs, selfClose] = token as unknown as string[]
+    if (raw!.startsWith('<!--')) {
+      if (depth === 0) roots.push({ tag: '#comment', branch: null, children: 0 })
+      continue
+    }
     const isVoid = VOID_TAGS.has(tag!.toLowerCase()) || selfClose === '/'
     if (close) {
       depth -= 1
@@ -53,12 +59,28 @@ describe('page roots', () => {
   // that is how the area page went blank once the step transition was added.
   it('never leaves a page with more than one node to render', () => {
     for (const { path, roots } of PAGES) {
-      if (roots.length <= 1) continue
-      const branches = roots.map((r) => r.branch)
+      const elements = roots.filter((r) => r.tag !== '#comment')
+      if (elements.length <= 1) continue
       expect(
-        branches.every(Boolean),
-        `${path} has ${roots.length} roots (${roots.map((r) => r.tag).join(', ')}) and they are not all v-if/v-else branches, so more than one can render at once`,
+        elements.every((r) => r.branch),
+        `${path} has ${elements.length} roots (${elements.map((r) => r.tag).join(', ')}) and they are not all v-if/v-else branches, so more than one can render at once`,
       ).toBe(true)
+    }
+  })
+
+  // A comment between the branches separates them, and the page is two roots again. Production
+  // strips template comments so it still works there, which is how this got through once: it
+  // only shows in dev, where the comments are kept.
+  it('never separates a v-if from its v-else with a comment', () => {
+    for (const { path, roots } of PAGES) {
+      roots.forEach((root, i) => {
+        if (!root.branch || root.branch === 'v-if') return
+        const previous = roots[i - 1]
+        expect(
+          previous?.tag,
+          `${path} has a comment between v-if and ${root.branch}, which splits the page into two roots in dev`,
+        ).not.toBe('#comment')
+      })
     }
   })
 
