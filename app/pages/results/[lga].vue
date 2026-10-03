@@ -281,7 +281,11 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
     <!-- The arrival band. Terracotta here and navy on the list, so stepping into an area is a
          visible change of place rather than another row. -->
     <!-- Full bleed, like the header above it. Only the words inside are held to the column. -->
-    <section class="on-accent relative overflow-hidden bg-accent pt-1 pb-[52px]">
+    <!-- The card below is pulled up over this band on purpose. On a wide screen it is pulled
+         72px, which was far enough to cover all but the top few pixels of the line naming the
+         region, leaving a sliver of clipped letters showing through the card's rounded corner.
+         The band is deeper there so that line clears the card, rather than the overlap shrinking. -->
+    <section class="on-accent relative overflow-hidden bg-accent pt-1 pb-[52px] dt:pb-[88px]">
       <LogoMark
         :size="300"
         class="pointer-events-none absolute -right-12 -top-12 text-accent-band-mark opacity-40"
@@ -312,8 +316,12 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
     <div>
     <section class="relative z-10 page">
       <div class="-mt-10 dt:-mt-[72px] dt:grid dt:grid-cols-[minmax(0,1fr)_400px] dt:gap-5 dt:items-start">
+      <!-- This card is pulled up so its top half sits on the terracotta band. A tinted shadow
+           tuned for the cream page showed as a tonal step across that band, and a hard unblurred
+           layer drew a second corner curve beside the real one. Neutral, small and faint reads as
+           a shadow on either background. -->
       <div
-        class="p-5 dt:p-7 rounded-[18px] bg-surface border border-line shadow-[0_1px_0_var(--border),0_12px_26px_rgba(27,42,58,0.12)]"
+        class="p-5 dt:p-7 rounded-[18px] bg-surface border border-line shadow-[0_6px_16px_rgba(0,0,0,0.10)]"
       >
         <template v-if="area.rentSharePct != null">
           <div class="figure font-semibold text-[50px] leading-none text-ink tracking-[-0.03em]">

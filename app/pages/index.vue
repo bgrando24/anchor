@@ -31,7 +31,7 @@ const steps = [
             <!-- Lifted over the band's lower edge, so the first thing under the headline is the
                  way in rather than more reading. -->
             <div
-                class="relative z-10 -mt-10 p-5 dt:p-7 rounded-[18px] bg-surface border border-line shadow-[0_1px_0_var(--border),0_12px_26px_rgba(27,42,58,0.12)]"
+                class="relative z-10 -mt-10 p-5 dt:p-7 rounded-[18px] bg-surface border border-line shadow-[0_6px_16px_rgba(0,0,0,0.10)]"
             >
                 <ol class="m-0 p-0 list-none flex flex-col gap-4">
                     <li
