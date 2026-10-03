@@ -7,7 +7,7 @@ const { promptInstall, dismiss, isIos } = useInstallPrompt()
     <div class="w-[72px] h-[72px] rounded-2xl bg-mark-bg text-mark-text flex items-center justify-center mb-1">
       <LogoMark :size="44" />
     </div>
-    <h2 class="m-0 font-sans font-semibold text-[22px] leading-[1.25] text-ink tracking-[-0.01em]">
+    <h2 class="m-0 heading-section">
       Add Anchor to your home screen
     </h2>
 

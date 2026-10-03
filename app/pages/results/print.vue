@@ -39,7 +39,7 @@ function printPage() {
             <LogoMark :size="20" />
             <span class="font-sans font-bold text-[13px] leading-none tracking-[0.2em]">ANCHOR</span>
           </div>
-          <h1 class="m-0 font-sans font-semibold text-[26px] leading-[1.15] tracking-[-0.02em]">Your Anchor results</h1>
+          <h1 class="m-0 display-question">Your Anchor results</h1>
         </div>
       </div>
 

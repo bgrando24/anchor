@@ -9,9 +9,21 @@ export type Band = 'within' | 'stretch' | 'hard' | 'out' | 'nodata'
 
 export const BAND_ORDER: Band[] = ['within', 'stretch', 'hard', 'out', 'nodata']
 
-const TIER_WEIGHT: Record<PriorityTier, number> = { not_much: 1, somewhat: 3, a_lot: 6 }
-export const TIER_CODE: Record<PriorityTier, string> = { not_much: 'n', somewhat: 's', a_lot: 'a' }
-export const TIER_FROM_CODE: Record<string, PriorityTier> = { n: 'not_much', s: 'somewhat', a: 'a_lot' }
+/**
+ * "none" is not something the user picks. It is how the scoring says a factor does not apply at
+ * all: schools for a household with no children at school, or none who might change school. At
+ * nought points the existing proportional split hands the whole 50 to the other two factors.
+ */
+export type ScoringTier = PriorityTier | 'none'
+
+const TIER_WEIGHT: Record<ScoringTier, number> = { none: 0, not_much: 1, somewhat: 3, a_lot: 6 }
+export const TIER_CODE: Record<ScoringTier, string> = { none: 'x', not_much: 'n', somewhat: 's', a_lot: 'a' }
+export const TIER_FROM_CODE: Record<string, ScoringTier> = {
+  x: 'none',
+  n: 'not_much',
+  s: 'somewhat',
+  a: 'a_lot'
+}
 
 // Dwelling types with at least N bedrooms, so someone needing 1 can take a cheaper 2-bed flat.
 const DWELLINGS_FOR: Record<Bedrooms, (keyof LgaRent)[]> = {
@@ -28,9 +40,44 @@ const BAND_LIMITS: { limit: number; band: Band }[] = [
 ]
 
 export interface PriorityWeights {
-  schools: PriorityTier
+  schools: ScoringTier
   transport: PriorityTier
   gp_access: PriorityTier
+}
+
+export type SchoolLevelKey = 'primary' | 'secondary'
+export type SchoolSectorKey = 'government' | 'catholic' | 'independent'
+
+const ALL_SCHOOL_LEVELS: SchoolLevelKey[] = ['primary', 'secondary']
+const ALL_SCHOOL_SECTORS: SchoolSectorKey[] = ['government', 'catholic', 'independent']
+
+/** The kinds of school a household is looking for. */
+export interface SchoolFilter {
+  levels: SchoolLevelKey[]
+  sectors: SchoolSectorKey[]
+}
+
+/**
+ * How many schools in an area are of the kind this household wants.
+ *
+ * With no filter this is every school, which is what the ranking used before the questionnaire
+ * asked. A school teaching both levels is counted in each level it teaches, so choosing both
+ * levels can come to more than school_count; that is how the source counts them, and the page
+ * says so where the numbers are shown.
+ */
+export function schoolsMatching(area: Lga, filter?: SchoolFilter): number {
+  if (!filter || !filter.levels.length || !filter.sectors.length) return area.school_count
+  // Asking for every level and every kind is asking for the published total, which the source
+  // already gives without counting a combined school twice. Summing the cells instead reported
+  // 102 schools in Casey, which has 91.
+  if (filter.levels.length === ALL_SCHOOL_LEVELS.length && filter.sectors.length === ALL_SCHOOL_SECTORS.length) {
+    return area.school_count
+  }
+  let total = 0
+  for (const level of filter.levels) {
+    for (const sector of filter.sectors) total += area.schools[level][sector]
+  }
+  return total
 }
 
 /** The lowest published median among dwelling types big enough for this household. */
@@ -66,6 +113,9 @@ export function weightsCode(w: PriorityWeights): string {
 export function prioritySplit(code: string): [number, number, number] {
   const tiers = code.split('').map((c) => TIER_WEIGHT[TIER_FROM_CODE[c]!]!)
   const total = tiers.reduce((a, b) => a + b, 0)
+  // Only schools can be nought, so this cannot happen from the questionnaire; guard anyway so a
+  // hand-edited link divides by zero nowhere.
+  if (total === 0) return [0, 0, 0]
   const raw = tiers.map((t) => (t / total) * 50)
   const points = raw.map(Math.floor)
   const remainder = 50 - points.reduce((a, b) => a + b, 0)
@@ -106,10 +156,12 @@ export interface RankOptions {
   weeklyIncome: number
   bedrooms: Bedrooms
   weights: PriorityWeights
+  /** Omitted, every school counts: that is the ranking before the questionnaire asks about them. */
+  schoolFilter?: SchoolFilter
 }
 
 export function rankAreas(areas: Lga[], options: RankOptions): ScoredLga[] {
-  const { weeklyIncome, bedrooms, weights } = options
+  const { weeklyIncome, bedrooms, weights, schoolFilter } = options
   const code = weightsCode(weights)
   const [wSchools, wTransport, wGp] = prioritySplit(code)
 
@@ -124,7 +176,7 @@ export function rankAreas(areas: Lga[], options: RankOptions): ScoredLga[] {
   const hasPopulation = areas.every((a) => typeof a.population === 'number' && a.population > 0)
   const per10k = (value: number, a: Lga) => (hasPopulation ? (value / a.population!) * 10000 : value)
 
-  const schoolRanks = percentileRank(areas.map((a) => per10k(a.school_count, a)))
+  const schoolRanks = percentileRank(areas.map((a) => per10k(schoolsMatching(a, schoolFilter), a)))
   const stationRanks = percentileRank(areas.map((a) => per10k(a.station_count, a)))
   const gpRanks = percentileRank(areas.map((a) => a.bulk_billing_rate))
 
@@ -186,11 +238,20 @@ export function bedroomWord(bedrooms: Bedrooms): string {
   return `${bedrooms}-bedroom`
 }
 
-/** 0 and 100 read as words; everything else as "About 1 in n". */
+/**
+ * Plain English for a share of new leases. "1 in n" only reads correctly while n is 3 or more:
+ * above a third it rounds to "1 in 1", which told people 94.7% was all of them. Past that point
+ * the share is counted in tens instead.
+ */
 export function lettingsLabel(pct: number): string {
   if (pct <= 0) return 'None'
   if (pct >= 100) return 'All'
-  return `About 1 in ${Math.max(1, Math.round(100 / pct))}`
+  if (pct >= 95) return 'Almost all'
+  if (pct > 100 / 3) {
+    if (pct >= 45 && pct <= 55) return 'About half'
+    return `About ${Math.round(pct / 10)} in 10`
+  }
+  return `About 1 in ${Math.round(100 / pct)}`
 }
 
 const HIGH = 20 / 3 // top third of the ranked areas
@@ -204,7 +265,11 @@ function plural(n: number, word: string) {
  * At most one sentence, about a factor the user rated "A lot" (else "Somewhat"), picking the
  * factor where this area sits furthest from the middle. Nothing for the middle third.
  */
-export function rowSentence(area: ScoredLga, weights: PriorityWeights): string | null {
+export function rowSentence(
+  area: ScoredLga,
+  weights: PriorityWeights,
+  schoolFilter?: SchoolFilter
+): string | null {
   const tier: PriorityTier = (['schools', 'transport', 'gp_access'] as const).some((k) => weights[k] === 'a_lot')
     ? 'a_lot'
     : (['schools', 'transport', 'gp_access'] as const).some((k) => weights[k] === 'somewhat')
@@ -221,8 +286,11 @@ export function rowSentence(area: ScoredLga, weights: PriorityWeights): string |
       const low = rank <= LOW
       let text: string | null = null
       if (key === 'schools') {
-        if (high) text = `More schools than most areas (${area.school_count}).`
-        else if (low) text = `Fewer schools than most areas (${area.school_count}).`
+        // The count quoted has to be the one the rank was worked out from, not every school in
+        // the area, or the number contradicts the position it is explaining.
+        const schools = schoolsMatching(area, schoolFilter)
+        if (high) text = `More schools than most areas (${schools}).`
+        else if (low) text = `Fewer schools than most areas (${schools}).`
       } else if (key === 'transport') {
         if (high) text = `More train stations than most areas (${area.station_count}).`
         else if (low) text = area.station_count === 0 ? 'No train stations.' : `Fewer train stations than most areas (${area.station_count}).`
@@ -240,4 +308,85 @@ export function rowSentence(area: ScoredLga, weights: PriorityWeights): string |
 
 export function stationLabel(n: number): string {
   return n === 0 ? 'No train stations' : plural(n, 'train station')
+}
+
+/**
+ * How an area's parkland compares with the average Greater Melbourne council area.
+ *
+ * Greater Melbourne is the benchmark for every area, Melbourne or regional, which is what the
+ * report promises the app shows.
+ *
+ * Every regional council lands below it, all forty-eight. That is largely their land area
+ * talking rather than their parks: a regional council covers so much ground that its reserves
+ * are a small share of it. The sentence says so for those areas, so a low share is not read as
+ * nowhere for children to play.
+ *
+ * The band scales with the benchmark, so a tenth of a point either side is not called a
+ * difference.
+ */
+export function parkComparison(
+  area: Pick<Lga, 'green_space_pct' | 'area'>,
+  all: Pick<Lga, 'green_space_pct' | 'area'>[]
+): { benchmark: number; direction: 'more' | 'less' | 'about the same'; sentence: string } | null {
+  const melbourne = all.filter((a) => a.area === 'Melbourne')
+  if (!melbourne.length) return null
+  const benchmark =
+    Math.round((melbourne.reduce((sum, a) => sum + a.green_space_pct, 0) / melbourne.length) * 10) / 10
+  const band = Math.max(0.3, benchmark * 0.1)
+  const diff = area.green_space_pct - benchmark
+  const direction = Math.abs(diff) < band ? 'about the same' : diff > 0 ? 'more' : 'less'
+  const against = `the ${benchmark}% of the average Greater Melbourne council area`
+  const opening =
+    direction === 'about the same' ? `That is about the same as ${against}.` : `That is ${direction} than ${against}.`
+  // Regional councils cover far more ground, so their parks are a smaller share of it whatever
+  // open space is actually around.
+  const context =
+    area.area === 'Melbourne'
+      ? ''
+      : ' Regional council areas cover much more land, so their parks are a smaller share of it.'
+  return { benchmark, direction, sentence: `${opening}${context}` }
+}
+
+/**
+ * Why the two columns of the schools table do not add up to the area's total.
+ *
+ * A school that teaches primary and secondary is published under both, so it is counted twice
+ * across the columns. Someone comparing the total on the overview with the table reads that as a
+ * contradiction, which is exactly what it looks like without this.
+ *
+ * Empty where no school teaches both levels: in 12 of the 79 areas the columns really do add up
+ * to the total, and a note claiming otherwise would be the error it is meant to prevent.
+ */
+export function schoolOverlapNote(total: number, columnsTotal: number): string {
+  const both = columnsTotal - total
+  if (both <= 0) return ''
+  const subject = both === 1 ? '1 school teaches' : `${both} schools teach`
+  const pronoun = both === 1 ? 'it is counted' : 'they are counted'
+  return `${subject} both levels, so ${pronoun} in both columns. The columns add up to ${columnsTotal}, not ${total}.`
+}
+
+/**
+ * How far apart two council areas are, centre to centre, in kilometres.
+ *
+ * These are geometric centres of the council boundary, not where people live. Mildura's sits
+ * about 48km from the township, out in the mallee, and the same is true of any large rural
+ * council. So this answers "roughly how far across the state is it", never "how far would I
+ * drive", and the wording around it has to say so.
+ */
+export function distanceKm(a: Pick<Lga, 'lat' | 'lon'>, b: Pick<Lga, 'lat' | 'lon'>): number {
+  const EARTH_KM = 6371
+  const rad = (deg: number) => (deg * Math.PI) / 180
+  const dLat = rad(b.lat - a.lat)
+  const dLon = rad(b.lon - a.lon)
+  const h =
+    Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLon / 2) ** 2
+  return 2 * EARTH_KM * Math.asin(Math.sqrt(h))
+}
+
+/** Rounded the way it is said aloud, and never to a precision the centres do not support. */
+export function distanceLabel(km: number): string {
+  if (km < 1) return 'Same centre'
+  if (km < 10) return `${Math.round(km)} km away`
+  if (km < 100) return `${Math.round(km / 5) * 5} km away`
+  return `${Math.round(km / 10) * 10} km away`
 }

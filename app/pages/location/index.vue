@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { X } from 'lucide-vue-next'
 
-useHead({ title: 'Where do you live now?' })
+useHead({ title: 'What LGA (council area) do you live in?' })
 
-const { answers } = useAnchorState()
+definePageMeta({ layout: 'questions' })
+
+const { answers, restore } = useAnchorState()
 const { search, regionCount } = useLgaData()
 
-onMounted(() => {
+onMounted(async () => {
+  // After the page has settled, so putting answers back cannot disagree with the prerendered
+  // HTML, and before the check, or a refresh part way through would read as never having started.
+  await nextTick()
+  restore()
   if (answers.value.paymentType == null) navigateTo('/income')
   else if (answers.value.bedrooms == null) navigateTo('/bedrooms')
 })
@@ -27,23 +33,40 @@ function clearSearch() {
   query.value = ''
 }
 
-const canContinue = computed(() => answers.value.currentLga != null)
+// A pasted address or a long run of letters has nothing to wrap on, so the "no match" line
+// used to push the page sideways. Break it anywhere, and don't echo more than a name's worth.
+const MAX_ECHO = 48
+const queryEcho = computed(() => {
+  const q = query.value.trim()
+  return q.length > MAX_ECHO ? `${q.slice(0, MAX_ECHO)}\u2026` : q
+})
+
+// Same readiness the step row uses, so the two buttons can never disagree.
+const frame = useQuestionFrame()
+const canContinue = computed(() => frame.value?.continueReady ?? false)
 </script>
 
 <template>
-  <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-5">
-    <ProgressBar :current-step="3" back-to="/bedrooms" />
-    <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
-      Where do you live now?
+  <div class="flex flex-col gap-5">
+    <h1 class="m-0 heading-step">
+      What LGA (council area) do you live in?
     </h1>
     <p class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">
-      We'll compare other areas with this one. It doesn't change the ranking.
+      This is your council, not your suburb. We'll compare other councils with this one. It
+      doesn't change the ranking.
+      <NuxtLink to="/faq#current-area" class="inline-flex items-center min-h-11">Why do we ask this?</NuxtLink>
     </p>
 
     <div class="flex flex-col gap-2">
       <label for="area-search" class="font-sans font-medium text-[16px] leading-[1.4] text-ink">
-        Search for your area
+        Search for your council
       </label>
+      <!-- Every tester typed their suburb. The council name is often nothing like it, so the
+           difference is spelled out before they type rather than in the empty state afterwards. -->
+      <p class="m-0 font-sans text-[15px] leading-[1.45] text-muted">
+        Councils cover several suburbs and are usually named differently. If you aren't sure of
+        yours, pick your region below instead.
+      </p>
       <!-- The wrapper carries the focus ring, because the input itself is borderless. -->
       <div
         class="min-h-[56px] px-[18px] bg-surface-2 border border-line-focus rounded-md flex items-center justify-between gap-2 has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-focus-ring has-[:focus-visible]:outline-offset-2"
@@ -53,7 +76,7 @@ const canContinue = computed(() => answers.value.currentLga != null)
           v-model="query"
           type="text"
           class="flex-1 min-w-0 border-none bg-transparent font-sans text-[18px] leading-none text-ink min-h-11 focus:outline-none"
-          placeholder="Type an area name"
+          placeholder="Type a council name"
           autocomplete="off"
         />
         <button v-if="query" type="button" class="icon-button text-body" aria-label="Clear search" @click="clearSearch">
@@ -75,15 +98,16 @@ const canContinue = computed(() => answers.value.currentLga != null)
         :model-value="answers.currentLga"
         @update:model-value="selectMatch"
       />
-      <p v-else class="m-0 font-sans text-[16px] leading-[1.5] text-body">
-        No area matches "{{ query.trim() }}". Check the spelling, or choose a region below.
+      <p v-else class="m-0 font-sans text-[16px] leading-[1.5] text-body break-all dt:break-words">
+        We couldn't find "{{ queryEcho }}". Suburbs often sit inside a council with a different
+        name, so try the council, or pick a region below.
       </p>
     </template>
 
     <div class="flex flex-col gap-5">
-      <div class="font-sans font-semibold text-[19px] leading-[1.3] text-ink">Or choose a region</div>
+      <h2 class="m-0 heading-sub">Or choose a region</h2>
       <div v-for="group in REGION_GROUPS" :key="group.area" class="flex flex-col gap-[10px]">
-        <div class="font-mono font-medium text-[13px] leading-none tracking-[0.1em] uppercase text-muted">
+        <div class="font-sans font-medium text-[15px] leading-none text-ink">
           {{ group.area }}
         </div>
         <div class="grid grid-cols-2 gap-[10px]">
@@ -91,17 +115,17 @@ const canContinue = computed(() => answers.value.currentLga != null)
             v-for="region in group.regions"
             :key="region"
             :to="{ path: '/location/area', query: { region } }"
-            class="min-h-[76px] px-[14px] py-3 text-left bg-surface-2 border border-line-focus rounded-md font-sans font-medium text-[17px] leading-[1.3] text-ink no-underline flex flex-col gap-[7px]"
+            class="motion-lift min-h-[76px] px-4 py-3 text-left bg-surface-2 border border-line rounded-[14px] font-sans font-medium text-[17px] leading-[1.3] text-ink no-underline flex flex-col gap-[7px]"
           >
             {{ region }}
-            <span class="font-mono text-[14px] leading-none text-muted">{{ regionCount(region) }} areas</span>
+            <span class="font-sans text-[14px] leading-none text-muted">{{ regionCount(region) }} areas</span>
           </NuxtLink>
         </div>
       </div>
     </div>
 
     <NuxtLink
-      to="/priorities"
+      to="/schools"
       class="btn-primary"
       :class="{ 'opacity-50 pointer-events-none': !canContinue }"
       :aria-disabled="!canContinue"
@@ -109,5 +133,5 @@ const canContinue = computed(() => answers.value.currentLga != null)
     >
       Continue
     </NuxtLink>
-  </main>
+  </div>
 </template>

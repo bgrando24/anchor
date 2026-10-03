@@ -1,6 +1,8 @@
 <script setup lang="ts">
 useHead({ title: 'Which area do you live in?' })
 
+definePageMeta({ layout: 'questions' })
+
 const route = useRoute()
 const { answers } = useAnchorState()
 const { byRegion } = useLgaData()
@@ -14,24 +16,19 @@ function selectArea(code: string | number) {
   answers.value.currentLga = Number(code)
 }
 
-const canContinue = computed(() => answers.value.currentLga != null)
+// Same readiness the step row uses, so the two buttons can never disagree.
+const frame = useQuestionFrame()
+const canContinue = computed(() => frame.value?.continueReady ?? false)
 </script>
 
 <template>
-  <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-[18px]">
-    <ProgressBar :current-step="3" back-to="/location" />
+  <div class="flex flex-col gap-5">
 
-    <NuxtLink
-      to="/location"
-      class="inline-flex items-center gap-2 self-start min-h-11 py-2 px-[14px] bg-surface-info rounded-full font-sans font-medium text-[15px] leading-none text-surface-info-text no-underline"
-    >
-      <template v-if="region">{{ region }} · Change</template>
-      <template v-else>Choose a region</template>
-    </NuxtLink>
-    <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
-      Which area do you live in?
-    </h1>
-
+    <h1 class="m-0 heading-step">Which area do you live in?</h1>
+    <p v-if="region" class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">
+      Showing areas in {{ region }}.
+    </p>
+    
     <RadioGroup
       v-if="areas.length"
       name="area-choice"
@@ -46,7 +43,7 @@ const canContinue = computed(() => answers.value.currentLga != null)
     </p>
 
     <NuxtLink
-      to="/priorities"
+      to="/schools"
       class="btn-primary"
       :class="{ 'opacity-50 pointer-events-none': !canContinue }"
       :aria-disabled="!canContinue"
@@ -54,5 +51,5 @@ const canContinue = computed(() => answers.value.currentLga != null)
     >
       Continue
     </NuxtLink>
-  </main>
+  </div>
 </template>

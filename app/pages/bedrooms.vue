@@ -4,13 +4,21 @@ import type { Bedrooms } from '~/composables/useScoring'
 
 useHead({ title: 'Bedrooms' })
 
-const { answers } = useAnchorState()
+definePageMeta({ layout: 'questions' })
 
-onMounted(() => {
+const { answers, restore } = useAnchorState()
+
+onMounted(async () => {
+  // After the page has settled, so putting answers back cannot disagree with the prerendered
+  // HTML, and before the check, or a refresh part way through would read as never having started.
+  await nextTick()
+  restore()
   if (answers.value.paymentType == null) navigateTo('/income')
 })
 
-const canContinue = computed(() => answers.value.bedrooms != null)
+// Same readiness the step row uses, so the two buttons can never disagree.
+const frame = useQuestionFrame()
+const canContinue = computed(() => frame.value?.continueReady ?? false)
 
 function selectBedrooms(value: string | number) {
   answers.value.bedrooms = Number(value) as Bedrooms
@@ -18,9 +26,8 @@ function selectBedrooms(value: string | number) {
 </script>
 
 <template>
-  <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-5">
-    <ProgressBar :current-step="2" back-to="/income" />
-    <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
+  <div class="flex flex-col gap-5">
+    <h1 class="m-0 heading-step">
       How many bedrooms do you need?
     </h1>
     <p class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">
@@ -44,5 +51,5 @@ function selectBedrooms(value: string | number) {
     >
       Continue
     </NuxtLink>
-  </main>
+  </div>
 </template>

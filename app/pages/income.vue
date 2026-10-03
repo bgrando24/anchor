@@ -3,9 +3,13 @@ import { PAYMENT_TYPES, INCOME_BANDS } from '~/data/options'
 
 useHead({ title: 'Your Centrelink payment' })
 
+definePageMeta({ layout: 'questions' })
+
 const { answers } = useAnchorState()
 
-const canContinue = computed(() => !!answers.value.paymentType)
+// Same readiness the step row uses, so the two buttons can never disagree.
+const frame = useQuestionFrame()
+const canContinue = computed(() => frame.value?.continueReady ?? false)
 
 const paymentOptions = computed(() => PAYMENT_TYPES.map((p) => ({ value: p.value, label: p.label })))
 
@@ -15,16 +19,15 @@ function selectPayment(value: string | number) {
 </script>
 
 <template>
-  <main class="max-w-[560px] mx-auto px-4 dt:px-6 pt-5 pb-10 flex flex-col gap-5">
-    <ProgressBar :current-step="1" back-to="/" />
-    <h1 class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]">
-      Which Centrelink payment do you get?
+  <div class="flex flex-col gap-5">
+    <h1 class="m-0 heading-step">
+      Which Centrelink payment do you receive?
     </h1>
     <p class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">We use this to estimate your income.</p>
 
     <RadioGroup
       name="payment-type"
-      legend="Which Centrelink payment do you get?"
+      legend="Which Centrelink payment do you receive?"
       :options="paymentOptions"
       :model-value="answers.paymentType"
       @update:model-value="selectPayment"
@@ -33,7 +36,7 @@ function selectPayment(value: string | number) {
       <NuxtLink to="/faq#payments" class="inline-flex items-center min-h-11">Why only these payments?</NuxtLink>
     </p>
 
-    <div class="flex flex-col gap-1">
+    <div class="flex flex-col gap-1 p-5 rounded-[16px] bg-surface-2 border border-line">
       <label for="income-band" class="font-sans font-semibold text-[19px] leading-[1.3] text-ink">
         Do you have any other income?
       </label>
@@ -46,9 +49,9 @@ function selectPayment(value: string | number) {
       </select>
     </div>
 
-    <div class="py-[18px] px-5 bg-surface-info rounded-md font-sans text-[16px] leading-[1.5] text-body">
+    <PrivacyNote class="dt:hidden">
       Your answers aren't sent anywhere. They're only used on this device.
-    </div>
+    </PrivacyNote>
 
     <NuxtLink
       to="/bedrooms"
@@ -59,5 +62,5 @@ function selectPayment(value: string | number) {
     >
       Continue
     </NuxtLink>
-  </main>
+  </div>
 </template>

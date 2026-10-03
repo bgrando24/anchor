@@ -12,6 +12,7 @@ const STATIC_ROUTES = [
   "/bedrooms",
   "/location",
   "/location/area",
+  "/schools",
   "/priorities",
   "/results",
   "/results/print",
@@ -24,6 +25,10 @@ const STATIC_ROUTES = [
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
+  // Dev over TLS, so a secure origin is available locally. Needs a certificate pair, which is
+  // untracked: run `mkcert localhost` in the repo root to make one. Cloudflare terminates TLS
+  // for the deployed site, so this is dev only.
+  devServer: { https: { key: "localhost-key.pem", cert: "localhost.pem" } },
   modules: ["@vite-pwa/nuxt"],
   css: ["~/assets/css/main.css"],
   vite: {
@@ -40,6 +45,12 @@ export default defineNuxtConfig({
     },
   },
   app: {
+    // Moving within a section changes only the page, and the frame around it stays mounted, so
+    // this fades the content alone: the header, progress bar and step list hold still.
+    pageTransition: { name: "question", mode: "out-in" },
+    // Crossing between sections changes the layout, and that is the one place the whole screen
+    // should turn over. Opacity and transform only, so nothing reflows mid-change.
+    layoutTransition: { name: "screen", mode: "out-in" },
     head: {
       meta: [
         {
@@ -52,15 +63,14 @@ export default defineNuxtConfig({
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
         { rel: "apple-touch-icon", href: "/icons/apple-touch-icon.png" },
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        // The typefaces are served from this site, so there is nothing to preconnect to and
+        // nothing to fetch from another origin. See the @font-face block in tokens.css.
         {
-          rel: "preconnect",
-          href: "https://fonts.gstatic.com",
+          rel: "preload",
+          as: "font",
+          type: "font/woff2",
+          href: "/fonts/plex-sans-var.woff2",
           crossorigin: "anonymous",
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap",
         },
       ],
     },

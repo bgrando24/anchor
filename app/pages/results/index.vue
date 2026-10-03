@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { Pencil } from 'lucide-vue-next'
+import { ChevronRight, Pencil } from 'lucide-vue-next'
 import { PAYMENT_TYPES, INCOME_BANDS, BEDROOM_OPTIONS } from '~/data/options'
-import { BAND_ORDER, rowSentence, type Band } from '~/composables/useScoring'
+import { BAND_ORDER, distanceKm, distanceLabel, rowSentence, type Band, type ScoredLga } from '~/composables/useScoring'
 
 definePageMeta({ layout: 'results' })
 useHead({ title: '79 areas, ranked for you' })
 
 useFragmentSync()
 
-const { answers, scored, bedrooms } = useResults()
+const { answers, scored, bedrooms, scoringWeights, schoolFilter } = useResults()
 const { byCode } = useLgaData()
 
 const hasAnswers = computed(() => answersComplete(answers.value))
@@ -50,6 +50,14 @@ const answersSummary = computed(() =>
     .join(' · ')
 )
 
+/** How far an area is from the one they live in now. Empty when they have not told us one. */
+function distanceFrom(area: ScoredLga) {
+  const code = answers.value.currentLga
+  if (code == null || code === area.lga_code) return ''
+  const home = byCode(code)
+  return home ? distanceLabel(distanceKm(area, home)) : ''
+}
+
 function isCurrent(code: number) {
   return answers.value.currentLga === code
 }
@@ -57,22 +65,30 @@ function isCurrent(code: number) {
 
 <template>
   <div v-if="!hasAnswers" class="max-w-[560px] mx-auto px-4 dt:px-6 pt-10 pb-12 flex flex-col gap-4">
-    <h1 class="m-0 font-sans font-semibold text-[30px] leading-[1.2] text-ink tracking-[-0.02em]">
+    <h1 class="m-0 display-page">
       Answer a few questions first
     </h1>
     <p class="m-0 font-sans text-[17px] leading-[1.55] text-body">
-      We need your payment, bedrooms and area to rank the areas for you.
+      Your results will appear here. Answer a few short questions and we'll rank all 79 areas for you.
     </p>
     <NuxtLink to="/income" class="btn-primary mt-2">Start</NuxtLink>
   </div>
 
-  <template v-else>
-    <div class="on-band bg-header-band text-header-band-text">
+  <div v-else>
+    <!-- One element, not a fragment: a page with several roots cannot be transitioned, and
+         silently renders nothing when it is navigated away from. Note this comment sits inside
+         the branch: between v-if and v-else it would separate them, and the page would be two
+         roots again in dev, where template comments are kept. -->
+    <div class="on-band relative overflow-hidden bg-header-band text-header-band-text">
+      <LogoMark
+        :size="260"
+        class="pointer-events-none absolute -right-10 -top-12 text-header-chip-bg opacity-70"
+      />
       <div
-        class="max-w-[1280px] mx-auto px-4 dt:px-10 pb-[18px] dt:pb-[22px] flex flex-col gap-4 dt:flex-row dt:items-start dt:justify-between dt:gap-8"
+        class="relative page pb-[18px] dt:pb-[22px] flex flex-col gap-4 dt:flex-row dt:items-start dt:justify-between dt:gap-8"
       >
         <div class="flex flex-col gap-2 min-w-0">
-          <h1 class="m-0 font-sans font-semibold text-[26px] leading-[1.25] tracking-[-0.01em]">
+          <h1 class="m-0 display-question">
             79 areas, ranked for you
           </h1>
           <p class="m-0 font-sans text-[16px] leading-[1.5] text-header-band-body dt:max-w-[60ch]">
@@ -92,7 +108,7 @@ function isCurrent(code: number) {
           </NuxtLink>
           <NuxtLink
             to="/share"
-            class="btn-secondary min-h-11 bg-transparent border-header-chip-outline text-header-chip-text text-[15px]"
+            class="btn-secondary min-h-11 bg-header-cta border-header-cta text-on-header-cta font-semibold text-[15px]"
           >
             Save or share
           </NuxtLink>
@@ -100,9 +116,9 @@ function isCurrent(code: number) {
       </div>
     </div>
 
-    <div class="max-w-[1280px] mx-auto grid grid-cols-1 dt:grid-cols-[280px_minmax(0,1fr)]">
+    <div class="max-w-[1160px] mx-auto grid grid-cols-1 dt:grid-cols-[280px_minmax(0,1fr)]">
       <aside class="hidden dt:block dt:py-[34px] dt:px-7 dt:border-r dt:border-line dt:bg-surface-2">
-        <h2 class="font-mono font-medium text-[12px] leading-none tracking-[0.12em] uppercase text-muted mb-4">
+        <h2 class="font-sans font-medium text-[15px] leading-none text-body mb-4">
           Your answers
         </h2>
         <div class="flex flex-col gap-[18px] font-sans text-[16px] leading-[1.4] mb-6">
@@ -131,15 +147,27 @@ function isCurrent(code: number) {
       </aside>
 
       <main class="min-w-0">
+        <!-- Before the list, because the pattern it shows is the thing someone cannot get by
+             reading seventy-nine rows in order. In <main> rather than the sidebar beside it:
+             that sidebar is hidden on a phone, where most of this is read. -->
+        <div class="mt-6 mb-6 px-4 dt:px-10">
+          <VictoriaMap :areas="scored" :current-lga="answers.currentLga" />
+        </div>
+
+        <!-- Said once in words, because the arrow on each row was not enough on its own. -->
+        <p class="m-0 mb-4 px-4 dt:px-10 font-sans text-[16px] leading-[1.5] text-body">
+          Choose any area to see its rents, schools, transport, sport and parks.
+        </p>
+
         <p
-          class="m-0 py-4 px-4 dt:px-10 bg-banner-bg border-b border-banner-border font-sans text-[16px] leading-[1.5] text-banner-text"
+          class="m-0 py-4 px-4 dt:px-10 font-sans text-[16px] leading-[1.5] text-body"
         >
-          Rankings are based on public data. Only you know which areas suit your family.
+          Rankings are based on public data. Please consider your own individual circumstances when making any decisions.
         </p>
 
         <p
           v-if="noneWithin"
-          class="m-0 py-4 px-4 dt:px-10 border-b border-line-soft font-sans text-[16px] leading-[1.5] text-body"
+          class="m-0 py-4 px-4 bg-banner-bg border-b border-banner-border dt:px-10 font-sans text-[16px] leading-[1.5] text-banner-text"
         >
           No area has a typical {{ bedrooms }}-bedroom rent under 30% of your income. The areas closest to it are
           listed first.
@@ -148,31 +176,39 @@ function isCurrent(code: number) {
         <div v-if="!tableView">
           <section v-for="group in bands" :key="group.band">
             <div class="pt-6 pb-2 px-4 dt:px-10">
-              <h2 class="m-0 font-sans font-semibold text-[19px] leading-[1.3] text-ink">{{ group.heading }}</h2>
+              <h2 class="m-0 heading-sub">{{ group.heading }}</h2>
               <p v-if="group.note" class="mt-1 mb-0 font-sans text-[15px] leading-[1.5] text-muted">{{ group.note }}</p>
             </div>
-            <ol class="list-none m-0 p-0">
-              <li
-                v-for="r in group.rows"
-                :key="r.lga_code"
-                class="py-4 px-4 dt:px-10 border-t border-line-soft grid grid-cols-[34px_minmax(0,1fr)] gap-x-3 gap-y-2 items-start dt:grid-cols-[44px_minmax(240px,1fr)_minmax(170px,auto)] dt:gap-5"
-              >
-                <div class="font-mono font-medium text-[20px] leading-[1.3] text-data-main">{{ r.rank }}</div>
+            <ol class="list-none m-0 mx-4 dt:mx-10 p-0 rounded-[16px] bg-surface-2 border border-line overflow-hidden">
+              <li v-for="r in group.rows" :key="r.lga_code" class="border-t border-line-soft first:border-t-0">
+                <!-- The whole row is the link. Testers aimed at the card and nothing happened,
+                     because only the name itself was clickable. -->
+                <NuxtLink
+                  :to="`/results/${r.lga_code}`"
+                  class="motion-colors hover:bg-surface-info py-4 px-4 dt:px-5 grid grid-cols-[40px_minmax(0,1fr)] gap-x-3 gap-y-2 items-start dt:grid-cols-[48px_minmax(240px,1fr)_minmax(170px,auto)] dt:gap-5 no-underline text-ink focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-focus-ring focus-visible:-outline-offset-2"
+                >
+                <!-- A ring rather than a bare number, so the rank reads as a badge at a glance. -->
+                <div
+                  class="w-9 h-9 dt:w-10 dt:h-10 rounded-full border-2 border-accent flex items-center justify-center figure font-bold text-[15px] text-accent"
+                >
+                  {{ r.rank }}
+                </div>
                 <div class="min-w-0">
-                  <h3 class="m-0 font-sans font-semibold text-[21px] leading-[1.25]">
-                    <NuxtLink
-                      :to="`/results/${r.lga_code}`"
-                      class="inline-flex items-center min-h-11 text-ink no-underline"
-                    >
-                      {{ r.lga_name }}
-                    </NuxtLink>
+                  <h3 class="m-0 heading-section text-accent">
+                    {{ r.lga_name }}
                   </h3>
-                  <div class="font-mono text-[14px] leading-[1.3] text-muted">{{ r.region }}</div>
+                  <div class="font-sans text-[14px] leading-[1.3] text-muted">
+                    {{ r.region }}<template v-if="distanceFrom(r)"> · {{ distanceFrom(r) }}</template>
+                  </div>
                   <p
-                    v-if="rowSentence(r, answers.weights)"
+                    v-if="rowSentence(r, scoringWeights, schoolFilter)"
                     class="mt-2 mb-0 font-sans text-[16px] leading-[1.5] text-body dt:max-w-[52ch]"
                   >
-                    {{ rowSentence(r, answers.weights) }}
+                    {{ rowSentence(r, scoringWeights, schoolFilter) }}
+                  </p>
+                  <p class="mt-2 mb-0 inline-flex items-center gap-1 font-sans font-medium text-[15px] leading-[1.3] text-accent">
+                    Click to see more
+                    <ChevronRight :size="18" class="shrink-0" aria-hidden="true" />
                   </p>
                   <p
                     v-if="isCurrent(r.lga_code)"
@@ -186,10 +222,11 @@ function isCurrent(code: number) {
                     {{ r.rentSharePct }}% of your income
                   </div>
                   <div v-else class="font-sans font-semibold text-[24px] leading-[1.2] text-ink">No rent data</div>
-                  <div v-if="r.rentPerWeek" class="mt-1 font-mono text-[14px] leading-[1.35] text-muted">
+                  <div v-if="r.rentPerWeek" class="mt-1 font-sans text-[14px] leading-[1.35] text-muted">
                     Typical {{ bedrooms }}-bedroom rent: ${{ r.rentPerWeek }} a week
                   </div>
                 </div>
+                </NuxtLink>
               </li>
             </ol>
           </section>
@@ -238,5 +275,5 @@ function isCurrent(code: number) {
         </div>
       </main>
     </div>
-  </template>
+  </div>
 </template>

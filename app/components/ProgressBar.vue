@@ -1,13 +1,24 @@
 <script setup lang="ts">
-import { ArrowLeft } from 'lucide-vue-next'
+import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 
 withDefaults(
   defineProps<{
     currentStep: number
     total?: number
     backTo?: string
+    /** Where this step continues to. Omit on a step that has no forward action. */
+    continueTo?: string
+    continueLabel?: string
+    /** False greys it out and blocks it, matching the button at the foot of the page. */
+    continueReady?: boolean
   }>(),
-  { total: 4, backTo: undefined }
+  {
+    total: 5,
+    backTo: undefined,
+    continueTo: undefined,
+    continueLabel: 'Continue',
+    continueReady: true
+  }
 )
 </script>
 
@@ -17,13 +28,26 @@ withDefaults(
       <NuxtLink v-if="backTo" :to="backTo" class="icon-button -ml-3 text-body no-underline" aria-label="Back">
         <ArrowLeft :size="22" aria-hidden="true" />
       </NuxtLink>
-      <div class="font-mono font-medium text-[15px] leading-none text-muted">Step {{ currentStep }} of {{ total }}</div>
+      <div class="min-w-0 truncate font-sans font-medium text-[15px] leading-none text-body">
+        Step {{ currentStep }} of {{ total }}
+      </div>
+      <NuxtLink
+        v-if="continueTo"
+        :to="continueTo"
+        class="btn-primary-sm ml-auto shrink-0"
+        :aria-disabled="!continueReady"
+        :class="{ 'opacity-50 pointer-events-none': !continueReady }"
+        @click="!continueReady && $event.preventDefault()"
+      >
+        {{ continueLabel }}
+        <ArrowRight class="ml-2" :size="22" aria-hidden="true" />
+      </NuxtLink>
     </div>
     <div class="flex gap-[5px]" role="img" :aria-label="`Step ${currentStep} of ${total}`">
       <div
         v-for="i in total"
         :key="i"
-        class="h-[5px] flex-1 rounded-[3px]"
+        class="motion-colors h-[6px] flex-1 rounded-[3px]"
         :class="i <= currentStep ? 'bg-accent' : 'bg-line'"
       />
     </div>

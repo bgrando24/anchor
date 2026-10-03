@@ -8,6 +8,7 @@ import {
   percentileRank,
   prioritySplit,
   rankAreas,
+  schoolsMatching,
   typicalRent,
   type Bedrooms,
   type PriorityWeights
@@ -132,5 +133,124 @@ describe('areas with no rent data', () => {
     const ranked = rankAreas(areas, { weeklyIncome: 850, bedrooms: 1, weights })
     expect(ranked).toHaveLength(79)
     expect(new Set(ranked.map((r) => r.rank)).size).toBe(79)
+  })
+})
+
+describe('schools count only when they apply', () => {
+  const base = { weeklyIncome: 1000, bedrooms: 2 as const }
+
+  it('hands the whole fifty points to transport and doctors when schools do not apply', () => {
+    const off = rankAreas(areas, {
+      ...base,
+      weights: { schools: 'none', transport: 'somewhat', gp_access: 'somewhat' }
+    })
+    expect(off[0]!.split.schools).toBe(0)
+    expect(off[0]!.split.transport + off[0]!.split.gp_access).toBe(50)
+    expect(off[0]!.split.rent).toBe(50)
+  })
+
+  it('splits the fifty in proportion when one of the other two matters more', () => {
+    const scored = rankAreas(areas, {
+      ...base,
+      weights: { schools: 'none', transport: 'a_lot', gp_access: 'not_much' }
+    })
+    const { schools, transport, gp_access } = scored[0]!.split
+    expect(schools).toBe(0)
+    expect(transport).toBeGreaterThan(gp_access)
+    expect(transport + gp_access).toBe(50)
+  })
+
+  it('ranks the same whatever schools tier is stored, once schools do not apply', () => {
+    const order = (tier: 'not_much' | 'a_lot') =>
+      rankAreas(areas, { ...base, weights: { schools: 'none', transport: 'somewhat', gp_access: 'somewhat' } }).map(
+        (a) => a.lga_code
+      )
+    expect(order('a_lot')).toEqual(order('not_much'))
+  })
+
+  it('never divides by zero, even for a hand-edited link with nothing weighted', () => {
+    const scored = rankAreas(areas, {
+      ...base,
+      weights: { schools: 'none', transport: 'not_much', gp_access: 'not_much' }
+    })
+    for (const area of scored) {
+      expect(Number.isFinite(area.score), area.lga_name).toBe(true)
+    }
+  })
+})
+
+describe('ranking on the kinds of school a household wants', () => {
+  const base = {
+    weeklyIncome: 1000,
+    bedrooms: 2 as const,
+    weights: { schools: 'a_lot', transport: 'not_much', gp_access: 'not_much' } as const
+  }
+
+  it('counts every school when no kinds are given', () => {
+    for (const area of areas.slice(0, 20)) {
+      expect(schoolsMatching(area)).toBe(area.school_count)
+    }
+  })
+
+  it('counts only the chosen level and sector', () => {
+    const area = areas.find((a) => a.lga_name === 'Casey')!
+    expect(schoolsMatching(area, { levels: ['primary'], sectors: ['government'] })).toBe(
+      area.schools.primary.government
+    )
+    expect(schoolsMatching(area, { levels: ['primary'], sectors: ['government', 'catholic'] })).toBe(
+      area.schools.primary.government + area.schools.primary.catholic
+    )
+  })
+
+  it('treats every level and every kind as the published total, not the sum of the cells', () => {
+    // Combined schools appear in both levels, so summing the cells overstates it: Casey came to
+    // 102 against a published 91.
+    for (const area of areas) {
+      expect(
+        schoolsMatching(area, {
+          levels: ['primary', 'secondary'],
+          sectors: ['government', 'catholic', 'independent']
+        }),
+        area.lga_name
+      ).toBe(area.school_count)
+    }
+  })
+
+  it('never reports more of one kind than the area has schools', () => {
+    for (const area of areas) {
+      for (const sectors of [['government'], ['catholic'], ['independent']] as const) {
+        const both = schoolsMatching(area, { levels: ['primary', 'secondary'], sectors: [...sectors] })
+        const cells = area.schools.primary[sectors[0]] + area.schools.secondary[sectors[0]]
+        expect(both, `${area.lga_name} ${sectors[0]}`).toBe(cells)
+      }
+    }
+  })
+
+  it('changes the ranking when the household wants a different kind of school', () => {
+    const government = rankAreas(areas, {
+      ...base,
+      schoolFilter: { levels: ['primary'], sectors: ['government'] }
+    })
+    const independent = rankAreas(areas, {
+      ...base,
+      schoolFilter: { levels: ['secondary'], sectors: ['independent'] }
+    })
+    expect(government.map((a) => a.lga_code)).not.toEqual(independent.map((a) => a.lga_code))
+  })
+
+  it('leaves the ranking alone when schools are weighted out, whatever the filter', () => {
+    const noSchools = { ...base, weights: { schools: 'none', transport: 'somewhat', gp_access: 'somewhat' } } as const
+    const a = rankAreas(areas, { ...noSchools, schoolFilter: { levels: ['primary'], sectors: ['catholic'] } })
+    const b = rankAreas(areas, { ...noSchools, schoolFilter: { levels: ['secondary'], sectors: ['government'] } })
+    expect(a.map((x) => x.lga_code)).toEqual(b.map((x) => x.lga_code))
+  })
+
+  it('still ranks every area when a filter matches almost nothing', () => {
+    const scored = rankAreas(areas, {
+      ...base,
+      schoolFilter: { levels: ['secondary'], sectors: ['independent'] }
+    })
+    expect(scored).toHaveLength(areas.length)
+    for (const area of scored) expect(Number.isFinite(area.score), area.lga_name).toBe(true)
   })
 })

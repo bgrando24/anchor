@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeft, ChevronDown } from "lucide-vue-next";
+import { ArrowLeft } from "lucide-vue-next";
 
 useHead({ title: "FAQs" });
 
@@ -15,7 +15,7 @@ const items = computed<FaqItem[]>(() => [
     {
         id: "ranking",
         question: "How are areas ranked?",
-        answer: "Each area gets a score. Half of it comes from how much of your income a typical rent there would take. The other half comes from schools, train stations and bulk-billing doctors, weighted by your answers. Areas are grouped by rent first, then ordered by score within each group.",
+        answer: "Each area gets a score. Half of it comes from how much of your income a typical rent there would take. The other half comes from train stations, bulk-billing doctors and, if you told us you might move your children's schools, schools too, weighted by your answers. Areas are grouped by rent first, then ordered by score within each group.",
     },
     {
         id: "affordable",
@@ -40,7 +40,12 @@ const items = computed<FaqItem[]>(() => [
     {
         id: "sources",
         question: "Where does the data come from?",
-        answer: `Rents: Homes Victoria quarterly rental report (${meta.rentQuarter}). Schools: Victorian Department of Education, school locations 2025. Train stations: Department of Transport and Planning. Bulk-billing: Australian Institute of Health and Welfare analysis of Medicare data. Council areas: Australian Bureau of Statistics.`,
+        answer: `Rents and the affordable-lettings trend: Homes Victoria quarterly rental report (${meta.rentQuarter}). Schools: Victorian Department of Education, school locations 2025. Train stations: Department of Transport and Planning. Bulk-billing: Australian Institute of Health and Welfare analysis of Medicare data. Sport facilities and parks: Victorian Government open data. How young children are doing: Australian Early Development Census. Council areas and the distances between them: Australian Bureau of Statistics, Australian Statistical Geography Standard Edition 3, Local Government Areas 2025, licensed CC BY 4.0. The map of Victoria: the same standard, States and Territories 2021, simplified to a 1 km tolerance, also CC BY 4.0.`,
+    },
+    {
+        id: "current-area",
+        question: "Why do you ask where I live now?",
+        answer: "Only to compare. Every area's page shows it next to the one you live in now, so a rent or a number of schools has something to sit against. It does not change the ranking, and you can pick any area if you would rather not say.",
     },
     {
         id: "listings",
@@ -50,12 +55,12 @@ const items = computed<FaqItem[]>(() => [
     {
         id: "privacy",
         question: "What happens to my answers?",
-        answer: "They stay in your browser. There are no accounts and nothing is sent to us. If you save a link, your answers are stored in that link.",
+        answer: "They stay in your browser. There are no accounts and nothing is sent to us. While you are answering, they are kept in this tab so refreshing the page doesn't lose your progress, and they are cleared when you close it. If you save a link, your answers are stored in that link.",
     },
     {
         id: "limits",
         question: "What can't Anchor tell you?",
-        answer: "It doesn't know about your job, your children's schools, family nearby or your health needs. Use the rankings as a starting point.",
+        answer: "It doesn't know about your job, which particular schools you have in mind, family nearby or your health needs. Use the rankings as a starting point.",
     },
 ]);
 
@@ -101,9 +106,9 @@ function toggle(i: number) {
 
         <div class="flex flex-col gap-2">
             <h1
-                class="m-0 font-sans font-semibold text-[27px] leading-[1.22] text-ink tracking-[-0.01em]"
+                class="m-0 display-question"
             >
-                How it works
+                FAQs
             </h1>
             <p class="m-0 font-sans text-[17px] leading-[1.5] text-body">
                 How the rankings work, where the data comes from, and what
@@ -116,7 +121,7 @@ function toggle(i: number) {
                 v-for="(item, i) in items"
                 :id="item.id"
                 :key="item.id"
-                class="border border-line-strong rounded-lg overflow-hidden"
+                class="bg-surface-2 border border-line rounded-[16px] overflow-hidden"
             >
                 <button
                     type="button"
@@ -126,12 +131,17 @@ function toggle(i: number) {
                     @click="toggle(i)"
                 >
                     <span>{{ item.question }}</span>
-                    <ChevronDown
-                        :size="20"
-                        class="shrink-0 text-body transition-transform"
-                        :class="{ 'rotate-180': openIndex === i }"
+                    <span
+                        class="motion-colors shrink-0 w-[30px] h-[30px] rounded-full flex items-center justify-center border font-sans font-semibold text-[17px] leading-none"
+                        :class="
+                            openIndex === i
+                                ? 'bg-accent border-accent text-accent-on'
+                                : 'bg-transparent border-line-focus text-body'
+                        "
                         aria-hidden="true"
-                    />
+                    >
+                        {{ openIndex === i ? '\u2212' : '+' }}
+                    </span>
                 </button>
                 <div
                     v-if="openIndex === i"
@@ -142,5 +152,7 @@ function toggle(i: number) {
                 </div>
             </div>
         </div>
+    
+        <SignOffCard class="mt-2" />
     </main>
 </template>

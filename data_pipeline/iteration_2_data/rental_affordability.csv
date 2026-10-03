@@ -1,0 +1,80 @@
+lga_code,lga_name,value
+20110,Alpine,0.385
+20260,Ararat,0.69
+20570,Ballarat,0.744
+20660,Banyule,0.022
+20740,Bass Coast,0.349
+20830,Baw Baw,0.142
+20910,Bayside,0.0
+21010,Benalla,0.288
+21110,Boroondara,0.009
+21180,Brimbank,0.204
+21270,Buloke,0.9
+21370,Campaspe,0.299
+21450,Cardinia,0.05
+21610,Casey,0.027
+21670,Central Goldfields,0.825
+21750,Colac Otway,0.354
+21830,Corangamite,0.595
+21890,Darebin,0.017
+22110,East Gippsland,0.393
+22170,Frankston,0.016
+22250,Gannawarra,0.8
+22310,Glen Eira,0.012
+22410,Glenelg,0.554
+22490,Golden Plains,0.453
+22620,Greater Bendigo,0.234
+22670,Greater Dandenong,0.021
+22750,Greater Geelong,0.215
+22830,Greater Shepparton,0.292
+22910,Hepburn,0.262
+22980,Hindmarsh,0.947
+23110,Hobsons Bay,0.029
+23190,Horsham,0.467
+23270,Hume,0.189
+23350,Indigo,0.14
+23430,Kingston,0.012
+23670,Knox,0.017
+23810,Latrobe,0.496
+23940,Loddon,0.429
+24130,Macedon Ranges,0.046
+24210,Manningham,0.011
+24250,Mansfield,0.129
+24330,Maribyrnong,0.017
+24410,Maroondah,0.019
+24600,Melbourne,0.011
+24650,Melton,0.587
+24780,Mildura,0.37
+24850,Mitchell,0.783
+24900,Moira,0.372
+24970,Monash,0.029
+25060,Moonee Valley,0.016
+25150,Moorabool,0.47
+25250,Moreland,0.026
+25340,Mornington Peninsula,0.015
+25430,Mount Alexander,0.117
+25490,Moyne,0.217
+25620,Murrindindi,0.659
+25710,Nillumbik,0.084
+25810,Northern Grampians,0.511
+25900,Port Phillip,0.006
+25990,Pyrenees,0.467
+26080,Queenscliffe,0.0
+26170,South Gippsland,0.494
+26260,Southern Grampians,0.704
+26350,Stonnington,0.013
+26430,Strathbogie,0.275
+26490,Surf Coast,0.104
+26610,Swan Hill,0.377
+26670,Towong,0.667
+26700,Wangaratta,0.32
+26730,Warrnambool,0.101
+26810,Wellington,0.44
+26890,West Wimmera,1.0
+26980,Whitehorse,0.016
+27070,Whittlesea,0.175
+27170,Wodonga,0.132
+27260,Wyndham,0.489
+27350,Yarra,0.017
+27450,Yarra Ranges,0.031
+27630,Yarriambiack,1.0

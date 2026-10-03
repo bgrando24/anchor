@@ -37,11 +37,11 @@ const emit = defineEmits<{ 'update:modelValue': [string | number] }>()
       <label
         v-for="o in options"
         :key="o.value"
-        class="flex items-center gap-[14px] min-h-[56px] bg-surface-2 border rounded-md font-sans text-[17px] leading-[1.35] text-ink cursor-pointer has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-focus-ring has-[:focus-visible]:outline-offset-2"
+        class="motion-colors flex items-center gap-[14px] min-h-[58px] border py-[10px] px-[18px] rounded-[14px] font-sans text-[17px] leading-[1.35] text-ink cursor-pointer has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-focus-ring has-[:focus-visible]:outline-offset-2"
         :class="
           modelValue === o.value
-            ? 'border-2 border-accent py-[9px] px-[17px] font-medium'
-            : 'border-line-focus py-[10px] px-[18px]'
+            ? 'border-accent bg-surface-accent-tint font-medium shadow-[inset_0_0_0_1px_var(--accent)]'
+            : 'border-line-focus bg-surface-2'
         "
       >
         <input
@@ -53,13 +53,13 @@ const emit = defineEmits<{ 'update:modelValue': [string | number] }>()
           @change="emit('update:modelValue', o.value)"
         />
         <span
-          class="w-[22px] h-[22px] rounded-full bg-surface-2 shrink-0"
-          :class="modelValue === o.value ? 'border-[6px] border-accent' : 'border-2 border-line-focus'"
+          class="motion-colors w-[22px] h-[22px] rounded-full bg-surface-2 shrink-0"
+          :class="modelValue === o.value ? 'border-[7px] border-accent' : 'border-2 border-line-focus'"
           aria-hidden="true"
         />
         <span class="flex flex-col gap-1">
           <span>{{ o.label }}</span>
-          <span v-if="o.sublabel" class="font-mono text-[14px] leading-[1.3] text-muted">{{ o.sublabel }}</span>
+          <span v-if="o.sublabel" class="font-sans text-[14px] leading-[1.3] text-muted">{{ o.sublabel }}</span>
         </span>
       </label>
     </div>
