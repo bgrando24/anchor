@@ -67,14 +67,17 @@
 }
 
 @layer components {
-  /* The display scale. Serif italic, headings only: everything people read or tap stays sans.
-     Kept here rather than spelled out per template, so the scale has one definition. */
+  /* The display scale. Kept here rather than spelled out per template, so it has one definition.
+     Italic is for the one hero on a page and nothing else: when the section headings carried it
+     too, every screen had five or six italic lines and testers said so. */
   .display-area,
   .display-home,
-  .display-page,
+  .display-page {
+    @apply font-serif italic font-medium text-ink;
+  }
   .heading-section,
   .heading-sub {
-    @apply font-serif italic font-medium text-ink;
+    @apply font-serif font-medium text-ink;
   }
   /* Fluid, not fixed. "Queenscliffe" and "Yarriambiack" are single twelve-letter words, and at a
      flat 50px they run past the edge of a 320px screen. balance only breaks between words, so it

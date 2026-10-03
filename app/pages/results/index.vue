@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Pencil } from 'lucide-vue-next'
+import { ChevronRight, Pencil } from 'lucide-vue-next'
 import { PAYMENT_TYPES, INCOME_BANDS, BEDROOM_OPTIONS } from '~/data/options'
 import { BAND_ORDER, rowSentence, type Band } from '~/composables/useScoring'
 
@@ -173,11 +173,16 @@ function isCurrent(code: number) {
                 </div>
                 <div class="min-w-0">
                   <h3 class="m-0 heading-section">
+                    <!-- Not one tester realised this was a link. It was ink coloured with no
+                         underline and no marker, so it read as a heading. It now carries the
+                         accent every other link uses, says what it does, and shows an arrow. -->
                     <NuxtLink
                       :to="`/results/${r.lga_code}`"
-                      class="inline-flex items-center min-h-11 text-ink no-underline"
+                      class="motion-colors inline-flex items-center gap-1 min-h-11 text-accent no-underline hover:underline"
                     >
                       {{ r.lga_name }}
+                      <ChevronRight :size="20" class="shrink-0" aria-hidden="true" />
+                      <span class="visually-hidden">, see this area in full</span>
                     </NuxtLink>
                   </h3>
                   <div class="font-sans text-[14px] leading-[1.3] text-muted">{{ r.region }}</div>

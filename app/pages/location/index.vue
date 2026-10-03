@@ -52,14 +52,21 @@ const canContinue = computed(() => frame.value?.continueReady ?? false)
       Where do you live now?
     </h1>
     <p class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">
-      We'll compare other areas with this one. It doesn't change the ranking.
+      This is your council, not your suburb. We'll compare other councils with this one. It
+      doesn't change the ranking.
       <NuxtLink to="/faq#current-area" class="inline-flex items-center min-h-11">Why do we ask this?</NuxtLink>
     </p>
 
     <div class="flex flex-col gap-2">
       <label for="area-search" class="font-sans font-medium text-[16px] leading-[1.4] text-ink">
-        Search for your area
+        Search for your council
       </label>
+      <!-- Every tester typed their suburb. The council name is often nothing like it, so the
+           difference is spelled out before they type rather than in the empty state afterwards. -->
+      <p class="m-0 font-sans text-[15px] leading-[1.45] text-muted">
+        Councils cover several suburbs and are usually named differently. If you aren't sure of
+        yours, pick your region below instead.
+      </p>
       <!-- The wrapper carries the focus ring, because the input itself is borderless. -->
       <div
         class="min-h-[56px] px-[18px] bg-surface-2 border border-line-focus rounded-md flex items-center justify-between gap-2 has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-focus-ring has-[:focus-visible]:outline-offset-2"
@@ -69,7 +76,7 @@ const canContinue = computed(() => frame.value?.continueReady ?? false)
           v-model="query"
           type="text"
           class="flex-1 min-w-0 border-none bg-transparent font-sans text-[18px] leading-none text-ink min-h-11 focus:outline-none"
-          placeholder="Type an area name"
+          placeholder="Type a council name"
           autocomplete="off"
         />
         <button v-if="query" type="button" class="icon-button text-body" aria-label="Clear search" @click="clearSearch">

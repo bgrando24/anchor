@@ -99,16 +99,21 @@ function onKeydown(event: KeyboardEvent, index: number) {
 <template>
   <div class="sticky top-0 z-20 bg-bg border-b border-line">
     <div class="relative max-w-[1160px] mx-auto">
+      <!-- The strip was missed entirely in testing. The label it already carried for screen
+           readers is on the page now, so there is something saying these are here. -->
+      <p class="m-0 pt-3 px-4 dt:px-10 font-sans font-medium text-[13px] uppercase tracking-[0.07em] text-muted">
+        More about this area
+      </p>
       <!-- The fades are the only sign that the row runs past the edge, so they are the one part
            that must not be decorative: each shows only while there is more that way. -->
       <div
         v-show="!atStart"
-        class="pointer-events-none absolute left-0 top-0 bottom-0 w-8 z-10 bg-gradient-to-r from-bg to-transparent"
+        class="pointer-events-none absolute left-0 bottom-0 h-[52px] w-8 z-10 bg-gradient-to-r from-bg to-transparent"
         aria-hidden="true"
       />
       <div
         v-show="!atEnd"
-        class="pointer-events-none absolute right-0 top-0 bottom-0 w-8 z-10 bg-gradient-to-l from-bg to-transparent"
+        class="pointer-events-none absolute right-0 bottom-0 h-[52px] w-8 z-10 bg-gradient-to-l from-bg to-transparent"
         aria-hidden="true"
       />
       <div
@@ -122,7 +127,7 @@ function onKeydown(event: KeyboardEvent, index: number) {
         <span
           v-show="measured"
           aria-hidden="true"
-          class="tab-bar pointer-events-none absolute bottom-0 left-0 h-[2px] w-px origin-left bg-accent"
+          class="tab-bar pointer-events-none absolute bottom-0 left-0 h-[3px] w-px origin-left bg-accent"
           :style="{ transform: `translateX(${bar.x}px) scaleX(${bar.w})` }"
         />
         <button
@@ -135,7 +140,7 @@ function onKeydown(event: KeyboardEvent, index: number) {
           :aria-selected="tab.key === modelValue"
           :aria-controls="`lga-panel-${tab.key}`"
           :tabindex="tab.key === modelValue ? 0 : -1"
-          class="motion-colors shrink-0 min-h-11 px-4 border-b-2 bg-transparent font-sans font-medium text-[15px] leading-none cursor-pointer whitespace-nowrap"
+          class="motion-colors shrink-0 min-h-[52px] px-[18px] border-b-[3px] bg-transparent font-sans font-medium text-[17px] leading-none cursor-pointer whitespace-nowrap"
           :class="[
             tab.key === modelValue ? 'text-ink' : 'text-body hover:text-ink',
             tab.key === modelValue && !measured ? 'border-accent' : 'border-transparent',
