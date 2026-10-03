@@ -27,12 +27,12 @@ const canReturnTo = (step: { number: number; done: boolean }) => step.done && !i
        sitting at the top of the page looks like the thing to use. The label it already carried
        for screen readers is on the page now, saying what the column is for. -->
   <nav aria-labelledby="step-list-heading">
-    <h2 id="step-list-heading" class="m-0 mb-1 font-sans font-semibold text-[15px] leading-[1.3] text-ink">
+    <h2 id="step-list-heading" class="m-0 mb-3 font-sans font-semibold text-[15px] leading-[1.3] text-ink">
       Your answers so far
     </h2>
-    <p class="m-0 mb-3 font-sans text-[14px] leading-[1.4] text-muted">
+    <!-- <p class="m-0 mb-3 font-sans text-[14px] leading-[1.4] text-muted">
       Answer the question beside this. You can come back to any step you have finished.
-    </p>
+    </p> -->
     <ol class="list-none m-0 p-0 flex flex-col gap-2">
       <li v-for="step in steps" :key="step.number">
         <component
