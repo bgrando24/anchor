@@ -27,11 +27,35 @@ function readEdges() {
   atEnd.value = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1
 }
 
+/**
+ * One bar slides between tabs rather than each tab drawing its own. It is measured from the
+ * active button, so it has to wait for layout: until then the selected tab keeps a real bottom
+ * border, which is what the prerendered HTML shows before any of this runs.
+ */
+const bar = ref({ x: 0, w: 0 })
+const measured = ref(false)
+
+function measureBar() {
+  const index = props.tabs.findIndex((t) => t.key === props.modelValue)
+  const el = buttons.value[index]
+  if (!el) return
+  bar.value = { x: el.offsetLeft, w: el.offsetWidth }
+  measured.value = true
+}
+
+watch(() => props.modelValue, () => nextTick(measureBar))
+
 let observer: ResizeObserver | null = null
 onMounted(() => {
   readEdges()
+  measureBar()
+  // The tabs are set in a webfont, so their widths move once it loads.
+  document.fonts?.ready.then(measureBar).catch(() => {})
   if (strip.value) {
-    observer = new ResizeObserver(readEdges)
+    observer = new ResizeObserver(() => {
+      readEdges()
+      measureBar()
+    })
     observer.observe(strip.value)
   }
 })
@@ -91,9 +115,16 @@ function onKeydown(event: KeyboardEvent, index: number) {
         ref="strip"
         role="tablist"
         aria-label="More about this area"
-        class="flex flex-nowrap overflow-x-auto px-4 dt:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        class="relative flex flex-nowrap overflow-x-auto px-4 dt:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         @scroll="readEdges"
       >
+        <!-- Inside the scrolling box, so it travels with the tabs rather than against them. -->
+        <span
+          v-show="measured"
+          aria-hidden="true"
+          class="tab-bar pointer-events-none absolute bottom-0 left-0 h-[2px] w-px origin-left bg-accent"
+          :style="{ transform: `translateX(${bar.x}px) scaleX(${bar.w})` }"
+        />
         <button
           v-for="(tab, index) in tabs"
           :key="tab.key"
@@ -104,12 +135,11 @@ function onKeydown(event: KeyboardEvent, index: number) {
           :aria-selected="tab.key === modelValue"
           :aria-controls="`lga-panel-${tab.key}`"
           :tabindex="tab.key === modelValue ? 0 : -1"
-          class="motion-colors shrink-0 min-h-11 px-4 border-b-2 bg-transparent font-sans text-[15px] leading-none cursor-pointer whitespace-nowrap"
-          :class="
-            tab.key === modelValue
-              ? 'border-accent text-ink font-semibold'
-              : 'border-transparent text-body font-medium hover:text-ink'
-          "
+          class="motion-colors shrink-0 min-h-11 px-4 border-b-2 bg-transparent font-sans font-medium text-[15px] leading-none cursor-pointer whitespace-nowrap"
+          :class="[
+            tab.key === modelValue ? 'text-ink' : 'text-body hover:text-ink',
+            tab.key === modelValue && !measured ? 'border-accent' : 'border-transparent',
+          ]"
           @click="select(tab.key)"
           @keydown="onKeydown($event, index)"
         >

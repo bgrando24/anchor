@@ -158,6 +158,11 @@
       transform: translateY(-4px);
     }
 
+    /* The bar under the selected tab, travelling between them. */
+    .tab-bar {
+      transition: transform 160ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
     .motion-colors {
       transition:
         background-color 140ms ease-out,
