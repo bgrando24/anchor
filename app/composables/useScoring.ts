@@ -364,3 +364,29 @@ export function schoolOverlapNote(total: number, columnsTotal: number): string {
   const pronoun = both === 1 ? 'it is counted' : 'they are counted'
   return `${subject} both levels, so ${pronoun} in both columns. The columns add up to ${columnsTotal}, not ${total}.`
 }
+
+/**
+ * How far apart two council areas are, centre to centre, in kilometres.
+ *
+ * These are geometric centres of the council boundary, not where people live. Mildura's sits
+ * about 48km from the township, out in the mallee, and the same is true of any large rural
+ * council. So this answers "roughly how far across the state is it", never "how far would I
+ * drive", and the wording around it has to say so.
+ */
+export function distanceKm(a: Pick<Lga, 'lat' | 'lon'>, b: Pick<Lga, 'lat' | 'lon'>): number {
+  const EARTH_KM = 6371
+  const rad = (deg: number) => (deg * Math.PI) / 180
+  const dLat = rad(b.lat - a.lat)
+  const dLon = rad(b.lon - a.lon)
+  const h =
+    Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLon / 2) ** 2
+  return 2 * EARTH_KM * Math.asin(Math.sqrt(h))
+}
+
+/** Rounded the way it is said aloud, and never to a precision the centres do not support. */
+export function distanceLabel(km: number): string {
+  if (km < 1) return 'Same centre'
+  if (km < 10) return `${Math.round(km)} km away`
+  if (km < 100) return `${Math.round(km / 5) * 5} km away`
+  return `${Math.round(km / 10) * 10} km away`
+}

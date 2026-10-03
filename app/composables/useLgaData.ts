@@ -62,6 +62,9 @@ export interface Lga {
   seifa_irsd: number
   /** Parks as a share of the area's land. */
   green_space_pct: number
+  /** The council's geometric centre, for working out how far apart two areas are. */
+  lat: number
+  lon: number
   schools: LgaSchools
   sport_variety: number
   /** Sport name to the number of facilities for it. */

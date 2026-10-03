@@ -1,4 +1,5 @@
 import type { ScoredLga } from './useScoring'
+import { distanceKm, distanceLabel } from './useScoring'
 
 /**
  * This area against the one the household lives in now.
@@ -103,6 +104,15 @@ export function comparisonRows(area: ScoredLga, current: ScoredLga, bedrooms: nu
       direction: diff === 0 ? 'same' : diff > 0 ? 'up' : 'down'
     })
   }
+
+  // How far apart they are. Centre to centre, so the wording never implies a drive.
+  const km = distanceKm(area, current)
+  rows.push({
+    key: 'distance',
+    headline: km < 1 ? 'The same place' : `${distanceLabel(km).replace(' away', '')} from ${here}`,
+    detail: 'Measured between the centres of the two areas',
+    direction: 'same'
+  })
 
   // Rates: the points difference is small and noisy, so the words stay qualitative.
   const gpHere = Math.round(area.bulk_billing_rate * 100)

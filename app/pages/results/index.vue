@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ChevronRight, Pencil } from 'lucide-vue-next'
 import { PAYMENT_TYPES, INCOME_BANDS, BEDROOM_OPTIONS } from '~/data/options'
-import { BAND_ORDER, rowSentence, type Band } from '~/composables/useScoring'
+import { BAND_ORDER, distanceKm, distanceLabel, rowSentence, type Band, type ScoredLga } from '~/composables/useScoring'
 
 definePageMeta({ layout: 'results' })
 useHead({ title: '79 areas, ranked for you' })
@@ -49,6 +49,14 @@ const answersSummary = computed(() =>
     .filter(Boolean)
     .join(' · ')
 )
+
+/** How far an area is from the one they live in now. Empty when they have not told us one. */
+function distanceFrom(area: ScoredLga) {
+  const code = answers.value.currentLga
+  if (code == null || code === area.lga_code) return ''
+  const home = byCode(code)
+  return home ? distanceLabel(distanceKm(area, home)) : ''
+}
 
 function isCurrent(code: number) {
   return answers.value.currentLga === code
@@ -186,7 +194,9 @@ function isCurrent(code: number) {
                       <span class="visually-hidden">, see this area in full</span>
                     </span>
                   </h3>
-                  <div class="font-sans text-[14px] leading-[1.3] text-muted">{{ r.region }}</div>
+                  <div class="font-sans text-[14px] leading-[1.3] text-muted">
+                    {{ r.region }}<template v-if="distanceFrom(r)"> · {{ distanceFrom(r) }}</template>
+                  </div>
                   <p
                     v-if="rowSentence(r, scoringWeights, schoolFilter)"
                     class="mt-2 mb-0 font-sans text-[16px] leading-[1.5] text-body dt:max-w-[52ch]"

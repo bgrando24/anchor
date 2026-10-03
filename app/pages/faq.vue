@@ -40,7 +40,7 @@ const items = computed<FaqItem[]>(() => [
     {
         id: "sources",
         question: "Where does the data come from?",
-        answer: `Rents and the affordable-lettings trend: Homes Victoria quarterly rental report (${meta.rentQuarter}). Schools: Victorian Department of Education, school locations 2025. Train stations: Department of Transport and Planning. Bulk-billing: Australian Institute of Health and Welfare analysis of Medicare data. Sport facilities and parks: Victorian Government open data. How young children are doing: Australian Early Development Census. Council areas: Australian Bureau of Statistics.`,
+        answer: `Rents and the affordable-lettings trend: Homes Victoria quarterly rental report (${meta.rentQuarter}). Schools: Victorian Department of Education, school locations 2025. Train stations: Department of Transport and Planning. Bulk-billing: Australian Institute of Health and Welfare analysis of Medicare data. Sport facilities and parks: Victorian Government open data. How young children are doing: Australian Early Development Census. Council areas and the distances between them: Australian Bureau of Statistics, Australian Statistical Geography Standard Edition 3, Local Government Areas 2025, licensed CC BY 4.0.`,
     },
     {
         id: "current-area",

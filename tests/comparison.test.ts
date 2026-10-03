@@ -17,7 +17,7 @@ describe('comparing an area with where you live now', () => {
     const list = scored()
     for (const area of list.slice(0, 20)) {
       const rows = comparisonRows(area, list[40]!, 2)
-      expect(rows).toHaveLength(6)
+      expect(rows).toHaveLength(7)
       for (const row of rows) {
         expect(row.headline.length, `${area.lga_name} ${row.key}`).toBeGreaterThan(3)
         expect(row.detail).not.toContain('undefined')
@@ -57,7 +57,9 @@ describe('comparing an area with where you live now', () => {
       share: 'The same share of your income',
       schools: 'The same number of schools',
       stations: 'The same number of train stations',
-      gp: 'GP visits bulk-billed as often'
+      gp: 'GP visits bulk-billed as often',
+      // Comparing an area with itself is the one case where the distance is nothing.
+      distance: 'The same place'
     }
     for (const row of comparisonRows(area, area, 2)) {
       expect(row.headline, row.key).toBe(expected[row.key])
@@ -111,6 +113,26 @@ describe('comparing an area with where you live now', () => {
           expect(row.headline).not.toMatch(/^\$-|-\d+ point/)
         }
       }
+    }
+  })
+})
+
+describe('how far away the area is', () => {
+  it('says the distance from where they live now', () => {
+    const list = scored()
+    const here = list.find((a) => a.lga_name === 'Port Phillip')!
+    const there = list.find((a) => a.lga_name === 'Mildura')!
+    const row = comparisonRows(there, here, 2).find((r) => r.key === 'distance')!
+    expect(row.headline).toMatch(/^\d+ km from Port Phillip$/)
+    // Centres of whole councils, so the line under it has to say that and not imply a drive.
+    expect(row.detail).toBe('Measured between the centres of the two areas')
+  })
+
+  it('never claims a direction for a distance', () => {
+    const list = scored()
+    for (const area of list.slice(0, 5)) {
+      const row = comparisonRows(area, list[0]!, 2).find((r) => r.key === 'distance')!
+      expect(row.direction).toBe('same')
     }
   })
 })

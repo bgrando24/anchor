@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "master_data_v4.json (data team) plus app-owned regions.json",
-    "generated": "2026-10-01",
+    "generated": "2026-10-03",
     "rentQuarter": "September quarter 2025",
     "affordabilityQuarter": "Sep 2025"
   },
@@ -18,6 +18,8 @@
       "affordability_trend_pp": 32.1,
       "seifa_irsd": 1028,
       "green_space_pct": 0.1,
+      "lat": -36.852955,
+      "lon": 146.973912,
       "schools": {
         "primary": {
           "government": 8,
@@ -128,6 +130,8 @@
       "affordability_trend_pp": 16.5,
       "seifa_irsd": 955,
       "green_space_pct": 0.2,
+      "lat": -37.47237,
+      "lon": 142.843306,
       "schools": {
         "primary": {
           "government": 9,
@@ -230,6 +234,8 @@
       "affordability_trend_pp": 31.1,
       "seifa_irsd": 986,
       "green_space_pct": 2.3,
+      "lat": -37.492738,
+      "lon": 143.781385,
       "schools": {
         "primary": {
           "government": 25,
@@ -349,6 +355,8 @@
       "affordability_trend_pp": -1.3,
       "seifa_irsd": 1058,
       "green_space_pct": 14.1,
+      "lat": -37.730421,
+      "lon": 145.085156,
       "schools": {
         "primary": {
           "government": 21,
@@ -453,6 +461,8 @@
       "affordability_trend_pp": 22.3,
       "seifa_irsd": 993,
       "green_space_pct": 0.8,
+      "lat": -38.507228,
+      "lon": 145.557989,
       "schools": {
         "primary": {
           "government": 8,
@@ -559,6 +569,8 @@
       "affordability_trend_pp": 3,
       "seifa_irsd": 1003,
       "green_space_pct": 0.2,
+      "lat": -37.983611,
+      "lon": 146.131875,
       "schools": {
         "primary": {
           "government": 24,
@@ -669,6 +681,8 @@
       "affordability_trend_pp": -0.3,
       "seifa_irsd": 1090,
       "green_space_pct": 6.8,
+      "lat": -37.941815,
+      "lon": 145.018152,
       "schools": {
         "primary": {
           "government": 11,
@@ -769,6 +783,8 @@
       "affordability_trend_pp": 14.8,
       "seifa_irsd": 968,
       "green_space_pct": 0.2,
+      "lat": -36.586594,
+      "lon": 146.023695,
       "schools": {
         "primary": {
           "government": 3,
@@ -870,6 +886,8 @@
       "affordability_trend_pp": 0.4,
       "seifa_irsd": 1090,
       "green_space_pct": 9.5,
+      "lat": -37.819267,
+      "lon": 145.063093,
       "schools": {
         "primary": {
           "government": 20,
@@ -982,6 +1000,8 @@
       "affordability_trend_pp": -7.6,
       "seifa_irsd": 912,
       "green_space_pct": 9.2,
+      "lat": -37.747519,
+      "lon": 144.803314,
       "schools": {
         "primary": {
           "government": 29,
@@ -1094,6 +1114,8 @@
       "affordability_trend_pp": -10,
       "seifa_irsd": 975,
       "green_space_pct": 0.3,
+      "lat": -35.911093,
+      "lon": 143.004104,
       "schools": {
         "primary": {
           "government": 5,
@@ -1195,6 +1217,8 @@
       "affordability_trend_pp": -1.8,
       "seifa_irsd": 965,
       "green_space_pct": 0.3,
+      "lat": -36.344718,
+      "lon": 144.715938,
       "schools": {
         "primary": {
           "government": 14,
@@ -1304,6 +1328,8 @@
       "affordability_trend_pp": -8.8,
       "seifa_irsd": 1021,
       "green_space_pct": 1.3,
+      "lat": -38.082847,
+      "lon": 145.572678,
       "schools": {
         "primary": {
           "government": 24,
@@ -1407,6 +1433,8 @@
       "affordability_trend_pp": -4.6,
       "seifa_irsd": 995,
       "green_space_pct": 6.6,
+      "lat": -38.104246,
+      "lon": 145.309008,
       "schools": {
         "primary": {
           "government": 52,
@@ -1524,6 +1552,8 @@
       "affordability_trend_pp": 21.8,
       "seifa_irsd": 898,
       "green_space_pct": 0.7,
+      "lat": -37.006945,
+      "lon": 143.713676,
       "schools": {
         "primary": {
           "government": 6,
@@ -1632,6 +1662,8 @@
       "affordability_trend_pp": 24.8,
       "seifa_irsd": 973,
       "green_space_pct": 0.1,
+      "lat": -38.451382,
+      "lon": 143.595405,
       "schools": {
         "primary": {
           "government": 11,
@@ -1738,6 +1770,8 @@
       "affordability_trend_pp": 12.6,
       "seifa_irsd": 985,
       "green_space_pct": 0.1,
+      "lat": -38.203401,
+      "lon": 143.199136,
       "schools": {
         "primary": {
           "government": 9,
@@ -1845,6 +1879,8 @@
       "affordability_trend_pp": -2.2,
       "seifa_irsd": 1018,
       "green_space_pct": 16.7,
+      "lat": -37.733437,
+      "lon": 145.014341,
       "schools": {
         "primary": {
           "government": 20,
@@ -1960,6 +1996,8 @@
       "affordability_trend_pp": 13.9,
       "seifa_irsd": 963,
       "green_space_pct": 0.1,
+      "lat": -37.377932,
+      "lon": 148.290965,
       "schools": {
         "primary": {
           "government": 24,
@@ -2070,6 +2108,8 @@
       "affordability_trend_pp": -3.1,
       "seifa_irsd": 1003,
       "green_space_pct": 7.3,
+      "lat": -38.13458,
+      "lon": 145.17381,
       "schools": {
         "primary": {
           "government": 22,
@@ -2183,6 +2223,8 @@
       "affordability_trend_pp": -11.7,
       "seifa_irsd": 952,
       "green_space_pct": 0.3,
+      "lat": -35.751558,
+      "lon": 143.803901,
       "schools": {
         "primary": {
           "government": 6,
@@ -2290,6 +2332,8 @@
       "affordability_trend_pp": 0.3,
       "seifa_irsd": 1075,
       "green_space_pct": 4.4,
+      "lat": -37.901189,
+      "lon": 145.042603,
       "schools": {
         "primary": {
           "government": 14,
@@ -2401,6 +2445,8 @@
       "affordability_trend_pp": 13,
       "seifa_irsd": 952,
       "green_space_pct": 0.5,
+      "lat": -37.869689,
+      "lon": 141.385196,
       "schools": {
         "primary": {
           "government": 10,
@@ -2513,6 +2559,8 @@
       "affordability_trend_pp": 31,
       "seifa_irsd": 1040,
       "green_space_pct": 0.4,
+      "lat": -37.881935,
+      "lon": 143.842154,
       "schools": {
         "primary": {
           "government": 12,
@@ -2615,6 +2663,8 @@
       "affordability_trend_pp": 4.5,
       "seifa_irsd": 985,
       "green_space_pct": 0.5,
+      "lat": -36.734177,
+      "lon": 144.422559,
       "schools": {
         "primary": {
           "government": 28,
@@ -2738,6 +2788,8 @@
       "affordability_trend_pp": -7.6,
       "seifa_irsd": 887,
       "green_space_pct": 6.7,
+      "lat": -38.005556,
+      "lon": 145.190009,
       "schools": {
         "primary": {
           "government": 20,
@@ -2854,6 +2906,8 @@
       "affordability_trend_pp": 12.6,
       "seifa_irsd": 1007,
       "green_space_pct": 1.8,
+      "lat": -38.068724,
+      "lon": 144.417008,
       "schools": {
         "primary": {
           "government": 42,
@@ -2974,6 +3028,8 @@
       "affordability_trend_pp": -0.6,
       "seifa_irsd": 944,
       "green_space_pct": 0.7,
+      "lat": -36.396911,
+      "lon": 145.386269,
       "schools": {
         "primary": {
           "government": 26,
@@ -3088,6 +3144,8 @@
       "affordability_trend_pp": 8.2,
       "seifa_irsd": 1006,
       "green_space_pct": 0.5,
+      "lat": -37.316948,
+      "lon": 144.057565,
       "schools": {
         "primary": {
           "government": 9,
@@ -3189,6 +3247,8 @@
       "affordability_trend_pp": 3.8,
       "seifa_irsd": 940,
       "green_space_pct": 0.1,
+      "lat": -36.050608,
+      "lon": 141.752435,
       "schools": {
         "primary": {
           "government": 4,
@@ -3287,6 +3347,8 @@
       "affordability_trend_pp": -2.7,
       "seifa_irsd": 1021,
       "green_space_pct": 11.4,
+      "lat": -37.854707,
+      "lon": 144.829773,
       "schools": {
         "primary": {
           "government": 14,
@@ -3405,6 +3467,8 @@
       "affordability_trend_pp": -2.8,
       "seifa_irsd": 990,
       "green_space_pct": 0.3,
+      "lat": -36.825366,
+      "lon": 142.090633,
       "schools": {
         "primary": {
           "government": 3,
@@ -3513,6 +3577,8 @@
       "affordability_trend_pp": 1.7,
       "seifa_irsd": 941,
       "green_space_pct": 4.1,
+      "lat": -37.589145,
+      "lon": 144.824501,
       "schools": {
         "primary": {
           "government": 35,
@@ -3627,6 +3693,8 @@
       "affordability_trend_pp": -5,
       "seifa_irsd": 1029,
       "green_space_pct": 0.6,
+      "lat": -36.225447,
+      "lon": 146.722484,
       "schools": {
         "primary": {
           "government": 11,
@@ -3726,6 +3794,8 @@
       "affordability_trend_pp": -0.2,
       "seifa_irsd": 1044,
       "green_space_pct": 10.1,
+      "lat": -37.988547,
+      "lon": 145.105065,
       "schools": {
         "primary": {
           "government": 23,
@@ -3838,6 +3908,8 @@
       "affordability_trend_pp": -1.2,
       "seifa_irsd": 1042,
       "green_space_pct": 11.4,
+      "lat": -37.888958,
+      "lon": 145.258678,
       "schools": {
         "primary": {
           "government": 27,
@@ -3952,6 +4024,8 @@
       "affordability_trend_pp": 9.4,
       "seifa_irsd": 931,
       "green_space_pct": 0.9,
+      "lat": -38.274368,
+      "lon": 146.438274,
       "schools": {
         "primary": {
           "government": 22,
@@ -4067,6 +4141,8 @@
       "affordability_trend_pp": -44.6,
       "seifa_irsd": 948,
       "green_space_pct": 0.2,
+      "lat": -36.363174,
+      "lon": 143.867316,
       "schools": {
         "primary": {
           "government": 7,
@@ -4162,6 +4238,8 @@
       "affordability_trend_pp": 1.9,
       "seifa_irsd": 1063,
       "green_space_pct": 0.6,
+      "lat": -37.335538,
+      "lon": 144.616556,
       "schools": {
         "primary": {
           "government": 16,
@@ -4270,6 +4348,8 @@
       "affordability_trend_pp": -0.3,
       "seifa_irsd": 1056,
       "green_space_pct": 10,
+      "lat": -37.76158,
+      "lon": 145.18858,
       "schools": {
         "primary": {
           "government": 15,
@@ -4379,6 +4459,8 @@
       "affordability_trend_pp": 12.9,
       "seifa_irsd": 1028,
       "green_space_pct": 0.1,
+      "lat": -37.200041,
+      "lon": 146.206393,
       "schools": {
         "primary": {
           "government": 3,
@@ -4481,6 +4563,8 @@
       "affordability_trend_pp": -2.9,
       "seifa_irsd": 1010,
       "green_space_pct": 10.7,
+      "lat": -37.795251,
+      "lon": 144.877778,
       "schools": {
         "primary": {
           "government": 8,
@@ -4591,6 +4675,8 @@
       "affordability_trend_pp": -0.5,
       "seifa_irsd": 1041,
       "green_space_pct": 11.8,
+      "lat": -37.804855,
+      "lon": 145.265268,
       "schools": {
         "primary": {
           "government": 17,
@@ -4703,6 +4789,8 @@
       "affordability_trend_pp": 0.2,
       "seifa_irsd": 1017,
       "green_space_pct": 16.4,
+      "lat": -37.810639,
+      "lon": 144.943772,
       "schools": {
         "primary": {
           "government": 6,
@@ -4816,6 +4904,8 @@
       "affordability_trend_pp": 13.1,
       "seifa_irsd": 985,
       "green_space_pct": 3.7,
+      "lat": -37.692943,
+      "lon": 144.625978,
       "schools": {
         "primary": {
           "government": 24,
@@ -4927,6 +5017,8 @@
       "affordability_trend_pp": 0.2,
       "seifa_irsd": 1027,
       "green_space_pct": 9.2,
+      "lat": -37.729898,
+      "lon": 144.948889,
       "schools": {
         "primary": {
           "government": 19,
@@ -5034,6 +5126,8 @@
       "affordability_trend_pp": -9.7,
       "seifa_irsd": 940,
       "green_space_pct": 0.3,
+      "lat": -34.867616,
+      "lon": 141.683031,
       "schools": {
         "primary": {
           "government": 18,
@@ -5148,6 +5242,8 @@
       "affordability_trend_pp": 24.6,
       "seifa_irsd": 1000,
       "green_space_pct": 0.3,
+      "lat": -37.137259,
+      "lon": 145.001546,
       "schools": {
         "primary": {
           "government": 11,
@@ -5253,6 +5349,8 @@
       "affordability_trend_pp": 4.1,
       "seifa_irsd": 958,
       "green_space_pct": 0.3,
+      "lat": -36.062086,
+      "lon": 145.549965,
       "schools": {
         "primary": {
           "government": 9,
@@ -5358,6 +5456,8 @@
       "affordability_trend_pp": -0.4,
       "seifa_irsd": 1042,
       "green_space_pct": 9.4,
+      "lat": -37.897125,
+      "lon": 145.144036,
       "schools": {
         "primary": {
           "government": 25,
@@ -5474,6 +5574,8 @@
       "affordability_trend_pp": -1.3,
       "seifa_irsd": 1041,
       "green_space_pct": 9.2,
+      "lat": -37.749483,
+      "lon": 144.895765,
       "schools": {
         "primary": {
           "government": 14,
@@ -5578,6 +5680,8 @@
       "affordability_trend_pp": 23.4,
       "seifa_irsd": 1017,
       "green_space_pct": 0.4,
+      "lat": -37.632673,
+      "lon": 144.215677,
       "schools": {
         "primary": {
           "government": 12,
@@ -5679,6 +5783,8 @@
       "affordability_trend_pp": -0.1,
       "seifa_irsd": 1038,
       "green_space_pct": 4.6,
+      "lat": -38.341631,
+      "lon": 145.035413,
       "schools": {
         "primary": {
           "government": 28,
@@ -5793,6 +5899,8 @@
       "affordability_trend_pp": 1.5,
       "seifa_irsd": 1007,
       "green_space_pct": 0.9,
+      "lat": -37.050775,
+      "lon": 144.19288,
       "schools": {
         "primary": {
           "government": 11,
@@ -5902,6 +6010,8 @@
       "affordability_trend_pp": -5.4,
       "seifa_irsd": 1029,
       "green_space_pct": 0.2,
+      "lat": -38.122331,
+      "lon": 142.490205,
       "schools": {
         "primary": {
           "government": 9,
@@ -6000,6 +6110,8 @@
       "affordability_trend_pp": 22,
       "seifa_irsd": 1005,
       "green_space_pct": 0.3,
+      "lat": -37.310787,
+      "lon": 145.629951,
       "schools": {
         "primary": {
           "government": 10,
@@ -6099,6 +6211,8 @@
       "affordability_trend_pp": -0.8,
       "seifa_irsd": 1093,
       "green_space_pct": 2.7,
+      "lat": -37.622863,
+      "lon": 145.236837,
       "schools": {
         "primary": {
           "government": 17,
@@ -6208,6 +6322,8 @@
       "affordability_trend_pp": -31.7,
       "seifa_irsd": 951,
       "green_space_pct": 0.3,
+      "lat": -36.844257,
+      "lon": 142.920472,
       "schools": {
         "primary": {
           "government": 8,
@@ -6311,6 +6427,8 @@
       "affordability_trend_pp": 0.2,
       "seifa_irsd": 1061,
       "green_space_pct": 6.9,
+      "lat": -37.851893,
+      "lon": 144.966021,
       "schools": {
         "primary": {
           "government": 8,
@@ -6422,6 +6540,8 @@
       "affordability_trend_pp": -14.8,
       "seifa_irsd": 959,
       "green_space_pct": 0.3,
+      "lat": -37.315687,
+      "lon": 143.374994,
       "schools": {
         "primary": {
           "government": 8,
@@ -6514,6 +6634,8 @@
       "affordability_trend_pp": 0,
       "seifa_irsd": 1082,
       "green_space_pct": 1.5,
+      "lat": -38.264267,
+      "lon": 144.647729,
       "schools": {
         "primary": {
           "government": 2,
@@ -6568,6 +6690,8 @@
       "affordability_trend_pp": 22.5,
       "seifa_irsd": 1003,
       "green_space_pct": 0.3,
+      "lat": -38.620892,
+      "lon": 146.075406,
       "schools": {
         "primary": {
           "government": 13,
@@ -6677,6 +6801,8 @@
       "affordability_trend_pp": 19.5,
       "seifa_irsd": 994,
       "green_space_pct": 0.1,
+      "lat": -37.536055,
+      "lon": 142.032764,
       "schools": {
         "primary": {
           "government": 9,
@@ -6778,6 +6904,8 @@
       "affordability_trend_pp": 0.4,
       "seifa_irsd": 1084,
       "green_space_pct": 7,
+      "lat": -37.857941,
+      "lon": 145.033655,
       "schools": {
         "primary": {
           "government": 7,
@@ -6881,6 +7009,8 @@
       "affordability_trend_pp": 9.2,
       "seifa_irsd": 982,
       "green_space_pct": 0.4,
+      "lat": -36.760337,
+      "lon": 145.435102,
       "schools": {
         "primary": {
           "government": 5,
@@ -6981,6 +7111,8 @@
       "affordability_trend_pp": 7.7,
       "seifa_irsd": 1086,
       "green_space_pct": 0.6,
+      "lat": -38.312149,
+      "lon": 144.053214,
       "schools": {
         "primary": {
           "government": 9,
@@ -7087,6 +7219,8 @@
       "affordability_trend_pp": -21.5,
       "seifa_irsd": 941,
       "green_space_pct": 0.5,
+      "lat": -35.119479,
+      "lon": 143.124451,
       "schools": {
         "primary": {
           "government": 8,
@@ -7194,6 +7328,8 @@
       "affordability_trend_pp": 26.7,
       "seifa_irsd": 1001,
       "green_space_pct": 0.1,
+      "lat": -36.354035,
+      "lon": 147.598712,
       "schools": {
         "primary": {
           "government": 7,
@@ -7285,6 +7421,8 @@
       "affordability_trend_pp": 6.7,
       "seifa_irsd": 988,
       "green_space_pct": 0.3,
+      "lat": -36.587351,
+      "lon": 146.42811,
       "schools": {
         "primary": {
           "government": 15,
@@ -7395,6 +7533,8 @@
       "affordability_trend_pp": -0.9,
       "seifa_irsd": 995,
       "green_space_pct": 3.1,
+      "lat": -38.371424,
+      "lon": 142.511793,
       "schools": {
         "primary": {
           "government": 6,
@@ -7516,6 +7656,8 @@
       "affordability_trend_pp": 15.2,
       "seifa_irsd": 973,
       "green_space_pct": 0.3,
+      "lat": -37.892033,
+      "lon": 146.919715,
       "schools": {
         "primary": {
           "government": 21,
@@ -7628,6 +7770,8 @@
       "affordability_trend_pp": 0,
       "seifa_irsd": 991,
       "green_space_pct": 0.3,
+      "lat": -36.673061,
+      "lon": 141.278828,
       "schools": {
         "primary": {
           "government": 4,
@@ -7726,6 +7870,8 @@
       "affordability_trend_pp": -0.7,
       "seifa_irsd": 1043,
       "green_space_pct": 11.2,
+      "lat": -37.830234,
+      "lon": 145.155064,
       "schools": {
         "primary": {
           "government": 22,
@@ -7835,6 +7981,8 @@
       "affordability_trend_pp": 4.5,
       "seifa_irsd": 990,
       "green_space_pct": 4.6,
+      "lat": -37.547135,
+      "lon": 145.077751,
       "schools": {
         "primary": {
           "government": 31,
@@ -7948,6 +8096,8 @@
       "affordability_trend_pp": -3.9,
       "seifa_irsd": 973,
       "green_space_pct": 3.1,
+      "lat": -36.150482,
+      "lon": 146.882581,
       "schools": {
         "primary": {
           "government": 7,
@@ -8063,6 +8213,8 @@
       "affordability_trend_pp": 1.2,
       "seifa_irsd": 1006,
       "green_space_pct": 3.9,
+      "lat": -37.886614,
+      "lon": 144.618257,
       "schools": {
         "primary": {
           "government": 37,
@@ -8177,6 +8329,8 @@
       "affordability_trend_pp": 1.1,
       "seifa_irsd": 1046,
       "green_space_pct": 12.9,
+      "lat": -37.802265,
+      "lon": 144.998553,
       "schools": {
         "primary": {
           "government": 13,
@@ -8284,6 +8438,8 @@
       "affordability_trend_pp": 0.9,
       "seifa_irsd": 1041,
       "green_space_pct": 0.9,
+      "lat": -37.714296,
+      "lon": 145.697266,
       "schools": {
         "primary": {
           "government": 48,
@@ -8391,6 +8547,8 @@
       "affordability_trend_pp": 10,
       "seifa_irsd": 946,
       "green_space_pct": 0.2,
+      "lat": -35.987963,
+      "lon": 142.418359,
       "schools": {
         "primary": {
           "government": 7,

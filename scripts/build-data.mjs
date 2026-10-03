@@ -42,6 +42,40 @@ function fail(message) {
   process.exit(1)
 }
 
+/**
+ * A point for each council, so a distance between two of them can be worked out.
+ *
+ * Area-weighted polygon centroids, which is a geometric centre rather than where anyone lives:
+ * Mildura's sits about 48km from the township, out in the mallee. The wording that uses these
+ * has to say centre to centre, and never imply a travelling distance.
+ */
+function readCoordinates(dir, name) {
+  let text
+  try {
+    text = readFileSync(resolve(dir, name), 'utf8')
+  } catch (error) {
+    fail(`could not read ${name}: ${error.message}`)
+  }
+  const lines = text.trim().split(/\r?\n/)
+  const header = lines[0].split(',').map((h) => h.trim())
+  const want = ['lga_code', 'centroid_lat', 'centroid_lon']
+  for (const column of want) {
+    if (!header.includes(column)) fail(`${name} has no ${column} column`)
+  }
+  const points = new Map()
+  for (const line of lines.slice(1)) {
+    const cells = line.split(',')
+    const row = Object.fromEntries(header.map((h, i) => [h, (cells[i] ?? '').trim()]))
+    const lat = Number(row.centroid_lat)
+    const lon = Number(row.centroid_lon)
+    // Victoria, with a little room at the edges. A point outside it means the file is wrong.
+    if (!Number.isFinite(lat) || lat < -39.2 || lat > -33.9) fail(`${name}: ${row.lga_code} has latitude ${row.centroid_lat}`)
+    if (!Number.isFinite(lon) || lon < 140.9 || lon > 150.1) fail(`${name}: ${row.lga_code} has longitude ${row.centroid_lon}`)
+    points.set(Number(row.lga_code), { lat, lon })
+  }
+  return points
+}
+
 function readJson(dir, name) {
   try {
     return JSON.parse(readFileSync(resolve(dir, name), 'utf8'))
@@ -60,6 +94,9 @@ if (source.length !== EXPECTED_ROWS) fail(`expected ${EXPECTED_ROWS} rows, got $
 const regions = new Map()
 for (const row of regionFile.regions) regions.set(row.lga_code, row)
 if (regions.size !== EXPECTED_ROWS) fail(`regions.json has ${regions.size} unique codes, expected ${EXPECTED_ROWS}`)
+
+const points = readCoordinates(SOURCE_DIR, 'lga_coordinates.csv')
+if (points.size !== EXPECTED_ROWS) fail(`lga_coordinates.csv has ${points.size} areas, expected ${EXPECTED_ROWS}`)
 
 const lastQuarter = seriesFile.quarters.at(-1)
 
@@ -154,6 +191,9 @@ const lgas = source.map((row) => {
   const region = regions.get(row.lga_code)
   if (!region) fail(`lga_code ${row.lga_code} (${row.lga_name}) is missing from regions.json`)
 
+  const point = points.get(row.lga_code)
+  if (!point) fail(`lga_code ${row.lga_code} (${row.lga_name}) is missing from lga_coordinates.csv`)
+
   const name = NAME_FIXES[row.lga_name] ?? row.lga_name
   if (region.lga_name !== name && region.lga_name !== row.lga_name) {
     fail(`lga_code ${row.lga_code}: source calls it "${row.lga_name}", regions.json calls it "${region.lga_name}"`)
@@ -187,6 +227,8 @@ const lgas = source.map((row) => {
     affordability_trend_pp: round1(row.affordability_trend * 100),
     seifa_irsd: Math.round(row.seifa_irsd),
     green_space_pct: round1(row.green_space_pct),
+    lat: point.lat,
+    lon: point.lon,
     schools: schoolBreakdown(row),
     sport_variety: sportVariety,
     sports: sportsByName,
