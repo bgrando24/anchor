@@ -45,9 +45,12 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    // Stepping between questions was an instant swap, which is most of what moving through the
-    // questionnaire looks like. Opacity and transform only, so nothing reflows mid-change.
-    pageTransition: { name: "screen", mode: "out-in" },
+    // Moving within a section changes only the page, and the frame around it stays mounted, so
+    // this fades the content alone: the header, progress bar and step list hold still.
+    pageTransition: { name: "question", mode: "out-in" },
+    // Crossing between sections changes the layout, and that is the one place the whole screen
+    // should turn over. Opacity and transform only, so nothing reflows mid-change.
+    layoutTransition: { name: "screen", mode: "out-in" },
     head: {
       meta: [
         {

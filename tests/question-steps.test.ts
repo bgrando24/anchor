@@ -112,7 +112,7 @@ describe('going back from the step list', () => {
     require('node:fs').readFileSync(require('node:path').join(import.meta.dirname, p), 'utf8') as string
 
   const LIST = sourceOf('../app/components/StepList.vue')
-  const FRAME = sourceOf('../app/components/QuestionPage.vue')
+  const FRAME = sourceOf('../app/layouts/questions.vue')
 
   it('turns a finished step into a link to that step', () => {
     expect(LIST).toContain(':to="canReturnTo(step) ? step.path : undefined"')
@@ -153,6 +153,6 @@ describe('going back from the step list', () => {
     // way back from a question at all.
     expect(FRAME).toMatch(/hidden dt:flex[\s\S]{0,400}ArrowLeft/)
     expect(FRAME).toMatch(/hidden dt:flex[\s\S]{0,900}btn-primary-sm/)
-    expect(FRAME).toContain(':aria-disabled="!continueReady"')
+    expect(FRAME).toContain(':aria-disabled="!frame.continueReady"')
   })
 })

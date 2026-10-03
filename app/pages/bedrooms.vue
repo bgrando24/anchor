@@ -4,13 +4,17 @@ import type { Bedrooms } from '~/composables/useScoring'
 
 useHead({ title: 'Bedrooms' })
 
+definePageMeta({ layout: 'questions' })
+
 const { answers } = useAnchorState()
 
 onMounted(() => {
   if (answers.value.paymentType == null) navigateTo('/income')
 })
 
-const canContinue = computed(() => answers.value.bedrooms != null)
+// Same readiness the step row uses, so the two buttons can never disagree.
+const frame = useQuestionFrame()
+const canContinue = computed(() => frame.value?.continueReady ?? false)
 
 function selectBedrooms(value: string | number) {
   answers.value.bedrooms = Number(value) as Bedrooms
@@ -18,7 +22,7 @@ function selectBedrooms(value: string | number) {
 </script>
 
 <template>
-  <QuestionPage :current-step="2" back-to="/income" continue-to="/location" :continue-ready="canContinue">
+  <div class="flex flex-col gap-5">
     <h1 class="m-0 heading-step">
       How many bedrooms do you need?
     </h1>
@@ -43,5 +47,5 @@ function selectBedrooms(value: string | number) {
     >
       Continue
     </NuxtLink>
-  </QuestionPage>
+  </div>
 </template>

@@ -17,12 +17,12 @@ function vuePages(dir: string): string[] {
   })
 }
 
-// The frame moved into QuestionPage, so a step page is now one that uses that wrapper.
+// The frame moved into a layout, so a step page is now one that asks for that layout.
 const stepPages = vuePages(PAGES)
   .map((path) => ({ path, source: readFileSync(path, 'utf8') }))
-  .filter((page) => page.source.includes('<QuestionPage'))
+  .filter((page) => page.source.includes("layout: 'questions'"))
 
-const WRAPPER = readFileSync(join(import.meta.dirname, '../app/components/QuestionPage.vue'), 'utf8')
+const WRAPPER = readFileSync(join(import.meta.dirname, '../app/layouts/questions.vue'), 'utf8')
 
 describe('the questionnaire step row', () => {
   it('finds the step pages', () => {
@@ -30,9 +30,9 @@ describe('the questionnaire step row', () => {
   })
 
   it('offers a way forward from the step row on every step', () => {
-    for (const { path, source } of stepPages) {
-      expect(source, `${path} has a ProgressBar with no continue-to`).toMatch(/continue-to=/)
-    }
+    // Every step's forward action comes from the frame now, and question-frame.test.ts holds it
+    // to giving one for each of the five steps.
+    expect(WRAPPER, 'the step row lost its continue').toContain(':continue-to="frame.continueTo"')
   })
 
   it('keeps the button at the foot of the page too', () => {
@@ -47,7 +47,7 @@ describe('the questionnaire step row', () => {
   })
 
   it('hands the bar everything the page gave it', () => {
-    for (const prop of [':current-step="currentStep"', ':back-to="backTo"', ':continue-to="continueTo"', ':continue-ready="continueReady"']) {
+    for (const prop of [':current-step="frame.currentStep"', ':back-to="frame.backTo"', ':continue-to="frame.continueTo"', ':continue-ready="frame.continueReady"']) {
       expect(WRAPPER, `the wrapper drops ${prop}`).toContain(prop)
     }
   })
@@ -58,11 +58,11 @@ describe('the questionnaire step row', () => {
 
   it('ties the step-row button to the same readiness as the page', () => {
     // A step that can block progress must block both buttons, or the top one would walk past a
-    // question the bottom one refuses to.
+    // question the bottom one refuses to. Both read the frame, so they cannot drift apart.
     for (const { path, source } of stepPages) {
       if (!source.includes('canContinue')) continue
-      expect(source, `${path} gates its bottom button but not the step row`).toMatch(
-        /:continue-ready="canContinue"/
+      expect(source, `${path} works out readiness for itself instead of using the frame`).toContain(
+        'const canContinue = computed(() => frame.value?.continueReady ?? false)'
       )
     }
   })

@@ -4,16 +4,9 @@ import { schoolsStepComplete } from '~/composables/useAnchorState'
 
 useHead({ title: 'Schools' })
 
+definePageMeta({ layout: 'questions' })
+
 const { answers } = useAnchorState()
-const { regionOf } = useLgaData()
-
-// The region comes from the area the user picked, so back never lands on the
-// "We couldn't find that region" screen.
-const backTo = computed(() => {
-  const region = regionOf(answers.value.currentLga)
-  return region ? `/location/area?region=${encodeURIComponent(region)}` : '/location'
-})
-
 onMounted(() => {
   if (answers.value.paymentType == null) navigateTo('/income')
   else if (answers.value.bedrooms == null) navigateTo('/bedrooms')
@@ -62,7 +55,9 @@ const askMoving = computed(() => schools.value.hasKidsAtSchool === true)
 const askLevels = computed(() => askMoving.value && schools.value.movingSchools === true)
 const askSectors = computed(() => askLevels.value && schools.value.levels.length > 0)
 
-const canContinue = computed(() => schoolsStepComplete(schools.value))
+// Same readiness the step row uses, so the two buttons can never disagree.
+const frame = useQuestionFrame()
+const canContinue = computed(() => frame.value?.continueReady ?? false)
 
 /** Says plainly what the answer just did, rather than leaving the reason to be guessed at. */
 const outcome = computed(() => {
@@ -81,7 +76,7 @@ const outcome = computed(() => {
 </script>
 
 <template>
-  <QuestionPage :current-step="4" :back-to="backTo" continue-to="/priorities" :continue-ready="canContinue">
+  <div class="flex flex-col gap-5">
     <h1 class="m-0 heading-step">
       Do you have children or dependants at school?
     </h1>
@@ -151,5 +146,5 @@ const outcome = computed(() => {
     >
       Continue
     </NuxtLink>
-  </QuestionPage>
+  </div>
 </template>

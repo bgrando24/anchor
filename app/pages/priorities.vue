@@ -4,6 +4,8 @@ import { schoolsCount } from '~/composables/useAnchorState'
 
 useHead({ title: 'What matters most to you?' })
 
+definePageMeta({ layout: 'questions' })
+
 const { answers } = useAnchorState()
 
 onMounted(() => {
@@ -62,7 +64,7 @@ const split = computed(() =>
 </script>
 
 <template>
-  <QuestionPage :current-step="5" back-to="/schools" continue-to="/results" continue-label="Results">
+  <div class="flex flex-col gap-5">
     <h1 class="m-0 heading-step">
       What matters most to you?
     </h1>
@@ -102,5 +104,5 @@ const split = computed(() =>
     <WeightSplitBar :split="split" />
 
     <NuxtLink to="/results" class="btn-primary">Show my results</NuxtLink>
-  </QuestionPage>
+  </div>
 </template>

@@ -3,6 +3,8 @@ import { X } from 'lucide-vue-next'
 
 useHead({ title: 'Where do you live now?' })
 
+definePageMeta({ layout: 'questions' })
+
 const { answers } = useAnchorState()
 const { search, regionCount } = useLgaData()
 
@@ -35,11 +37,13 @@ const queryEcho = computed(() => {
   return q.length > MAX_ECHO ? `${q.slice(0, MAX_ECHO)}\u2026` : q
 })
 
-const canContinue = computed(() => answers.value.currentLga != null)
+// Same readiness the step row uses, so the two buttons can never disagree.
+const frame = useQuestionFrame()
+const canContinue = computed(() => frame.value?.continueReady ?? false)
 </script>
 
 <template>
-  <QuestionPage :current-step="3" back-to="/bedrooms" continue-to="/schools" :continue-ready="canContinue">
+  <div class="flex flex-col gap-5">
     <h1 class="m-0 heading-step">
       Where do you live now?
     </h1>
@@ -118,5 +122,5 @@ const canContinue = computed(() => answers.value.currentLga != null)
     >
       Continue
     </NuxtLink>
-  </QuestionPage>
+  </div>
 </template>

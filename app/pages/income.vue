@@ -3,9 +3,13 @@ import { PAYMENT_TYPES, INCOME_BANDS } from '~/data/options'
 
 useHead({ title: 'Your Centrelink payment' })
 
+definePageMeta({ layout: 'questions' })
+
 const { answers } = useAnchorState()
 
-const canContinue = computed(() => !!answers.value.paymentType)
+// Same readiness the step row uses, so the two buttons can never disagree.
+const frame = useQuestionFrame()
+const canContinue = computed(() => frame.value?.continueReady ?? false)
 
 const paymentOptions = computed(() => PAYMENT_TYPES.map((p) => ({ value: p.value, label: p.label })))
 
@@ -15,7 +19,7 @@ function selectPayment(value: string | number) {
 </script>
 
 <template>
-  <QuestionPage :current-step="1" back-to="/" continue-to="/bedrooms" :continue-ready="canContinue">
+  <div class="flex flex-col gap-5">
     <h1 class="m-0 heading-step">
       Which Centrelink payment do you receive?
     </h1>
@@ -58,5 +62,5 @@ function selectPayment(value: string | number) {
     >
       Continue
     </NuxtLink>
-  </QuestionPage>
+  </div>
 </template>

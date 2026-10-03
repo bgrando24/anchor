@@ -1,6 +1,8 @@
 <script setup lang="ts">
 useHead({ title: 'Which area do you live in?' })
 
+definePageMeta({ layout: 'questions' })
+
 const route = useRoute()
 const { answers } = useAnchorState()
 const { byRegion } = useLgaData()
@@ -14,11 +16,13 @@ function selectArea(code: string | number) {
   answers.value.currentLga = Number(code)
 }
 
-const canContinue = computed(() => answers.value.currentLga != null)
+// Same readiness the step row uses, so the two buttons can never disagree.
+const frame = useQuestionFrame()
+const canContinue = computed(() => frame.value?.continueReady ?? false)
 </script>
 
 <template>
-  <QuestionPage :current-step="3" back-to="/location" continue-to="/schools" :continue-ready="canContinue">
+  <div class="flex flex-col gap-5">
 
     <h1 class="m-0 heading-step">Which area do you live in?</h1>
     <p v-if="region" class="-mt-2 mb-0 font-sans text-[17px] leading-[1.5] text-body">
@@ -47,5 +51,5 @@ const canContinue = computed(() => answers.value.currentLga != null)
     >
       Continue
     </NuxtLink>
-  </QuestionPage>
+  </div>
 </template>

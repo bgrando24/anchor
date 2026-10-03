@@ -142,7 +142,23 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    /* Between question steps. Short, and out-in so the two screens never overlap. */
+    /* The question itself, inside a frame that stays put. Short, and barely moves. */
+    .question-enter-active,
+    .question-leave-active {
+      transition:
+        opacity 110ms ease-out,
+        transform 110ms ease-out;
+    }
+    .question-enter-from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    .question-leave-to {
+      opacity: 0;
+      transform: translateY(-3px);
+    }
+
+    /* Between sections, where the whole screen turns over. */
     .screen-enter-active,
     .screen-leave-active {
       transition:
