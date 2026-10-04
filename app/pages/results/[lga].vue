@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowLeft } from 'lucide-vue-next'
-import { lettingsLabel, ordinal, parkComparison, schoolOverlapNote, stationLabel } from '~/composables/useScoring'
+import { distanceKm, distanceLabel, lettingsLabel, ordinal, parkComparison, schoolOverlapNote, stationLabel } from '~/composables/useScoring'
 import {
   areaSeries,
   BEDROOM_FILTERS,
@@ -267,6 +267,14 @@ const schoolsNote = computed(() => {
   )
 })
 
+/** Where this area sits against the one they live in now, for the map's caption. */
+const distanceSentence = computed(() => {
+  const a = area.value
+  const home = currentArea.value
+  if (!a || !home || home.lga_code === a.lga_code) return ''
+  return `about ${distanceLabel(distanceKm(a, home)).replace(' away', ' away')}`
+})
+
 /** How this area's parkland sits against the average council area of its kind. */
 const parkNote = computed(() => {
   const a = area.value
@@ -408,6 +416,16 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       aria-labelledby="lga-tab-overview"
       tabindex="0"
     >
+      <!-- Two places on a map answers "where is this, compared with home?" without any labels.
+           Showing all seventy-nine with the ranking marked did not: no one could tell which dot
+           was which, and a map you cannot read a name off is decoration. -->
+      <section class="py-[26px] px-4 dt:px-10 border-b border-line">
+        <h2 class="m-0 mb-[18px] heading-section">Where it is</h2>
+        <div class="max-w-[560px]">
+          <VictoriaMap :area="area" :current="currentArea" :distance="distanceSentence" />
+        </div>
+      </section>
+
       <section class="py-[26px] px-4 dt:px-10">
         <h2 class="m-0 mb-[18px] heading-section">What it's like here</h2>
         <!-- One card per scored factor: the number, how it compares, and a line built from the

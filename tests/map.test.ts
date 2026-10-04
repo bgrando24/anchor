@@ -52,4 +52,20 @@ describe('the map of the state', () => {
     expect(source).toContain(':aria-label="label"')
     expect(source).toContain('<figcaption')
   })
+
+  // It showed all seventy-nine with the ranking marked, and nobody could tell which dot was
+  // which. Two places need no labels, because the caption names both and there is nothing else
+  // on the map to mistake them for.
+  it('marks two places, not a crowd', () => {
+    const source = readFileSync('app/components/VictoriaMap.vue', 'utf8')
+    expect(source, 'it is drawing a list of areas again').not.toMatch(/v-for[^>]*circle|circle[^>]*v-for/)
+    expect(source).toContain('area.lga_name')
+    expect(source).toContain('current.lga_name')
+  })
+
+  it('names both of them in words, so the picture is not the only way to read it', () => {
+    const source = readFileSync('app/components/VictoriaMap.vue', 'utf8')
+    expect(source).toMatch(/is the filled circle/)
+    expect(source).toMatch(/The ring is \{\{ current\.lga_name \}\}/)
+  })
 })
