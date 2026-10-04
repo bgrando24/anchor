@@ -116,7 +116,7 @@ function isCurrent(code: number) {
       </div>
     </div>
 
-    <div class="max-w-[1280px] mx-auto grid grid-cols-1 dt:grid-cols-[280px_minmax(0,1fr)]">
+    <div class="max-w-[1440px] mx-auto grid grid-cols-1 dt:grid-cols-[280px_minmax(0,1fr)]">
       <aside class="hidden dt:block dt:py-[34px] dt:px-7 dt:border-r dt:border-line dt:bg-surface-2">
         <h2 class="font-sans font-medium text-[15px] leading-none text-body mb-4">
           Your answers

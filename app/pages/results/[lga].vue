@@ -421,7 +421,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
            was which, and a map you cannot read a name off is decoration. -->
       <section class="page py-[26px] border-b border-line">
         <h2 class="m-0 mb-[18px] heading-section">Where it is</h2>
-        <div class="max-w-[560px]">
+        <div class="max-w-[560px] dt:max-w-[780px]">
           <VictoriaMap :area="area" :current="currentArea" :distance="distanceSentence" />
         </div>
       </section>
@@ -454,8 +454,10 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         </div>
       </section>
 
-      <div class="dt:grid dt:grid-cols-2 dt:gap-5 dt:items-start">
-    <section v-if="currentArea" class="page pb-[26px]">
+      <!-- The column goes on the grid. Put on each half instead, it centres inside that half and
+           the two sections sit on margins of their own. -->
+      <div class="page dt:grid dt:grid-cols-2 dt:gap-5 dt:items-start">
+    <section v-if="currentArea" class="pb-[26px]">
       <div class="on-band p-5 dt:p-7 rounded-[18px] bg-header-band">
         <div class="font-sans font-medium text-[15px] leading-none text-header-cta mb-2">
           Against where you live now
@@ -517,7 +519,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         </table>
       </div>
     </section>
-      <section v-if="aedc" class="page py-[26px]">
+      <section v-if="aedc" class="py-[26px]">
         <div class="font-sans font-medium text-[14px] leading-none text-muted mb-2">
           Not part of the ranking
         </div>

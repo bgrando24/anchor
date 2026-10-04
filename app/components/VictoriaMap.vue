@@ -59,7 +59,8 @@ const label = computed(() =>
       />
       <circle :cx="at(area).x" :cy="at(area).y" r="16" class="fill-accent" />
     </svg>
-    <figcaption class="mt-3 font-sans text-[16px] leading-[1.5] text-body">
+    <!-- Held to a measure of its own: the map may be wide, a line of prose should not be. -->
+    <figcaption class="mt-3 measure font-sans text-[16px] leading-[1.5] text-body">
       <span class="font-semibold text-ink">{{ area.lga_name }}</span> is approximately where the orange filled circle is<template
         v-if="current"
       >. The {{ theme === 'dark' ? "white" : "dark" }} ring is {{ current.lga_name }}, where you live now<template v-if="distance">, a distance of {{ distance }}</template></template>.

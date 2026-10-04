@@ -129,7 +129,7 @@
      while the panels under them ran the full width of the screen, which on a wide desktop put
      the two halves of the same page on different margins. */
   .page {
-    @apply max-w-[1280px] mx-auto px-4 dt:px-10;
+    @apply max-w-[1440px] mx-auto px-4 dt:px-10;
   }
   /* A column of prose, held to a comfortable measure wherever the container is wider. */
   .measure {
