@@ -8,6 +8,7 @@
     "test:watch": "vitest",
     "build:data": "node scripts/build-data.mjs",
     "dev": "nuxt dev",
+    "footprint-report": "npm ci && npm run build && node scripts/measure-build.mjs",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",

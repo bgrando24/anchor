@@ -70,7 +70,7 @@ const kb = (n) => `${(n / 1024).toFixed(0)} KB`.padStart(10)
 const mb = (n) => `${(n / 1048576).toFixed(2)} MB`
 
 console.log('\nThe whole deployed site\n')
-console.log('  ' + 'what'.padEnd(30) + 'files'.padStart(6) + 'on disk'.padStart(11) + 'over the wire'.padStart(15))
+console.log('  ' + 'Type'.padEnd(30) + 'Count'.padStart(6) + 'On Disk'.padStart(10) + 'Compressed'.padStart(14))
 console.log('  ' + '-'.repeat(62))
 for (const [name, row] of [...totals].sort((a, b) => b[1].sent - a[1].sent)) {
   console.log('  ' + name.padEnd(30) + String(row.files).padStart(6) + kb(row.disk) + kb(row.sent))
