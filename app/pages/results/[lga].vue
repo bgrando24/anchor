@@ -557,7 +557,14 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         <p v-if="chartScope" class="m-0 mb-1 font-sans font-medium text-[14px] leading-none text-accent">
           {{ chartScope }}
         </p>
-        <p v-if="tooThinToChart" class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">
+        <!-- The same colours as the banner on the results page, because it is the same kind of
+             message: something expected is not here, and this is why. Set as ordinary prose it
+             read as a caption, and the chart vanishing while someone changed a filter looked
+             like a fault rather than a decision. -->
+        <p
+          v-if="tooThinToChart"
+          class="m-0 mb-[18px] py-4 px-4 bg-banner-bg border border-banner-border rounded-md font-sans text-[16px] leading-[1.5] text-banner-text"
+        >
           {{ thinNote }}
         </p>
         <template v-else>

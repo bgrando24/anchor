@@ -411,3 +411,19 @@ describe('one column width for the page', () => {
     }
   })
 })
+
+describe('saying why something is not shown', () => {
+  // The chart disappears when a filter lands on a size with too few rentals to be worth drawing.
+  // Set as ordinary prose that read as a caption, and the disappearance looked like a fault.
+  it('gives the missing-chart note the same treatment as the banner on the results page', () => {
+    const area = TEMPLATES.find((t) => t.path.endsWith('results/[lga].vue'))!.text
+    const results = TEMPLATES.find((t) => t.path.endsWith('results/index.vue'))!.text
+
+    const note = area.slice(area.indexOf('v-if="tooThinToChart"'))
+    const banner = results.slice(results.indexOf('v-if="noneWithin"'))
+    for (const token of ['bg-banner-bg', 'border-banner-border', 'text-banner-text']) {
+      expect(banner.slice(0, 400), `the results banner no longer uses ${token}`).toContain(token)
+      expect(note.slice(0, 400), `the missing-chart note does not use ${token}`).toContain(token)
+    }
+  })
+})
