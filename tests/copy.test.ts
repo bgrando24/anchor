@@ -386,3 +386,28 @@ describe('opening an area from the list', () => {
     expect(inner, 'a nested link makes the row invalid').not.toContain('<NuxtLink')
   })
 })
+
+describe('one column width for the page', () => {
+  // The headline card and the tab strip were held to a width while the panels beneath them ran
+  // the full screen, which put the two halves of the same page on different margins.
+  it('gives the area page panels the same container as everything above them', () => {
+    const page = TEMPLATES.find((t) => t.path.endsWith('results/[lga].vue'))!.text
+    expect(page, 'a panel is setting its own padding instead of using the page column').not.toMatch(
+      /class="[^"]*\bpx-4 dt:px-10/
+    )
+  })
+
+  // Only containers wide enough to be the page itself. The narrower ones are reading columns
+  // for prose and are meant to differ.
+  it('spells the page width out in one place', () => {
+    const css = readFileSync('app/assets/css/main.css', 'utf8')
+    const cap = css.match(/\.page \{[\s\S]*?max-w-\[(\d+)px\]/)
+    expect(cap, 'the page column has no width').not.toBeNull()
+    for (const { path, text } of TEMPLATES) {
+      for (const found of text.matchAll(/max-w-\[(\d+)px\] mx-auto/g)) {
+        if (Number(found[1]) < 1000) continue
+        expect(found[1], `${path} sets a page width of its own`).toBe(cap![1])
+      }
+    }
+  })
+})

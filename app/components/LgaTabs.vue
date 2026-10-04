@@ -98,7 +98,7 @@ function onKeydown(event: KeyboardEvent, index: number) {
 
 <template>
   <div class="sticky top-0 z-20 bg-bg border-b border-line">
-    <div class="relative max-w-[1160px] mx-auto">
+    <div class="relative max-w-[1280px] mx-auto">
       <!-- The strip was missed entirely in testing, twice. It is the smallest type on a page
            where everything else is large, which is exactly what an older reader skips over, so
            it now matches the rest of the page and every label is at full contrast rather than

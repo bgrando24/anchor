@@ -419,14 +419,14 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       <!-- Two places on a map answers "where is this, compared with home?" without any labels.
            Showing all seventy-nine with the ranking marked did not: no one could tell which dot
            was which, and a map you cannot read a name off is decoration. -->
-      <section class="py-[26px] px-4 dt:px-10 border-b border-line">
+      <section class="page py-[26px] border-b border-line">
         <h2 class="m-0 mb-[18px] heading-section">Where it is</h2>
         <div class="max-w-[560px]">
           <VictoriaMap :area="area" :current="currentArea" :distance="distanceSentence" />
         </div>
       </section>
 
-      <section class="py-[26px] px-4 dt:px-10">
+      <section class="page py-[26px]">
         <h2 class="m-0 mb-[18px] heading-section">What it's like here</h2>
         <!-- One card per scored factor: the number, how it compares, and a line built from the
              raw value so the sentence can never disagree with the bar above it. -->
@@ -455,7 +455,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       </section>
 
       <div class="dt:grid dt:grid-cols-2 dt:gap-5 dt:items-start">
-    <section v-if="currentArea" class="pb-[26px] px-4 dt:px-10">
+    <section v-if="currentArea" class="page pb-[26px]">
       <div class="on-band p-5 dt:p-7 rounded-[18px] bg-header-band">
         <div class="font-sans font-medium text-[15px] leading-none text-header-cta mb-2">
           Against where you live now
@@ -517,7 +517,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         </table>
       </div>
     </section>
-      <section v-if="aedc" class="py-[26px] px-4 dt:px-10">
+      <section v-if="aedc" class="page py-[26px]">
         <div class="font-sans font-medium text-[14px] leading-none text-muted mb-2">
           Not part of the ranking
         </div>
@@ -548,7 +548,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       aria-labelledby="lga-tab-rent"
       tabindex="0"
     >
-      <section class="py-[26px] px-4 dt:px-10 border-b border-line">
+      <section class="page py-[26px] border-b border-line">
         <h2 class="m-0 mb-1 heading-section">
           Share of new leases that were affordable
         </h2>
@@ -593,7 +593,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
         </p>
       </section>
 
-      <section class="py-[26px] px-4 dt:px-10 border-b border-line">
+      <section class="page py-[26px] border-b border-line">
         <h2 class="m-0 mb-[18px] heading-section">Typical weekly rent</h2>
         <dl class="m-0 flex flex-col gap-3">
           <div v-for="row in rentRows" :key="row.label" class="flex items-baseline justify-between gap-4">
@@ -619,7 +619,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       aria-labelledby="lga-tab-schools"
       tabindex="0"
     >
-      <section class="py-[26px] px-4 dt:px-10 border-b border-line">
+      <section class="page py-[26px] border-b border-line">
         <h2 class="m-0 mb-1 heading-section">Schools</h2>
         <p class="m-0 font-sans text-[16px] leading-[1.45] text-body" :class="schoolsNote ? 'mb-3' : 'mb-5'">
           {{ area.school_count }} schools in {{ area.lga_name }}, by level and kind.
@@ -702,7 +702,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       aria-labelledby="lga-tab-sport"
       tabindex="0"
     >
-      <section class="py-[26px] px-4 dt:px-10 border-b border-line">
+      <section class="page py-[26px] border-b border-line">
         <h2 class="m-0 mb-1 heading-section">Sport and open space</h2>
         <p class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">
           {{ area.sport_variety }} kinds of sport have somewhere to play here, and parks cover
@@ -736,7 +736,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       aria-labelledby="lga-tab-transport"
       tabindex="0"
     >
-      <section class="py-[26px] px-4 dt:px-10 border-b border-line">
+      <section class="page py-[26px] border-b border-line">
         <h2 class="m-0 mb-1 heading-section">Getting around</h2>
         <p class="m-0 mb-[18px] font-sans text-[16px] leading-[1.45] text-body">
           <template v-if="area.station_count > 0">
@@ -759,7 +759,7 @@ useHead({ title: () => area.value?.lga_name ?? 'Area not found' })
       </section>
     </div>
 
-    <div class="pb-10 px-4 dt:px-10">
+    <div class="page pb-10">
       <SignOffCard />
     </div>
     </div>

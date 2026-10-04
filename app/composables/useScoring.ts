@@ -383,7 +383,15 @@ export function distanceKm(a: Pick<Lga, 'lat' | 'lon'>, b: Pick<Lga, 'lat' | 'lo
   return 2 * EARTH_KM * Math.asin(Math.sqrt(h))
 }
 
-/** Rounded the way it is said aloud, and never to a precision the centres do not support. */
+/**
+ * Rounds the central point-to-point distance measurement in kilometres and formats it into a usable string
+ * @param number The 'raw' distance measutement in KMs
+ * @returns {string} A string label formatted into a conversational style description, see below:
+ * * `km < 1    -> "Same centre"`
+ * * `km < 10   -> rounded to nearest km, e.g. 4.5km = 5km`
+ * * `km < 100  -> rounded to nearest 5km, e.g. 93km = 95km`
+ * * `km >=100  -> rounded to nearest 10mk, e.g. 123km = 120km`
+ */
 export function distanceLabel(km: number): string {
   if (km < 1) return 'Same centre'
   if (km < 10) return `${Math.round(km)} km away`

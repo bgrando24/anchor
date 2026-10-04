@@ -63,9 +63,14 @@ describe('the map of the state', () => {
     expect(source).toContain('current.lga_name')
   })
 
+  // What matters is that the caption names both places and says which mark is which, not the
+  // exact phrasing: the wording is copy and will be edited.
   it('names both of them in words, so the picture is not the only way to read it', () => {
     const source = readFileSync('app/components/VictoriaMap.vue', 'utf8')
-    expect(source).toMatch(/is the filled circle/)
-    expect(source).toMatch(/The ring is \{\{ current\.lga_name \}\}/)
+    const caption = source.slice(source.indexOf('<figcaption'), source.indexOf('</figcaption>'))
+    expect(caption, 'the caption does not name the area').toContain('area.lga_name')
+    expect(caption, 'the caption does not name where they live now').toContain('current.lga_name')
+    expect(caption, 'the caption does not say which mark is filled').toMatch(/filled/i)
+    expect(caption, 'the caption does not say which mark is the ring').toMatch(/ring/i)
   })
 })

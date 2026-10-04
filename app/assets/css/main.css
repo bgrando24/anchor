@@ -125,8 +125,11 @@
   /* One container for the whole site, replacing the 480/560/640/960/1280 mix. Bands stay
      full bleed behind it. Extra width is meant to become a second column, never a longer line,
      so text blocks inside still cap their own measure. */
+  /* One column width for the whole site. The headline card and the tab strip were held to this
+     while the panels under them ran the full width of the screen, which on a wide desktop put
+     the two halves of the same page on different margins. */
   .page {
-    @apply max-w-[1160px] mx-auto px-4 dt:px-10;
+    @apply max-w-[1280px] mx-auto px-4 dt:px-10;
   }
   /* A column of prose, held to a comfortable measure wherever the container is wider. */
   .measure {

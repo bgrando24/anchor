@@ -21,6 +21,8 @@ const props = defineProps<{
   distance?: string
 }>()
 
+const { theme } = useTheme();
+
 const { minLon, maxLat, scale, squash } = outline.projection
 const at = (place: { lat: number; lon: number }) => ({
   x: Math.round((place.lon - minLon) * scale * 10) / 10,
@@ -58,9 +60,9 @@ const label = computed(() =>
       <circle :cx="at(area).x" :cy="at(area).y" r="16" class="fill-accent" />
     </svg>
     <figcaption class="mt-3 font-sans text-[16px] leading-[1.5] text-body">
-      <span class="font-semibold text-ink">{{ area.lga_name }}</span> is the filled circle<template
+      <span class="font-semibold text-ink">{{ area.lga_name }}</span> is approximately where the orange filled circle is<template
         v-if="current"
-      >. The ring is {{ current.lga_name }}, where you live now<template v-if="distance">, {{ distance }}</template></template>.
+      >. The {{ theme === 'dark' ? "white" : "dark" }} ring is {{ current.lga_name }}, where you live now<template v-if="distance">, a distance of {{ distance }}</template></template>.
     </figcaption>
   </figure>
 </template>
